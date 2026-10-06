@@ -3,47 +3,121 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071321">
-  <title>Air France Industries CAN test device — Victor Correia</title>
+  <meta name="theme-color" content="#f6f3ec">
+  <title>Air France Industries — A hands-on engineering story · Victor Correia</title>
   <meta name="description" content="Victor Correia’s internship prototype for testing an aircraft cargo Power Drive Unit, using CAN communication, Arduino UNO R4 and an LCD interface.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../assets/project.css">
+  <link rel="stylesheet" href="../assets/air-france.css">
+  <script src="../assets/air-france.js" defer></script>
 </head>
-<body>
+<body class="air-france-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="nav wrap">
     <a class="brand" href="../index.html">VICTOR <b>CORREIA</b></a>
     <nav class="nav-links" aria-label="Main navigation"><a href="../index.html#projects">Projects</a><a href="../index.html#contact">Contact</a></nav>
   </header>
   <main id="main">
-    <div class="wrap">
+    <section class="case-intro wrap" aria-labelledby="project-title">
       <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Back to all projects</a>
-      <section class="hero" aria-labelledby="project-title">
-        <div>
-          <p class="eyebrow">01 / Industry · 2026</p>
-          <h1 id="project-title">Air France Industries<br><span>CAN test device.</span></h1>
-          <p class="lead">A prototype device for routine checks on an aircraft cargo Power Drive Unit, developed during my internship at Air France Industries.</p>
-          <ul class="tags" aria-label="Technologies"><li>CAN bus</li><li>Arduino UNO R4</li><li>LCD interface</li><li>Electronics</li></ul>
-        </div>
-        <aside class="overview" aria-label="Prototype components">
-          <p class="eyebrow">Prototype overview</p>
-          <ul class="system-flow">
-            <li><strong>Arduino UNO R4</strong><small>Prototype controller and LCD interface</small></li>
-            <li><strong>CAN communication</strong><small>Connection to the equipment under test</small></li>
-            <li><strong>Cargo Power Drive Unit</strong><small>Aircraft cargo equipment</small></li>
-          </ul>
-          <p class="diagram-note">A simplified view of the components involved in the prototype.</p>
-        </aside>
-      </section>
-      <div class="content">
-        <div class="story">
-          <section aria-labelledby="objective"><h2 id="objective"><span class="number" aria-hidden="true">01</span>The objective</h2><p>Develop a prototype device to test an aircraft cargo Power Drive Unit. The project centres on providing a practical interface for routine checks in an aerospace maintenance context.</p></section>
-          <section aria-labelledby="approach"><h2 id="approach"><span class="number" aria-hidden="true">02</span>The approach</h2><p>The device combines an Arduino UNO R4, CAN communication and an LCD interface. These components bring embedded electronics and the equipment’s communication link together in one prototype.</p></section>
-          <section aria-labelledby="contribution"><h2 id="contribution"><span class="number" aria-hidden="true">03</span>My contribution</h2><p>During my internship, I developed the prototype device. The work connected my interests in electronics, embedded systems and aerospace through a concrete testing application.</p></section>
-        </div>
-        <aside class="facts" aria-labelledby="facts-title"><h2 id="facts-title">At a glance</h2><dl><div><dt>Context</dt><dd>Air France Industries internship</dd></div><div><dt>Year</dt><dd>2026</dd></div><div><dt>Equipment</dt><dd>Aircraft cargo Power Drive Unit</dd></div><div><dt>Project focus</dt><dd>Prototype development and routine checks</dd></div></dl></aside>
+      <div class="intro-heading">
+        <div><p class="eyebrow">Air France Industries / Internship / 2026</p><h1 id="project-title">Engineering.<br><span>Up close.</span></h1></div>
+        <div class="intro-summary"><p>A look inside the workshop, the equipment and the electronics behind my aircraft cargo Power Drive Unit testing prototype.</p><a class="story-start" href="#workbench">Explore the story <span aria-hidden="true">↓</span></a></div>
       </div>
-    </div>
+      <dl class="intro-facts"><div><dt>Context</dt><dd>Air France Industries</dd></div><div><dt>Focus</dt><dd>Embedded electronics & testing</dd></div><div><dt>Prototype</dt><dd>Arduino UNO R4 · CAN · LCD</dd></div></dl>
+      <p class="scroll-hint"><span aria-hidden="true">↓</span> Scroll to see each photograph, then its story.</p>
+    </section>
+
+
+    <section class="photo-story scene-warm" id="workbench" aria-labelledby="workbench-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../assets/air-france/workbench.webp" width="1086" height="1448" alt="Open electrical enclosure with relays, connectors and wiring on a wooden workbench." fetchpriority="high" decoding="async">
+          <figcaption class="photo-label">01 / Electronics at the workbench</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>01 / 04</span><span>Hands-on electronics</span></div>
+        <div class="chapter-copy">
+          <p class="eyebrow">01 / A closer look</p>
+          <h2 id="workbench-title">Where the details<br>become visible.</h2>
+          <p>An open enclosure puts the electrical assembly in view: relays, connectors and wiring, all brought together on the workbench.</p>
+          <p>It is a view of the practical environment around the project, where electronics meets the equipment it needs to interface with.</p>
+          <ul class="chapter-tags" aria-label="Key topics"><li>Wiring</li><li>Electrical assembly</li><li>Workshop</li></ul>
+          <a class="chapter-next" href="#pdu">Meet the equipment <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="photo-story scene-ice scene-landscape" id="pdu" aria-labelledby="pdu-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../assets/air-france/pdu-test.webp" width="1448" height="1086" alt="Aircraft cargo Power Drive Unit beside a test control panel with green controls and a red emergency stop." loading="lazy" decoding="async">
+          <figcaption class="photo-label">02 / The Power Drive Unit and test setup</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>02 / 04</span><span>Aircraft equipment</span></div>
+        <div class="chapter-copy">
+          <p class="eyebrow">02 / The equipment behind the project</p>
+          <h2 id="pdu-title">A real system.<br>A clear testing need.</h2>
+          <p>The cargo Power Drive Unit is the equipment at the centre of my prototype project. Here it is shown alongside a test control panel.</p>
+          <p>My work focused on an embedded testing prototype with CAN communication and an LCD interface, connecting programming with a concrete aerospace application.</p>
+          <ul class="chapter-tags" aria-label="Key topics"><li>Power Drive Unit</li><li>Testing</li><li>Aerospace</li></ul>
+          <a class="chapter-next" href="#electrical-systems">Explore the industrial setting <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="photo-story scene-copper" id="electrical-systems" aria-labelledby="electrical-systems-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../assets/air-france/electrical-cabinet.webp" width="1086" height="1448" alt="Industrial electrical cabinet with wired terminal blocks, protection devices and two orange drive controllers." loading="lazy" decoding="async">
+          <figcaption class="photo-label">03 / Inside the industrial environment</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>03 / 04</span><span>Industrial systems</span></div>
+        <div class="chapter-copy">
+          <p class="eyebrow">03 / Beyond the prototype</p>
+          <h2 id="electrical-systems-title">Electronics,<br>at another scale.</h2>
+          <p>Wiring, protection devices and drive controllers fill this electrical cabinet. The photograph gives another perspective on the industrial setting of the internship.</p>
+          <p>Alongside the close-up electronics work, these workshop views show the broader context in which the project took place.</p>
+          <ul class="chapter-tags" aria-label="Key topics"><li>Electrical systems</li><li>Industrial equipment</li><li>Workshop context</li></ul>
+          <a class="chapter-next" href="#aerospace-workshop">Step into the workshop <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="photo-story scene-sky" id="aerospace-workshop" aria-labelledby="aerospace-workshop-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../assets/air-france/engine-workshop.webp" width="941" height="1672" alt="Aircraft engine assembly on a workshop fixture with yellow protective caps and tools nearby." loading="lazy" decoding="async">
+          <figcaption class="photo-label">04 / The aerospace workshop</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>04 / 04</span><span>Aerospace context</span></div>
+        <div class="chapter-copy">
+          <p class="eyebrow">04 / The bigger picture</p>
+          <h2 id="aerospace-workshop-title">An interest,<br>grounded in experience.</h2>
+          <p>An aircraft engine assembly offers a wider view of the aerospace workshop. It is part of the internship setting, alongside the electronics and cargo-equipment testing project.</p>
+          <p>My experience at Air France strengthened my interest in embedded engineering for aerospace: understanding a system, building a practical solution and learning from testing it.</p>
+          <ul class="chapter-tags" aria-label="Key topics"><li>Aerospace</li><li>Embedded engineering</li><li>Practical experience</li></ul>
+          <a class="chapter-next" href="#project-summary">The project in a few words <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="case-summary wrap" id="project-summary" aria-labelledby="summary-title">
+      <p class="eyebrow">The project at a glance</p><h2 id="summary-title">Embedded electronics.<br>With a purpose.</h2>
+      <div class="summary-grid">
+        <article><h3>The objective</h3><p>Develop a prototype for routine checks on an aircraft cargo Power Drive Unit.</p></article>
+        <article><h3>My contribution</h3><p>Prototype development during my Air France Industries internship, combining an Arduino UNO R4, CAN communication and an LCD interface.</p></article>
+        <article><h3>The connection</h3><p>A practical meeting point between electronics, embedded systems and my interest in aerospace.</p></article>
+      </div>
+      <a class="story-start" href="#workbench">Back to the photographs <span aria-hidden="true">↑</span></a>
+    </section>
     <nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Keep exploring</p><h2 id="more-projects">More projects</h2><div class="project-links">
       <a href="stm32-morse.html"><span class="eyebrow">02 / Embedded systems</span><strong>Morse communication on STM32</strong><span class="arrow" aria-hidden="true">→</span></a>
       <a href="infrared-audio.html"><span class="eyebrow">03 / In progress</span><strong>Infrared stereo audio transmission</strong><span class="arrow" aria-hidden="true">→</span></a>
