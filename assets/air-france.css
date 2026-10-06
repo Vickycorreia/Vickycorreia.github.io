@@ -13,11 +13,16 @@
 .intro-heading h1 { font-size: clamp(3.8rem, 9vw, 8.4rem); line-height: .96; margin: 25px 0 0; letter-spacing: -.075em; }
 .intro-heading h1 span { color: var(--case-blue); }
 .intro-summary p { margin: 0; color: #486170; font-size: clamp(1.08rem, 1.65vw, 1.3rem); line-height: 1.75; }
+.intro-summary p + p { margin-top: 20px; }
 .story-start { display: inline-flex; gap: 24px; align-items: center; color: var(--case-blue); padding: 15px 0; font-weight: 750; text-decoration: none; border-bottom: 1px solid currentColor; margin-top: 15px; }
 .story-start span { font-size: 1.3rem; }
 .intro-facts { display: grid; grid-template-columns: repeat(3, 1fr); padding-top: 28px; margin: 0; border-top: 1px solid #b5c1c3; gap: 24px; }
 .intro-facts dt { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: #637b86; margin-bottom: 8px; }
 .intro-facts dd { margin: 0; font-size: .94rem; line-height: 1.5; }
+.internship-brief { display: grid; grid-template-columns: 1fr 1.2fr; gap: 8%; padding-top: 46px; margin-top: 38px; border-top: 1px solid #b5c1c3; }
+.internship-brief .eyebrow { color: var(--case-blue); }
+.internship-brief h2 { margin-top: 15px; font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: -.05em; }
+.internship-brief p:not(.eyebrow) { color: #486170; font-size: 1rem; line-height: 1.8; margin: 0 0 16px; }
 .scroll-hint { margin: 37px 0 0; font-size: .82rem; color: #526a78; display: flex; gap: 14px; align-items: center; }
 
 .photo-story { --scene-accent: #216186; --photo-position: 50% 50%; background: #fff; position: relative; }
@@ -47,6 +52,27 @@
 .story-start:hover span { transform: translateY(4px); }
 .photo-full { position: absolute; right: max(26px, calc((100vw - 1280px) / 2)); bottom: 27px; z-index: 3; padding: 10px 14px; background: #ffffffd9; color: var(--case-ink); font-size: .73rem; text-decoration: none; }
 .photo-full:hover { background: #fff; }
+.chapter-more { position: absolute; left: max(26px, calc((100vw - 1280px) / 2)); bottom: 24px; z-index: 4; color: var(--case-ink); }
+.photo-story:has(.chapter-more[open]) { z-index: 5; }
+.chapter-more[open] summary { position: fixed; bottom: 24px; left: max(26px, calc((100vw - 1280px) / 2)); }
+.chapter-more summary { display: flex; align-items: center; gap: 11px; min-height: 48px; padding: 6px 17px 6px 6px; background: #fffffff2; border: 1px solid #b6cbd4; border-radius: 30px; font-size: .8rem; font-weight: 750; cursor: pointer; list-style: none; box-shadow: 0 5px 25px #17364e14; transition: box-shadow .25s, border-color .25s; }
+.chapter-more summary::-webkit-details-marker { display: none; }
+.chapter-more summary:focus-visible, .more-close:focus-visible { outline: 3px solid var(--scene-accent); outline-offset: 4px; }
+.chapter-more summary:hover, .chapter-more[open] summary { border-color: var(--scene-accent); box-shadow: 0 6px 30px #17364e26; }
+.more-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; color: #fff; background: var(--scene-accent); font-size: 1.65rem; font-weight: 400; line-height: 1; transition: transform .25s; }
+.chapter-more[open] .more-icon { transform: rotate(45deg); }
+.more-panel { position: fixed; bottom: 88px; left: max(26px, calc((100vw - 1280px) / 2)); width: min(560px, calc(100vw - 52px)); max-height: min(620px, calc(100svh - 150px)); overflow-y: auto; overscroll-behavior: contain; padding: 30px; background: #fffffff7; backdrop-filter: blur(18px); border: 1px solid #c3d4dc; border-top: 3px solid var(--scene-accent); border-radius: 20px; box-shadow: 0 20px 70px #17364e2e; scrollbar-color: var(--scene-accent) #e7eef1; animation: information-in .28s ease both; }
+.more-panel .eyebrow { color: var(--scene-accent); padding-right: 32px; }
+.more-panel h3 { font-size: clamp(1.65rem, 3vw, 2.3rem); line-height: 1.12; letter-spacing: -.045em; margin: 18px 0 22px; }
+.more-panel h4 { margin: 24px 0 8px; font-size: .93rem; color: var(--scene-accent); }
+.more-panel p:not(.eyebrow) { font-size: .95rem; line-height: 1.75; color: #405a6b; margin: 0; }
+.more-facts { margin: 0; padding-block: 15px; border-block: 1px solid #c3d4dc; display: grid; gap: 12px; }
+.more-facts div { display: grid; grid-template-columns: 128px 1fr; gap: 12px; }
+.more-facts dt { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: #637b86; line-height: 1.6; }
+.more-facts dd { margin: 0; font-size: .85rem; line-height: 1.6; }
+.more-close { position: absolute; top: 18px; right: 18px; width: 34px; height: 34px; border: 1px solid #c3d4dc; border-radius: 50%; background: #eef4f6; color: var(--case-ink); font-size: 1.4rem; cursor: pointer; }
+.more-close:hover { background: #deebf0; }
+@keyframes information-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 .chapter-progress { position: absolute; inset: auto 0 0; z-index: 3; height: 3px; background: #17364e12; }
 .chapter-progress span { display: block; width: 100%; height: 100%; background: var(--scene-accent); transform: scaleX(0); transform-origin: left; }
 
@@ -88,6 +114,7 @@
   .intro-facts { grid-template-columns: 1fr; gap: 18px; }
   .intro-facts div { display: grid; grid-template-columns: 90px 1fr; gap: 14px; }
   .intro-facts dt { margin: 3px 0 0; }
+  .internship-brief { grid-template-columns: 1fr; gap: 18px; padding-top: 30px; margin-top: 28px; }
   .scroll-hint { line-height: 1.6; }
   .scene-warm { --photo-position: 48% 50%; }
   .scene-ice { --photo-position: 52% 50%; }
@@ -102,6 +129,11 @@
   .chapter-tags { margin-top: 18px; }
   .chapter-next { margin-top: 12px; }
   .photo-full { right: 18px; bottom: 23px; font-size: .7rem; }
+  .chapter-more { left: 18px; bottom: 19px; }
+  .chapter-more[open] summary { left: 18px; bottom: 19px; }
+  .chapter-more summary { gap: 8px; font-size: .73rem; padding-right: 12px; }
+  .more-panel { left: 18px; width: calc(100vw - 36px); padding: 24px; }
+  .more-facts div { grid-template-columns: 108px 1fr; }
   .case-summary { padding-block: 60px; }
   .summary-grid { grid-template-columns: 1fr; gap: 25px; }
 }
@@ -129,4 +161,6 @@
   .chapter-progress { display: none; }
   .chapter-next span, .story-start span { transition: none; }
   .chapter-next:hover span, .story-start:hover span { transform: none; }
+  .chapter-more summary, .more-icon { transition: none; }
+  .more-panel { animation: none; }
 }

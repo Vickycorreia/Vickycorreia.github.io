@@ -1,6 +1,7 @@
 (() => {
   const stories = [...document.querySelectorAll('.photo-story')];
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const information = [...document.querySelectorAll('.chapter-more')];
   let scheduled = false;
   let enabled = false;
 
@@ -57,4 +58,33 @@
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', configure, { passive: true });
   motion.addEventListener('change', configure);
+
+  for (const detail of information) {
+    const close = detail.querySelector('.more-close');
+    close.hidden = false;
+    close.addEventListener('click', () => {
+      detail.open = false;
+      detail.querySelector('summary').focus();
+    });
+    detail.addEventListener('toggle', () => {
+      if (detail.open) information.forEach(other => {
+        if (other !== detail) other.open = false;
+      });
+    });
+  }
+
+  document.addEventListener('click', event => {
+    information.forEach(detail => {
+      if (detail.open && !detail.contains(event.target)) detail.open = false;
+    });
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    const open = information.find(detail => detail.open);
+    if (open) {
+      open.open = false;
+      open.querySelector('summary').focus();
+      event.preventDefault();
+    }
+  });
 })();

@@ -1,0 +1,128 @@
+/* A personal introduction with an original, decorative orbital illustration. */
+.nav {
+  color: #17364e;
+  background: linear-gradient(#f5f7f3ed, #f5f7f3b8);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #17364e0b;
+}
+.nav.scrolled { background: #f8f6f1f2; border-bottom-color: #c6d6dd; }
+.brand b { color: #946136; }
+.links a { color: #294d60; }
+.links a:hover { color: #805331; }
+.nav a:focus-visible { outline-color: #946136; }
+section[id] { scroll-margin-top: 90px; }
+
+.space-home {
+  min-height: max(830px, 100svh);
+  color: #17364e;
+  background: radial-gradient(ellipse at 75% 45%, #cfe6eb85, transparent 54%), linear-gradient(115deg, #f8f6f1 12%, #edf4f3 58%, #dfeef4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+.space-home::before, .space-home::after { display: none; }
+.space-stars {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .6;
+  background-image: radial-gradient(circle, #668894 1px, transparent 1.2px), radial-gradient(circle, #a87550 1px, transparent 1.3px);
+  background-size: 177px 191px, 293px 271px;
+  background-position: 120px 76px, 61px 51px;
+  mask-image: linear-gradient(90deg, transparent 25%, #000 66%);
+}
+.space-layout { display: grid; grid-template-columns: 1fr 1.08fr; gap: 3%; align-items: center; padding-block: 135px 90px; position: relative; }
+.personal-intro { position: relative; z-index: 2; }
+.space-home .intro-eyebrow { color: #805331; font-size: .72rem; display: flex; align-items: center; gap: 12px; margin: 0; letter-spacing: .16em; }
+.intro-eyebrow > span { display: inline-block; flex-shrink: 0; width: 8px; height: 8px; background: #4d8186; border-radius: 50%; box-shadow: 0 0 0 5px #4d818610; }
+.space-home h1 { font-size: clamp(5rem, 8.4vw, 8.2rem); line-height: .94; letter-spacing: -.075em; margin: 30px 0 29px; font-weight: 750; }
+.space-home h1 > span { color: #2c617b; }
+.space-home .name-dot { color: #a5734b; }
+.intro-role { font-size: 1.12rem; font-weight: 650; line-height: 1.6; margin: 0 0 13px; }
+.intro-description { max-width: 490px; font-size: 1.04rem; line-height: 1.8; color: #486170; margin: 0; }
+.intro-topics { display: flex; gap: 9px 20px; flex-wrap: wrap; list-style: none; padding: 0; margin: 24px 0 0; }
+.intro-topics li { display: flex; align-items: center; gap: 7px; font-size: .74rem; font-weight: 600; color: #496b79; }
+.intro-topics li::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: #7b9d9f; }
+.intro-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+.space-home .button { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; background: #17364e; color: #fff; border-color: #17364e; margin: 0; padding: 15px 22px; font-size: .9rem; border-radius: 3px; transition: background .2s, border-color .2s; }
+.space-home .button:hover { background: #28566e; border-color: #28566e; }
+.space-home .button.ghost { color: #17364e; background: #ffffff40; border-color: #a6bbc4; margin-left: 0; }
+.space-home .button.ghost:hover { background: #ffffffa6; border-color: #6e909e; }
+.space-home a:focus-visible, .space-home button:focus-visible { outline: 3px solid #946136; outline-offset: 6px; }
+.space-illustration { position: relative; min-width: 0; }
+.orbital-scene { position: relative; transform: translate3d(var(--orbit-drift-x, 0px), var(--orbit-drift-y, 0px), 0); transition: transform .65s ease-out; }
+.orbital-art { display: block; width: 115%; max-width: none; margin-left: -5%; overflow: visible; }
+.space-coordinate { position: absolute; font-size: .62rem; line-height: 1.5; letter-spacing: .13em; text-transform: uppercase; color: #597782; }
+.coordinate-top { top: 8%; right: -1%; }
+.coordinate-bottom { bottom: 9%; left: 22%; }
+.motion-toggle { position: absolute; bottom: -2px; right: 0; background: #ffffff55; color: #486170; border: 1px solid #9ab4bc; border-radius: 20px; padding: 8px 12px; font: inherit; font-size: .66rem; cursor: pointer; display: flex; gap: 7px; align-items: center; min-height: 34px; }
+.motion-toggle[hidden] { display: none; }
+.motion-toggle:hover { background: #ffffffba; color: #17364e; }
+.motion-icon { position: relative; display: block; width: 10px; height: 10px; }
+.motion-icon::before, .motion-icon::after { content: ""; position: absolute; top: 0; height: 10px; width: 2px; background: currentColor; }
+.motion-icon::before { left: 1px; }
+.motion-icon::after { right: 1px; }
+.motion-toggle[aria-pressed="true"] .motion-icon::before { left: 2px; width: 0; height: 0; border-block: 5px solid transparent; border-left: 7px solid currentColor; background: none; }
+.motion-toggle[aria-pressed="true"] .motion-icon::after { display: none; }
+.home-footline { position: absolute; bottom: 30px; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; gap: 25px; padding-top: 21px; border-top: 1px solid #17364e20; font-size: .72rem; color: #526e7b; }
+.home-footline a { display: inline-flex; align-items: center; gap: 20px; text-decoration: none; font-weight: 650; }
+.home-footline a:hover { color: #805331; }
+.floating-planet { animation: planet-float 8s ease-in-out infinite; }
+.orbiting-satellite { transform-origin: 330px 306px; animation: satellite-orbit 45s linear infinite; }
+.satellite-inner { animation-duration: 62s; animation-direction: reverse; }
+.space-spark { animation: star-glow 5s ease-in-out infinite; }
+.spark-late { animation-delay: -2.5s; }
+.space-paused .floating-planet, .space-paused .orbiting-satellite, .space-paused .space-spark,
+.space-out-of-view .floating-planet, .space-out-of-view .orbiting-satellite, .space-out-of-view .space-spark { animation-play-state: paused; }
+@keyframes planet-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes satellite-orbit { to { transform: rotate(360deg); } }
+@keyframes star-glow { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+
+@media (max-width: 1000px) {
+  .space-layout { grid-template-columns: 1.1fr 1fr; gap: 0; }
+  .space-home h1 { font-size: clamp(4.5rem, 9.5vw, 7rem); }
+  .orbital-art { width: 125%; margin-left: -10%; }
+  .coordinate-top { right: -2%; font-size: .55rem; }
+  .coordinate-bottom { left: 20%; bottom: 3%; }
+  .motion-toggle { bottom: -35px; }
+}
+
+@media (max-width: 760px) {
+  .space-home { min-height: 100svh; justify-content: start; }
+  .space-layout { display: flex; flex-direction: column; align-items: stretch; gap: 20px; padding-block: 117px 78px; }
+  .space-home h1 { font-size: clamp(4.6rem, 15vw, 7rem); margin: 26px 0 24px; max-width: none; }
+  .space-home .intro-eyebrow { font-size: .64rem; letter-spacing: .12em; gap: 10px; }
+  .intro-role { font-size: 1rem; }
+  .intro-description { font-size: .95rem; line-height: 1.8; max-width: 520px; }
+  .intro-topics { gap: 10px 15px; margin-top: 20px; }
+  .intro-topics li { font-size: .67rem; }
+  .intro-actions { gap: 10px; margin-top: 28px; }
+  .space-home .button { padding: 13px 17px; gap: 17px; font-size: .82rem; }
+  .space-illustration { width: min(400px, 90%); align-self: center; margin-top: 9px; }
+  .orbital-art { width: 100%; margin-left: 0; }
+  .coordinate-top { top: 4%; right: -3%; }
+  .coordinate-bottom { left: 19%; bottom: 5%; font-size: .52rem; }
+  .motion-toggle { bottom: -16px; right: -6px; min-height: 36px; }
+  .home-footline { bottom: 22px; padding-top: 17px; gap: 15px; font-size: .61rem; }
+  .home-footline > span { max-width: 155px; line-height: 1.6; }
+  .home-footline a { gap: 8px; white-space: nowrap; }
+  .space-stars { mask-image: linear-gradient(0deg, #000, transparent 80%); }
+}
+
+@media (max-width: 360px) {
+  .space-layout { padding-top: 94px; }
+  .space-home h1 { font-size: 4rem; margin-block: 22px 20px; }
+  .intro-role { font-size: .94rem; }
+  .intro-description { font-size: .9rem; line-height: 1.75; }
+  .intro-topics { margin-top: 16px; }
+  .intro-actions { margin-top: 22px; }
+  .space-home .button { gap: 8px; padding-inline: 11px; font-size: .75rem; }
+  .intro-topics { gap: 10px 12px; }
+  .space-coordinate { font-size: .48rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .space-home *, .space-home *::before, .space-home *::after { animation: none !important; transition: none !important; }
+  .orbital-scene { transform: none; }
+}
