@@ -23,6 +23,9 @@
 .internship-brief .eyebrow { color: var(--case-blue); }
 .internship-brief h2 { margin-top: 15px; font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: -.05em; }
 .internship-brief p:not(.eyebrow) { color: #486170; font-size: 1rem; line-height: 1.8; margin: 0 0 16px; }
+.case-jump-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.case-jump-links a { border: 1px solid #bbced6; border-radius: 24px; padding: 11px 16px; color: var(--case-blue); background: #edf4f6; font-size: .82rem; font-weight: 650; text-decoration: none; }
+.case-jump-links a:hover { background: #dcebf0; }
 .scroll-hint { margin: 37px 0 0; font-size: .82rem; color: #526a78; display: flex; gap: 14px; align-items: center; }
 
 .photo-story { --scene-accent: #216186; --photo-position: 50% 50%; background: #fff; position: relative; }
