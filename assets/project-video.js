@@ -38,7 +38,12 @@
     };
   });
 
+  const isFullscreen = video => {
+    const element = document.fullscreenElement;
+    return Boolean(video.webkitDisplayingFullscreen || element === video || element?.contains(video));
+  };
   const visibleRatio = video => {
+    if (isFullscreen(video)) return 1;
     const bounds = video.getBoundingClientRect();
     if (bounds.width <= 0 || bounds.height <= 0) return 0;
     const width = Math.max(0, Math.min(bounds.right, window.innerWidth) - Math.max(bounds.left, 0));
@@ -237,6 +242,11 @@
   }
   window.addEventListener('scroll', scheduleVisibility, { passive: true });
   window.addEventListener('resize', scheduleVisibility);
+  document.addEventListener('fullscreenchange', scheduleVisibility);
+  for (const { video } of entries) {
+    video.addEventListener('webkitbeginfullscreen', scheduleVisibility);
+    video.addEventListener('webkitendfullscreen', scheduleVisibility);
+  }
   document.addEventListener('visibilitychange', reconcile);
   window.addEventListener('pagehide', () => {
     for (const entry of entries) pauseByScript(entry);

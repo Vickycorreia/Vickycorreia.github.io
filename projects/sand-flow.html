@@ -21,6 +21,7 @@
   <script src="../assets/photo-reading.js" defer></script>
   <script src="../assets/story-demos.js" defer></script>
   <link rel="stylesheet" href="../assets/project-video.css">
+  <link rel="stylesheet" href="../assets/immersive-video.css">
   <script src="../assets/project-video.js" defer></script>
 </head>
 <body class="sand-page">
@@ -74,7 +75,7 @@
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
-      <div class="chapter-content">
+      <div class="chapter-content chapter-before-video">
         <div class="chapter-copy">
           <p class="eyebrow">01 / The rotating drum</p>
           <h2 id="drum-title"><span class="title-line">Still sand.</span> <span class="title-line title-accent">Sudden motion.</span></h2>
@@ -91,21 +92,28 @@
             <section class="narrative-section"><h4>What needs checking</h4><p>The important precaution is to distinguish the first movement from the final resting surface. A point to check is whether the chosen observation captures the same event each time, rather than a brief movement of only a few grains. Small differences between readings also matter. The reported angles include uncertainties. Keeping them visible helps us compare the model and the measurements without treating the observed thresholds as exact.</p></section>
             <section class="narrative-section"><h4>What the observation tells us</h4><p>The reported onset angle was 36.7 ± 0.3°, while the resting angle was 32.1 ± 0.6°. Starting and stopping therefore followed different paths: between the thresholds, the earlier state matters. This is the idea behind hysteresis. A simple friction model, using a coefficient of 0.7, predicted about 35°. Comparing that prediction with the measurements helps us assess what the model explains and why the separate resting threshold needs attention.</p></section>
           </div>
-          <figure class="project-video" id="drum-video" aria-labelledby="drum-video-title" style="--video-accent:#a3472b">
-            <div class="video-heading"><p class="eyebrow">The recorded experiment · 14 s</p><h3 id="drum-video-title">The rotating drum in motion</h3></div>
-            <div class="video-screen">
-              <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/drum-flow.webp" width="848" height="478" aria-label="The rotating drum in motion" data-scroll-play>
-                <source src="../assets/sand-study/videos/drum-flow.mp4" type="video/mp4">
-                <a href="../assets/sand-study/videos/drum-flow.mp4">Watch the MP4 video</a>
-              </video>
-            </div>
-            <figcaption>
-              <p class="video-summary">Gradually turning the drum tilts the sand surface until an avalanche starts.</p>
-              <div class="video-actions"><a class="video-open" href="../assets/sand-study/videos/drum-flow.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
-            </figcaption>
-          </figure>
-          <a class="chapter-next" href="#granular-flow">Follow the avalanche <span aria-hidden="true">→</span></a>
+
         </article>
+      </div>
+      <div class="video-sequence">
+        <figure class="project-video video-immersive" id="drum-video" aria-labelledby="drum-video-title" style="--video-accent:#a3472b">
+          <div class="video-heading"><p class="eyebrow">The recorded experiment · 14 s</p><h3 id="drum-video-title">The rotating drum in motion</h3></div>
+          <div class="video-screen" style="--video-poster:url('/assets/sand-study/videos/drum-flow.webp')">
+            <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/drum-flow.webp" width="848" height="478" aria-label="The rotating drum in motion" data-scroll-play>
+              <source src="../assets/sand-study/videos/drum-flow.mp4" type="video/mp4">
+              <a href="../assets/sand-study/videos/drum-flow.mp4">Watch the MP4 video</a>
+            </video>
+          </div>
+          <figcaption>
+            <p class="video-summary">Gradually turning the drum tilts the sand surface until an avalanche starts.</p>
+            <div class="video-actions"><a class="video-open" href="../assets/sand-study/videos/drum-flow.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="chapter-content chapter-continuation">
+        <div class="chapter-narrative">
+          <a class="chapter-next" href="#granular-flow">Follow the avalanche <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </section>
 
@@ -137,7 +145,7 @@
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
-      <div class="chapter-content">
+      <div class="chapter-content chapter-before-video">
         <div class="chapter-copy">
           <p class="eyebrow">02 / The avalanche in motion</p>
           <h2 id="flow-title"><span class="title-line">A moving front.</span> <span class="title-line title-accent">A steady speed.</span></h2>
@@ -154,21 +162,28 @@
             <section class="narrative-section"><h4>What needs checking</h4><p>Following a moving patch of sand is different from following one solid object. A point to check is whether the same feature is being tracked from one image to the next. The recording must also let us relate position to time consistently. These precautions help estimate the speed of the visible motion while accounting for tracking limits and differences between individual grains.</p></section>
             <section class="narrative-section"><h4>What the observation tells us</h4><p>The reported avalanche travelled at approximately 30 cm/s, with an almost steady speed. A simple model of sliding with friction instead predicted acceleration above its threshold. This difference creates a useful scientific question: where is the energy going as the sand descends? It motivated the separate Tac-Tac experiment, which isolates repeated impacts. The observation gives a reason to examine another mechanism, while leaving the full behaviour of the sand layer open to investigation.</p></section>
           </div>
-          <figure class="project-video video-portrait" id="sand-flow-video" aria-labelledby="sand-flow-video-title" style="--video-accent:#007477">
-            <div class="video-heading"><p class="eyebrow">The recorded experiment · 10 s</p><h3 id="sand-flow-video-title">Feeding the sand flow</h3></div>
-            <div class="video-screen">
-              <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/sand-flow.webp" width="478" height="850" aria-label="Feeding the sand flow" data-scroll-play>
-                <source src="../assets/sand-study/videos/sand-flow.mp4" type="video/mp4">
-                <a href="../assets/sand-study/videos/sand-flow.mp4">Watch the MP4 video</a>
-              </video>
-            </div>
-            <figcaption>
-              <p class="video-summary">The hopper releases sand, making the supply into the apparatus visible.</p>
-              <div class="video-actions"><a class="video-open" href="../assets/sand-study/videos/sand-flow.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
-            </figcaption>
-          </figure>
-          <a class="chapter-next" href="#tac-tac">Look at a single grain <span aria-hidden="true">→</span></a>
+
         </article>
+      </div>
+      <div class="video-sequence">
+        <figure class="project-video video-immersive video-portrait" id="sand-flow-video" aria-labelledby="sand-flow-video-title" style="--video-accent:#007477">
+          <div class="video-heading"><p class="eyebrow">The recorded experiment · 10 s</p><h3 id="sand-flow-video-title">Feeding the sand flow</h3></div>
+          <div class="video-screen" style="--video-poster:url('/assets/sand-study/videos/sand-flow.webp')">
+            <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/sand-flow.webp" width="478" height="850" aria-label="Feeding the sand flow" data-scroll-play>
+              <source src="../assets/sand-study/videos/sand-flow.mp4" type="video/mp4">
+              <a href="../assets/sand-study/videos/sand-flow.mp4">Watch the MP4 video</a>
+            </video>
+          </div>
+          <figcaption>
+            <p class="video-summary">The hopper releases sand, making the supply into the apparatus visible.</p>
+            <div class="video-actions"><a class="video-open" href="../assets/sand-study/videos/sand-flow.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="chapter-content chapter-continuation">
+        <div class="chapter-narrative">
+          <a class="chapter-next" href="#tac-tac">Look at a single grain <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </section>
 
@@ -201,7 +216,7 @@
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
-      <div class="chapter-content">
+      <div class="chapter-content chapter-before-video">
         <div class="chapter-copy">
           <p class="eyebrow">03 / The Tac-Tac experiment</p>
           <h2 id="impact-title"><span class="title-line">Small impacts.</span> <span class="title-line title-accent">Lasting insight.</span></h2>
@@ -218,48 +233,53 @@
             <section class="narrative-section"><h4>What needs checking</h4><p>A point to check is the difference between the ball’s motion within one step and its average progress over several contacts. It can speed up between impacts and lose speed at the next contact. Tracking position over time helps compare that overall movement with the model. Another precaution is to keep the interpretation limited to this apparatus: a ball and tubes simplify the much more complicated contacts inside real sand.</p></section>
             <section class="narrative-section"><h4>What the observation tells us</h4><p>The Tac-Tac analysis used a tracked speed of about 0.33 m/s. Applying the impact model gave an effective rebound factor of about 0.46 for this analogue. That value was inferred through the model, rather than measured directly for all sand grains. The balance between energy gained during descent and energy lost at contacts offers a possible explanation for a characteristic speed. This result belongs to the ball experiment, separately from the sand avalanche.</p></section>
           </div>
-          <figure class="project-video video-portrait" id="restitution-video" aria-labelledby="restitution-video-title" style="--video-accent:#2858b0">
-            <div class="video-heading"><p class="eyebrow">The recorded experiment · 18 s</p><h3 id="restitution-video-title">Understanding the rebound</h3></div>
-            <div class="video-screen">
-              <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/ball-restitution.webp" width="478" height="850" aria-label="Understanding the rebound" data-scroll-play>
-                <source src="../assets/sand-study/videos/ball-restitution.mp4" type="video/mp4">
-                <a href="../assets/sand-study/videos/ball-restitution.mp4">Watch the MP4 video</a>
-              </video>
-            </div>
-            <figcaption>
-              <p class="video-summary">A ball is released onto the apparatus: observing its motion before and after contact helps study restitution at impact.</p>
-              <p class="video-note">The coefficient of restitution compares the velocities normal to the surface just after and just before impact. This clip shows a rebound trial; the study’s e ≈ 0.46 value comes from an estimate using the Tac-Tac model.</p>
-              <div class="video-actions"><a class="video-open" href="../assets/sand-study/videos/ball-restitution.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
-            </figcaption>
-          </figure>
-          <div class="video-pair">
-            <figure class="project-video" id="tac-tac-normal-video" aria-labelledby="tac-tac-normal-video-title" style="--video-accent:#2858b0">
-              <div class="video-heading"><p class="eyebrow">The recorded experiment · 6 s</p><h3 id="tac-tac-normal-video-title">The descent at normal speed</h3></div>
-              <div class="video-screen">
-                <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/tac-tac-normal.webp" width="960" height="544" aria-label="The descent at normal speed" data-scroll-play>
-                  <source src="../assets/sand-study/videos/tac-tac-normal.mp4" type="video/mp4">
-                  <a href="../assets/sand-study/videos/tac-tac-normal.mp4">Watch the MP4 video</a>
-                </video>
-              </div>
-              <figcaption>
-                <p class="video-summary">The ball descends over the PVC tubes: successive contacts make the Tac-Tac mechanism visible.</p>
-                <div class="video-actions"><a class="video-open" href="../assets/sand-study/videos/tac-tac-normal.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
-              </figcaption>
-            </figure>
-            <figure class="project-video" id="tac-tac-slow-video" aria-labelledby="tac-tac-slow-video-title" style="--video-accent:#2858b0">
-              <div class="video-heading"><p class="eyebrow">The recorded experiment · 18 s</p><h3 id="tac-tac-slow-video-title">Contacts in slow motion</h3></div>
-              <div class="video-screen">
-                <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/tac-tac-slow.webp" width="848" height="478" aria-label="Contacts in slow motion" data-scroll-play>
-                  <source src="../assets/sand-study/videos/tac-tac-slow.mp4" type="video/mp4">
-                  <a href="../assets/sand-study/videos/tac-tac-slow.mp4">Watch the MP4 video</a>
-                </video>
-              </div>
-              <figcaption>
-                <p class="video-summary">A separate slow-motion trial makes the rebounds between the ball and the tubes easier to follow.</p>
-                <div class="video-actions"><a class="video-open" href="../assets/sand-study/videos/tac-tac-slow.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
-              </figcaption>
-            </figure>
+
+        </article>
+      </div>
+      <div class="video-sequence">
+        <figure class="project-video video-immersive video-portrait" id="restitution-video" aria-labelledby="restitution-video-title" style="--video-accent:#2858b0">
+          <div class="video-heading"><p class="eyebrow">The recorded experiment · 18 s</p><h3 id="restitution-video-title">Understanding the rebound</h3></div>
+          <div class="video-screen" style="--video-poster:url('/assets/sand-study/videos/ball-restitution.webp')">
+            <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/ball-restitution.webp" width="478" height="850" aria-label="Understanding the rebound" data-scroll-play>
+              <source src="../assets/sand-study/videos/ball-restitution.mp4" type="video/mp4">
+              <a href="../assets/sand-study/videos/ball-restitution.mp4">Watch the MP4 video</a>
+            </video>
           </div>
+          <figcaption>
+            <p class="video-summary">A ball is released onto the apparatus: observing its motion before and after contact helps study restitution at impact.</p>
+            <p class="video-note">The coefficient of restitution compares the velocities normal to the surface just after and just before impact. This clip shows a rebound trial; the study’s e ≈ 0.46 value comes from an estimate using the Tac-Tac model.</p>
+            <div class="video-actions"><a class="video-open" href="../assets/sand-study/videos/ball-restitution.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
+          </figcaption>
+        </figure>
+        <figure class="project-video video-immersive" id="tac-tac-normal-video" aria-labelledby="tac-tac-normal-video-title" style="--video-accent:#2858b0">
+          <div class="video-heading"><p class="eyebrow">The recorded experiment · 6 s</p><h3 id="tac-tac-normal-video-title">The descent at normal speed</h3></div>
+          <div class="video-screen" style="--video-poster:url('/assets/sand-study/videos/tac-tac-normal.webp')">
+            <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/tac-tac-normal.webp" width="960" height="544" aria-label="The descent at normal speed" data-scroll-play>
+              <source src="../assets/sand-study/videos/tac-tac-normal.mp4" type="video/mp4">
+              <a href="../assets/sand-study/videos/tac-tac-normal.mp4">Watch the MP4 video</a>
+            </video>
+          </div>
+          <figcaption>
+            <p class="video-summary">The ball descends over the PVC tubes: successive contacts make the Tac-Tac mechanism visible.</p>
+            <div class="video-actions"><a class="video-open" href="../assets/sand-study/videos/tac-tac-normal.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
+          </figcaption>
+        </figure>
+        <figure class="project-video video-immersive" id="tac-tac-slow-video" aria-labelledby="tac-tac-slow-video-title" style="--video-accent:#2858b0">
+          <div class="video-heading"><p class="eyebrow">The recorded experiment · 18 s</p><h3 id="tac-tac-slow-video-title">Contacts in slow motion</h3></div>
+          <div class="video-screen" style="--video-poster:url('/assets/sand-study/videos/tac-tac-slow.webp')">
+            <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/tac-tac-slow.webp" width="848" height="478" aria-label="Contacts in slow motion" data-scroll-play>
+              <source src="../assets/sand-study/videos/tac-tac-slow.mp4" type="video/mp4">
+              <a href="../assets/sand-study/videos/tac-tac-slow.mp4">Watch the MP4 video</a>
+            </video>
+          </div>
+          <figcaption>
+            <p class="video-summary">A separate slow-motion trial makes the rebounds between the ball and the tubes easier to follow.</p>
+            <div class="video-actions"><a class="video-open" href="../assets/sand-study/videos/tac-tac-slow.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="chapter-content chapter-continuation">
+        <div class="chapter-narrative">
           <figure class="story-demo" data-demo="tac-tac" aria-labelledby="tt-heading">
             <div class="story-demo__heading">
               <h3 id="tt-heading">One ball, repeated impacts</h3>
@@ -297,7 +317,7 @@
             <figcaption class="story-demo__caption"><strong>Gravity supplies energy; each impact dissipates some.</strong><small>Educational illustration. The trajectory and animation timing do not reproduce a measured experimental run.</small></figcaption>
           </figure>
           <a class="chapter-next" href="#layer-depth">Change the layer depth <span aria-hidden="true">→</span></a>
-        </article>
+        </div>
       </div>
     </section>
 
@@ -388,7 +408,6 @@
         <div class="ss-skill-grid" aria-label="Skills developed through the study"><article><h3>Experimental design</h3><p>Turning a physical question into a controllable setup, with attention to the surface and sand supply.</p></article><article><h3>Motion analysis</h3><p>Connecting video observations and position tracking to a quantitative description of motion.</p></article><article><h3>Model evaluation</h3><p>Comparing physical models with observations and recognising the limits of an experimental method.</p></article></div>
       </div>
     </section>
-
 
     <nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Keep exploring</p><h2 id="more-projects">More projects</h2><div class="project-links">
       <a href="air-france-can.html"><span class="eyebrow">01 / Industry · 2026</span><strong>Air France Industries CAN test device</strong><span class="arrow" aria-hidden="true">→</span></a>

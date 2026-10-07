@@ -48,6 +48,8 @@
   margin-top: -100svh;
   padding: 0 max(36px, calc((100vw - 1280px) / 2)) 200px;
 }
+.chapter-content.chapter-before-video { padding-bottom: 64px; }
+.chapter-content.chapter-continuation { margin-top: 0; padding-top: 44px; }
 .chapter-content .chapter-copy {
   width: min(1040px, 100%);
   min-height: 100svh;

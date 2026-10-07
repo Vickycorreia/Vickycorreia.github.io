@@ -1,0 +1,190 @@
+/* Full-height film frames, with the complete experiment kept in view. */
+.video-sequence { position: relative; z-index: 2; display: block; width: 100%; margin: 0; padding: 0; }
+
+.project-video.video-immersive {
+  --immersive-paper: #f8f6f1;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--immersive-paper);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.project-video.video-immersive > .video-heading {
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: clamp(64px, 7vw, 104px) max(36px, calc((100% - 1040px) / 2));
+  border: 0;
+  background: var(--immersive-paper);
+}
+.project-video.video-immersive .video-heading .eyebrow {
+  max-width: 68ch;
+  margin: 0 0 24px;
+  color: var(--video-accent);
+  font-size: .73rem;
+  line-height: 1.7;
+  letter-spacing: .16em;
+}
+.project-video.video-immersive .video-heading h3 {
+  max-width: 1040px;
+  min-height: 0;
+  margin: 0;
+  color: var(--video-accent);
+  font-size: clamp(2.4rem, 7.4vw, 6.5rem);
+  font-weight: 750;
+  line-height: 1.04;
+  letter-spacing: -.05em;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+.project-video.video-immersive > .video-screen {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 0;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #dce7ec;
+  overflow: hidden;
+  isolation: isolate;
+}
+.project-video.video-immersive > .video-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--video-poster, none);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(20px) saturate(.8);
+  transform: scale(1.12);
+  opacity: .88;
+  pointer-events: none;
+}
+.project-video.video-immersive > .video-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, #f8f6f129, #f8f6f10c 60%, #17364e1a);
+  pointer-events: none;
+}
+.project-video.video-immersive .video-screen > video,
+.project-video.video-immersive.video-portrait .video-screen > video,
+.project-video.video-immersive.is-portrait .video-screen > video {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  filter: none;
+}
+.project-video.video-immersive video:focus-visible { outline: 3px solid var(--video-accent); outline-offset: -3px; }
+
+.project-video.video-immersive > figcaption {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: clamp(32px, 4vw, 56px) max(36px, calc((100% - 1040px) / 2)) clamp(60px, 7vw, 104px);
+  border: 0;
+  background: var(--immersive-paper);
+}
+.project-video.video-immersive .video-summary,
+.project-video.video-immersive p.video-summary,
+.project-video.video-immersive .video-summary p {
+  max-width: 68ch;
+  margin: 0;
+  color: #334f60;
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+.project-video.video-immersive .video-note,
+.project-video.video-immersive p.video-note,
+.project-video.video-immersive .video-note p {
+  max-width: 76ch;
+  margin: 18px 0 0;
+  color: #536d7b;
+  font-size: .84rem;
+  line-height: 1.8;
+}
+.project-video.video-immersive .video-note p:first-child { margin-top: 0; }
+.project-video.video-immersive .video-actions { margin-top: 22px; }
+.project-video.video-immersive .video-open { min-height: 44px; font-size: .85rem; }
+
+/* Small homepage previews retain their existing dimensions and complete frames. */
+.films .film-card > .video-screen { position: relative; overflow: hidden; isolation: isolate; }
+.films .film-card > .video-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--video-poster, none);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(12px) saturate(.8);
+  transform: scale(1.1);
+  opacity: .32;
+  pointer-events: none;
+}
+.films .film-card > .video-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #f8f6f114;
+  pointer-events: none;
+}
+.films .film-card .video-screen > video { position: relative; z-index: 2; background: transparent; }
+
+@supports (color: color-mix(in srgb, #000, #fff)) {
+  .project-video.video-immersive { --immersive-paper: color-mix(in srgb, var(--video-accent) 3%, #f8f6f1); }
+  .project-video.video-immersive > .video-screen::after {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--video-accent) 9%, transparent), #f8f6f114 60%, #17364e1a);
+  }
+  .films .film-card > .video-screen::after { background: color-mix(in srgb, var(--video-accent) 5%, #f8f6f10a); }
+}
+
+@media (max-width: 850px) {
+  .project-video.video-immersive > .video-heading { padding-inline: 30px; }
+  .project-video.video-immersive > figcaption { padding-inline: 30px; }
+}
+
+@media (max-width: 700px) {
+  .project-video.video-immersive > .video-heading { padding: 58px 24px; }
+  .project-video.video-immersive .video-heading .eyebrow { margin-bottom: 20px; font-size: .66rem; }
+  .project-video.video-immersive > figcaption { padding: 32px 24px 64px; }
+  .project-video.video-immersive .video-summary,
+  .project-video.video-immersive p.video-summary,
+  .project-video.video-immersive .video-summary p { font-size: 1.02rem; }
+}
+
+@media (max-width: 360px) {
+  .project-video.video-immersive > .video-heading { padding: 52px 20px; }
+  .project-video.video-immersive .video-heading h3 { font-size: 2.25rem; }
+  .project-video.video-immersive > figcaption { padding-inline: 20px; }
+  .project-video.video-immersive .video-summary,
+  .project-video.video-immersive p.video-summary,
+  .project-video.video-immersive .video-summary p { font-size: 1rem; }
+}
