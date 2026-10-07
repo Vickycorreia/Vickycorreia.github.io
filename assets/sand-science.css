@@ -34,6 +34,15 @@
 .ss-incline-base { fill: none; stroke: #9ab3bf; stroke-width: 2; }
 .ss-incline-bed { fill: none; stroke: #28566f; stroke-width: 6; stroke-linecap: round; }
 .ss-incline-sand { fill: #c79858; }
+.ss-grain { fill: #8f592f; }
+.ss-grain-tone-1 { fill: #b97c3a; }
+.ss-grain-tone-2 { fill: #f6d8a2; }
+.ss-grain-tone-3 { fill: #6e492e; }
+#ss-flow-direction { opacity: 0; }
+#ss-flow-direction path { fill: none; stroke: #007477; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.ss-hysteresis-widget[data-state="flowing"] #ss-flow-direction { opacity: 1; }
+.ss-grains { pointer-events: none; }
+.ss-grains-ready .ss-static-grains { display: none; }
 .ss-angle-arc { fill: none; stroke: var(--ss-sand); stroke-width: 1.5; }
 .ss-incline-text { fill: var(--ss-muted); font-size: 16px; font-family: inherit; }
 .ss-state { padding: 21px 24px; background: #edf4f7; border-left: 3px solid var(--ss-blue); }
@@ -113,6 +122,11 @@
   .ss-hysteresis-widget { padding: 23px 19px; }
   .ss-widget-header { flex-direction: column; align-items: start; gap: 12px; }
   .ss-widget-body { margin-top: 18px; }
+  .ss-widget-body > div { display: contents; }
+  .ss-incline { order: 0; }
+  .ss-controls { order: 1; width: 100%; margin-top: 0; }
+  .ss-state { order: 2; }
+  .ss-threshold-scale { order: 3; margin-top: 0; }
   .ss-incline svg { max-width: 300px; }
   .ss-state { padding: 19px; }
   .ss-demo-actions { flex-direction: column; }

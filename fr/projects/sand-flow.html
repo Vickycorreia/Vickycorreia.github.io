@@ -191,14 +191,30 @@
         <div class="ss-hysteresis-widget" id="ss-hysteresis-widget" data-state="stable">
           <div class="ss-widget-header"><h3>Explorer l’effet d’hystérésis</h3><span class="ss-teaching-label">Démonstration pédagogique</span></div>
           <div class="ss-widget-body">
-            <figure class="ss-incline"><svg viewBox="0 0 400 250" role="img" aria-labelledby="ss-incline-title"><title id="ss-incline-title">Schéma d’une surface de sable inclinée illustrant l’angle de la pente</title><path class="ss-incline-base" d="M 45 210 H 370 M 45 210 V 235"/><g id="ss-incline-bed" transform="rotate(-30 45 210)"><path class="ss-incline-bed" d="M 45 210 H 345"/><path class="ss-incline-sand" d="M 68 204 L 82 191 L 109 188 L 143 186 L 176 186 L 211 188 L 251 190 L 283 193 L 319 199 L 330 204 Z"/><circle class="ss-incline-sand" cx="160" cy="178" r="3"/><circle class="ss-incline-sand" cx="212" cy="181" r="3"/><circle class="ss-incline-sand" cx="264" cy="183" r="3"/></g><path class="ss-angle-arc" id="ss-angle-arc" d="M 100 210 A 55 55 0 0 0 92.63 182.50"/><text class="ss-incline-text" x="111" y="194">θ</text></svg><figcaption>Schéma de l’angle de pente ; le mouvement des grains n’est pas simulé.</figcaption></figure>
+            <figure class="ss-incline">
+              <svg viewBox="0 0 400 250" role="img" aria-labelledby="ss-incline-title" aria-describedby="ss-incline-description">
+                <title id="ss-incline-title">Modèle simplifié d’une couche de sable sur un plan incliné</title>
+                <desc id="ss-incline-description">Les grains restent immobiles au repos. En écoulement, ils descendent la pente à vitesse illustrative constante, avec un apport continu qui maintient une couche uniforme.</desc>
+                <defs><pattern id="ss-rest-grain-pattern" width="18" height="10" patternUnits="userSpaceOnUse"><circle cx="4" cy="3" r="2.4" fill="#8f592f"/><circle cx="13" cy="7" r="2.7" fill="#f6d8a2"/></pattern><clipPath id="ss-grain-clip"><rect x="60" y="188" width="275" height="19"/></clipPath></defs>
+                <path class="ss-incline-base" d="M 45 210 H 370 M 45 210 V 235"/>
+                <g id="ss-incline-bed" transform="rotate(-30 45 210)">
+                  <path class="ss-incline-bed" d="M 45 210 H 345"/>
+                  <path class="ss-incline-sand" d="M 60 193 H 335 V 207 H 60 Z"/>
+                  <rect class="ss-static-grains" x="60" y="188" width="275" height="19" fill="url(#ss-rest-grain-pattern)" clip-path="url(#ss-grain-clip)" aria-hidden="true"/><g id="ss-grains" clip-path="url(#ss-grain-clip)" aria-hidden="true"></g>
+                  <g id="ss-flow-direction" aria-hidden="true"><path d="M 306 178 H 268 M 278 171 L 268 178 L 278 185" fill="none" stroke="#a76f30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+                </g>
+                <path class="ss-angle-arc" id="ss-angle-arc" d="M 100 210 A 55 55 0 0 0 92.63 182.50"/>
+                <text class="ss-incline-text" x="111" y="194">θ</text>
+              </svg>
+              <figcaption>Au repos : grains immobiles. En écoulement : un flux continu.</figcaption>
+            </figure>
             <div>
               <div class="ss-state" id="sand-hysteresis-status" role="status" aria-live="polite" aria-atomic="true"><span class="ss-state-label">État dans cet exemple</span><strong id="ss-state-label">Stable</strong><p id="ss-state-description">À 30°, la pente est inférieure au seuil de repos. Dans cet exemple, le sable reste stable.</p></div>
               <div class="ss-controls" id="sand-hysteresis-controls" hidden><div class="ss-slider-heading"><label for="ss-angle">Angle de pente θ</label><output id="ss-angle-output" for="ss-angle" aria-live="off">30,0°</output></div><input class="ss-angle-input" type="range" id="ss-angle" min="28" max="40" step="0.1" value="30" aria-describedby="ss-demo-note"><div class="ss-demo-actions"><button id="ss-avalanche" type="button">Déclencher une avalanche · 38°</button><button id="ss-rest" type="button">Revenir au repos · 30°</button></div></div>
               <div class="ss-threshold-scale" aria-label="Échelle d’angle de 28 à 40 degrés, avec le seuil de repos à 32,1 et le seuil d’avalanche à 36,7"><div class="ss-scale-labels"><span>28°</span><span>40°</span></div><div class="ss-scale-track" aria-hidden="true"><span class="ss-scale-pointer"></span></div><div class="ss-scale-thresholds" aria-hidden="true"><span>32,1° / repos</span><span>36,7° / déclenchement</span></div><p class="ss-memory-key">Entre les seuils, l’état dépend de son histoire.</p></div>
             </div>
           </div>
-          <p class="ss-demo-note" id="ss-demo-note">Cette démonstration utilise les valeurs centrales des angles rapportés : augmentez la pente à 36,7° pour déclencher l’écoulement, puis abaissez-la à 32,1° pour revenir au repos. Elle explique le comportement à deux seuils, sans produire de données expérimentales ni simuler une avalanche réelle.</p>
+          <p class="ss-demo-note" id="ss-demo-note">Modèle simplifié : alimentation illimitée, couche uniforme et vitesse illustrative constante. Le mouvement commence à 36,7° et s’arrête à 32,1°.</p>
         </div>
         <p class="ss-source">Angles caractéristiques rapportés et hystérésis : présentation de l’étude, diapositives 4 et 6.</p>
         <div class="ss-methods" id="sand-methods"><h3>Construire. Suivre. Comparer.</h3><div class="ss-method-grid"><article><span class="ss-method-number">01 / EXPÉRIENCE</span><h3>Construire</h3><p>Développer un plan inclinable à fond rugueux et une trémie à débit variable pour étudier le déclenchement et l’écoulement du sable.</p></article><article><span class="ss-method-number">02 / OBSERVATION</span><h3>Suivre</h3><p>Utiliser le pointage vidéo pour obtenir la position au cours du temps, x(t), et examiner le mouvement de l’avalanche.</p></article><article><span class="ss-method-number">03 / INTERPRÉTATION</span><h3>Comparer</h3><p>Comparer les observations au frottement de Coulomb et à un modèle distinct de grain isolé fondé sur les chocs.</p></article></div></div>
