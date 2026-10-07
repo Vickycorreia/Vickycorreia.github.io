@@ -23,3 +23,11 @@ Pause, reset and changing presets cancel or interrupt flight appropriately. Anim
 ## Validation
 
 Independent checks compare Newton's vector force with a separate analytical calculation, double masses and distances, remove each attractor, verify mass/weight and radius³/mass consistency, check all three Kepler laws in a single-body case, and compare each prepared orbit and four-second preview with actual integration. Browser checks cover five project links, explicit-launch landings, reset and custom aim, pointer and keyboard controls, pause, visibility, reduced motion, native fallback, localization and responsive layout.
+
+## Mission Control
+
+A small console beside the desktop scene contains Launch/Reset and telemetry. Compact viewports use a floating control strip while the introduction remains in view. Launch frames the scene when needed, and reserved SVG padding keeps the strip clear of planet targets. The star field uses static, irregular SVG points with a few slow, optional pulses; reduced motion disables them.
+
+`flightTelemetry` reads the actual position and velocity from the integrator. VEL is `hypot(vx, vy)`; ALT is the rocket centre's distance above the target's surface; X/Y are scene coordinates; Σg is the magnitude of the **combined** acceleration from all six bodies. Δv is the initial launch impulse and remains constant while the rocket coasts. Displayed units are explicitly relative scene units, not real-world spacecraft measurements. Readings update at most ten times per second during flight, without a live region announcing every number.
+
+A first observed project orbit now announces `ORBIT ACQUIRED — <PROJECT>` and pauses the flight; project contact announces `LANDING CONFIRMED — <PROJECT>`. The localized project opens after 1.8 seconds. Stay here or resuming the flight cancels that transition and disables automatic project opening for the rest of the current launch. Reset and selecting a new preset also cancel the transition; a new explicit launch permits automatic opening again. Hiding the document or leaving the scene cancels automatic navigation while retaining a native Open project link. Preview and reference calculation cannot start the transition. Keyboard and native project links retain their ordinary behavior.

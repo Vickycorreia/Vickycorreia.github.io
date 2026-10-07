@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../assets/story-demos.css">
   <script src="../assets/photo-reading.js" defer></script>
   <script src="../assets/story-demos.js" defer></script>
+  <link rel="stylesheet" href="../assets/project-brief.css">
 </head>
 <body class="air-france-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,14 +33,30 @@
       <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Back to all projects</a>
       <div class="intro-heading">
         <div><p class="eyebrow">Embedded Systems Internship / Summer 2026</p><h1 id="project-title">Air France.<br><span>Industries.</span></h1></div>
-        <div class="intro-summary"><p>Development of a compact CAN-based diagnostic tool for an aircraft Power Distribution Unit.</p><p>One month in Orly, with the EL52 team and my tutor Mathéo Lopes Boto: understanding an existing system, measuring its electrical interface, developing the prototype and investigating CAN communication.</p><a class="story-start" href="#workbench">Explore the story <span aria-hidden="true">↓</span></a></div>
+        <div class="intro-summary"><p>Development of a compact CAN-based diagnostic tool for an aircraft Power Distribution Unit.</p></div>
       </div>
+      <section class="project-brief" aria-labelledby="project-brief-title">
+        <div class="project-brief-heading"><p class="eyebrow">The essentials</p><h2 id="project-brief-title">The project in 30 seconds</h2></div>
+        <dl class="project-brief-grid">
+          <div><dt>Problem</dt><dd>Test selected PDU functions without a computer.</dd></div>
+          <div><dt>Solution</dt><dd>UNO R4 prototype · CAN · 20×4 LCD.</dd></div>
+          <div><dt>My work</dt><dd>Electronics · Embedded C/C++ · CAN · Debugging.</dd></div>
+          <div><dt>Main challenge</dt><dd>CAN transmission observed; reception not yet validated.</dd></div>
+        </dl>
+        <a class="project-brief-dive" href="#workbench">Dive into the engineering <span aria-hidden="true">↓</span></a>
+      </section>
+      <details class="project-context">
+        <summary>Internship context and assignment<span aria-hidden="true">+</span></summary>
+        <div class="project-context-copy">
+          <p>One month in Orly, with the EL52 team and my tutor Mathéo Lopes Boto: understanding an existing system, measuring its electrical interface, developing the prototype and investigating CAN communication.</p>
       <dl class="intro-facts"><div><dt>Location</dt><dd>Orly, France</dd></div><div><dt>Period</dt><dd>Summer 2026 · 1 month</dd></div><div><dt>Team</dt><dd>EL52</dd></div><div><dt>Tutor</dt><dd>Mathéo Lopes Boto</dd></div><div><dt>Environment</dt><dd>Aeronautical maintenance</dd></div><div><dt>My role</dt><dd>Analysis · Prototyping · Debugging</dd></div></dl>
       <div class="internship-brief">
         <div><p class="eyebrow">The challenge</p><h2>An existing test bench.<br>A more portable approach.</h2></div>
         <div><p>The team already had a test setup for the Power Distribution Unit, an aircraft system associated with cargo and baggage equipment. I began by studying the PDU, its connections and the existing bench.</p><p>My assignment was to develop a compact, standalone diagnostic prototype for selected checks: send CAN requests, interpret responses and present useful information through an LCD menu.</p><p>The target was a tool that a technician could use without a computer for those checks. My work combined electronic prototyping, embedded software, measurements and investigation of the receive path.</p></div>
       </div>
       <nav class="case-jump-links" aria-label="Explore this case study"><a href="#workbench">The workshop</a><a href="#prototype-architecture">How the prototype works</a><a href="#can-debugging">The debugging challenge</a></nav>
+        </div>
+      </details>
       <p class="scroll-hint"><span aria-hidden="true">↓</span> Scroll to explore the visuals and their story.</p>
     </section>
 

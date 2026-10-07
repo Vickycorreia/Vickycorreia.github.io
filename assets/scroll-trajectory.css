@@ -1,0 +1,94 @@
+/* The chapter rail stays in the desktop gutter; narrow screens keep only its light. */
+.scroll-trajectory{
+  --trajectory-progress:0;
+  --trajectory-travel:204px;
+  position:fixed;
+  z-index:9;
+  top:50%;
+  left:max(16px,calc((100vw - 1180px) / 2 - 112px));
+  width:90px;
+  transform:translateY(-50%);
+  color:#526f7f;
+}
+.trajectory-chapters{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.trajectory-chapters a{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  min-height:44px;
+  padding-left:19px;
+  text-decoration:none;
+  font-size:9px;
+  font-weight:650;
+  letter-spacing:.065em;
+  text-transform:uppercase;
+  transition:color .16s;
+}
+.trajectory-chapters a::before{
+  content:"";
+  position:absolute;
+  left:4px;
+  top:20px;
+  width:5px;
+  height:5px;
+  border:1px solid #8fa6af;
+  background:#edf3f2;
+  border-radius:50%;
+}
+.trajectory-number{font-size:8px;color:#607c8c;font-variant-numeric:tabular-nums}
+.trajectory-chapters a:hover,.trajectory-chapters a[aria-current="location"]{color:#174966}
+.trajectory-chapters a[aria-current="location"]::before{border-color:#2b7e9d;background:#2b7e9d}
+.trajectory-chapters a:focus-visible{outline:2px solid #9b6b44;outline-offset:2px;border-radius:3px}
+.trajectory-track{
+  position:absolute;
+  top:22px;
+  bottom:22px;
+  left:6px;
+  width:1px;
+  background:linear-gradient(#87a9b53d,#6698ac73,#87a9b53d);
+  pointer-events:none;
+}
+.trajectory-beacon{
+  position:absolute;
+  top:19px;
+  left:3px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#e9fafb;
+  border:1px solid #35768e;
+  box-shadow:0 0 8px #277f9e58;
+  transform:translate3d(0,calc(var(--trajectory-progress) * var(--trajectory-travel)),0);
+  pointer-events:none;
+}
+.trajectory-edge{display:none}
+@media(max-width:1399px){
+  .scroll-trajectory{display:none}
+  .trajectory-edge{
+    --trajectory-progress:0;
+    display:block;
+    position:fixed;
+    z-index:8;
+    left:3px;
+    top:128px;
+    bottom:44px;
+    width:1px;
+    background:linear-gradient(transparent,#729aa947,transparent);
+    pointer-events:none;
+  }
+  .trajectory-edge::after{
+    content:"";
+    position:absolute;
+    top:calc(var(--trajectory-progress) * 100%);
+    left:50%;
+    width:3px;
+    height:6px;
+    border-radius:50%;
+    background:#437d925c;
+    box-shadow:0 0 6px #277f9e26;
+    transform:translate(-50%,-50%);
+  }
+}
+@media(max-height:480px){.scroll-trajectory,.trajectory-edge{display:none}}
+@media(prefers-reduced-motion:reduce){.trajectory-chapters a{transition:none}}

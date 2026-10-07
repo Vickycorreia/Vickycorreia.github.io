@@ -13,6 +13,7 @@
 <script src="../assets/language.js" defer></script>
 <link rel="alternate" hreflang="en" href="/projects/stm32-morse.html">
 <link rel="alternate" hreflang="fr" href="/fr/projects/stm32-morse.html">
+  <link rel="stylesheet" href="../assets/project-brief.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -40,7 +41,17 @@
           <p class="diagram-note">The key elements of the embedded communication project.</p>
         </aside>
       </section>
-      <div class="content">
+      <section class="project-brief" aria-labelledby="project-brief-title">
+        <div class="project-brief-heading"><p class="eyebrow">The essentials</p><h2 id="project-brief-title">The project in 30 seconds</h2></div>
+        <dl class="project-brief-grid">
+          <div><dt>Problem</dt><dd>Encode and decode Morse messages on a microcontroller.</dd></div>
+          <div><dt>Solution</dt><dd>STM32 · C · Defined message format · CRC-8.</dd></div>
+          <div><dt>My work</dt><dd>Embedded programming · Morse conversion · Integrity checking.</dd></div>
+          <div><dt>Main challenge</dt><dd>Combine Morse representation and message integrity.</dd></div>
+        </dl>
+        <a class="project-brief-dive" href="#engineering-details">Dive into the engineering <span aria-hidden="true">↓</span></a>
+      </section>
+      <div class="content" id="engineering-details" tabindex="-1">
         <div class="story">
           <section aria-labelledby="objective"><h2 id="objective"><span class="number" aria-hidden="true">01</span>The objective</h2><p>Build a system that can encode and decode Morse messages on an STM32 microcontroller. Alongside the message conversion, the project includes a defined message format and error checking.</p></section>
           <section aria-labelledby="approach"><h2 id="approach"><span class="number" aria-hidden="true">02</span>The approach</h2><p>The embedded implementation uses C on STM32. Morse encoding and decoding are paired with a message format and CRC-8, bringing message representation and integrity checking into the same system.</p></section>

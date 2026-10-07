@@ -199,10 +199,22 @@
     return { points, time: flight.time, outcome: flight.outcome, orbitBody: flight.orbitBody };
   };
 
+  // Telemetry uses the same scene units and combined field as the flight.
+  // Delta-v is the initial velocity impulse; coasting adds no propulsive delta-v.
+  const flightTelemetry = (config, flight, launchDeltaV) => {
+    const targetId = flight.hitBody || flight.orbitBody || config.name;
+    const target = config.bodies.find(body => body.id === targetId) || config.body;
+    const gravity = acceleration(config, flight.x, flight.y);
+    return { velocity: Math.hypot(flight.vx, flight.vy),
+      altitude: Math.max(0, Math.hypot(flight.x-target.x, flight.y-target.y)-target.radius),
+      deltaV: launchDeltaV, gravity: Math.hypot(gravity.x, gravity.y),
+      x: flight.x, y: flight.y, target: target.id };
+  };
+
   // The physics is importable by local Node checks, with no browser debug API.
   if (typeof module === 'object' && module.exports) {
     module.exports = { configuration, initialFlight, stepFlight, acceleration, potentialAt, totalEnergy,
-      segmentCollision, preview, predict: preview, referenceOrbit, projectForBody, landingURL,
+      segmentCollision, preview, predict: preview, referenceOrbit, projectForBody, landingURL, flightTelemetry,
       STEP, TIME_SCALE, BODIES, SETTINGS, PRESETS, PROJECT_DEFS, GRAVITATIONAL_CONSTANT,
       G: GRAVITATIONAL_CONSTANT, SCENE_BOUNDS, PREVIEW_TIME, REFERENCE_TIME_LIMIT, ROCKET_RADIUS };
   }
@@ -220,6 +232,14 @@
   const destinations = [...root.querySelectorAll('.orbit-destinations button[data-planet]')];
   if (!svg || !launch || !reset || !pause || !message || !powerOutput || !stateLabel || destinations.length !== PROJECT_DEFS.length) return;
   const french = document.documentElement.lang === 'fr';
+  const telemetryFields = new Map([...root.querySelectorAll('[data-telemetry]')].map(element => [element.dataset.telemetry, element]));
+  const arrival = root.querySelector('.orbit-arrival');
+  const arrivalTitle = root.querySelector('.arrival-title');
+  const arrivalOpen = root.querySelector('.arrival-open');
+  const arrivalStay = root.querySelector('.arrival-stay');
+  const missionNames = { sun: 'SUN', 'air-france': 'AIR FRANCE PDU',
+    sand: french ? 'SABLE / AVALANCHES' : 'SAND / AVALANCHES', stm32: 'STM32 / MORSE',
+    infrared: 'IR / AUDIO', rafale: french ? 'RAFALE / CARTON' : 'CARDBOARD RAFALE' };
   const copy = french ? {
     names: { sun: 'le Soleil', ...Object.fromEntries(PROJECT_DEFS.map(project => [project.id, project.names.fr])) },
     states: { aiming: 'Prêt', flying: 'En vol', orbit: 'Tour observé', collision: 'Collision', escape: 'Hors zone', landed: 'Projet atteint' },
@@ -227,6 +247,8 @@
     aimingDetail: 'Quatre secondes de vol en pointillés. À toi de découvrir la suite.',
     flying: 'Trajectoire en cours.', flyingDetail: 'Les astres infléchissent le trajet.',
     orbit: name => `Un tour autour de ${name}.`, orbitDetail: 'Une révolution a été observée. Reprends le vol ou explore un autre lancement.',
+    arrivalAuto: 'Ouverture du projet dans un instant. Tu peux aussi rester ici.',
+    arrivalManual: 'Le vol est en pause. Ouvre le projet quand tu le souhaites.',
     landed: 'Destination atteinte.', landedDetail: 'Ouverture du projet…',
     collision: 'Contact avec un astre.', collisionDetail: 'Recommence pour ajuster la direction ou la poussée.',
     escape: 'La fusée quitte la scène.', escapeDetail: 'La trajectoire sort de la zone représentée. Recommence pour ajuster le lancement.',
@@ -240,6 +262,8 @@
     aimingDetail: 'Four seconds of flight in dots. Discover what comes next.',
     flying: 'Trajectory in progress.', flyingDetail: 'The celestial bodies bend the path.',
     orbit: name => `One revolution around ${name}.`, orbitDetail: 'A full turn has been observed. Resume the flight or explore another launch.',
+    arrivalAuto: 'Opening the project in a moment. You can also stay here.',
+    arrivalManual: 'Flight paused. Open the project whenever you’re ready.',
     landed: 'Destination reached.', landedDetail: 'Opening the project…',
     collision: 'Contact with a celestial body.', collisionDetail: 'Reset to adjust the direction or thrust.',
     escape: 'The rocket has left the scene.', escapeDetail: 'The trajectory is outside the displayed area. Reset to adjust the launch.',
@@ -374,6 +398,10 @@
   let accumulator = 0;
   let trail = [];
   let trailSteps = 0;
+  let launchDeltaV = 0;
+  let lastTelemetryAt = 0;
+  let arrivalTimer = null;
+  let automaticOpening = false;
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const stage = root.querySelector('.orbit-stage') || svg;
   const firstRect = stage.getBoundingClientRect();
@@ -381,6 +409,46 @@
   const pathData = points => points.map((point, index) => `${index ? 'L' : 'M'}${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(' ');
   const position = () => flight || initialFlight(config, angle, power);
   const running = () => visible && !document.hidden && !userPaused && (state === 'flying' || state === 'orbit');
+
+  const renderTelemetry = () => {
+    const reading = flightTelemetry(config, position(), launchDeltaV);
+    const fields = { velocity: reading.velocity, altitude: reading.altitude,
+      'delta-v': reading.deltaV, gravity: reading.gravity, x: reading.x, y: reading.y };
+    for (const [name, value] of Object.entries(fields)) {
+      const element = telemetryFields.get(name);
+      if (element) element.textContent = value.toFixed(1);
+    }
+    const target = telemetryFields.get('target');
+    if (target) target.textContent = missionNames[reading.target] || reading.target.toUpperCase();
+  };
+  const cancelArrival = (hide = true) => {
+    if (arrivalTimer !== null) window.clearTimeout(arrivalTimer);
+    arrivalTimer = null;
+    arrival?.classList.remove('is-opening');
+    if (hide && arrival) { arrival.hidden = true; delete root.dataset.arrival; }
+    if (!hide && arrival && !arrival.hidden) {
+      automaticOpening = false;
+      if (detail) detail.textContent = copy.arrivalManual;
+    }
+  };
+  const beginArrival = (bodyId, outcome) => {
+    const href = landingURL(bodyId, french ? 'fr' : 'en');
+    if (!href || !arrival || !arrivalTitle || !arrivalOpen) return;
+    cancelArrival();
+    root.dataset.arrival = outcome;
+    arrivalTitle.textContent = `${outcome === 'orbit' ? 'ORBIT ACQUIRED' : 'LANDING CONFIRMED'} — ${missionNames[bodyId]}`;
+    arrivalOpen.href = href; arrival.hidden = false;
+    // Only an observed result from an explicit launch can start this transition.
+    if (automaticOpening && visible && !document.hidden) {
+      arrival.classList.add('is-opening');
+      if (detail) detail.textContent = copy.arrivalAuto;
+      arrivalTimer = window.setTimeout(() => {
+        arrivalTimer = null;
+        if (visible && !document.hidden) window.location.assign(href);
+        else cancelArrival(false);
+      }, 1800);
+    } else if (detail) detail.textContent = copy.arrivalManual;
+  };
 
   const renderRocket = () => {
     const point = position();
@@ -408,7 +476,8 @@
     aimHandle.setAttribute('cy', start.y + Math.sin(angle)*length);
     powerOutput.textContent = `${Math.round(power)}%`;
     svg.setAttribute('aria-label', copy.controlsLabel(copy.names[config.name], Math.round(power), Math.round(angle*180/Math.PI)));
-    renderRocket();
+    launchDeltaV = Math.hypot(start.vx, start.vy);
+    renderTelemetry(); renderRocket();
   };
   const syncUI = () => {
     root.dataset.state = state;
@@ -416,7 +485,7 @@
     references.forEach((path, name) => path.classList.toggle('is-selected', name === activePreset));
     root.dataset.paused = String(userPaused);
     root.classList.toggle('orbit-paused', userPaused);
-    stateLabel.textContent = userPaused && state !== 'orbit' ? copy.paused : copy.states[state];
+    stateLabel.textContent = userPaused && state !== 'orbit' && state !== 'landed' ? copy.paused : copy.states[state];
     launch.disabled = state !== 'aiming'; reset.disabled = false;
     const canPause = state === 'flying' || state === 'orbit';
     pause.hidden = !canPause; pause.disabled = !canPause;
@@ -427,12 +496,13 @@
     aimArrow.setAttribute('visibility', state === 'aiming' ? 'visible' : 'hidden');
     aimHandle.setAttribute('visibility', state === 'aiming' ? 'visible' : 'hidden');
     let headline, explanation;
-    if (userPaused && state !== 'orbit') { headline = copy.paused; explanation = copy.pausedDetail; }
+    if (userPaused && state !== 'orbit' && state !== 'landed') { headline = copy.paused; explanation = copy.pausedDetail; }
     else if (state === 'aiming') { headline = copy.ready(copy.names[config.name]); explanation = copy.aimingDetail; }
     else if (state === 'orbit') { headline = copy.orbit(copy.names[flight.orbitBody]); explanation = copy.orbitDetail; }
     else { headline = copy[state]; explanation = copy[`${state}Detail`]; }
     message.textContent = headline;
     if (detail) detail.textContent = explanation;
+    renderTelemetry();
   };
   const stopRAF = () => {
     if (raf !== null) window.cancelAnimationFrame(raf);
@@ -459,21 +529,18 @@
       }
       if (flight.outcome && flight.outcome !== previousOutcome) {
         state = flight.outcome;
-        if (state === 'orbit') userPaused = true;
+        if (state === 'orbit' || state === 'landed') userPaused = true;
         if (state === 'collision') {
           impact.setAttribute('transform', `translate(${flight.x} ${flight.y})`);
           impact.setAttribute('visibility', 'visible');
         }
         syncUI();
-        if (state === 'landed') {
-          const href = landingURL(flight.hitBody, french ? 'fr' : 'en');
-          stopRAF();
-          if (href) window.location.assign(href);
-          return;
-        }
+        if (state === 'orbit' || state === 'landed')
+          beginArrival(state === 'orbit' ? flight.orbitBody : flight.hitBody, state);
       }
     }
     trailPath.setAttribute('d', pathData(trail));
+    if (timestamp-lastTelemetryAt >= 100 || flight.outcome) { renderTelemetry(); lastTelemetryAt = timestamp; }
     renderRocket();
     schedule();
   };
@@ -484,7 +551,7 @@
     if (restore) { angle = previous.angle; power = previous.power; activePreset = previous.preset; syncUI(); renderAim(); }
   };
   const startAgain = name => {
-    cancelDrag(false); stopRAF(); suppressProjectClick = false;
+    cancelArrival(); automaticOpening = false; cancelDrag(false); stopRAF(); suppressProjectClick = false;
     config = configuration(name || config.name);
     angle = config.preset.angle; power = config.preset.power; activePreset = config.name;
     state = 'aiming'; flight = null; userPaused = false; trail = []; trailSteps = 0;
@@ -495,7 +562,15 @@
   };
   const launchFlight = () => {
     if (state !== 'aiming') return;
-    cancelDrag(false); flight = initialFlight(config, angle, power); state = 'flying'; userPaused = false;
+    cancelArrival(); automaticOpening = true; cancelDrag(false); flight = initialFlight(config, angle, power);
+    launchDeltaV = Math.hypot(flight.vx, flight.vy);
+    const stageRect = stage.getBoundingClientRect();
+    const navBottom = document.querySelector('header.nav')?.getBoundingClientRect().bottom || 0;
+    if (stageRect.top < navBottom+12 || stageRect.bottom > window.innerHeight-70) {
+      const top = Math.max(navBottom+18, (window.innerHeight-stageRect.height)/2);
+      window.scrollTo({ top: window.scrollY+stageRect.top-top, behavior: motion.matches ? 'auto' : 'smooth' });
+    }
+    state = 'flying'; userPaused = false;
     trail = [{ x: flight.x, y: flight.y }]; trailSteps = 0; accumulator = 0; lastTime = null;
     syncUI(); renderRocket(); schedule();
   };
@@ -571,20 +646,22 @@
   destinations.forEach(button => button.addEventListener('click', () => startAgain(button.dataset.planet)));
   pause.addEventListener('click', () => {
     if (state !== 'flying' && state !== 'orbit') return;
-    userPaused = !userPaused; syncUI(); schedule();
+    automaticOpening = false; cancelArrival(); userPaused = !userPaused; syncUI(); schedule();
   });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) cancelDrag(true); schedule(); });
+  arrivalStay?.addEventListener('click', () => { automaticOpening = false; cancelArrival(); syncUI(); });
+  arrivalOpen?.addEventListener('click', () => cancelArrival(false));
+  document.addEventListener('visibilitychange', () => { if (document.hidden) { cancelDrag(true); cancelArrival(false); } schedule(); });
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
       visible = entries[0].isIntersecting && entries[0].intersectionRatio > .04;
-      if (!visible) cancelDrag(true);
+      if (!visible) { cancelDrag(true); cancelArrival(false); }
       schedule();
     }, { threshold: [0,.04] });
     observer.observe(stage);
   } else {
     const updateVisibility = () => {
       const rect = stage.getBoundingClientRect(); visible = rect.bottom > 0 && rect.top < window.innerHeight;
-      if (!visible) cancelDrag(true); schedule();
+      if (!visible) { cancelDrag(true); cancelArrival(false); } schedule();
     };
     window.addEventListener('scroll', updateVisibility, { passive: true });
     window.addEventListener('resize', updateVisibility, { passive: true });
@@ -601,6 +678,16 @@
   };
   if ('ResizeObserver' in window) new ResizeObserver(sizeHitArea).observe(svg);
   else window.addEventListener('resize', sizeHitArea, { passive: true });
+  const home = root.closest('#home');
+  if (home) {
+    const syncHome = () => {
+      const rect = home.getBoundingClientRect();
+      root.classList.toggle('orbit-home-visible', rect.bottom > 0 && rect.top < window.innerHeight);
+    };
+    syncHome();
+    if ('IntersectionObserver' in window) new IntersectionObserver(syncHome, { threshold: 0 }).observe(home);
+    else window.addEventListener('scroll', syncHome, { passive: true });
+  }
   document.body.classList.add('has-orbit-game');
   startAgain('air-france'); sizeHitArea();
 })();

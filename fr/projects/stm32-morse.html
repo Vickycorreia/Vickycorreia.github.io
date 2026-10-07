@@ -13,6 +13,7 @@
 <script src="../../assets/language.js" defer></script>
 <link rel="alternate" hreflang="en" href="/projects/stm32-morse.html">
 <link rel="alternate" hreflang="fr" href="/fr/projects/stm32-morse.html">
+  <link rel="stylesheet" href="../../assets/project-brief.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -40,7 +41,17 @@
           <p class="diagram-note">Les principaux éléments du système de communication embarqué.</p>
         </aside>
       </section>
-      <div class="content">
+      <section class="project-brief" aria-labelledby="project-brief-title">
+        <div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div>
+        <dl class="project-brief-grid">
+          <div><dt>Objectif</dt><dd>Encoder et décoder des messages en morse sur un microcontrôleur.</dd></div>
+          <div><dt>Approche</dt><dd>STM32 · C · Format de message défini · CRC-8.</dd></div>
+          <div><dt>Ma contribution</dt><dd>Programmation embarquée · Conversion Morse · Contrôle d’intégrité.</dd></div>
+          <div><dt>Défi principal</dt><dd>Associer la représentation en morse à la vérification des messages.</dd></div>
+        </dl>
+        <a class="project-brief-dive" href="#engineering-details">Explorer la démarche en détail <span aria-hidden="true">↓</span></a>
+      </section>
+      <div class="content" id="engineering-details" tabindex="-1">
         <div class="story">
           <section aria-labelledby="objective"><h2 id="objective"><span class="number" aria-hidden="true">01</span>L’objectif</h2><p>Construire un système capable d’encoder et de décoder des messages en morse sur un microcontrôleur STM32. En complément de cette conversion, le projet intègre un format de message défini et une détection des erreurs.</p></section>
           <section aria-labelledby="approach"><h2 id="approach"><span class="number" aria-hidden="true">02</span>La démarche</h2><p>Le système embarqué est programmé en C sur STM32. L’encodage et le décodage en morse sont associés à un format de message et à un CRC-8 pour réunir la représentation des messages et le contrôle de leur intégrité dans un même système.</p></section>

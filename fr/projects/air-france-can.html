@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../../assets/story-demos.css">
   <script src="../../assets/photo-reading.js" defer></script>
   <script src="../../assets/story-demos.js" defer></script>
+  <link rel="stylesheet" href="../../assets/project-brief.css">
 </head>
 <body class="air-france-page">
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -32,14 +33,30 @@
       <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Retour à tous les projets</a>
       <div class="intro-heading">
         <div><p class="eyebrow">Stage en systèmes embarqués / Été 2026</p><h1 id="project-title">Air France.<br><span>Industries.</span></h1></div>
-        <div class="intro-summary"><p>Développement d’un outil compact de diagnostic par CAN pour une unité de distribution électrique aéronautique (PDU).</p><p>Un mois à Orly, au sein de l’équipe EL52 avec mon tuteur Mathéo Lopes Boto : comprendre un système existant, mesurer son interface électrique, développer le prototype et analyser la communication CAN.</p><a class="story-start" href="#workbench">Découvrir le parcours <span aria-hidden="true">↓</span></a></div>
+        <div class="intro-summary"><p>Développement d’un outil compact de diagnostic par CAN pour une unité de distribution électrique aéronautique (PDU).</p></div>
       </div>
+      <section class="project-brief" aria-labelledby="project-brief-title">
+        <div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div>
+        <dl class="project-brief-grid">
+          <div><dt>Objectif</dt><dd>Tester certaines fonctions du PDU sans ordinateur.</dd></div>
+          <div><dt>Approche</dt><dd>Prototype UNO R4 · CAN · LCD 20×4.</dd></div>
+          <div><dt>Ma contribution</dt><dd>Électronique · C/C++ embarqué · CAN · Débogage.</dd></div>
+          <div><dt>Défi principal</dt><dd>Émission CAN observée ; réception encore non validée.</dd></div>
+        </dl>
+        <a class="project-brief-dive" href="#workbench">Explorer la démarche en détail <span aria-hidden="true">↓</span></a>
+      </section>
+      <details class="project-context">
+        <summary>Contexte du stage et mission<span aria-hidden="true">+</span></summary>
+        <div class="project-context-copy">
+          <p>Un mois à Orly, au sein de l’équipe EL52 avec mon tuteur Mathéo Lopes Boto : comprendre un système existant, mesurer son interface électrique, développer le prototype et analyser la communication CAN.</p>
       <dl class="intro-facts"><div><dt>Lieu</dt><dd>Orly, France</dd></div><div><dt>Période</dt><dd>Été 2026 · 1 mois</dd></div><div><dt>Équipe</dt><dd>EL52</dd></div><div><dt>Tuteur</dt><dd>Mathéo Lopes Boto</dd></div><div><dt>Environnement</dt><dd>Maintenance aéronautique</dd></div><div><dt>Mon rôle</dt><dd>Analyse · Prototypage · Diagnostic</dd></div></dl>
       <div class="internship-brief">
         <div><p class="eyebrow">Le défi</p><h2>Un banc de test existant.<br>Une approche plus portable.</h2></div>
         <div><p>L’équipe disposait déjà d’un banc de test pour le PDU, une unité de distribution électrique aéronautique liée aux équipements de soute et de bagages. J’ai commencé par étudier le PDU, ses connexions et le banc existant.</p><p>Ma mission était de développer un prototype de diagnostic compact et autonome pour certaines vérifications : envoyer des requêtes CAN, interpréter les réponses et présenter les informations utiles dans un menu LCD.</p><p>L’objectif était de permettre à un technicien d’effectuer ces vérifications sans ordinateur. Mon travail associait prototypage électronique, logiciel embarqué, mesures et analyse de la chaîne de réception.</p></div>
       </div>
       <nav class="case-jump-links" aria-label="Découvrir cette étude de cas"><a href="#workbench">L’atelier</a><a href="#prototype-architecture">Le fonctionnement du prototype</a><a href="#can-debugging">Le diagnostic de la communication</a></nav>
+        </div>
+      </details>
       <p class="scroll-hint"><span aria-hidden="true">↓</span> Faites défiler la page pour découvrir les images et leur contexte.</p>
     </section>
 

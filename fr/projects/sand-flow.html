@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="../../assets/project-video.css">
   <link rel="stylesheet" href="../../assets/immersive-video.css">
   <script src="../../assets/project-video.js" defer></script>
+  <link rel="stylesheet" href="../../assets/project-brief.css">
 </head>
 <body class="sand-page">
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -35,14 +36,30 @@
       <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Retour aux projets</a>
       <div class="intro-heading">
         <div><p class="eyebrow">04 / Mécanique granulaire · Étude scientifique</p><h1 id="project-title">Petits grains.<br><span>Grands enjeux.</span></h1></div>
-        <div class="intro-summary"><p>Quand un tas de sable devient-il une avalanche ? Pourquoi peut-il s’écouler à une vitesse presque constante ?</p><p>Cette étude associe expériences, mesures vidéo et modèles physiques, du tambour tournant à une bille sur une rangée de tubes, pour comprendre comment les matériaux granulaires se mettent en mouvement, s’écoulent et se déposent.</p><a class="story-start" href="#rotating-drum">Découvrir les expériences <span aria-hidden="true">↓</span></a></div>
+        <div class="intro-summary"><p>Quand un tas de sable devient-il une avalanche ? Pourquoi peut-il s’écouler à une vitesse presque constante ?</p></div>
       </div>
+      <section class="project-brief" aria-labelledby="project-brief-title">
+        <div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div>
+        <dl class="project-brief-grid">
+          <div><dt>Objectif</dt><dd>Comprendre quand une avalanche de sable démarre et comment elle s’écoule.</dd></div>
+          <div><dt>Approche</dt><dd>Tambour tournant · Plan rugueux · Modèle de chocs Tac-Tac.</dd></div>
+          <div><dt>Ma contribution</dt><dd>Expériences · Suivi vidéo · Python · Modélisation physique.</dd></div>
+          <div><dt>Défi principal</dt><dd>Expliquer l’écoulement presque stationnaire au-delà du seul frottement.</dd></div>
+        </dl>
+        <a class="project-brief-dive" href="#rotating-drum">Explorer la démarche en détail <span aria-hidden="true">↓</span></a>
+      </section>
+      <details class="project-context">
+        <summary>Contexte de l’étude et démarche expérimentale<span aria-hidden="true">+</span></summary>
+        <div class="project-context-copy">
+          <p>Cette étude associe expériences, mesures vidéo et modèles physiques, du tambour tournant à une bille sur une rangée de tubes, pour comprendre comment les matériaux granulaires se mettent en mouvement, s’écoulent et se déposent.</p>
       <dl class="intro-facts"><div><dt>Sujet</dt><dd>Dynamique des avalanches de sable</dd></div><div><dt>Démarche</dt><dd>Construire · Observer · Modéliser · Comparer</dd></div><div><dt>Outils</dt><dd>Suivi vidéo · Python · NumPy · Matplotlib</dd></div></dl>
       <div class="study-brief">
         <div><p class="eyebrow">La question scientifique</p><h2>Solide au repos.<br>En écoulement.</h2></div>
         <div><p>Le sable est constitué de grains individuels, mais une couche entière peut se comporter comme un solide ou un matériau qui s’écoule. Sa réponse dépend des frottements, des collisions, de la pente, de l’épaisseur et de son état précédent.</p><p>Le projet étudie cette transition à travers quatre expériences liées : les angles caractéristiques dans un tambour, les avalanches sur un plan incliné rugueux alimenté par une trémie, le modèle Tac-Tac de chocs répétés et l’influence de l’épaisseur du sable sur sa stabilité.</p></div>
       </div>
       <nav class="case-jump-links" aria-label="Explorer cette étude"><a href="#rotating-drum">Les seuils</a><a href="#granular-flow">L’avalanche</a><a href="#tac-tac">Le modèle Tac-Tac</a><a href="#layer-depth">Épaisseur de couche</a><a href="#sand-science">Explorer l’hystérésis</a><a href="#drum-video">Voir les expériences filmées</a></nav>
+        </div>
+      </details>
       <p class="scroll-hint"><span aria-hidden="true">↓</span> Faites défiler les expériences. Ouvrez « En savoir plus » pour découvrir les méthodes et les modèles physiques.</p>
       <div class="video-playback-settings"><button class="video-auto-toggle" type="button" hidden aria-pressed="true">Lecture automatique activée</button><p class="video-playback-hint">Les commandes permettent de lancer la vidéo, de mettre en pause et d’activer le son.</p></div>
     </section>
