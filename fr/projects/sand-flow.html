@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="../../assets/story-demos.css">
   <script src="../../assets/photo-reading.js" defer></script>
   <script src="../../assets/story-demos.js" defer></script>
+  <link rel="stylesheet" href="../../assets/project-video.css">
+  <script src="../../assets/project-video.js" defer></script>
 </head>
 <body class="sand-page">
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -39,8 +41,9 @@
         <div><p class="eyebrow">La question scientifique</p><h2>Solide au repos.<br>En écoulement.</h2></div>
         <div><p>Le sable est constitué de grains individuels, mais une couche entière peut se comporter comme un solide ou un matériau qui s’écoule. Sa réponse dépend des frottements, des collisions, de la pente, de l’épaisseur et de son état précédent.</p><p>Le projet étudie cette transition à travers quatre expériences liées : les angles caractéristiques dans un tambour, les avalanches sur un plan incliné rugueux alimenté par une trémie, le modèle Tac-Tac de chocs répétés et l’influence de l’épaisseur du sable sur sa stabilité.</p></div>
       </div>
-      <nav class="case-jump-links" aria-label="Explorer cette étude"><a href="#rotating-drum">Les seuils</a><a href="#granular-flow">L’avalanche</a><a href="#tac-tac">Le modèle Tac-Tac</a><a href="#layer-depth">Épaisseur de couche</a><a href="#sand-science">Explorer l’hystérésis</a></nav>
+      <nav class="case-jump-links" aria-label="Explorer cette étude"><a href="#rotating-drum">Les seuils</a><a href="#granular-flow">L’avalanche</a><a href="#tac-tac">Le modèle Tac-Tac</a><a href="#layer-depth">Épaisseur de couche</a><a href="#sand-science">Explorer l’hystérésis</a><a href="#drum-video">Voir les expériences filmées</a></nav>
       <p class="scroll-hint"><span aria-hidden="true">↓</span> Faites défiler les expériences. Ouvrez « En savoir plus » pour découvrir les méthodes et les modèles physiques.</p>
+      <div class="video-playback-settings"><button class="video-auto-toggle" type="button" hidden aria-pressed="true">Lecture automatique activée</button><p class="video-playback-hint">Les commandes permettent de lancer la vidéo, de mettre en pause et d’activer le son.</p></div>
     </section>
 
     <section class="photo-story scene-drum" id="rotating-drum" aria-labelledby="drum-title">
@@ -88,6 +91,19 @@
             <section class="narrative-section"><h4>Les points à vérifier</h4><p>La précaution essentielle est de distinguer le premier mouvement de la surface finalement au repos. Un point à vérifier est que l’observation repère le même événement à chaque lecture, plutôt que le déplacement passager de quelques grains. Les petits écarts entre mesures comptent aussi. Les angles présentés comportent des incertitudes. Les conserver aide à comparer les mesures au modèle sans transformer les seuils observés en valeurs exactes.</p></section>
             <section class="narrative-section"><h4>Ce que l’observation nous apprend</h4><p>L’angle de départ mesuré était de 36,7 ± 0,3°, contre 32,1 ± 0,6° au repos. Le déclenchement et l’arrêt suivaient donc des chemins différents : entre ces seuils, l’état précédent compte. C’est l’hystérésis. Un modèle simple de frottement, avec un coefficient de 0,7, prévoyait environ 35°. La comparaison avec les mesures aide à évaluer ce que le modèle explique et pourquoi le seuil d’arrêt mérite une attention particulière.</p></section>
           </div>
+          <figure class="project-video" id="drum-video" aria-labelledby="drum-video-title" style="--video-accent:#a3472b">
+            <div class="video-heading"><p class="eyebrow">L’expérience filmée · 14 s</p><h3 id="drum-video-title">Le tambour en mouvement</h3></div>
+            <div class="video-screen">
+              <video controls muted playsinline preload="none" poster="../../assets/sand-study/videos/drum-flow.webp" width="848" height="478" aria-label="Le tambour en mouvement" data-scroll-play>
+                <source src="../../assets/sand-study/videos/drum-flow.mp4" type="video/mp4">
+                <a href="../../assets/sand-study/videos/drum-flow.mp4">Lire la vidéo MP4</a>
+              </video>
+            </div>
+            <figcaption>
+              <p class="video-summary">Une rotation progressive incline la surface du sable jusqu’au déclenchement d’une avalanche.</p>
+              <div class="video-actions"><a class="video-open" href="../../assets/sand-study/videos/drum-flow.mp4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo <span aria-hidden="true">↗</span></a></div>
+            </figcaption>
+          </figure>
           <a class="chapter-next" href="#granular-flow">Suivre l’avalanche <span aria-hidden="true">→</span></a>
         </article>
       </div>
@@ -138,6 +154,19 @@
             <section class="narrative-section"><h4>Les points à vérifier</h4><p>Suivre une zone de sable en mouvement est différent de suivre un objet solide. Un point à vérifier est que le même repère est suivi d’une image à l’autre. L’enregistrement doit aussi permettre de relier correctement position et temps. Ces précautions aident à estimer la vitesse du mouvement visible, en tenant compte des limites du pointage et des différences entre les grains.</p></section>
             <section class="narrative-section"><h4>Ce que l’observation nous apprend</h4><p>L’avalanche présentée avançait à environ 30 cm/s, avec une vitesse presque constante. Un modèle simple de glissement avec frottement prévoyait pourtant une accélération au-delà de son seuil. Cet écart pose une question utile : où va l’énergie pendant la descente du sable ? Il a motivé l’expérience distincte du Tac-Tac, qui isole des chocs répétés. L’observation invite à examiner un autre mécanisme, tout en laissant le comportement complet de la couche à étudier.</p></section>
           </div>
+          <figure class="project-video video-portrait" id="sand-flow-video" aria-labelledby="sand-flow-video-title" style="--video-accent:#007477">
+            <div class="video-heading"><p class="eyebrow">L’expérience filmée · 10 s</p><h3 id="sand-flow-video-title">Alimenter l’écoulement</h3></div>
+            <div class="video-screen">
+              <video controls muted playsinline preload="none" poster="../../assets/sand-study/videos/sand-flow.webp" width="478" height="850" aria-label="Alimenter l’écoulement" data-scroll-play>
+                <source src="../../assets/sand-study/videos/sand-flow.mp4" type="video/mp4">
+                <a href="../../assets/sand-study/videos/sand-flow.mp4">Lire la vidéo MP4</a>
+              </video>
+            </div>
+            <figcaption>
+              <p class="video-summary">La trémie libère le sable et permet d’observer son alimentation dans le dispositif.</p>
+              <div class="video-actions"><a class="video-open" href="../../assets/sand-study/videos/sand-flow.mp4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo <span aria-hidden="true">↗</span></a></div>
+            </figcaption>
+          </figure>
           <a class="chapter-next" href="#tac-tac">Observer un grain isolé <span aria-hidden="true">→</span></a>
         </article>
       </div>
@@ -189,7 +218,49 @@
             <section class="narrative-section"><h4>Les points à vérifier</h4><p>Un point à vérifier est la différence entre le mouvement sur une étape et la progression moyenne sur plusieurs contacts. La bille peut accélérer entre les chocs puis perdre de la vitesse au contact suivant. Le suivi de sa position dans le temps permet de comparer ce mouvement global au modèle. Une autre précaution est de limiter l’interprétation au montage : la bille et les tubes simplifient les contacts complexes du sable réel.</p></section>
             <section class="narrative-section"><h4>Ce que l’observation nous apprend</h4><p>L’analyse du Tac-Tac utilisait une vitesse suivie d’environ 0,33 m/s. L’application du modèle de chocs donnait un facteur de rebond effectif d’environ 0,46 pour cette analogie. Cette valeur était déduite du modèle, pas mesurée directement pour tous les grains. L’équilibre entre énergie gagnée en descendant et énergie perdue aux contacts propose une explication possible d’une vitesse caractéristique. Ce résultat concerne l’expérience avec la bille, séparément de l’avalanche de sable.</p></section>
           </div>
-                    <figure class="story-demo" data-demo="tac-tac" aria-labelledby="tt-heading">
+          <figure class="project-video video-portrait" id="restitution-video" aria-labelledby="restitution-video-title" style="--video-accent:#2858b0">
+            <div class="video-heading"><p class="eyebrow">L’expérience filmée · 18 s</p><h3 id="restitution-video-title">Comprendre le rebond</h3></div>
+            <div class="video-screen">
+              <video controls muted playsinline preload="none" poster="../../assets/sand-study/videos/ball-restitution.webp" width="478" height="850" aria-label="Comprendre le rebond" data-scroll-play>
+                <source src="../../assets/sand-study/videos/ball-restitution.mp4" type="video/mp4">
+                <a href="../../assets/sand-study/videos/ball-restitution.mp4">Lire la vidéo MP4</a>
+              </video>
+            </div>
+            <figcaption>
+              <p class="video-summary">Une bille est lâchée sur le montage : observer le mouvement avant et après le contact aide à étudier la restitution au choc.</p>
+              <p class="video-note">Le coefficient de restitution compare les vitesses normales à la surface juste après et juste avant le choc. Ce film montre un essai de rebond ; la valeur e ≈ 0,46 présentée dans l’étude provient d’une estimation par le modèle Tac-Tac.</p>
+              <div class="video-actions"><a class="video-open" href="../../assets/sand-study/videos/ball-restitution.mp4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo <span aria-hidden="true">↗</span></a></div>
+            </figcaption>
+          </figure>
+          <div class="video-pair">
+            <figure class="project-video" id="tac-tac-normal-video" aria-labelledby="tac-tac-normal-video-title" style="--video-accent:#2858b0">
+              <div class="video-heading"><p class="eyebrow">L’expérience filmée · 6 s</p><h3 id="tac-tac-normal-video-title">La descente à vitesse normale</h3></div>
+              <div class="video-screen">
+                <video controls muted playsinline preload="none" poster="../../assets/sand-study/videos/tac-tac-normal.webp" width="960" height="544" aria-label="La descente à vitesse normale" data-scroll-play>
+                  <source src="../../assets/sand-study/videos/tac-tac-normal.mp4" type="video/mp4">
+                  <a href="../../assets/sand-study/videos/tac-tac-normal.mp4">Lire la vidéo MP4</a>
+                </video>
+              </div>
+              <figcaption>
+                <p class="video-summary">La bille descend sur les tubes en PVC : les contacts successifs rendent le mécanisme Tac-Tac visible.</p>
+                <div class="video-actions"><a class="video-open" href="../../assets/sand-study/videos/tac-tac-normal.mp4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo <span aria-hidden="true">↗</span></a></div>
+              </figcaption>
+            </figure>
+            <figure class="project-video" id="tac-tac-slow-video" aria-labelledby="tac-tac-slow-video-title" style="--video-accent:#2858b0">
+              <div class="video-heading"><p class="eyebrow">L’expérience filmée · 18 s</p><h3 id="tac-tac-slow-video-title">Les contacts au ralenti</h3></div>
+              <div class="video-screen">
+                <video controls muted playsinline preload="none" poster="../../assets/sand-study/videos/tac-tac-slow.webp" width="848" height="478" aria-label="Les contacts au ralenti" data-scroll-play>
+                  <source src="../../assets/sand-study/videos/tac-tac-slow.mp4" type="video/mp4">
+                  <a href="../../assets/sand-study/videos/tac-tac-slow.mp4">Lire la vidéo MP4</a>
+                </video>
+              </div>
+              <figcaption>
+                <p class="video-summary">Un autre essai, au ralenti, permet de suivre plus facilement les rebonds entre la bille et les tubes.</p>
+                <div class="video-actions"><a class="video-open" href="../../assets/sand-study/videos/tac-tac-slow.mp4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo <span aria-hidden="true">↗</span></a></div>
+              </figcaption>
+            </figure>
+          </div>
+          <figure class="story-demo" data-demo="tac-tac" aria-labelledby="tt-heading">
             <div class="story-demo__heading">
               <h3 id="tt-heading">Une bille, des chocs répétés</h3>
               <span class="story-demo__label">Modèle illustré</span>

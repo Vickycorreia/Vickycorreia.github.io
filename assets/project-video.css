@@ -1,0 +1,119 @@
+/* Native video controls and complete frames, with no crop of the experiment. */
+.project-video {
+  --video-accent: var(--scene-accent, var(--case-blue, #22638b));
+  --video-line: #bdcfd7;
+  --video-heading: #f1f5f4;
+  margin: 40px 0;
+  padding: 0;
+  min-width: 0;
+  color: var(--case-ink, #17364e);
+  background: #f8f6f1;
+  border: 1px solid var(--video-line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.chapter-narrative figure.project-video { margin-block: 40px; }
+.project-video .video-heading { padding: 22px 24px; background: var(--video-heading); border-bottom: 1px solid var(--video-line); }
+.project-video .video-heading .eyebrow { margin: 0 0 9px; color: var(--video-accent); font-size: .66rem; line-height: 1.6; letter-spacing: .14em; }
+.project-video .video-heading h3 { margin: 0; font-size: clamp(1.28rem, 2vw, 1.72rem); line-height: 1.25; letter-spacing: -.025em; font-weight: 700; color: var(--video-accent); }
+.project-video .video-screen { display: flex; justify-content: center; align-items: center; width: 100%; min-width: 0; background: #e8eef0; border-bottom: 1px solid var(--video-line); }
+.project-video .video-screen > video {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(560px, 72svh);
+  margin-inline: auto;
+  object-fit: contain;
+  background: #e8eef0;
+}
+.project-video.video-portrait .video-screen > video,
+.project-video.is-portrait .video-screen > video { width: 100%; height: min(480px, 72svh); max-height: min(480px, 72svh); }
+.project-video > figcaption { padding: 21px 24px 23px; font-size: .95rem; line-height: 1.75; color: #405a6b; }
+.project-video .video-summary, .project-video p.video-summary,
+.project-video .video-summary p { max-width: 68ch; margin: 0; font-size: .95rem; line-height: 1.75; color: #405a6b; }
+.project-video .video-note, .project-video p.video-note,
+.project-video .video-note p { max-width: 76ch; margin: 12px 0 0; font-size: .78rem; line-height: 1.7; color: #536d7b; }
+.project-video .video-note p:first-child { margin-top: 0; }
+.project-video .video-open,
+.project-video .video-context { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; margin-top: 13px; padding: 6px 0; border-bottom: 1px solid currentColor; color: var(--video-accent); font-size: .8rem; line-height: 1.6; font-weight: 750; text-decoration: none; text-underline-offset: 4px; }
+.project-video .video-open:hover,
+.project-video .video-context:hover { color: #17364e; }
+.project-video .video-open:focus-visible,
+.project-video .video-context:focus-visible { outline: 3px solid var(--video-accent); outline-offset: 5px; }
+.project-video .video-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; margin-top: 13px; }
+.project-video .video-actions .video-open,
+.project-video .video-actions .video-context { margin-top: 0; }
+/* Draw the external-link cue so it also works with fonts without an arrow glyph. */
+.project-video .video-open > span[aria-hidden="true"] { position: relative; width: 9px; height: 9px; flex-shrink: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; font-size: 0; }
+.project-video .video-open > span[aria-hidden="true"]::before { content: ""; position: absolute; top: 3px; left: -2px; width: 11px; height: 1.5px; background: currentColor; transform: rotate(-45deg); }
+.project-video video:focus-visible { outline: 3px solid var(--video-accent); outline-offset: -3px; }
+
+.video-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; margin: 40px 0; min-width: 0; }
+.video-pair > figure.project-video,
+.chapter-narrative .video-pair > figure.project-video { margin: 0; }
+
+.video-auto-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 9px; max-width: 100%; min-height: 44px; margin-top: 20px; padding: 11px 17px; border: 1px solid #b7ccd5; border-radius: 24px; background: #edf4f6; color: #22638b; font: inherit; font-size: .81rem; line-height: 1.5; font-weight: 650; text-align: left; cursor: pointer; transition: background .2s, border-color .2s; }
+.video-auto-toggle > span { min-width: 0; }
+.video-auto-toggle[hidden] { display: none; }
+.video-auto-toggle:hover { background: #dcebf0; border-color: #789ead; }
+.video-auto-toggle[aria-pressed="true"] { color: #fff; background: #22638b; border-color: #22638b; }
+.video-auto-toggle[aria-pressed="true"]:hover { background: #1a506f; }
+.video-auto-toggle:focus-visible { outline: 3px solid #a76f30; outline-offset: 4px; }
+.video-auto-toggle:disabled { opacity: .65; cursor: default; }
+.video-playback-settings { margin-top: 26px; padding-top: 20px; border-top: 1px solid #c4d3d9; }
+.video-playback-settings .video-auto-toggle { margin-top: 0; }
+.video-playback-settings .video-playback-hint { max-width: 66ch; margin: 13px 0 0; color: #536d7b; font-size: .81rem; line-height: 1.75; }
+
+/* Homepage previews use the same native aspect ratios in a smaller card grid. */
+.films .film-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; align-items: start; }
+.films .film-grid > figure.project-video { margin: 0; }
+.films .film-card { --video-heading: #e9f1f3; }
+.films .film-card:nth-child(4n + 1) { --video-accent: #a3472b; --video-line: #d7c0b3; --video-heading: #f2e8df; }
+.films .film-card:nth-child(4n + 2) { --video-accent: #007477; --video-line: #b7ceca; --video-heading: #e5efeb; }
+.films .film-card:nth-child(4n + 3) { --video-accent: #2858b0; --video-line: #b9cadc; --video-heading: #e7eef7; }
+.films .film-card:nth-child(4n + 4) { --video-accent: #67429a; --video-line: #cbbfd7; --video-heading: #efe8f5; }
+.films .film-card .video-heading { min-height: 120px; padding: 20px 21px; }
+.films .film-card .video-heading h3 { font-size: 1.27rem; }
+.films .film-card .video-screen { height: 260px; }
+.films .film-card .video-screen > video { width: 100%; height: 100%; max-height: 100%; }
+.films .film-card > figcaption { padding: 18px 21px 20px; }
+.films .film-card .video-summary, .films .film-card p.video-summary,
+.films .film-card .video-summary p { font-size: .88rem; line-height: 1.75; }
+.films .film-card .video-note, .films .film-card p.video-note,
+.films .film-card .video-note p { font-size: .73rem; }
+.films .film-upcoming { margin-top: 26px; color: #405a6b; font-size: .88rem; line-height: 1.8; }
+.films .film-upcoming a { color: #22638b; text-underline-offset: 4px; }
+.films .film-upcoming a:focus-visible { outline: 3px solid #a76f30; outline-offset: 4px; }
+
+@media (min-width: 1200px) {
+  .films .film-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .video-pair { grid-template-columns: minmax(0, 1fr); gap: 22px; margin-block: 32px; }
+  .chapter-narrative figure.project-video { margin-block: 32px; }
+  .chapter-narrative .video-pair > figure.project-video { margin: 0; }
+  .project-video .video-heading { padding: 20px; }
+  .project-video > figcaption { padding: 18px 20px 21px; }
+  .project-video .video-screen > video,
+  .project-video.video-portrait .video-screen > video,
+  .project-video.is-portrait .video-screen > video { max-height: min(480px, 72svh); }
+  .films .film-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .films .film-card .video-heading { min-height: 0; }
+  .films .film-card .video-screen { height: 240px; }
+  .films .film-card .video-screen > video { max-height: 100%; }
+}
+
+@media (max-width: 360px) {
+  .project-video .video-heading { padding: 18px; }
+  .project-video .video-heading h3 { font-size: 1.2rem; }
+  .project-video > figcaption { padding-inline: 18px; }
+  .project-video .video-summary, .project-video p.video-summary,
+  .project-video .video-summary p { font-size: .9rem; }
+  .video-auto-toggle { padding-inline: 14px; font-size: .78rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-auto-toggle { transition: none; }
+}

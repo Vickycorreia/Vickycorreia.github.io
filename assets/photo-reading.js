@@ -11,6 +11,38 @@
   const clamp = value => Math.min(1, Math.max(0, value));
   const ease = value => value * value * (3 - 2 * value);
 
+  // Give recordings the full reading area, including their native controls.
+  const recordings = stories.flatMap(story => [...story.querySelectorAll('.project-video')]);
+  const visibleRecordings = new Set();
+  stories.forEach(story => story.classList.toggle('video-chrome-managed', Boolean(story.querySelector('.project-video'))));
+  const refreshVideoChrome = () => {
+    for (const story of stories) {
+      story.classList.toggle('has-visible-video', [...visibleRecordings].some(figure => story.contains(figure)));
+    }
+  };
+  if (recordings.length && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) visibleRecordings.add(entry.target);
+        else visibleRecordings.delete(entry.target);
+      }
+      refreshVideoChrome();
+    }, { rootMargin: '-70px 0px -70px 0px', threshold: 0 });
+    recordings.forEach(figure => observer.observe(figure));
+  } else if (recordings.length) {
+    const inspectRecordings = () => {
+      for (const figure of recordings) {
+        const rect = figure.getBoundingClientRect();
+        if (rect.bottom > 70 && rect.top < window.innerHeight - 70) visibleRecordings.add(figure);
+        else visibleRecordings.delete(figure);
+      }
+      refreshVideoChrome();
+    };
+    window.addEventListener('scroll', inspectRecordings, { passive: true });
+    window.addEventListener('resize', inspectRecordings);
+    inspectRecordings();
+  }
+
   function update() {
     scheduled = false;
     if (!enabled) return;
@@ -41,7 +73,12 @@
 
   function closeInformation(detail, restoreFocus = true) {
     detail.open = false;
-    if (restoreFocus) detail.querySelector('summary').focus({ preventScroll: true });
+    if (restoreFocus) {
+      const story = detail.closest('.photo-story');
+      const recording = [...visibleRecordings].find(figure => story.contains(figure));
+      const target = recording ? recording.querySelector('video') : detail.querySelector('summary');
+      target.focus({ preventScroll: true });
+    }
   }
 
   for (const detail of information) {

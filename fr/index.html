@@ -57,6 +57,8 @@ a:focus-visible{outline:3px solid #946136;outline-offset:6px}
 <script src="../assets/language.js" defer></script>
 <link rel="alternate" hreflang="en" href="/index.html">
 <link rel="alternate" hreflang="fr" href="/fr/index.html">
+<link rel="stylesheet" href="../assets/project-video.css">
+<script src="../assets/project-video.js" defer></script>
 </head><body><header class="nav" id="nav"><a class="brand" href="#home">VICTOR <b>CORREIA</b></a><nav class="links" aria-label="Navigation principale"><a href="#projects">Projets</a><a href="#films">Vidéos</a><a href="#about">À propos</a><a href="#contact">Contact</a></nav><nav class="language-switch" aria-label="Choisir la langue"><a href="/index.html" lang="en" hreflang="en" data-language="en" aria-label="English"><span class="language-name">English</span><span class="language-short" aria-hidden="true">EN</span></a><a href="/fr/index.html" lang="fr" hreflang="fr" data-language="fr" aria-label="Français" aria-current="page"><span class="language-name">Français</span><span class="language-short" aria-hidden="true">FR</span></a></nav></header><main>
 <section class="panel hero space-home" id="home" aria-labelledby="intro-name">
   <div class="space-stars" aria-hidden="true"></div>
@@ -118,6 +120,78 @@ a:focus-visible{outline:3px solid #946136;outline-offset:6px}
 <a class="project reveal" href="projects/stm32-morse.html" aria-labelledby="project-morse-title"><div class="index">02 / SYSTÈMES EMBARQUÉS</div><h3 id="project-morse-title">Communication Morse<br>sur STM32</h3><p>J’ai conçu un encodeur et décodeur de messages Morse sur un microcontrôleur STM32, avec un format de message défini et un contrôle d’erreurs CRC-8.</p><div class="tags"><span>STM32</span><span>C</span><span>CRC-8</span></div><div class="project-link">Découvrir le projet <span aria-hidden="true">→</span></div></a>
 <a class="project reveal" href="projects/infrared-audio.html" aria-labelledby="project-infrared-title"><div class="index">03 / ÉLECTRONIQUE · EN COURS</div><h3 id="project-infrared-title">Transmission audio<br>stéréo par infrarouge</h3><p>Notre projet actuel explore la transmission d’un signal audio stéréo par infrarouge. Je travaille sur les circuits d’émission et de réception, la modulation FM et la récupération du signal.</p><div class="tags"><span>Infrarouge</span><span>FM / PLL</span><span>Circuits analogiques</span></div><div class="project-link">Découvrir le projet <span aria-hidden="true">→</span></div></a>
 <a class="project reveal" href="projects/sand-flow.html" aria-labelledby="project-sand-title"><div class="index">04 / ÉTUDE SCIENTIFIQUE</div><h3 id="project-sand-title">Dynamique des<br>avalanches de sable</h3><p>Des seuils de déclenchement dans un tambour tournant au suivi vidéo et au modèle d’impacts Tac-Tac : une étude expérimentale sur le déclenchement, le mouvement et l’arrêt des avalanches de sable.</p><div class="tags"><span>Expérimentation</span><span>Modélisation</span><span>Analyse</span></div><div class="project-link">Découvrir le projet <span aria-hidden="true">→</span></div></a></div></section>
-<section class="section films" id="films"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">En images</div><h2>Vidéos des projets</h2></div><p>De courtes démonstrations du matériel et de sa réalisation seront ajoutées au fil de l’avancement des projets.</p></div><div class="film-grid"><div class="film reveal"><strong>Dispositif de test Air France</strong><small>Démonstration à venir</small></div><div class="film reveal"><strong>Système audio infrarouge</strong><small>Démonstration à venir</small></div></div></div></section>
+<section class="section films" id="films" aria-labelledby="films-title">
+  <div class="wrap">
+    <div class="section-head reveal"><div><div class="eyebrow">En images</div><h2 id="films-title">Vidéos des projets</h2></div><p>Les expériences du projet sable, du déclenchement d’une avalanche aux chocs d’une bille.</p></div>
+    <div class="film-grid">
+<figure class="project-video film-card" id="film-drum-video" aria-labelledby="film-drum-video-title" style="--video-accent:#a3472b">
+  <div class="video-heading"><p class="eyebrow">Projet sable · 14 s</p><h3 id="film-drum-video-title">Le tambour en mouvement</h3></div>
+  <div class="video-screen">
+    <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/drum-flow.webp" width="848" height="478" aria-label="Le tambour en mouvement">
+      <source src="../assets/sand-study/videos/drum-flow.mp4" type="video/mp4">
+      <a href="../assets/sand-study/videos/drum-flow.mp4">Lire la vidéo MP4</a>
+    </video>
+  </div>
+  <figcaption>
+    <p class="video-summary">Une rotation progressive incline la surface du sable jusqu’au déclenchement d’une avalanche.</p>
+    <div class="video-actions"><a class="video-context" href="projects/sand-flow.html#drum-video">Voir l’expérience <span aria-hidden="true">→</span></a><a class="video-open" href="../assets/sand-study/videos/drum-flow.mp4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo <span aria-hidden="true">↗</span></a></div>
+  </figcaption>
+</figure>
+<figure class="project-video film-card video-portrait" id="film-sand-flow-video" aria-labelledby="film-sand-flow-video-title" style="--video-accent:#007477">
+  <div class="video-heading"><p class="eyebrow">Projet sable · 10 s</p><h3 id="film-sand-flow-video-title">Alimenter l’écoulement</h3></div>
+  <div class="video-screen">
+    <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/sand-flow.webp" width="478" height="850" aria-label="Alimenter l’écoulement">
+      <source src="../assets/sand-study/videos/sand-flow.mp4" type="video/mp4">
+      <a href="../assets/sand-study/videos/sand-flow.mp4">Lire la vidéo MP4</a>
+    </video>
+  </div>
+  <figcaption>
+    <p class="video-summary">La trémie libère le sable et permet d’observer son alimentation dans le dispositif.</p>
+    <div class="video-actions"><a class="video-context" href="projects/sand-flow.html#sand-flow-video">Voir l’expérience <span aria-hidden="true">→</span></a><a class="video-open" href="../assets/sand-study/videos/sand-flow.mp4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo <span aria-hidden="true">↗</span></a></div>
+  </figcaption>
+</figure>
+<figure class="project-video film-card video-portrait" id="film-restitution-video" aria-labelledby="film-restitution-video-title" style="--video-accent:#2858b0">
+  <div class="video-heading"><p class="eyebrow">Projet sable · 18 s</p><h3 id="film-restitution-video-title">Comprendre le rebond</h3></div>
+  <div class="video-screen">
+    <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/ball-restitution.webp" width="478" height="850" aria-label="Comprendre le rebond">
+      <source src="../assets/sand-study/videos/ball-restitution.mp4" type="video/mp4">
+      <a href="../assets/sand-study/videos/ball-restitution.mp4">Lire la vidéo MP4</a>
+    </video>
+  </div>
+  <figcaption>
+    <p class="video-summary">Une bille est lâchée sur le montage : observer le mouvement avant et après le contact aide à étudier la restitution au choc.</p>
+    <div class="video-actions"><a class="video-context" href="projects/sand-flow.html#restitution-video">Voir l’expérience <span aria-hidden="true">→</span></a><a class="video-open" href="../assets/sand-study/videos/ball-restitution.mp4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo <span aria-hidden="true">↗</span></a></div>
+  </figcaption>
+</figure>
+<figure class="project-video film-card" id="film-tac-tac-normal-video" aria-labelledby="film-tac-tac-normal-video-title" style="--video-accent:#2858b0">
+  <div class="video-heading"><p class="eyebrow">Projet sable · 6 s</p><h3 id="film-tac-tac-normal-video-title">La descente à vitesse normale</h3></div>
+  <div class="video-screen">
+    <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/tac-tac-normal.webp" width="960" height="544" aria-label="La descente à vitesse normale">
+      <source src="../assets/sand-study/videos/tac-tac-normal.mp4" type="video/mp4">
+      <a href="../assets/sand-study/videos/tac-tac-normal.mp4">Lire la vidéo MP4</a>
+    </video>
+  </div>
+  <figcaption>
+    <p class="video-summary">La bille descend sur les tubes en PVC : les contacts successifs rendent le mécanisme Tac-Tac visible.</p>
+    <div class="video-actions"><a class="video-context" href="projects/sand-flow.html#tac-tac-normal-video">Voir l’expérience <span aria-hidden="true">→</span></a><a class="video-open" href="../assets/sand-study/videos/tac-tac-normal.mp4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo <span aria-hidden="true">↗</span></a></div>
+  </figcaption>
+</figure>
+<figure class="project-video film-card" id="film-tac-tac-slow-video" aria-labelledby="film-tac-tac-slow-video-title" style="--video-accent:#2858b0">
+  <div class="video-heading"><p class="eyebrow">Projet sable · 18 s</p><h3 id="film-tac-tac-slow-video-title">Les contacts au ralenti</h3></div>
+  <div class="video-screen">
+    <video controls muted playsinline preload="none" poster="../assets/sand-study/videos/tac-tac-slow.webp" width="848" height="478" aria-label="Les contacts au ralenti">
+      <source src="../assets/sand-study/videos/tac-tac-slow.mp4" type="video/mp4">
+      <a href="../assets/sand-study/videos/tac-tac-slow.mp4">Lire la vidéo MP4</a>
+    </video>
+  </div>
+  <figcaption>
+    <p class="video-summary">Un autre essai, au ralenti, permet de suivre plus facilement les rebonds entre la bille et les tubes.</p>
+    <div class="video-actions"><a class="video-context" href="projects/sand-flow.html#tac-tac-slow-video">Voir l’expérience <span aria-hidden="true">→</span></a><a class="video-open" href="../assets/sand-study/videos/tac-tac-slow.mp4" target="_blank" rel="noopener noreferrer">Ouvrir la vidéo <span aria-hidden="true">↗</span></a></div>
+  </figcaption>
+</figure>
+    </div>
+    <p class="film-upcoming">Prochainement : <a href="projects/air-france-can.html">Dispositif de test Air France</a> · <a href="projects/infrared-audio.html">Audio infrarouge</a></p>
+  </div>
+</section>
 <section class="section wrap about" id="about"><div class="reveal"><div class="eyebrow">À propos de moi</div><h2>Curieux. Pragmatique. Persévérant.</h2><p>J’aime comprendre le comportement d’un système en conditions réelles et l’améliorer grâce aux mesures et aux prototypes. Mes expériences à l’ENSEA et chez Air France ont renforcé mon intérêt pour les systèmes embarqués appliqués à l’aéronautique.</p><p>J’ai de la famille dans le nord du Portugal et j’aimerais rejoindre une équipe dans la région de Porto.</p></div><div class="skills reveal" aria-label="Compétences techniques"><span>C embarqué</span><span>STM32</span><span>Arduino</span><span>Communication CAN</span><span>VHDL</span><span>Électronique analogique</span><span>Traitement du signal</span><span>Conception de circuits imprimés</span></div></section>
 <section class="contact" id="contact"><div class="wrap reveal"><div class="eyebrow">Prenons contact</div><h2>Construisons quelque chose d’utile.</h2><p>Je recherche un stage de quatre mois en aéronautique, en électronique ou en systèmes embarqués, de fin avril à fin août 2027.</p><a class="button" href="https://www.linkedin.com/in/victor-correia-14082005vicky/" target="_blank" rel="noopener noreferrer">Me contacter sur LinkedIn</a></div></section></main><footer class="foot wrap"><span>© 2026 Victor Correia</span><span>Élève ingénieur à l’ENSEA · France / Portugal</span></footer><script>const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add('in-view');if(entry.target.classList.contains('reveal'))observer.unobserve(entry.target)}}},{threshold:.12});document.querySelectorAll('.panel,.reveal').forEach(el=>observer.observe(el))}else document.querySelectorAll('.panel,.reveal').forEach(el=>el.classList.add('in-view'));</script></body></html>

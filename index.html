@@ -57,6 +57,8 @@ a:focus-visible{outline:3px solid #946136;outline-offset:6px}
 <script src="assets/language.js" defer></script>
 <link rel="alternate" hreflang="en" href="/index.html">
 <link rel="alternate" hreflang="fr" href="/fr/index.html">
+<link rel="stylesheet" href="assets/project-video.css">
+<script src="assets/project-video.js" defer></script>
 </head><body><header class="nav" id="nav"><a class="brand" href="#home">VICTOR <b>CORREIA</b></a><nav class="links" aria-label="Main navigation"><a href="#projects">Projects</a><a href="#films">Videos</a><a href="#about">About</a><a href="#contact">Contact</a></nav><nav class="language-switch" aria-label="Choose language"><a href="/index.html" lang="en" hreflang="en" data-language="en" aria-label="English" aria-current="page"><span class="language-name">English</span><span class="language-short" aria-hidden="true">EN</span></a><a href="/fr/index.html" lang="fr" hreflang="fr" data-language="fr" aria-label="Français"><span class="language-name">Français</span><span class="language-short" aria-hidden="true">FR</span></a></nav></header><main>
 <section class="panel hero space-home" id="home" aria-labelledby="intro-name">
   <div class="space-stars" aria-hidden="true"></div>
@@ -118,6 +120,78 @@ a:focus-visible{outline:3px solid #946136;outline-offset:6px}
 <a class="project reveal" href="projects/stm32-morse.html" aria-labelledby="project-morse-title"><div class="index">02 / EMBEDDED SYSTEMS</div><h3 id="project-morse-title">Morse communication<br>on STM32</h3><p>I built a Morse message encoder and decoder on an STM32 microcontroller, with a defined message format and CRC-8 error checking.</p><div class="tags"><span>STM32</span><span>C</span><span>CRC-8</span></div><div class="project-link">Explore project <span aria-hidden="true">→</span></div></a>
 <a class="project reveal" href="projects/infrared-audio.html" aria-labelledby="project-infrared-title"><div class="index">03 / ELECTRONICS · IN PROGRESS</div><h3 id="project-infrared-title">Infrared stereo<br>audio transmission</h3><p>Our current project explores sending stereo audio over infrared. I am working on the transmitter and receiver circuits, FM modulation and signal recovery.</p><div class="tags"><span>Infrared</span><span>FM / PLL</span><span>Analog circuits</span></div><div class="project-link">Explore project <span aria-hidden="true">→</span></div></a>
 <a class="project reveal" href="projects/sand-flow.html" aria-labelledby="project-sand-title"><div class="index">04 / SCIENTIFIC STUDY</div><h3 id="project-sand-title">Sand avalanche<br>dynamics</h3><p>From rotating-drum thresholds to video tracking and the Tac-Tac impact model: an experimental investigation of how sand starts, moves and settles.</p><div class="tags"><span>Experimentation</span><span>Modelling</span><span>Analysis</span></div><div class="project-link">Explore project <span aria-hidden="true">→</span></div></a></div></section>
-<section class="section films" id="films"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">In motion</div><h2>Project videos</h2></div><p>Short demonstrations of the hardware and the work behind it will appear here as the projects progress.</p></div><div class="film-grid"><div class="film reveal"><strong>Air France test device</strong><small>Demonstration to be added</small></div><div class="film reveal"><strong>Infrared audio system</strong><small>Demonstration to be added</small></div></div></div></section>
+<section class="section films" id="films" aria-labelledby="films-title">
+  <div class="wrap">
+    <div class="section-head reveal"><div><div class="eyebrow">In motion</div><h2 id="films-title">Project videos</h2></div><p>The sand experiments in action, from avalanche onset to a ball’s repeated impacts.</p></div>
+    <div class="film-grid">
+<figure class="project-video film-card" id="film-drum-video" aria-labelledby="film-drum-video-title" style="--video-accent:#a3472b">
+  <div class="video-heading"><p class="eyebrow">Sand study · 14 s</p><h3 id="film-drum-video-title">The rotating drum in motion</h3></div>
+  <div class="video-screen">
+    <video controls muted playsinline preload="none" poster="assets/sand-study/videos/drum-flow.webp" width="848" height="478" aria-label="The rotating drum in motion">
+      <source src="assets/sand-study/videos/drum-flow.mp4" type="video/mp4">
+      <a href="assets/sand-study/videos/drum-flow.mp4">Watch the MP4 video</a>
+    </video>
+  </div>
+  <figcaption>
+    <p class="video-summary">Gradually turning the drum tilts the sand surface until an avalanche starts.</p>
+    <div class="video-actions"><a class="video-context" href="projects/sand-flow.html#drum-video">Explore the experiment <span aria-hidden="true">→</span></a><a class="video-open" href="assets/sand-study/videos/drum-flow.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
+  </figcaption>
+</figure>
+<figure class="project-video film-card video-portrait" id="film-sand-flow-video" aria-labelledby="film-sand-flow-video-title" style="--video-accent:#007477">
+  <div class="video-heading"><p class="eyebrow">Sand study · 10 s</p><h3 id="film-sand-flow-video-title">Feeding the sand flow</h3></div>
+  <div class="video-screen">
+    <video controls muted playsinline preload="none" poster="assets/sand-study/videos/sand-flow.webp" width="478" height="850" aria-label="Feeding the sand flow">
+      <source src="assets/sand-study/videos/sand-flow.mp4" type="video/mp4">
+      <a href="assets/sand-study/videos/sand-flow.mp4">Watch the MP4 video</a>
+    </video>
+  </div>
+  <figcaption>
+    <p class="video-summary">The hopper releases sand, making the supply into the apparatus visible.</p>
+    <div class="video-actions"><a class="video-context" href="projects/sand-flow.html#sand-flow-video">Explore the experiment <span aria-hidden="true">→</span></a><a class="video-open" href="assets/sand-study/videos/sand-flow.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
+  </figcaption>
+</figure>
+<figure class="project-video film-card video-portrait" id="film-restitution-video" aria-labelledby="film-restitution-video-title" style="--video-accent:#2858b0">
+  <div class="video-heading"><p class="eyebrow">Sand study · 18 s</p><h3 id="film-restitution-video-title">Understanding the rebound</h3></div>
+  <div class="video-screen">
+    <video controls muted playsinline preload="none" poster="assets/sand-study/videos/ball-restitution.webp" width="478" height="850" aria-label="Understanding the rebound">
+      <source src="assets/sand-study/videos/ball-restitution.mp4" type="video/mp4">
+      <a href="assets/sand-study/videos/ball-restitution.mp4">Watch the MP4 video</a>
+    </video>
+  </div>
+  <figcaption>
+    <p class="video-summary">A ball is released onto the apparatus: observing its motion before and after contact helps study restitution at impact.</p>
+    <div class="video-actions"><a class="video-context" href="projects/sand-flow.html#restitution-video">Explore the experiment <span aria-hidden="true">→</span></a><a class="video-open" href="assets/sand-study/videos/ball-restitution.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
+  </figcaption>
+</figure>
+<figure class="project-video film-card" id="film-tac-tac-normal-video" aria-labelledby="film-tac-tac-normal-video-title" style="--video-accent:#2858b0">
+  <div class="video-heading"><p class="eyebrow">Sand study · 6 s</p><h3 id="film-tac-tac-normal-video-title">The descent at normal speed</h3></div>
+  <div class="video-screen">
+    <video controls muted playsinline preload="none" poster="assets/sand-study/videos/tac-tac-normal.webp" width="960" height="544" aria-label="The descent at normal speed">
+      <source src="assets/sand-study/videos/tac-tac-normal.mp4" type="video/mp4">
+      <a href="assets/sand-study/videos/tac-tac-normal.mp4">Watch the MP4 video</a>
+    </video>
+  </div>
+  <figcaption>
+    <p class="video-summary">The ball descends over the PVC tubes: successive contacts make the Tac-Tac mechanism visible.</p>
+    <div class="video-actions"><a class="video-context" href="projects/sand-flow.html#tac-tac-normal-video">Explore the experiment <span aria-hidden="true">→</span></a><a class="video-open" href="assets/sand-study/videos/tac-tac-normal.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
+  </figcaption>
+</figure>
+<figure class="project-video film-card" id="film-tac-tac-slow-video" aria-labelledby="film-tac-tac-slow-video-title" style="--video-accent:#2858b0">
+  <div class="video-heading"><p class="eyebrow">Sand study · 18 s</p><h3 id="film-tac-tac-slow-video-title">Contacts in slow motion</h3></div>
+  <div class="video-screen">
+    <video controls muted playsinline preload="none" poster="assets/sand-study/videos/tac-tac-slow.webp" width="848" height="478" aria-label="Contacts in slow motion">
+      <source src="assets/sand-study/videos/tac-tac-slow.mp4" type="video/mp4">
+      <a href="assets/sand-study/videos/tac-tac-slow.mp4">Watch the MP4 video</a>
+    </video>
+  </div>
+  <figcaption>
+    <p class="video-summary">A separate slow-motion trial makes the rebounds between the ball and the tubes easier to follow.</p>
+    <div class="video-actions"><a class="video-context" href="projects/sand-flow.html#tac-tac-slow-video">Explore the experiment <span aria-hidden="true">→</span></a><a class="video-open" href="assets/sand-study/videos/tac-tac-slow.mp4" target="_blank" rel="noopener noreferrer">Open video <span aria-hidden="true">↗</span></a></div>
+  </figcaption>
+</figure>
+    </div>
+    <p class="film-upcoming">Coming next: <a href="projects/air-france-can.html">Air France test device</a> · <a href="projects/infrared-audio.html">Infrared audio</a></p>
+  </div>
+</section>
 <section class="section wrap about" id="about"><div class="reveal"><div class="eyebrow">About me</div><h2>Curious. Practical. Persistent.</h2><p>I like understanding how a system behaves in the real world and improving it through measurements and prototypes. My work at ENSEA and Air France has strengthened my interest in embedded engineering for aerospace.</p><p>I have family in northern Portugal and would be excited to contribute to a team in the Porto region.</p></div><div class="skills reveal" aria-label="Technical skills"><span>Embedded C</span><span>STM32</span><span>Arduino</span><span>CAN communication</span><span>VHDL</span><span>Analog electronics</span><span>Signal processing</span><span>PCB design</span></div></section>
 <section class="contact" id="contact"><div class="wrap reveal"><div class="eyebrow">Let’s connect</div><h2>Let’s build something useful.</h2><p>I’m looking for a four-month internship in aerospace, electronics or embedded systems from late April to late August 2027.</p><a class="button" href="https://www.linkedin.com/in/victor-correia-14082005vicky/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a></div></section></main><footer class="foot wrap"><span>© 2026 Victor Correia</span><span>Engineering student at ENSEA · France / Portugal</span></footer><script>const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add('in-view');if(entry.target.classList.contains('reveal'))observer.unobserve(entry.target)}}},{threshold:.12});document.querySelectorAll('.panel,.reveal').forEach(el=>observer.observe(el))}else document.querySelectorAll('.panel,.reveal').forEach(el=>el.classList.add('in-view'));</script></body></html>

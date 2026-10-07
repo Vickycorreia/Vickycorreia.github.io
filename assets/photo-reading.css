@@ -40,6 +40,8 @@
 .story-frame:has(.chapter-more[open]) { z-index: 10; }
 .story-frame .chapter-meta, .story-frame .chapter-progress { pointer-events: none; }
 .story-frame .photo-full, .story-frame .chapter-more { pointer-events: auto; }
+.photo-story.has-visible-video:not(:has(.chapter-more[open])) .story-frame,
+.photo-story:not(.video-chrome-managed):has(.project-video:focus-within):not(:has(.chapter-more[open])) .story-frame { visibility: hidden; }
 .chapter-content {
   position: relative;
   z-index: 2;
