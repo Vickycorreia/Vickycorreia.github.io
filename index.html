@@ -75,31 +75,39 @@ a:focus-visible{outline:3px solid #946136;outline-offset:6px}
     </div>
     <div class="space-illustration orbit-illustration">
       <section class="orbit-game" data-state="ready" aria-labelledby="orbit-game-title">
-        <header class="orbit-header"><p class="orbit-brand">CORREIA / ORBIT LAB <span aria-hidden="true">✦</span></p><h2 id="orbit-game-title">Your turn to fly.</h2></header>
-        <div class="orbit-destinations" role="group" aria-label="Choose your destination">
+        <header class="orbit-header"><p class="orbit-brand">CORREIA / ORBIT LAB <span aria-hidden="true">✦</span></p><h2 id="orbit-game-title">Find the balance.</h2></header>
+        <div class="orbit-destinations" role="group" aria-label="Choose a launch location">
           <button type="button" data-planet="earth" aria-pressed="true" disabled><span class="orbit-planet-dot earth" aria-hidden="true"></span>Earth</button>
+          <button type="button" data-planet="moon" aria-pressed="false" disabled><span class="orbit-planet-dot moon" aria-hidden="true"></span>Moon</button>
           <button type="button" data-planet="mars" aria-pressed="false" disabled><span class="orbit-planet-dot mars" aria-hidden="true"></span>Mars</button>
-          <button type="button" data-planet="saturn" aria-pressed="false" disabled><span class="orbit-planet-dot saturn" aria-hidden="true"></span>Saturn</button>
         </div>
         <div class="orbit-stage">
-          <svg class="orbit-system" viewBox="0 0 640 560" fill="none" xmlns="http://www.w3.org/2000/svg" tabindex="0" role="group" aria-label="Solar system and rocket launch area" aria-describedby="orbit-instructions orbit-keyboard">
-            <defs><radialGradient id="orbit-sun-fallback"><stop stop-color="#f8dba2"/><stop offset="1" stop-color="#dca46e"/></radialGradient></defs>
-            <g stroke="#7a9ba5" stroke-opacity=".24"><ellipse cx="290" cy="260" rx="90" ry="57"/><ellipse cx="290" cy="260" rx="150" ry="102"/><ellipse cx="290" cy="260" rx="215" ry="151"/><ellipse cx="290" cy="260" rx="274" ry="205"/></g>
-            <circle cx="290" cy="260" r="47" fill="url(#orbit-sun-fallback)"/><g fill="#946136"><circle cx="280" cy="253" r="3"/><circle cx="300" cy="253" r="3"/></g><path d="M280 268Q290 277 300 268" stroke="#946136" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="220" cy="230" r="10" fill="#9faaa8"/><circle cx="347" cy="332" r="16" fill="#c78d64"/>
-            <circle cx="480" cy="180" r="22" fill="#4d869e"/><path d="M463 174Q477 164 485 174L493 180L480 192L470 182Z" fill="#9fbdb3"/>
-            <circle cx="195" cy="410" r="18" fill="#c48069"/><circle cx="92" cy="182" r="30" fill="#c8ae8f"/><path d="M65 181H119M71 194H113" stroke="#ad896a" stroke-width="5"/>
-            <ellipse cx="470" cy="415" rx="52" ry="13" transform="rotate(-24 470 415)" stroke="#b89773" stroke-width="8"/><circle cx="470" cy="415" r="28" fill="#e0c5a0"/>
-            <circle cx="387" cy="74" r="17" fill="#8db7bb"/><circle cx="582" cy="276" r="17" fill="#5779a4"/>
-            <g transform="translate(480 105) rotate(90)"><path d="M0-20C-12-9-12 7-8 14H8C12 7 12-9 0-20Z" fill="#f9f6ee" stroke="#426578" stroke-width="2"/><circle cy="-3" r="5" fill="#8bb4c4"/><path d="M-9 4L-17 16L-7 12M9 4L17 16L7 12" fill="#be8466" stroke="#426578" stroke-width="2"/></g>
+          <svg class="orbit-system" viewBox="0 0 640 560" fill="none" xmlns="http://www.w3.org/2000/svg" tabindex="0" role="group" aria-label="Earth, Moon and Mars, with the Sun in the distance" aria-describedby="orbit-instructions orbit-keyboard">
+            <defs>
+              <radialGradient id="orbit-sun-fallback"><stop stop-color="#d5af72" stop-opacity=".25"/><stop offset=".3" stop-color="#ddbe92" stop-opacity=".16"/><stop offset="1" stop-color="#ddbe92" stop-opacity="0"/></radialGradient>
+              <radialGradient id="orbit-earth-fallback" cx=".3" cy=".22" r=".85"><stop stop-color="#b4d3d6"/><stop offset=".45" stop-color="#719ba9"/><stop offset="1" stop-color="#274c65"/></radialGradient>
+              <radialGradient id="orbit-moon-fallback" cx=".25" cy=".2" r=".9"><stop stop-color="#e8e7df"/><stop offset=".6" stop-color="#b9bbb6"/><stop offset="1" stop-color="#7c8990"/></radialGradient>
+              <radialGradient id="orbit-mars-fallback" cx=".28" cy=".18" r=".9"><stop stop-color="#dba98a"/><stop offset=".48" stop-color="#c5896d"/><stop offset="1" stop-color="#87543f"/></radialGradient>
+            </defs>
+            <g class="orbit-sun" data-planet="sun"><circle cx="-55" cy="-40" r="210" fill="url(#orbit-sun-fallback)"/><circle cx="-55" cy="-40" r="90" fill="#dcc39b" opacity=".13"/></g>
+            <g class="orbit-planet" data-planet="earth" transform="translate(445 185)"><circle class="orbit-planet-body" r="39" fill="url(#orbit-earth-fallback)"/>
+            <path transform="scale(0.975)" d="M-28-21L-12-30L-4-19L8-17L10-5L1 4L-12 1L-20-9ZM10 8L28 1L30 12L18 28L6 18Z" fill="#a8bbaa" opacity=".65"/><path d="M-22.229999999999997 -20.67Q-4.68 -35.88 10.14 -31.979999999999997" stroke="#d6e7e5" stroke-opacity=".5" stroke-width="1.6" stroke-linecap="round"/>
+            <text x="0" y="64" fill="#526e7b" font-size="13" text-anchor="middle" font-family="inherit">Earth</text></g>
+            <g class="orbit-planet" data-planet="moon" transform="translate(218 136)"><circle class="orbit-planet-body" r="19" fill="url(#orbit-moon-fallback)"/>
+            <circle cx="-6.460000000000001" cy="-5.130000000000001" r="3.61" fill="#849296" opacity=".22"/><circle cx="5.51" cy="4.56" r="4.94" fill="#78888f" opacity=".19"/><circle cx="-5.7" cy="7.41" r="1.9000000000000001" fill="#a9ada6" opacity=".35"/>
+            <text x="0" y="44" fill="#526e7b" font-size="13" text-anchor="middle" font-family="inherit">Moon</text></g>
+            <g class="orbit-planet" data-planet="mars" transform="translate(225 425)"><circle class="orbit-planet-body" r="29" fill="url(#orbit-mars-fallback)"/>
+            <path d="M-21.169999999999998 -2.9000000000000004Q0 -15.950000000000001 18.27 -6.67Q13.05 7.25 -11.31 6.67Z" fill="#936551" opacity=".22"/><ellipse cx="-7.25" cy="-21.75" rx="7.25" ry="2.9000000000000004" fill="#e8d0b7" opacity=".35"/>
+            <text x="0" y="54" fill="#526e7b" font-size="13" text-anchor="middle" font-family="inherit">Mars</text></g>
+            <g transform="translate(445 127) rotate(90)"><path d="M0-16Q-9-6-6 12L6 12Q9-6 0-16Z" fill="#fffdf6" stroke="#17364e" stroke-width="1.6"/><circle cy="-2" r="3.6" fill="#82b8c8" stroke="#17364e"/><path d="M-5 5L-12 13L-5 12M5 5L12 13L5 12" fill="#b47a51" stroke="#17364e"/></g>
           </svg>
         </div>
         <div class="orbit-readout"><span class="orbit-state-label">Ready for launch</span><span class="orbit-power">Thrust <output>100 %</output></span></div>
-        <p class="orbit-status" role="status" aria-live="polite" aria-atomic="true"><strong class="orbit-message">A little nudge. A new orbit.</strong><span class="orbit-detail">A rocket, three destinations, and a trajectory that is yours to choose.</span></p>
+        <p class="orbit-status" role="status" aria-live="polite" aria-atomic="true"><strong class="orbit-message">Prepare your trajectory.</strong><span class="orbit-detail">Aim the rocket. Gravity shapes the rest of the flight.</span></p>
         <div class="orbit-controls"><button class="orbit-launch" type="button" disabled>Launch <span aria-hidden="true">↗</span></button><button class="orbit-reset" type="button" disabled><span aria-hidden="true">↺</span> Reset</button><button class="orbit-pause" type="button" aria-pressed="false" hidden>Pause</button></div>
-        <p id="orbit-instructions" class="orbit-instructions">Choose a planet. Drag the arrow to set your course, then launch.</p>
+        <p id="orbit-instructions" class="orbit-instructions">Choose a launch location. Adjust the arrow, then launch.</p>
         <p id="orbit-keyboard" class="orbit-keyboard">Keyboard: ← → direction · ↑ ↓ thrust · Enter to launch.</p>
-        <p class="orbit-note">A playful solar system, with imaginary distances.</p>
+        <p class="orbit-note">Every celestial body shapes the trajectory.</p>
         <noscript><p class="orbit-fallback">Enable JavaScript to fly the rocket. You can still explore every project below.</p></noscript>
       </section>
     </div>

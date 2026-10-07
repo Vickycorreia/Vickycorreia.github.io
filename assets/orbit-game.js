@@ -3,49 +3,55 @@
 
   const TAU = Math.PI * 2;
   const STEP = 1 / 120;
-  const TIME_SCALE = 1.6;
+  const TIME_SCALE = .8;
   const ROCKET_RADIUS = 5;
   const AIM_LENGTH = 70;
   const MAX_POWER = 210;
+  const PREVIEW_TIME = .75;
+  const PREVIEW_ARC = 65;
+  const SCENE_BOUNDS = { minX: -130, maxX: 770, minY: -135, maxY: 695 };
   const BODIES = [
-    { id: 'sun', x: 290, y: 260, radius: 38, color: '#edbc6e' },
-    { id: 'mercury', x: 215, y: 258, radius: 10, color: '#ae9684' },
-    { id: 'venus', x: 339, y: 139, radius: 16, color: '#d7a568' },
-    { id: 'earth', x: 480, y: 180, radius: 23, color: '#80b8c5' },
-    { id: 'mars', x: 195, y: 410, radius: 20, color: '#cd8865' },
-    { id: 'jupiter', x: 108, y: 168, radius: 29, color: '#d2ad86' },
-    { id: 'saturn', x: 470, y: 415, radius: 29, color: '#d9bf82' },
-    { id: 'uranus', x: 573, y: 305, radius: 16, color: '#91c2c2' },
-    { id: 'neptune', x: 79, y: 390, radius: 15, color: '#829ebb' }
+    { id: 'sun', x: -55, y: -40, radius: 90, mu: 900000, localRadius: 160 },
+    { id: 'earth', x: 445, y: 185, radius: 39, mu: 500000, localRadius: 110 },
+    { id: 'moon', x: 218, y: 136, radius: 19, mu: 100000, localRadius: 75 },
+    { id: 'mars', x: 225, y: 425, radius: 29, mu: 300000, localRadius: 105 }
   ];
   const SETTINGS = {
-    earth: { radius: 70, angle: -Math.PI / 2, mu: 150000 },
-    mars: { radius: 64, angle: 0, mu: 120000 },
-    saturn: { radius: 78, angle: 0, mu: 190000 }
+    earth: { radius: 58, angle: -Math.PI / 2 },
+    moon: { radius: 32, angle: Math.PI },
+    mars: { radius: 44, angle: Math.PI / 4 }
   };
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
   // One fixed-step velocity-Verlet integrator drives both preview and flight.
-  // These are game units and imaginary distances, rather than astronomical data.
+  // Fixed bodies and schematic units: every visible body contributes gravity.
   const configuration = name => {
     const setting = SETTINGS[name] || SETTINGS.earth;
     const body = BODIES.find(item => item.id === name) || BODIES.find(item => item.id === 'earth');
     return { name: body.id, body, startRadius: setting.radius, startAngle: setting.angle,
-      mu: setting.mu, escapeRadius: setting.radius * 4, bodies: BODIES };
+      mu: body.mu, bodies: BODIES, bounds: SCENE_BOUNDS };
   };
   const initialFlight = (config, angle = config.startAngle + Math.PI / 2, power = 100) => {
     const speed = Math.sqrt(config.mu / config.startRadius) * clamp(power, 0, MAX_POWER) / 100;
     return { x: config.body.x + config.startRadius * Math.cos(config.startAngle),
       y: config.body.y + config.startRadius * Math.sin(config.startAngle),
       vx: speed * Math.cos(angle), vy: speed * Math.sin(angle),
-      winding: 0, time: 0, outcome: null, hitBody: null, longOrbit: false };
+      winding: 0, time: 0, outcome: null, hitBody: null, orbitBody: null,
+      orbitHistory: Object.fromEntries(config.bodies.map(body => [body.id, { winding: 0, minDistance: Infinity }])) };
   };
   const acceleration = (config, x, y) => {
-    const dx = x - config.body.x, dy = y - config.body.y;
-    const radius = Math.max(1, Math.hypot(dx, dy));
-    const factor = -config.mu / (radius * radius * radius);
-    return { x: factor * dx, y: factor * dy };
+    let ax = 0, ay = 0;
+    for (const body of config.bodies) {
+      const dx = body.x - x, dy = body.y - y;
+      const radius = Math.max(1, Math.hypot(dx, dy));
+      const factor = body.mu / (radius * radius * radius);
+      ax += factor * dx; ay += factor * dy;
+    }
+    return { x: ax, y: ay };
   };
+  const potentialAt = (config, x, y) => config.bodies.reduce((sum, body) =>
+    sum - body.mu / Math.max(1, Math.hypot(x-body.x, y-body.y)), 0);
+  const totalEnergy = (config, flight) => (flight.vx*flight.vx+flight.vy*flight.vy)/2 + potentialAt(config, flight.x, flight.y);
   const segmentCollision = (config, before, after) => {
     const dx = after.x - before.x, dy = after.y - before.y;
     const a = dx * dx + dy * dy;
@@ -85,39 +91,49 @@
       next.outcome = 'collision'; next.hitBody = collision.body.id;
       return next;
     }
-    const oldX = current.x - config.body.x, oldY = current.y - config.body.y;
-    const dx = next.x - config.body.x, dy = next.y - config.body.y;
-    next.winding += Math.atan2(oldX * dy - oldY * dx, oldX * dx + oldY * dy);
-    const radius = Math.hypot(dx, dy);
-    const energy = (next.vx * next.vx + next.vy * next.vy) / 2 - config.mu / radius;
-    if (energy >= 0 && radius >= config.escapeRadius && dx * next.vx + dy * next.vy > 0) next.outcome = 'escape';
-    else if (!next.outcome && energy < 0) {
-      if (Math.abs(next.winding) >= TAU) next.outcome = 'orbit';
-      else if (radius >= config.escapeRadius) {
-        const momentum = dx * next.vy - dy * next.vx;
-        const eccentricity = Math.sqrt(Math.max(0, 1 + 2 * energy * momentum * momentum / (config.mu * config.mu)));
-        const periapsis = momentum * momentum / (config.mu * (1 + eccentricity));
-        if (periapsis > config.body.radius + ROCKET_RADIUS) {
-          next.outcome = 'orbit'; next.longOrbit = true;
-        }
-      }
+    next.orbitHistory = {};
+    for (const body of config.bodies) {
+      const oldX = current.x-body.x, oldY = current.y-body.y;
+      const dx = next.x-body.x, dy = next.y-body.y;
+      const oldRadius = Math.hypot(oldX,oldY), radius = Math.hypot(dx,dy);
+      const clear = Math.min(oldRadius,radius) > body.radius+ROCKET_RADIUS;
+      const local = Math.max(oldRadius,radius) <= body.localRadius;
+      const previous = current.orbitHistory[body.id];
+      next.orbitHistory[body.id] = clear && local ? {
+        winding: previous.winding + Math.atan2(oldX*dy-oldY*dx,oldX*dx+oldY*dy),
+        minDistance: Math.min(previous.minDistance,oldRadius,radius)
+      } : { winding: 0, minDistance: Infinity };
     }
+    next.winding = next.orbitHistory[config.name].winding;
+    if (!next.outcome) {
+      const completed = config.bodies.filter(body => Math.abs(next.orbitHistory[body.id].winding) >= TAU &&
+        next.orbitHistory[body.id].minDistance > body.radius+ROCKET_RADIUS);
+      const observed = completed.find(body => body.id === config.name) || completed[0];
+      if (observed) { next.outcome = 'orbit'; next.orbitBody = observed.id; }
+    }
+    const bounds = config.bounds || SCENE_BOUNDS;
+    if (next.x < bounds.minX || next.x > bounds.maxX || next.y < bounds.minY || next.y > bounds.maxY) next.outcome = 'escape';
     return next;
   };
-  const predict = (config, angle, power) => {
+  const preview = (config, angle, power) => {
     let flight = initialFlight(config, angle, power);
     const points = [{ x: flight.x, y: flight.y }];
-    for (let count = 0; count < 24000; count += 1) {
-      flight = stepFlight(config, flight);
-      if (count % 6 === 0 || flight.outcome) points.push({ x: flight.x, y: flight.y });
+    let arcLength = 0;
+    for (let count = 0; count < Math.floor(PREVIEW_TIME/STEP); count += 1) {
+      const next = stepFlight(config, flight);
+      const distance = Math.hypot(next.x-flight.x,next.y-flight.y);
+      if (arcLength+distance > PREVIEW_ARC) break;
+      arcLength += distance; flight = next;
+      points.push({ x: flight.x, y: flight.y });
       if (flight.outcome) break;
     }
-    return { points, flight };
+    return { points, time: flight.time, arcLength };
   };
 
   // The physics is importable by local Node checks, with no browser debug API.
   if (typeof module === 'object' && module.exports) {
-    module.exports = { configuration, initialFlight, stepFlight, predict, STEP, TIME_SCALE, BODIES };
+    module.exports = { configuration, initialFlight, stepFlight, acceleration, potentialAt, totalEnergy,
+      segmentCollision, preview, predict: preview, STEP, TIME_SCALE, BODIES, SETTINGS, SCENE_BOUNDS, PREVIEW_TIME, PREVIEW_ARC, ROCKET_RADIUS };
   }
   if (typeof document === 'undefined') return;
   const root = document.querySelector('.orbit-game');
@@ -134,34 +150,30 @@
   if (!svg || !launch || !reset || !pause || !message || !powerOutput || !stateLabel || destinations.length !== 3) return;
   const french = document.documentElement.lang === 'fr';
   const copy = french ? {
-    names: { sun: 'le Soleil', earth: 'la Terre', mars: 'Mars', saturn: 'Saturne', mercury: 'Mercure', venus: 'Vénus', jupiter: 'Jupiter', uranus: 'Uranus', neptune: 'Neptune' },
-    shortNames: { earth: 'Terre', mars: 'Mars', saturn: 'Saturne' },
-    states: { aiming: 'Prêt', flying: 'En vol', orbit: 'En orbite', collision: 'Collision', escape: 'Échappée' },
-    ready: name => `À toi de jouer autour de ${name}.`,
-    aimingDetail: 'Suis les pointillés, puis lance la fusée.',
-    flying: 'La fusée est en route !', flyingDetail: 'Voyons où cette impulsion la mène.',
-    orbit: name => `Un tour complet autour de ${name} !`, orbitDetail: 'Orbite réussie. Tu peux recommencer ou essayer une autre planète.',
-    longOrbit: name => `Une grande orbite autour de ${name} !`, longOrbitDetail: 'La fusée reste liée à la planète, même quand elle passe hors cadre. Recommence quand tu veux.',
-    collision: 'La fusée a heurté un astre.', collisionDetail: 'Essaie une impulsion un peu plus sur le côté.',
-    escape: 'La fusée s’est échappée !', escapeDetail: 'Essaie une impulsion plus douce pour rester en orbite.',
-    paused: 'Vol en pause.', pausedDetail: 'Reprends le vol quand tu veux.', pause: 'Pause', resume: 'Reprendre',
-    wide: 'Une grande orbite, très lointaine.', wideDetail: 'Le tour peut être long. Recommence pour essayer une trajectoire plus proche.',
-    svgLabel: 'Petit jeu orbital. Règle la direction et la force du lancement.',
+    names: { sun: 'le Soleil', earth: 'la Terre', moon: 'la Lune', mars: 'Mars' },
+    shortNames: { earth: 'Terre', moon: 'Lune', mars: 'Mars' },
+    states: { aiming: 'Prêt', flying: 'En vol', orbit: 'Tour observé', collision: 'Collision', escape: 'Hors zone' },
+    ready: name => `Départ depuis ${name}.`,
+    aimingDetail: 'Les pointillés montrent le début du trajet.',
+    flying: 'Trajectoire en cours.', flyingDetail: 'Les astres infléchissent le trajet.',
+    orbit: name => `Un tour autour de ${name}.`, orbitDetail: 'Une révolution a été observée. Recommence pour explorer un autre lancement.',
+    collision: 'Contact avec un astre.', collisionDetail: 'Recommence pour ajuster la direction ou la poussée.',
+    escape: 'La fusée quitte la scène.', escapeDetail: 'La trajectoire sort de la zone représentée. Recommence pour ajuster le lancement.',
+    paused: 'Vol en pause.', pausedDetail: 'Reprends le vol quand tu le souhaites.', pause: 'Pause', resume: 'Reprendre',
+    svgLabel: 'Scène orbitale. Règle la direction et la force du lancement.',
     controlsLabel: (name, power, angle) => `Lancement autour de ${name}. Force ${power} pour cent, direction ${angle} degrés.`
   } : {
-    names: { sun: 'the Sun', earth: 'Earth', mars: 'Mars', saturn: 'Saturn', mercury: 'Mercury', venus: 'Venus', jupiter: 'Jupiter', uranus: 'Uranus', neptune: 'Neptune' },
-    shortNames: { earth: 'Earth', mars: 'Mars', saturn: 'Saturn' },
-    states: { aiming: 'Ready', flying: 'Flying', orbit: 'In orbit', collision: 'Collision', escape: 'Escaped' },
-    ready: name => `Your turn to fly around ${name}.`,
-    aimingDetail: 'Follow the dotted path, then launch the rocket.',
-    flying: 'The rocket is on its way!', flyingDetail: 'Let’s see where this push takes it.',
-    orbit: name => `One complete orbit around ${name}!`, orbitDetail: 'Orbit achieved. Start again or try another planet.',
-    longOrbit: name => `A wide orbit around ${name}!`, longOrbitDetail: 'The rocket stays bound to the planet, even when it travels out of frame. Restart whenever you like.',
-    collision: 'The rocket hit a celestial body.', collisionDetail: 'Try a push a little more to the side.',
-    escape: 'The rocket escaped!', escapeDetail: 'Try a gentler push to stay in orbit.',
+    names: { sun: 'the Sun', earth: 'Earth', moon: 'the Moon', mars: 'Mars' },
+    shortNames: { earth: 'Earth', moon: 'Moon', mars: 'Mars' },
+    states: { aiming: 'Ready', flying: 'Flying', orbit: 'Turn observed', collision: 'Collision', escape: 'Out of area' },
+    ready: name => `Departure from ${name}.`,
+    aimingDetail: 'The dots show the beginning of the trajectory.',
+    flying: 'Trajectory in progress.', flyingDetail: 'The celestial bodies bend the path.',
+    orbit: name => `One revolution around ${name}.`, orbitDetail: 'A full turn has been observed. Reset to explore another launch.',
+    collision: 'Contact with a celestial body.', collisionDetail: 'Reset to adjust the direction or thrust.',
+    escape: 'The rocket has left the scene.', escapeDetail: 'The trajectory is outside the displayed area. Reset to adjust the launch.',
     paused: 'Flight paused.', pausedDetail: 'Resume whenever you’re ready.', pause: 'Pause', resume: 'Resume',
-    wide: 'This orbit goes a long way out.', wideDetail: 'A full loop can take a while. Reset to try a closer path.',
-    svgLabel: 'Small orbital game. Adjust the direction and strength of your launch.',
+    svgLabel: 'Orbital scene. Adjust the direction and strength of your launch.',
     controlsLabel: (name, power, angle) => `Launch around ${name}. Force ${power} percent, direction ${angle} degrees.`
   };
 
@@ -181,61 +193,65 @@
   svg.setAttribute('aria-label', copy.svgLabel);
   append(svg, 'title', {}, copy.svgLabel);
   const defs = append(svg, 'defs');
+  const flightClip = append(defs, 'clipPath', { id: 'orbit-flight-view', clipPathUnits: 'userSpaceOnUse' });
+  append(flightClip, 'path', { d: 'M0 0H640V560H0Z' });
   const marker = append(defs, 'marker', { id: 'orbit-game-arrow', viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 5, markerHeight: 5, orient: 'auto-start-reverse' });
   append(marker, 'path', { d: 'M 0 0 L 10 5 L 0 10 Z', fill: '#9a6846' });
+  const gradient = (id, stops, attrs = {}) => {
+    const element = append(defs, 'radialGradient', { id, cx: '32%', cy: '25%', r: '80%', ...attrs });
+    stops.forEach(([offset,color,opacity = 1]) => append(element, 'stop', { offset, 'stop-color': color, 'stop-opacity': opacity }));
+  };
+  gradient('orbit-earth-gradient', [['0%','#b9d0d5'],['48%','#6c9dab'],['100%','#294d60']]);
+  gradient('orbit-moon-gradient', [['0%','#e6e4dc'],['52%','#bcbfb9'],['100%','#727c83']]);
+  gradient('orbit-mars-gradient', [['0%','#d0ad8d'],['50%','#ad775b'],['100%','#644638']]);
+  gradient('orbit-sun-glow-gradient', [['0%','#e5c8a0',.35],['35%','#d7b28c',.15],['70%','#cfaa82',.04],['100%','#cfaa82',0]], { cx: '50%', cy: '50%', r: '50%' });
+  gradient('orbit-sun-disc-gradient', [['0%','#f0ddc0',.75],['60%','#dfbd91',.45],['100%','#c79d72',.08]], { cx: '44%', cy: '40%', r: '64%' });
   const space = append(svg, 'g', { class: 'orbit-space', 'aria-hidden': 'true' });
-  append(space, 'rect', { x: 0, y: 0, width: 640, height: 560, rx: 32, fill: '#f8f5ee' });
-  const stars = [[54,65],[163,52],[276,78],[434,49],[557,78],[607,173],[62,270],[362,355],[316,487],[543,520],[116,516],[39,453],[403,112],[603,466],[237,177],[45,139]];
-  stars.forEach(([x,y], index) => {
-    append(space, 'path', { class: 'orbit-star', d: `M ${x-3} ${y} H ${x+3} M ${x} ${y-3} V ${y+3}`, stroke: index % 2 ? '#b59670' : '#6f9ea9', 'stroke-width': 1.4, opacity: .5 });
-  });
-  for (const radius of [62,102,145,192,244,295]) {
-    append(space, 'ellipse', { class: 'orbit-solar-ring', cx: 290, cy: 260, rx: radius, ry: radius * .67, transform: 'rotate(-16 290 260)', fill: 'none', stroke: '#cbd8d6', 'stroke-width': 1, opacity: .65 });
-  }
   const groups = new Map();
   for (const body of BODIES) {
     const group = append(space, 'g', { class: body.id === 'sun' ? 'orbit-sun' : 'orbit-planet', 'data-planet': body.id, transform: `translate(${body.x} ${body.y})` });
     groups.set(body.id, group);
     if (body.id === 'sun') {
-      const rays = append(group, 'g', { class: 'orbit-sun-rays' });
-      for (let ray = 0; ray < 12; ray += 1) {
-        const angle = ray * TAU / 12;
-        append(rays, 'line', { class: 'orbit-sun-ray', x1: Math.cos(angle)*44, y1: Math.sin(angle)*44, x2: Math.cos(angle)*51, y2: Math.sin(angle)*51, stroke: '#dbad60', 'stroke-width': 3, 'stroke-linecap': 'round' });
-      }
+      append(group, 'circle', { class: 'orbit-sun-glow', r: 220, fill: 'url(#orbit-sun-glow-gradient)' });
+      append(group, 'circle', { class: 'orbit-sun-body', r: body.radius, fill: 'url(#orbit-sun-disc-gradient)', opacity: .68 });
+      continue;
     }
-    if (body.id === 'saturn') append(group, 'ellipse', { class: 'orbit-planet-ring', rx: 45, ry: 12, transform: 'rotate(-20)', fill: 'none', stroke: '#b29264', 'stroke-width': 7, opacity: .72 });
-    append(group, 'circle', { class: 'orbit-planet-body', r: body.radius, fill: body.color, stroke: '#17364e', 'stroke-width': 1.4 });
-    append(group, 'path', { class: 'orbit-planet-shade', d: `M 0 ${-body.radius} A ${body.radius} ${body.radius} 0 0 1 0 ${body.radius} Q ${body.radius*.7} 0 0 ${-body.radius}`, fill: '#17364e', opacity: .09 });
+    const clip = append(defs, 'clipPath', { id: `orbit-${body.id}-surface` });
+    append(clip, 'circle', { r: body.radius });
+    append(group, 'circle', { class: 'orbit-planet-body', r: body.radius, fill: `url(#orbit-${body.id}-gradient)` });
+    const surface = append(group, 'g', { 'clip-path': `url(#orbit-${body.id}-surface)` });
     if (body.id === 'earth') {
-      append(group, 'path', { class: 'orbit-planet-detail', d: 'M-18-12 L-7-17 1-8 -3 1 -14 3 Z M8 4 L20 1 17 12 8 16 3 10 Z', fill: '#648f77', opacity: .8 });
-    } else if (body.id === 'jupiter') {
-      append(group, 'path', { class: 'orbit-planet-detail', d: 'M-23-12 Q0-5 23-12 M-27 0 Q0 8 27 0 M-23 14 Q0 21 23 14', fill: 'none', stroke: '#ac805e', 'stroke-width': 4, opacity: .65 });
+      append(surface, 'path', { class: 'orbit-planet-detail', d: 'M-34-19 Q-27-33-14-31 L-4-23 0-10 -11-2 -18 11 -27 2 Z M7 5 Q17-6 30-3 L37 7 27 13 23 28 9 32 3 20 Z', fill: '#6f8f7a', opacity: .63 });
+      append(surface, 'path', { class: 'orbit-planet-detail', d: 'M-26-24 Q-5-34 15-24 M-32 12 Q-3 20 29 13', fill: 'none', stroke: '#e3eeeb', 'stroke-width': 3, 'stroke-linecap': 'round', opacity: .38 });
+      append(group, 'circle', { r: body.radius+.8, fill: 'none', stroke: '#90b5c5', 'stroke-width': 1.3, opacity: .4 });
+    } else if (body.id === 'moon') {
+      for (const [x,y,radius] of [[-7,-10,4],[8,-3,5],[-8,7,4],[6,11,2.5],[-13,-2,2]]) {
+        append(surface, 'circle', { class: 'orbit-planet-detail', cx: x, cy: y, r: radius, fill: '#7c8586', stroke: '#e8e8df', 'stroke-width': .65, opacity: .2 });
+      }
     } else if (body.id === 'mars') {
-      append(group, 'circle', { class: 'orbit-planet-detail', cx: -10, cy: -9, r: 5, fill: '#aa634e', opacity: .4 });
+      append(surface, 'path', { class: 'orbit-planet-detail', d: 'M-26-4 Q-8-13 7-9 L23-2 15 8 -1 4 -15 12 Z M2 17 Q17 11 27 21 L11 30 Z', fill: '#795747', opacity: .22 });
+      append(surface, 'circle', { class: 'orbit-planet-detail', cx: -12, cy: -13, r: 4, fill: '#6f5143', opacity: .16 });
     }
-    if (body.id === 'sun' || SETTINGS[body.id]) {
-      const offset = body.id === 'sun' ? 9 : 6;
-      append(group, 'circle', { class: 'orbit-planet-face', cx: -offset, cy: 0, r: 1.9, fill: '#17364e' });
-      append(group, 'circle', { class: 'orbit-planet-face', cx: offset, cy: 0, r: 1.9, fill: '#17364e' });
-      append(group, 'path', { class: 'orbit-planet-face', d: `M ${-offset/2} 7 Q 0 11 ${offset/2} 7`, fill: 'none', stroke: '#17364e', 'stroke-width': 1.4, 'stroke-linecap': 'round' });
-    }
-    if (SETTINGS[body.id]) append(group, 'text', { class: 'orbit-planet-label', x: 0, y: body.radius + 23, 'text-anchor': 'middle', fill: '#405c6d', 'font-size': 12, 'font-family': 'inherit', 'font-weight': 650 }, copy.shortNames[body.id]);
+    append(surface, 'path', { class: 'orbit-planet-shade', d: `M 0 ${-body.radius} A ${body.radius} ${body.radius} 0 0 1 0 ${body.radius} Q ${body.radius*.8} 0 0 ${-body.radius}`, fill: '#213d4d', opacity: .15 });
+    append(group, 'text', { class: 'orbit-planet-label', x: 0, y: body.radius+23, 'text-anchor': 'middle', fill: '#607581', 'font-size': 11, 'font-family': 'inherit', 'font-weight': 500, 'letter-spacing': '.05em' }, copy.shortNames[body.id]);
   }
-  const targetHalo = append(svg, 'circle', { class: 'orbit-target-halo', fill: 'none', stroke: '#9a6846', 'stroke-width': 1.8, 'stroke-dasharray': '3 6', 'aria-hidden': 'true' });
-  const previewPath = append(svg, 'path', { class: 'orbit-preview-path', fill: 'none', stroke: '#22638b', 'stroke-width': 2, 'stroke-dasharray': '2 7', 'stroke-linecap': 'round', opacity: .68, 'aria-hidden': 'true' });
-  const trailPath = append(svg, 'path', { class: 'orbit-flight-trail', fill: 'none', stroke: '#398b92', 'stroke-width': 2.1, opacity: .55, 'aria-hidden': 'true' });
-  const aimArrow = append(svg, 'line', { class: 'orbit-aim-arrow', stroke: '#9a6846', 'stroke-width': 2.5, 'stroke-linecap': 'round', 'marker-end': 'url(#orbit-game-arrow)', 'aria-hidden': 'true' });
-  const aimHandle = append(svg, 'circle', { class: 'orbit-aim-handle', r: 5, fill: '#fffdf6', stroke: '#9a6846', 'stroke-width': 2, 'aria-hidden': 'true' });
-  const rocket = append(svg, 'g', { class: 'orbit-rocket', 'aria-hidden': 'true' });
+  // Let the distant Sun blend into the hero while keeping the flight inside its viewing area.
+  const flightLayer = append(svg, 'g', { class: 'orbit-flight-layer', 'clip-path': 'url(#orbit-flight-view)' });
+  const targetHalo = append(flightLayer, 'circle', { class: 'orbit-target-halo', fill: 'none', stroke: '#a5825d', 'stroke-width': 1, opacity: .45, 'aria-hidden': 'true' });
+  const previewPath = append(flightLayer, 'path', { class: 'orbit-preview-path', fill: 'none', stroke: '#22638b', 'stroke-width': 2, 'stroke-dasharray': '2 7', 'stroke-linecap': 'round', opacity: .68, 'aria-hidden': 'true' });
+  const trailPath = append(flightLayer, 'path', { class: 'orbit-flight-trail', fill: 'none', stroke: '#398b92', 'stroke-width': 2.1, opacity: .55, 'aria-hidden': 'true' });
+  const aimArrow = append(flightLayer, 'line', { class: 'orbit-aim-arrow', stroke: '#9a6846', 'stroke-width': 2.5, 'stroke-linecap': 'round', 'marker-end': 'url(#orbit-game-arrow)', 'aria-hidden': 'true' });
+  const aimHandle = append(flightLayer, 'circle', { class: 'orbit-aim-handle', r: 5, fill: '#fffdf6', stroke: '#9a6846', 'stroke-width': 2, 'aria-hidden': 'true' });
+  const rocket = append(flightLayer, 'g', { class: 'orbit-rocket', 'aria-hidden': 'true' });
   const hitArea = append(rocket, 'circle', { class: 'orbit-rocket-hit-area', r: 40, fill: 'transparent', 'pointer-events': 'all' });
   const flame = append(rocket, 'path', { class: 'orbit-rocket-flame', d: 'M-4 11 Q0 25 4 11 Z', fill: '#d5a15e' });
   append(rocket, 'path', { d: 'M-5 5 L-12 13 -5 12 M5 5 L12 13 5 12', fill: '#b47a51', stroke: '#17364e', 'stroke-width': 1.2 });
   append(rocket, 'path', { d: 'M0-16 Q-9-6-6 12 L6 12 Q9-6 0-16 Z', fill: '#fffdf6', stroke: '#17364e', 'stroke-width': 1.6 });
   append(rocket, 'circle', { cx: 0, cy: -2, r: 3.6, fill: '#82b8c8', stroke: '#17364e', 'stroke-width': 1 });
-  const impact = append(svg, 'g', { class: 'orbit-impact-mark', visibility: 'hidden', 'aria-hidden': 'true' });
+  const impact = append(flightLayer, 'g', { class: 'orbit-impact-mark', visibility: 'hidden', 'aria-hidden': 'true' });
   append(impact, 'circle', { r: 13, fill: '#f8e5d9', stroke: '#b76b50', 'stroke-width': 1.5 });
   append(impact, 'path', { d: 'M-5-5 L5 5 M5-5 L-5 5', fill: 'none', stroke: '#b76b50', 'stroke-width': 2 });
-  const offscreen = append(svg, 'g', { class: 'orbit-escape-mark', visibility: 'hidden', 'aria-hidden': 'true' });
+  const offscreen = append(flightLayer, 'g', { class: 'orbit-escape-mark', visibility: 'hidden', 'aria-hidden': 'true' });
   append(offscreen, 'path', { d: 'M-9 6 L0-7 9 6', fill: 'none', stroke: '#9a6846', 'stroke-width': 3, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
 
   let config = configuration('earth');
@@ -245,7 +261,6 @@
   let flight = null;
   let drag = null;
   let userPaused = false;
-  let wideFlight = false;
   let raf = null;
   let lastTime = null;
   let accumulator = 0;
@@ -274,7 +289,7 @@
     }
   };
   const renderAim = () => {
-    const prediction = predict(config, angle, power);
+    const prediction = preview(config, angle, power);
     previewPath.setAttribute('d', pathData(prediction.points));
     const start = initialFlight(config, angle, power);
     const length = AIM_LENGTH * power / 100;
@@ -304,9 +319,7 @@
     let headline, explanation;
     if (userPaused) { headline = copy.paused; explanation = copy.pausedDetail; }
     else if (state === 'aiming') { headline = copy.ready(copy.names[config.name]); explanation = copy.aimingDetail; }
-    else if (state === 'orbit' && flight.longOrbit) { headline = copy.longOrbit(copy.names[config.name]); explanation = copy.longOrbitDetail; }
-    else if (state === 'orbit') { headline = copy.orbit(copy.names[config.name]); explanation = copy.orbitDetail; }
-    else if (state === 'flying' && wideFlight) { headline = copy.wide; explanation = copy.wideDetail; }
+    else if (state === 'orbit') { headline = copy.orbit(copy.names[flight.orbitBody]); explanation = copy.orbitDetail; }
     else { headline = copy[state]; explanation = copy[`${state}Detail`]; }
     message.textContent = headline;
     if (detail) detail.textContent = explanation;
@@ -342,17 +355,6 @@
         }
         syncUI();
       }
-      if (state === 'flying' && !wideFlight) {
-        const dx = flight.x-config.body.x, dy = flight.y-config.body.y;
-        const radius = Math.hypot(dx,dy);
-        const energy = (flight.vx*flight.vx+flight.vy*flight.vy)/2-config.mu/radius;
-        const momentum = dx*flight.vy-dy*flight.vx;
-        const eccentricity = Math.sqrt(Math.max(0,1+2*energy*momentum*momentum/(config.mu*config.mu)));
-        const periapsis = momentum*momentum/(config.mu*(1+eccentricity));
-        if (energy < 0 && radius > config.startRadius*2.6 && periapsis > config.body.radius+ROCKET_RADIUS+1) {
-          wideFlight = true; syncUI();
-        }
-      }
     }
     trailPath.setAttribute('d', pathData(trail));
     renderRocket();
@@ -368,7 +370,7 @@
     cancelDrag(false); stopRAF();
     config = configuration(name || config.name);
     angle = config.startAngle + Math.PI / 2; power = 100;
-    state = 'aiming'; flight = null; userPaused = false; wideFlight = false; trail = []; trailSteps = 0;
+    state = 'aiming'; flight = null; userPaused = false; trail = []; trailSteps = 0;
     trailPath.setAttribute('d', ''); impact.setAttribute('visibility', 'hidden'); offscreen.setAttribute('visibility', 'hidden');
     targetHalo.setAttribute('cx', config.body.x); targetHalo.setAttribute('cy', config.body.y); targetHalo.setAttribute('r', config.body.radius+10);
     groups.forEach((group, name) => group.classList.toggle('is-target', name === config.name));
@@ -376,7 +378,7 @@
   };
   const launchFlight = () => {
     if (state !== 'aiming') return;
-    cancelDrag(false); flight = initialFlight(config, angle, power); state = 'flying'; userPaused = false; wideFlight = false;
+    cancelDrag(false); flight = initialFlight(config, angle, power); state = 'flying'; userPaused = false;
     trail = [{ x: flight.x, y: flight.y }]; trailSteps = 0; accumulator = 0; lastTime = null;
     syncUI(); renderRocket(); schedule();
   };
