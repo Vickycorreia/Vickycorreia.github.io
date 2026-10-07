@@ -33,7 +33,9 @@
 .orbit-game .orbit-brand > span[aria-hidden="true"] { display: none; }
 .orbit-game .orbit-header h2 { margin: 0; color: var(--orbit-ink); font-size: clamp(1.35rem, 2vw, 1.75rem); font-weight: 650; line-height: 1.2; letter-spacing: -.035em; }
 
+.orbit-game .orbit-selector-label { margin: 0; color: var(--orbit-muted); font-size: .63rem; font-weight: 600; line-height: 1.7; }
 .orbit-game .orbit-destinations { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.orbit-game .orbit-destinations > .orbit-selector-label { flex: 0 0 100%; }
 .orbit-game button {
   display: inline-flex;
   align-items: center;
@@ -62,8 +64,6 @@
 .orbit-game button:focus-visible { outline: 2px solid #946136; outline-offset: 4px; }
 .orbit-game .orbit-destinations button { gap: 7px; padding: 9px 0; border: 0; border-radius: 0; color: var(--orbit-muted); font-size: .73rem; font-weight: 550; }
 .orbit-game .orbit-planet-dot { width: 9px; height: 9px; flex-shrink: 0; border-radius: 50%; background: #3e8994; }
-.orbit-game .orbit-planet-dot.moon { background: #8b9b9f; }
-.orbit-game .orbit-planet-dot.mars { background: #ae7051; }
 .orbit-game .orbit-destinations button[aria-pressed="true"] { color: var(--orbit-ink); font-weight: 750; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
 .orbit-game .orbit-destinations button:hover:not(:disabled) { color: #805331; }
 
@@ -80,7 +80,28 @@
 .orbit-game .orbit-flight-trail, .orbit-game .orbit-impact-mark,
 .orbit-game .orbit-escape-mark { pointer-events: none; }
 .orbit-game .orbit-preview-path, .orbit-game .orbit-flight-trail { stroke-linecap: round; stroke-linejoin: round; }
+.orbit-game .orbit-reference-path,
+.orbit-game .orbit-preset-path { fill: none; stroke-width: .8; stroke-dasharray: none; stroke-linecap: round; opacity: .24; vector-effect: non-scaling-stroke; pointer-events: none; }
 .orbit-game .orbit-stage-note { position: absolute; left: 0; bottom: 0; max-width: 100%; margin: 0; padding: 0; color: var(--orbit-muted); background: transparent; border: 0; font-size: .62rem; line-height: 1.6; pointer-events: none; }
+
+.orbit-game .orbit-project-link { outline: none; cursor: pointer; }
+.orbit-game .orbit-project-link:focus { outline: none; }
+.orbit-game .orbit-project-label { fill: #405c6d; font-weight: 600; }
+.orbit-game .orbit-project-glyph { color: #496f82; pointer-events: none; }
+.orbit-game .orbit-project-hit-area { fill: transparent; stroke: transparent; vector-effect: non-scaling-stroke; }
+.orbit-game .orbit-project-link:hover .orbit-project-label,
+.orbit-game .orbit-project-link:focus-visible .orbit-project-label { fill: #805331; }
+.orbit-game .orbit-project-link:focus-visible .orbit-project-hit-area { stroke: #946136; stroke-width: 1.4; }
+
+.orbit-game .orbit-projects { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 20px; margin: 12px 0; padding: 0; color: var(--orbit-muted); font-size: .65rem; line-height: 1.7; }
+.orbit-game .orbit-projects > p,
+.orbit-game .orbit-projects > span { margin: 0; padding: 0; color: inherit; font-size: inherit; line-height: inherit; }
+.orbit-game .orbit-projects a { display: inline-flex; align-items: center; gap: 7px; min-width: 44px; min-height: 44px; padding: 4px 0; color: var(--orbit-ink); font-size: .73rem; font-weight: 600; line-height: 1.6; text-decoration: none; text-underline-offset: 4px; }
+.orbit-game .orbit-projects a:hover { color: #805331; text-decoration: underline; }
+.orbit-game .orbit-projects a:focus-visible { outline: 2px solid #946136; outline-offset: 4px; }
+.orbit-game .orbit-projects button { min-height: 44px; padding: 8px 0; border: 0; border-radius: 0; color: var(--orbit-ink); background: transparent; font-size: .73rem; font-weight: 600; line-height: 1.6; text-decoration: underline; text-underline-offset: 4px; }
+.orbit-game .orbit-projects a > span[aria-hidden="true"] { position: relative; width: 8px; height: 8px; flex-shrink: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; font-size: 0; }
+.orbit-game .orbit-projects a > span[aria-hidden="true"]::before { content: ""; position: absolute; top: 2.5px; left: -2px; width: 10px; height: 1.5px; background: currentColor; transform: rotate(-45deg); }
 
 .orbit-game .orbit-readout { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin: 0 0 14px; padding: 0; border: 0; }
 .orbit-game .orbit-state-label { display: inline-flex; align-items: center; gap: 8px; color: var(--orbit-signal); font-size: .65rem; font-weight: 650; line-height: 1.6; letter-spacing: .03em; }
@@ -148,3 +169,28 @@
 @media (prefers-reduced-motion: reduce) {
   .orbit-game *, .orbit-game *::before, .orbit-game *::after { animation: none !important; transition: none !important; }
 }
+
+/* Five quiet project worlds, with one weight driving volume and attraction. */
+.orbit-game .orbit-destinations { gap: 3px 17px; }
+.orbit-game .orbit-selector-label { margin-bottom: 2px; }
+.orbit-game .orbit-planet-dot.air-france { background: #447d96; }
+.orbit-game .orbit-planet-dot.sand { background: #af7954; }
+.orbit-game .orbit-planet-dot.stm32 { background: #7c8b9d; }
+.orbit-game .orbit-planet-dot.infrared { background: #508c85; }
+.orbit-game .orbit-planet-dot.rafale { background: #8e88a8; }
+.orbit-game .orbit-reference-path.is-selected { opacity: .42; stroke-width: 1; }
+.orbit-game .orbit-project-label { letter-spacing: .015em; }
+.orbit-game .orbit-projects { gap: 0 16px; margin: 0 0 12px; }
+.orbit-game .orbit-projects > span { flex: 0 0 100%; font-size: .6rem; }
+.orbit-game .orbit-projects a { font-size: .65rem; }
+.orbit-game .orbit-project-link:hover .orbit-project-hit-area { stroke: #658792; stroke-width: .8; }
+.orbit-game .orbit-project-link:focus-visible .orbit-project-hit-area { stroke: #946136; stroke-width: 1.4; }
+@media (min-width: 851px) {
+  .orbit-game .orbit-system { max-height: clamp(330px, 39svh, 380px); }
+}
+@media (max-width: 760px) {
+  .orbit-game .orbit-project-label { font-size: 20px; }
+  .orbit-game .orbit-destinations { gap: 3px 19px; }
+}
+/* The static fallback keeps planet links easy to tap without a sizing script. */
+.orbit-game:not([data-preset]) .orbit-project-hit-area { r: 50px; }

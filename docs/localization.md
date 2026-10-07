@@ -7,3 +7,5 @@ Keep the same IDs and structure when updating translations. French home assets u
 `assets/language.css` styles the header selector. `assets/language.js` remembers an explicit selection in local storage, preserves the query and section hash, and applies that preference on subsequent visits to known pages. Native links remain usable when storage or JavaScript is unavailable.
 
 Dynamic labels in `orbit-game.js`, `air-france-technical.js` and `sand-science.js` select English or French from the document's `lang` attribute. Update those strings alongside both HTML versions. The home page's orbital game uses the same controls, destinations and physics in both languages.
+
+The five project destinations include `projects/cardboard-rafale.html`, with the same route under `fr/`. Keep this page in the known-route set in `language.js` when updating navigation. Orbital landing selects the corresponding locale route.

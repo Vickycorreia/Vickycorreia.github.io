@@ -4,7 +4,7 @@
   const current = document.documentElement.lang === 'fr' ? 'fr' : 'en';
   const routes = new Set([
     'index.html', 'projects/air-france-can.html', 'projects/stm32-morse.html',
-    'projects/infrared-audio.html', 'projects/sand-flow.html'
+    'projects/infrared-audio.html', 'projects/sand-flow.html', 'projects/cardboard-rafale.html'
   ]);
   const path = window.location.pathname;
   const route = path.replace(/^\/fr(?:\/|$)/, '/').replace(/^\//, '') || 'index.html';
