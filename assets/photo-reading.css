@@ -1,0 +1,142 @@
+/* A fixed photograph accompanies ordinary, uninterrupted document scrolling. */
+.photo-story {
+  position: relative;
+  height: auto;
+  isolation: isolate;
+  background: #fff;
+}
+.photo-story:has(.chapter-more[open]) { z-index: 20; }
+.story-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 0;
+  padding: 0;
+  display: block;
+  overflow: clip;
+  isolation: isolate;
+  z-index: 0;
+}
+.story-figure { position: absolute; inset: 0; margin: 0; z-index: 0; }
+.story-photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: var(--photo-position, 50% 50%);
+  filter: blur(6px);
+  transform: scale(1.045);
+}
+.scene-wash { position: absolute; inset: 0; background: #fff; opacity: .92; z-index: 1; pointer-events: none; }
+.story-frame {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  margin-top: -100svh;
+  z-index: 4;
+  overflow: visible;
+  pointer-events: none;
+}
+.story-frame:has(.chapter-more[open]) { z-index: 10; }
+.story-frame .chapter-meta, .story-frame .chapter-progress { pointer-events: none; }
+.story-frame .photo-full, .story-frame .chapter-more { pointer-events: auto; }
+.chapter-content {
+  position: relative;
+  z-index: 2;
+  margin-top: -100svh;
+  padding: 0 max(36px, calc((100vw - 1280px) / 2)) 200px;
+}
+.chapter-content .chapter-copy {
+  width: min(1040px, 100%);
+  min-height: 100svh;
+  margin-inline: auto;
+  padding: 112px 0 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  opacity: 1;
+  transform: none;
+}
+.chapter-copy h2 { width: 100%; }
+.chapter-narrative {
+  width: min(1040px, 100%);
+  margin: 0 auto;
+  padding-top: 12px;
+  color: var(--case-ink, #17364e);
+}
+.chapter-narrative > .eyebrow, .chapter-narrative header .eyebrow { color: var(--scene-accent, #22638b); margin: 0 0 19px; }
+.chapter-narrative h3 {
+  max-width: 860px;
+  font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+  line-height: 1.18;
+  letter-spacing: -.045em;
+  margin: 0 0 32px;
+  color: var(--case-ink, #17364e);
+}
+.chapter-narrative p:not(.eyebrow) {
+  max-width: 68ch;
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: #334f60;
+  margin: 0 0 32px;
+}
+.chapter-narrative p:last-child { margin-bottom: 0; }
+.chapter-narrative .narrative-block, .chapter-narrative .narrative-section { margin-top: 36px; padding-top: 20px; border-top: 1px solid #17364e1c; }
+.chapter-narrative h4 { margin: 0 0 13px; font-size: 1.08rem; line-height: 1.5; font-weight: 750; color: var(--scene-accent, #22638b); }
+.chapter-narrative strong { color: var(--case-ink, #17364e); font-weight: 700; }
+.chapter-narrative a { text-underline-offset: 4px; }
+.chapter-narrative .narrative-question,
+.chapter-narrative p.narrative-question,
+.chapter-narrative blockquote.narrative-question {
+  max-width: 62ch;
+  margin: 38px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 2px solid var(--scene-accent, #22638b);
+  color: var(--scene-accent, #22638b);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.7;
+}
+.chapter-narrative h3.narrative-question { font-size: clamp(1.65rem, 3vw, 2.35rem); line-height: 1.35; }
+.narrative-question p:not(.eyebrow) { color: inherit; font-size: inherit; line-height: inherit; margin: 0; }
+.chapter-narrative svg { display: block; max-width: 100%; height: auto; }
+.chapter-narrative figure { max-width: 100%; margin: 40px 0; }
+.chapter-narrative figcaption { max-width: 68ch; font-size: .82rem; line-height: 1.7; color: #526a78; margin-top: 16px; }
+.chapter-progress { display: none; }
+
+.photo-reading-active .chapter-content { margin-top: 0; }
+.photo-reading-active .story-photo { filter: blur(var(--reading-blur, 0px)); transform: scale(var(--reading-scale, 1.025)); }
+.photo-reading-active .scene-wash { opacity: var(--reading-white, 0); }
+.photo-reading-active .chapter-progress { display: block; }
+.photo-reading-active .chapter-progress span { transform: scaleX(var(--reading-progress, 0)); }
+.photo-reading-active .photo-story:focus-within .scene-wash { opacity: .94; }
+.photo-reading-active .photo-story:focus-within .chapter-copy { pointer-events: auto; }
+
+@media (max-width: 850px) {
+  .chapter-content { padding-inline: 30px; }
+  .chapter-content .chapter-copy { padding-block: 98px 110px; }
+}
+
+@media (max-width: 700px) {
+  .chapter-content { padding-inline: 24px; padding-bottom: 180px; }
+  .chapter-content .chapter-copy { padding-block: 95px 100px; }
+  .chapter-narrative { padding-top: 16px; }
+  .chapter-narrative h3 { font-size: clamp(1.8rem, 7vw, 2.3rem); margin-bottom: 27px; }
+  .chapter-narrative p:not(.eyebrow) { font-size: 1.02rem; line-height: 1.85; margin-bottom: 28px; }
+  .chapter-narrative .narrative-question, .chapter-narrative p.narrative-question { margin-block: 32px; padding-left: 19px; font-size: 1.16rem; }
+  .chapter-narrative figure { margin-block: 32px; }
+}
+
+@media (max-width: 360px) {
+  .chapter-content { padding-inline: 20px; }
+  .chapter-narrative p:not(.eyebrow) { font-size: 1rem; }
+  .chapter-narrative .narrative-question, .chapter-narrative p.narrative-question { font-size: 1.08rem; padding-left: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-photo { transform: scale(1.045); }
+  .chapter-progress { display: none; }
+  .chapter-more summary, .more-icon { transition: none; }
+  .more-panel { animation: none; }
+}

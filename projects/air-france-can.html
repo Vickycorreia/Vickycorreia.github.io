@@ -10,13 +10,16 @@
   <link rel="stylesheet" href="../assets/project.css">
   <link rel="stylesheet" href="../assets/air-france.css">
   <link rel="stylesheet" href="../assets/air-france-technical.css">
-  <script src="../assets/air-france.js" defer></script>
   <script src="../assets/air-france-technical.js" defer></script>
 
 <link rel="stylesheet" href="../assets/language.css">
 <script src="../assets/language.js" defer></script>
 <link rel="alternate" hreflang="en" href="/projects/air-france-can.html">
 <link rel="alternate" hreflang="fr" href="/fr/projects/air-france-can.html">
+  <link rel="stylesheet" href="../assets/photo-reading.css">
+  <link rel="stylesheet" href="../assets/story-demos.css">
+  <script src="../assets/photo-reading.js" defer></script>
+  <script src="../assets/story-demos.js" defer></script>
 </head>
 <body class="air-france-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -48,6 +51,8 @@
           <img class="story-photo" src="../assets/air-france/workbench-public.webp" width="1672" height="941" alt="Blue-and-white technical montage of an open electrical enclosure on a workbench, with a line drawing and close-ups of relays and wiring." fetchpriority="high" decoding="async">
           <figcaption class="photo-label">01 / Electronics at the workbench</figcaption>
         </figure>
+      </div>
+      <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>01 / 04</span><span>Hands-on electronics</span></div>
         <a class="photo-full" href="../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full workbench montage (opens in a new tab)">View full image</a>
         <details class="chapter-more" name="chapter-information">
@@ -62,15 +67,34 @@
             <h4>Ground reference</h4><p>I checked the connection between the PDU case ground and the prototype GND while diagnosing communication. The system connections included terminals labelled +28 V and −28 V.</p>
           </div>
         </details>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+      <div class="chapter-content">
         <div class="chapter-copy">
           <p class="eyebrow">01 / A closer look</p>
           <h2 id="workbench-title"><span class="title-line">Every wire.</span> <span class="title-line title-accent">Up close.</span></h2>
           <p class="chapter-lead">Before building the prototype, I studied the PDU, its existing test bench and electrical connections.</p>
           <p>I measured the CAN interface and checked wiring and ground references during communication troubleshooting.</p>
           <ul class="chapter-tags" aria-label="Key topics"><li>System analysis</li><li>Electrical measurements</li><li>Ground references</li></ul>
-          <a class="chapter-next" href="#pdu">Meet the equipment <span aria-hidden="true">→</span></a>
+
         </div>
-        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+        <article class="chapter-narrative" aria-labelledby="workbench-narrative-title">
+          <p class="eyebrow">01 / Understand before connecting</p>
+          <h3 class="narrative-question" id="workbench-narrative-title">What must be checked before a prototype can communicate?</h3>
+          <div class="narrative-block">
+            <h4>Start from the existing system</h4>
+            <p>During my one-month internship in Orly, I joined the EL52 team with Mathéo Lopes Boto as my tutor. The team already had a bench for testing the aircraft Power Distribution Unit. My assignment was to study that system and develop a compact prototype for selected checks. The workbench photograph places this task in its practical electrical environment: equipment, connections and measurements.</p>
+          </div>
+          <div class="narrative-block">
+            <h4>Look beyond the software</h4>
+            <p>The first question was how the electronics would connect to the equipment. I examined the PDU connections, including CANH, CANL and Case Ground, alongside the labelled power terminals. During the communication investigation, I checked wiring and the reference between the PDU case ground and the prototype GND. A possible receive-path problem had to be examined across the physical interface as well as the program.</p>
+          </div>
+          <div class="narrative-block">
+            <h4>Use measurements as evidence</h4>
+            <p>I measured approximately 114 Ω between CANH and CANL. That reading was one observation to consider alongside configuration, wiring and grounding checks. It did not establish the condition of the entire communication chain. The lesson was to connect each software symptom with physical observations, then compare the evidence before deciding which part of the system needed further investigation.</p>
+          </div>
+          <a class="chapter-next" href="#pdu">Meet the equipment <span aria-hidden="true">→</span></a>
+        </article>
       </div>
     </section>
 
@@ -81,6 +105,8 @@
           <img class="story-photo" src="../assets/air-france/pdu-test-public.webp" width="1672" height="941" alt="Blue-and-white technical montage of an aircraft Power Distribution Unit and its test panel, with a line drawing and close-ups of the controls." loading="lazy" decoding="async">
           <figcaption class="photo-label">02 / The Power Distribution Unit and test setup</figcaption>
         </figure>
+      </div>
+      <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>02 / 04</span><span>Aircraft equipment</span></div>
         <a class="photo-full" href="../assets/air-france/pdu-test-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full PDU montage (opens in a new tab)">View full image</a>
         <details class="chapter-more" name="chapter-information">
@@ -95,15 +121,34 @@
             <h4>The diagnostic menu</h4><p>I developed a diagnostic menu, with planned categories for identification, PCB status, faults, address pins, functional status and I1 / I2 / I3 information. The target was direct consultation of useful diagnostic information without a computer.</p>
           </div>
         </details>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+      <div class="chapter-content">
         <div class="chapter-copy">
           <p class="eyebrow">02 / The equipment behind the project</p>
           <h2 id="pdu-title"><span class="title-line">One system.</span> <span class="title-line title-accent">Many signals.</span></h2>
           <p class="chapter-lead">A compact CAN diagnostic prototype for an aircraft Power Distribution Unit.</p>
           <p>I developed test-frame software and an LCD diagnostic menu around the UNO R4 Minima.</p>
           <ul class="chapter-tags" aria-label="Key topics"><li>CAN 2.0B</li><li>125 kbit/s</li><li>20×4 LCD</li></ul>
-          <a class="chapter-next" href="#electrical-systems">Explore the industrial setting <span aria-hidden="true">→</span></a>
+
         </div>
-        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+        <article class="chapter-narrative" aria-labelledby="pdu-narrative-title">
+          <p class="eyebrow">02 / From a maintenance need to a prototype</p>
+          <h3 class="narrative-question" id="pdu-narrative-title">How could selected PDU checks fit into a compact diagnostic tool?</h3>
+          <div class="narrative-block">
+            <h4>Define a practical objective</h4>
+            <p>The existing bench provided the starting point. The objective was a smaller, transportable device that would let a technician perform selected checks without using a computer. I developed the prototype architecture around an Arduino UNO R4 Minima with a Renesas RA4M1 microcontroller, an SN65HVD230-based transceiver—the interface linking the microcontroller to the CAN bus—and a 20×4 LCD connected through I²C. Each component served a different part of the diagnostic chain.</p>
+          </div>
+          <div class="narrative-block">
+            <h4>Turn the protocol into software</h4>
+            <p>The PDU uses CAN 2.0B with extended 29-bit identifiers at 125 kbit/s. I worked on CAN initialization and developed a test-frame function using identifier 0x06000021 with DLC = 0, meaning no data bytes. The next questions concerned reception and interpretation: how to read a reply, separate its fields and turn raw bytes into information the user could understand. I explored field groupings while developing the embedded software.</p>
+          </div>
+          <div class="narrative-block">
+            <h4>Design for the technician</h4>
+            <p>I developed an LCD menu with planned categories for identification, PCB status, faults, address pins, functional status and I1 / I2 / I3 information. The interface was intended to make those categories directly accessible. Useful diagnostic results depend on correctly received and interpreted replies, however. The menu and request software formed part of the prototype; reception became a central investigation within the project.</p>
+          </div>
+          <a class="chapter-next" href="#electrical-systems">Explore the industrial setting <span aria-hidden="true">→</span></a>
+        </article>
       </div>
     </section>
 
@@ -114,6 +159,8 @@
           <img class="story-photo" src="../assets/air-france/electrical-cabinet-public.webp" width="1672" height="941" alt="Blue-and-white technical montage of an industrial electrical cabinet, with a line drawing and close-ups of orange drive controllers and wiring." loading="lazy" decoding="async">
           <figcaption class="photo-label">03 / Inside the industrial environment</figcaption>
         </figure>
+      </div>
+      <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>03 / 04</span><span>Industrial systems</span></div>
         <a class="photo-full" href="../assets/air-france/electrical-cabinet-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full electrical cabinet montage (opens in a new tab)">View full image</a>
         <details class="chapter-more" name="chapter-information">
@@ -128,15 +175,67 @@
             <h4>Engineering work in context</h4><p>The investigation combined electrical measurements, protocol analysis and embedded debugging. The cabinet image shows the industrial environment around this PDU project.</p>
           </div>
         </details>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+      <div class="chapter-content">
         <div class="chapter-copy">
           <p class="eyebrow">03 / Beyond the prototype</p>
           <h2 id="electrical-systems-title"><span class="title-line">Power.</span> <span class="title-line title-accent">Under control.</span></h2>
           <p class="chapter-lead">An industrial setting—and a real CAN reception challenge.</p>
           <p>I compared the prototype with PCAN and investigated configuration, wiring, ground references and software reception.</p>
           <ul class="chapter-tags" aria-label="Key topics"><li>CAN reception</li><li>PCAN comparison</li><li>Troubleshooting</li></ul>
-          <a class="chapter-next" href="#aerospace-workshop">Step into the workshop <span aria-hidden="true">→</span></a>
+
         </div>
-        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+        <article class="chapter-narrative" aria-labelledby="electrical-systems-narrative-title">
+          <p class="eyebrow">03 / Observe, compare and investigate</p>
+          <h3 class="narrative-question" id="electrical-systems-narrative-title">If the PDU was communicating, why was the prototype missing its replies?</h3>
+          <div class="narrative-block">
+            <h4>Separate what was observed</h4>
+            <p>The electrical cabinet photograph shows the industrial setting around the project. The debugging work concerned the PDU prototype: CAN initialization worked and TX activity was visible, but the UNO R4 did not correctly read the expected responses. A professional PCAN interface showed communication from the PDU. This comparison gave a reference observation and directed attention towards the prototype’s reception chain and its connection to the bus.</p>
+          </div>
+          <div class="narrative-block">
+            <h4>Build a testable investigation</h4>
+            <p>The working hypothesis was that the difficulty could lie in the receiving interface or its configuration. I checked the 125 kbit/s setting, extended identifiers and CANH/CANL connections, together with TX/RX wiring, transceiver power, logic compatibility and bus termination. Shared ground and Case Ground were also examined. On the software side, I analysed frame reading and the behaviour of CAN.read(). These were possible contributing factors to investigate.</p>
+          </div>
+          <div class="narrative-block">
+            <h4>Keep the conclusion within the evidence</h4>
+            <p>Visible TX activity alone did not establish a successful request-and-response exchange. The PCAN comparison showed that the PDU could communicate, while expected-reply reception on the prototype required further investigation. The practical outcome presented here is a structured diagnosis across hardware, protocol and software. The PCAN comparison provided a concrete reference for focusing the receive tests and continuing the investigation.</p>
+          </div>
+                    <figure class="story-demo" data-demo="receive-paths" aria-labelledby="rx-heading">
+            <div class="story-demo__heading">
+              <h3 id="rx-heading">Compare the receive paths</h3>
+              <span class="story-demo__label">Reported observations</span>
+            </div>
+            <svg class="story-demo__diagram" viewBox="0 0 620 270" role="img" aria-labelledby="rx-title rx-desc">
+              <title id="rx-title">Two receive paths tested with the PDU</title>
+              <desc id="rx-desc">The PDU connects to a PCAN reference interface and an Arduino UNO prototype. Communication was observed with the PCAN reference. The prototype did not correctly read the expected responses, and these trials helped focus the diagnosis. This comparison illustrates the observations without identifying a cause.</desc>
+              <path class="rx-route" data-rx-route="reference" id="rx-reference-path" d="M174 135 H207 Q223 135 223 119 V73 Q223 57 239 57 H332" />
+              <path class="rx-route" data-rx-route="prototype" id="rx-prototype-path" d="M174 135 H207 Q223 135 223 151 V197 Q223 213 239 213 H332" />
+              <g aria-hidden="true">
+                <rect class="rx-source" x="24" y="96" width="150" height="78" rx="6" />
+                <text class="demo-label-strong" x="99" y="131" text-anchor="middle">PDU</text><text class="demo-label" x="99" y="155" text-anchor="middle">Test source</text>
+                <rect class="rx-device" x="332" y="14" width="258" height="86" rx="6" />
+                <text class="demo-label" x="352" y="45">Reference</text><text class="demo-label-strong" x="352" y="74">PCAN interface</text>
+                <rect class="rx-device" x="332" y="170" width="258" height="86" rx="6" />
+                <text class="demo-label" x="352" y="201">Prototype</text><text class="demo-label-strong" x="352" y="230">Arduino UNO</text>
+                <circle class="rx-port" cx="174" cy="135" r="4" /><circle class="rx-port" cx="332" cy="57" r="4" /><circle class="rx-port" cx="332" cy="213" r="4" />
+                <circle class="rx-marker" data-rx-marker="reference" cx="566" cy="57" r="8" /><circle class="rx-marker" data-rx-marker="prototype" cx="566" cy="213" r="8" />
+              </g>
+              <circle class="rx-pulse" data-rx-pulse="reference" cx="174" cy="135" r="5" aria-hidden="true" />
+              <circle class="rx-pulse" data-rx-pulse="prototype" cx="174" cy="135" r="5" aria-hidden="true" />
+            </svg>
+            <dl class="story-demo__observations">
+              <div data-rx-stage="reference"><dt>PCAN reference</dt><dd>Communication observed.</dd></div>
+              <div data-rx-stage="prototype"><dt>Arduino UNO prototype</dt><dd>Expected responses were not read correctly. The comparison helped focus the diagnosis.</dd></div>
+            </dl>
+            <div class="story-demo__controls" hidden>
+              <button type="button" data-demo-play>Follow both paths</button>
+              <span data-demo-status role="status" aria-live="polite">Two test paths, with different observed results.</span>
+            </div>
+            <figcaption class="story-demo__caption"><strong>The reference establishes a comparison; the prototype required further receive-side analysis.</strong><small>Educational illustration of the receive paths. Moving markers do not represent recorded CAN frames, measured timing or a diagnosed fault.</small></figcaption>
+          </figure>
+          <a class="chapter-next" href="#aerospace-workshop">Step into the workshop <span aria-hidden="true">→</span></a>
+        </article>
       </div>
     </section>
 
@@ -147,6 +246,8 @@
           <img class="story-photo" src="../assets/air-france/engine-workshop-public.webp" width="1672" height="941" alt="Blue-and-white technical montage of an aircraft engine assembly with yellow protective caps, a line drawing and close-ups of its components." loading="lazy" decoding="async">
           <figcaption class="photo-label">04 / The aerospace workshop</figcaption>
         </figure>
+      </div>
+      <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>04 / 04</span><span>Aerospace context</span></div>
         <a class="photo-full" href="../assets/air-france/engine-workshop-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full aircraft engine montage (opens in a new tab)">View full image</a>
         <details class="chapter-more" name="chapter-information">
@@ -161,15 +262,34 @@
             <h4>The wider workshop</h4><p>The engine montage illustrates the environment around the PDU project. This experience strengthened my interest in embedded systems for aeronautics and space.</p>
           </div>
         </details>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+      <div class="chapter-content">
         <div class="chapter-copy">
           <p class="eyebrow">04 / The bigger picture</p>
           <h2 id="aerospace-workshop-title"><span class="title-line">Aerospace.</span> <span class="title-line title-accent">Within reach.</span></h2>
           <p class="chapter-lead">An aircraft engine assembly. A wider view of the aerospace environment surrounding my internship.</p>
           <p>A month of electronic prototyping and CAN diagnostics in Orly connected my ENSEA studies with aeronautical maintenance.</p>
           <ul class="chapter-tags" aria-label="Key topics"><li>Aerospace</li><li>Embedded engineering</li><li>Practical experience</li></ul>
-          <a class="chapter-next" href="#prototype-architecture">Inside the prototype <span aria-hidden="true">→</span></a>
+
         </div>
-        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+        <article class="chapter-narrative" aria-labelledby="aerospace-workshop-narrative-title">
+          <p class="eyebrow">04 / Engineering within an aerospace workshop</p>
+          <h3 class="narrative-question" id="aerospace-workshop-narrative-title">What changes when classroom electronics meets aircraft maintenance?</h3>
+          <div class="narrative-block">
+            <h4>Put the project in its setting</h4>
+            <p>The engine photograph gives a wider view of the aeronautical maintenance environment at Air France Industries. My assigned project concerned the Power Distribution Unit and its diagnostic prototype. Working around real equipment connected an embedded-systems problem with a technician’s practical needs: a compact device, a readable interface and selected checks that could be carried out with simpler equipment.</p>
+          </div>
+          <div class="narrative-block">
+            <h4>Follow the whole information chain</h4>
+            <p>The project linked skills that are often studied separately. Electrical measurements and ground references concerned the physical interface; CAN configuration and frame handling concerned communication; C/C++ and the LCD menu concerned software and the user interface. Comparing the prototype with PCAN brought those parts together. A question about a missing reply could require checking connections, protocol settings and program behaviour within the same investigation.</p>
+          </div>
+          <div class="narrative-block">
+            <h4>Learn from the scope of the work</h4>
+            <p>The work covered system analysis, prototype architecture, test-frame software, LCD menu development and CAN reception troubleshooting. A complete diagnostic sequence would require reliable replies and their interpretation; that was the target behind the interface. For me, the experience made the connection between electronics, embedded systems and aeronautics concrete. It strengthened my interest in aerospace applications and in engineering methods based on observation, comparison and careful interpretation.</p>
+          </div>
+          <a class="chapter-next" href="#prototype-architecture">Inside the prototype <span aria-hidden="true">→</span></a>
+        </article>
       </div>
     </section>
 
