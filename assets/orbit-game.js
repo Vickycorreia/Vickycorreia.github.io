@@ -678,14 +678,14 @@
   };
   if ('ResizeObserver' in window) new ResizeObserver(sizeHitArea).observe(svg);
   else window.addEventListener('resize', sizeHitArea, { passive: true });
-  const home = root.closest('#home');
+  const home = root.closest('#orbit') || root.closest('#home');
   if (home) {
     const syncHome = () => {
       const rect = home.getBoundingClientRect();
       root.classList.toggle('orbit-home-visible', rect.bottom > 0 && rect.top < window.innerHeight);
     };
     syncHome();
-    if ('IntersectionObserver' in window) new IntersectionObserver(syncHome, { threshold: 0 }).observe(home);
+    if ('IntersectionObserver' in window) new IntersectionObserver(syncHome, { threshold: [0, .001] }).observe(home);
     else window.addEventListener('scroll', syncHome, { passive: true });
   }
   document.body.classList.add('has-orbit-game');

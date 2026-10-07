@@ -1,0 +1,90 @@
+/* The portrait introduces the person; the next section opens his project universe. */
+.portrait-home { min-height: 100svh; background: #edf4f3; justify-content: center; }
+.portrait-home .intro-portrait { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 43%; z-index: -3; }
+.portrait-home .portrait-veil { position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg, #f7f6f1fa 0%, #f4f5f0e8 25%, #f0f5f2b8 42%, #edf4f31a 65%, #edf4f305), linear-gradient(0deg, #edf4f3 0%, #edf4f3c2 8%, #edf4f300 30%); }
+.portrait-home .space-layout { display: block; padding-block: 145px 125px; }
+.portrait-home .personal-intro { max-width: 500px; }
+.portrait-home h1 { font-size: clamp(4.8rem, 7.5vw, 7.2rem); margin-block: 26px; }
+.portrait-home .intro-description { max-width: 440px; color: #355367; font-size: 1rem; }
+.portrait-home .intro-topics { color: #355367; }
+.portrait-home .home-footline { bottom: 30px; color: #35576a; }
+.portrait-home .home-footline a { min-height: 44px; }
+.portrait-home .button.ghost { background: #f5f6f2a8; }
+.orbit-exploration { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 57% 40%, #cfe6eb70, transparent 61%), linear-gradient(#edf4f3, #f3f5ef 84%, #dfeef4); color: #17364e; min-height: 100svh; padding-block: 100px 70px; }
+.orbit-exploration .space-stars { background: none; opacity: .85; mask-image: linear-gradient(transparent, #000 12%, #000 80%, transparent); }
+.orbit-exploration:has(.orbit-inactive) .hero-star-glow { animation-play-state: paused; }
+.orbit-universe { max-width: 1120px; }
+.orbit-universe .orbit-illustration { max-width: none; }
+.orbit-universe .orbit-header { margin-bottom: 22px; }
+.orbit-universe .orbit-brand { font-size: .68rem; }
+.orbit-universe .orbit-header h2 { font-size: clamp(2.25rem, 4.5vw, 3.8rem); letter-spacing: -.055em; }
+.orbit-universe .orbit-destinations { gap: 5px 26px; }
+.orbit-universe .orbit-selector-label { font-size: .73rem; }
+.orbit-universe .orbit-destinations button { font-size: .85rem; }
+.orbit-universe .orbit-console { grid-template-columns: minmax(0, 1fr) 190px; gap: 40px; }
+.orbit-universe .orbit-stage { max-width: 810px; }
+.orbit-universe .orbit-system { max-height: min(65svh, 680px); }
+.orbit-universe .orbit-mission { padding: 25px 0 20px 24px; }
+.orbit-universe .mission-heading { font-size: .65rem; margin-bottom: 24px; }
+.orbit-universe .orbit-controls button { font-size: .8rem; min-height: 48px; }
+.orbit-universe .mission-target { margin-block: 24px; }
+.orbit-universe .mission-target dt, .orbit-universe .mission-telemetry dt { font-size: .67rem; }
+.orbit-universe .mission-target dd { font-size: .78rem; }
+.orbit-universe .mission-telemetry { gap: 22px 14px; }
+.orbit-universe .mission-telemetry dd { font-size: 1.08rem; }
+.orbit-universe .mission-telemetry small, .orbit-universe .mission-units { font-size: .6rem; }
+.orbit-universe .orbit-projects { gap: 0 24px; margin-top: 15px; }
+.orbit-universe .orbit-projects > span { font-size: .7rem; }
+.orbit-universe .orbit-projects a { font-size: .78rem; }
+.orbit-universe .orbit-state-label, .orbit-universe .orbit-power { font-size: .75rem; }
+.orbit-universe .orbit-message { font-size: 1rem; }
+.orbit-universe .orbit-detail { font-size: .86rem; }
+.orbit-universe #orbit-instructions { font-size: .8rem; }
+.orbit-universe .orbit-note, .orbit-universe #orbit-keyboard { font-size: .68rem; }
+.orbit-universe .arrival-title { font-size: .88rem; }
+.orbit-exploration + .feature { min-height: 360px; }
+.orbit-exploration + .feature .panel-content { padding-block: 65px; }
+.orbit-exploration + .feature h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); }
+@media (min-width: 761px) and (max-width: 1000px) {
+  .portrait-home .personal-intro { max-width: 440px; }
+  .portrait-home .portrait-veil { background: linear-gradient(90deg, #f7f6f1fa, #f1f5f2c9 44%, #edf4f305 80%), linear-gradient(0deg, #edf4f3, #edf4f300 30%); }
+  .orbit-universe .orbit-console { grid-template-columns: minmax(0, 1fr) 165px; gap: 24px; }
+  .orbit-universe .orbit-mission { padding-left: 17px; }
+  .orbit-universe .mission-heading { font-size: .57rem; }
+}
+@media (max-width: 760px) {
+  .portrait-home { min-height: 100svh; justify-content: start; }
+  .portrait-home .intro-portrait { top: 95px; height: 510px; object-position: 59% 15%; }
+  .portrait-home .portrait-veil { background: linear-gradient(0deg, #edf4f3 0%, #edf4f3 38%, #edf4f3f0 48%, #edf4f370 66%, #edf4f300 84%); }
+  .portrait-home .space-layout { padding-block: 310px 115px; }
+  .portrait-home .personal-intro { max-width: 520px; }
+  .portrait-home h1 { font-size: clamp(3.6rem, 14.5vw, 5.4rem); margin-block: 20px; }
+  .portrait-home .intro-role { font-size: .95rem; }
+  .portrait-home .intro-description { font-size: .91rem; line-height: 1.7; }
+  .portrait-home .intro-topics { margin-top: 18px; gap: 9px 16px; }
+  .portrait-home .intro-actions { margin-top: 24px; }
+  .portrait-home .button { font-size: .8rem; padding: 13px 16px; gap: 16px; min-height: 48px; }
+  .portrait-home .home-footline { display: flex; flex-direction: column; align-items: start; gap: 6px; bottom: 18px; font-size: .66rem; padding-top: 12px; }
+  .orbit-exploration { padding-block: 75px 45px; }
+  .orbit-universe .orbit-illustration { max-width: none; }
+  .orbit-universe .orbit-header h2 { font-size: clamp(2.1rem, 9vw, 3rem); }
+  .orbit-universe .orbit-console { grid-template-columns: 1fr; gap: 12px; }
+  .orbit-universe .orbit-system { max-height: none; }
+  .orbit-universe .orbit-destinations { gap: 3px 18px; }
+  .orbit-universe .orbit-destinations button { font-size: .75rem; }
+  .orbit-universe .orbit-mission { padding: 17px 0; }
+  .orbit-universe .mission-heading { margin-bottom: 14px; }
+  .orbit-universe .mission-target { margin-block: 0 15px; }
+  .orbit-universe .mission-telemetry { gap: 17px 12px; }
+  .orbit-universe .mission-telemetry dd { font-size: .95rem; }
+  .orbit-universe .orbit-projects { gap: 0 17px; }
+  .orbit-universe .orbit-projects a { font-size: .72rem; }
+  .orbit-universe .arrival-title { font-size: .69rem; }
+  .orbit-exploration + .feature { min-height: 300px; }
+  .orbit-exploration + .feature .panel-content { padding-block: 50px; }
+}
+@media (min-width: 761px) and (max-height: 500px) {
+  .portrait-home .space-layout { padding-block: 120px 110px; }
+  .portrait-home h1 { font-size: 4.5rem; }
+  .orbit-universe .orbit-system { max-height: calc(100svh - 190px); }
+}

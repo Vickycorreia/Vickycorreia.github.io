@@ -1,0 +1,73 @@
+/* Small flight instruments connect the menus without competing with the stories. */
+.nav .links a,
+.nav .nav-links a,
+.case-jump-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.nav .links a,
+.nav .nav-links a { min-height: 44px; white-space: nowrap; }
+.nav .links a:first-child { display: inline-flex; }
+.space-menu-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  color: currentColor;
+  opacity: .72;
+}
+.nav a:hover .space-menu-icon,
+.nav a[aria-current="location"] .space-menu-icon { opacity: 1; }
+.case-jump-links .space-menu-icon { width: 13px; height: 13px; }
+.page-flight-progress {
+  --flight-progress: 0;
+  --flight-progress-top: 0px;
+  position: fixed;
+  z-index: 21;
+  inset: var(--flight-progress-top) 0 auto;
+  height: 10px;
+  pointer-events: none;
+  color: #396b82;
+}
+.page-flight-progress[hidden] { display: none; }
+.flight-progress-track,
+.flight-progress-fill {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+}
+.flight-progress-track { background: linear-gradient(90deg, #b9ced536, #8cabb34d, #b9ced536); }
+.flight-progress-fill {
+  width: calc(var(--flight-progress) * 100%);
+  background: linear-gradient(90deg, #8eafbc7a, #527e93aa, #b78359bd);
+}
+.flight-progress-ship {
+  position: absolute;
+  top: -5px;
+  left: clamp(10px, calc(var(--flight-progress) * 100%), calc(100% - 10px));
+  width: 15px;
+  height: 15px;
+  transform: translateX(-50%) rotate(90deg);
+  color: #a0704c;
+  filter: drop-shadow(0 0 3px #f8f6f1c9);
+}
+@media (max-width: 850px) {
+  .nav > nav.links { gap: 16px; }
+  .nav .links a { font-size: .75rem; gap: 5px; }
+  .nav .links .space-menu-icon { width: 12px; height: 12px; }
+}
+@media (max-width: 420px) {
+  .nav > nav.links { gap: 10px; justify-content: space-between; }
+  .nav .links a { font-size: .7rem; gap: 4px; }
+  .nav .links .space-menu-icon { width: 11px; height: 11px; }
+}
+@media (max-width: 360px) {
+  .nav > nav.links { gap: 6px; }
+  .nav .links a { font-size: .66rem; gap: 3px; }
+  .nav .links .space-menu-icon { width: 10px; height: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-flight-progress * { transition: none; }
+}

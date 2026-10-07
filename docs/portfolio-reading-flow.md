@@ -1,6 +1,8 @@
 # Portfolio reading flow
 
-The home page uses five chapter anchors: Launch (`home`), Projects (`projects`), Lab (`films`), About (`about`) and Contact (`contact`). A discrete navigation rail links the sections and follows reading progress. On narrow viewports it becomes a thin edge line; native chapter links remain functional without JavaScript.
+The home page uses six chapter anchors: Launch (`home`), Orbit (`orbit`), Projects (`projects`), Lab (`films`), About (`about`) and Contact (`contact`). The supplied laboratory portrait introduces Victor on the first screen, with a subtle colour grade and CSS ivory/blue gradients. This full-bleed image has a descriptive text alternative. The orbital experiment occupies its own full-width section immediately afterwards. Its physics and project destinations are unchanged; mobile flight controls follow the visibility of this section rather than the portrait welcome.
+
+A discreet navigation rail links these sections and follows reading progress with a small rocket. On narrow viewports it becomes a thin edge line; native chapter links remain functional without JavaScript. Rocket/satellite icons accompany navigation links, while a separate slim gauge below the header tracks total page progress on all twelve pages. Project headers scroll away normally, leaving the gauge at the top. The gauge has an accessible percentage without continuous live announcements and updates only on scroll, resize or layout changes. With JavaScript disabled it stays hidden while native navigation remains available.
 
 The Lab Notes / In action section contains three genuine supplied clips: rotating drum, steady sand flow and isolated-ball rebound. The complete five-video collection remains in the sand project. Home clips use manual native controls. No CAN or infrared demo video has been supplied, so no substitute footage is attributed to those projects.
 
