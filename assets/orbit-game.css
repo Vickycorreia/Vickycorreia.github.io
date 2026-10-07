@@ -1,0 +1,169 @@
+/* The playable solar-system illustration stays within the personal introduction. */
+.space-home:has(.orbit-game) { justify-content: flex-start; min-height: 100svh; }
+.space-home:has(.orbit-game) .space-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  align-items: center;
+  gap: 36px;
+  padding-block: 142px 48px;
+}
+.space-illustration.orbit-illustration { width: 100%; max-width: 660px; min-width: 0; margin: 0; justify-self: end; align-self: start; }
+.space-home:has(.orbit-game) .home-footline { position: relative; inset: auto; flex-shrink: 0; margin-bottom: 30px; }
+
+.orbit-game {
+  --orbit-ink: #17364e;
+  --orbit-muted: #536d7b;
+  --orbit-accent: #22638b;
+  --orbit-signal: #2f7370;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #a9c5cd;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #faf9f4ee, #edf5f4dc);
+  color: var(--orbit-ink);
+  box-shadow: 0 18px 65px #24465b0c;
+}
+.orbit-game[data-state="flying"] { --orbit-signal: #22638b; }
+.orbit-game[data-state="orbit"] { --orbit-signal: #26756c; }
+.orbit-game[data-state="crash"], .orbit-game[data-state="collision"] { --orbit-signal: #a3472b; }
+.orbit-game[data-state="escape"] { --orbit-signal: #67429a; }
+.orbit-game .orbit-header { position: relative; z-index: 2; margin-bottom: 17px; }
+.orbit-game .orbit-brand { margin: 0 0 8px; color: #805331; font-size: .59rem; font-weight: 750; line-height: 1.5; letter-spacing: .18em; }
+.orbit-game .orbit-header h2 { margin: 0; color: var(--orbit-ink); font-size: clamp(1.3rem, 2.4vw, 1.85rem); font-weight: 750; line-height: 1.2; letter-spacing: -.04em; }
+
+.orbit-game .orbit-destinations { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 8px; }
+.orbit-game button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #adcad2;
+  border-radius: 10px;
+  color: var(--orbit-ink);
+  background: #fafbf8;
+  font: inherit;
+  font-size: .76rem;
+  font-weight: 650;
+  line-height: 1.4;
+  text-align: center;
+  cursor: pointer;
+  transition: background .18s, border-color .18s, color .18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.orbit-game button:hover:not(:disabled) { background: #e0edf0; border-color: #658c9b; }
+.orbit-game button:disabled { color: #657c87; background: #eef3f2; border-color: #c2d3d7; cursor: default; }
+.orbit-game button[hidden] { display: none; }
+.orbit-game button:focus-visible,
+.orbit-game .orbit-system:focus-visible { outline: 3px solid #a36c38; outline-offset: 4px; }
+.orbit-game .orbit-destinations button { padding: 9px 13px; border-radius: 22px; font-size: .73rem; }
+.orbit-game .orbit-planet-dot { width: 11px; height: 11px; flex-shrink: 0; border-radius: 50%; background: #3e8994; box-shadow: inset -3px -2px 0 #17364e25; }
+.orbit-game .orbit-planet-dot.mars { background: #bd7350; }
+.orbit-game .orbit-planet-dot.saturn { background: #c59d60; }
+.orbit-game .orbit-destinations button[aria-pressed="true"] { color: #fff; background: #17364e; border-color: #17364e; }
+.orbit-game .orbit-destinations button[aria-pressed="true"]:hover:not(:disabled) { background: #28566e; border-color: #28566e; }
+.orbit-game .orbit-destinations button[aria-pressed="true"]:disabled { color: #f4f7f6; background: #4e6c7d; border-color: #4e6c7d; }
+
+.orbit-game .orbit-stage { position: relative; min-width: 0; margin: 4px -12px 8px; }
+.orbit-game .orbit-system { display: block; width: 100%; height: auto; max-height: min(420px, 46svh); margin: auto; border-radius: 18px; overflow: hidden; touch-action: none; }
+.has-orbit-game .orbit-game .orbit-system { cursor: crosshair; }
+.has-orbit-game .orbit-game[data-state="flying"] .orbit-system,
+.has-orbit-game .orbit-game[data-state="orbit"] .orbit-system { cursor: default; }
+.has-orbit-game .orbit-game .orbit-rocket { cursor: grab; }
+.orbit-game .orbit-rocket { filter: drop-shadow(0 3px 5px #17364e18); }
+.orbit-game .orbit-star, .orbit-game .orbit-solar-ring,
+.orbit-game .orbit-preview-path, .orbit-game .orbit-aim-arrow,
+.orbit-game .orbit-flight-trail, .orbit-game .orbit-impact-mark,
+.orbit-game .orbit-escape-mark { pointer-events: none; }
+.orbit-game .orbit-preview-path, .orbit-game .orbit-flight-trail { stroke-linecap: round; stroke-linejoin: round; }
+.has-orbit-game .orbit-game .orbit-star { animation: orbit-star-shimmer 7s ease-in-out infinite; }
+.has-orbit-game .orbit-game .orbit-star:nth-of-type(2n) { animation-delay: -3.5s; }
+.has-orbit-game .orbit-game .orbit-star:nth-of-type(3n) { animation-delay: -1.5s; }
+.has-orbit-game .orbit-game .orbit-sun-rays { animation: orbit-ray-glow 9s ease-in-out infinite; }
+.orbit-game.orbit-inactive .orbit-star, .orbit-game.orbit-inactive .orbit-sun-rays,
+.orbit-game.orbit-paused .orbit-star, .orbit-game.orbit-paused .orbit-sun-rays,
+.orbit-game[data-paused="true"] .orbit-star, .orbit-game[data-paused="true"] .orbit-sun-rays { animation-play-state: paused; }
+@keyframes orbit-star-shimmer { 0%, 100% { opacity: .3; } 50% { opacity: .7; } }
+@keyframes orbit-ray-glow { 0%, 100% { opacity: .52; } 50% { opacity: .82; } }
+.orbit-game .orbit-stage-note { position: absolute; left: 50%; bottom: 5px; max-width: 92%; margin: 0; padding: 6px 12px; border: 1px solid #bbd0d780; border-radius: 20px; color: #536d7b; background: #faf9f4df; font-size: .62rem; line-height: 1.6; text-align: center; transform: translateX(-50%); pointer-events: none; }
+
+.orbit-game .orbit-readout { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin: 0 0 13px; padding-top: 12px; border-top: 1px solid #aec8d14d; }
+.orbit-game .orbit-state-label { display: inline-flex; align-items: center; gap: 8px; color: var(--orbit-signal); font-size: .65rem; font-weight: 750; line-height: 1.6; letter-spacing: .05em; }
+.orbit-game .orbit-state-label::before { content: ""; width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: currentColor; }
+.orbit-game .orbit-power { color: var(--orbit-muted); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .64rem; line-height: 1.6; }
+.orbit-game .orbit-power output { color: var(--orbit-ink); font-weight: 750; }
+.orbit-game .orbit-status { min-height: 72px; margin: 0 0 15px; padding: 12px 14px; border-left: 2px solid var(--orbit-signal); border-radius: 0 10px 10px 0; background: #e0edf080; }
+.orbit-game .orbit-message { display: block; margin: 0 0 5px; color: var(--orbit-signal); font-size: .84rem; font-weight: 750; line-height: 1.5; }
+.orbit-game .orbit-detail { display: block; color: #496271; font-size: .74rem; line-height: 1.65; }
+.orbit-game .orbit-controls { display: flex; align-items: stretch; flex-wrap: wrap; gap: 8px; }
+.orbit-game .orbit-controls button { flex: 1 1 auto; }
+.orbit-game .orbit-controls .orbit-launch { flex-grow: 2; color: #fff; background: #17364e; border-color: #17364e; }
+.orbit-game .orbit-controls .orbit-launch:hover:not(:disabled) { background: #28566e; border-color: #28566e; }
+.orbit-game .orbit-controls .orbit-launch:disabled { color: #e5edee; background: #748d99; border-color: #748d99; }
+.orbit-game .orbit-launch > span[aria-hidden="true"] { position: relative; width: 9px; height: 9px; flex-shrink: 0; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; font-size: 0; }
+.orbit-game .orbit-launch > span[aria-hidden="true"]::before { content: ""; position: absolute; top: 3px; left: -2px; width: 11px; height: 1.5px; background: currentColor; transform: rotate(-45deg); }
+.orbit-game .orbit-pause[aria-pressed="true"] { color: #fff; background: #2f7370; border-color: #2f7370; }
+.orbit-game[data-paused="true"] .orbit-pause { color: #fff; background: #2f7370; border-color: #2f7370; }
+.orbit-game #orbit-instructions,
+.orbit-game #orbit-keyboard { margin: 13px 0 0; color: var(--orbit-muted); font-size: .69rem; line-height: 1.75; }
+.orbit-game #orbit-keyboard { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; font-size: .65rem; }
+.orbit-game:has(.orbit-system:focus-visible) #orbit-keyboard { position: static; width: auto; height: auto; margin: 7px 0 0; overflow: visible; clip-path: none; white-space: normal; }
+.orbit-game .orbit-note { margin: 14px 0 0; padding-top: 11px; border-top: 1px solid #aec8d14d; color: var(--orbit-muted); font-size: .62rem; line-height: 1.65; }
+.orbit-game kbd { padding: 2px 4px; border: 1px solid #bcced4; border-bottom-width: 2px; border-radius: 4px; background: #f8faf7; color: #294d60; font: inherit; }
+.orbit-game .orbit-fallback { display: block; margin: 14px 0 0; padding: 12px; border: 1px solid #cbb294; border-radius: 8px; color: #755233; background: #f4ece1; font-size: .72rem; line-height: 1.7; }
+
+@media (max-width: 1100px) {
+  .space-home:has(.orbit-game) .space-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 24px; }
+  .orbit-game { padding: 20px; }
+  .orbit-game .orbit-system { max-height: min(380px, 44svh); }
+}
+
+@media (max-width: 850px) {
+  .space-home:has(.orbit-game) .space-layout { padding-top: 150px; }
+}
+
+@media (min-width: 851px) {
+  .space-home:has(.orbit-game) .space-layout { padding-block: 118px 20px; }
+  .space-home:has(.orbit-game) .home-footline { margin-bottom: 18px; }
+  .orbit-game { padding: 20px; }
+  .orbit-game .orbit-header { margin-bottom: 14px; }
+  .orbit-game .orbit-system { max-height: clamp(300px, 37svh, 350px); }
+}
+
+@media (max-width: 760px) {
+  .space-home:has(.orbit-game) .space-layout { display: flex; gap: 42px; padding-block: 150px 32px; }
+  .space-illustration.orbit-illustration { width: 100%; max-width: 580px; align-self: center; margin: 0; }
+  .orbit-game { padding: 22px; }
+  .orbit-game .orbit-system { max-height: none; }
+  .orbit-game .orbit-stage { margin-inline: -12px; }
+  .space-home:has(.orbit-game) .home-footline { margin-bottom: 25px; }
+}
+
+@media (max-width: 420px) {
+  .orbit-game { padding: 18px; border-radius: 18px; }
+  .orbit-game .orbit-header { margin-bottom: 15px; }
+  .orbit-game .orbit-header h2 { font-size: 1.4rem; }
+  .orbit-game .orbit-brand { font-size: .54rem; }
+  .orbit-game .orbit-destinations { gap: 6px; }
+  .orbit-game .orbit-destinations button { gap: 6px; padding-inline: 11px; font-size: .7rem; }
+  .orbit-game .orbit-stage { margin-inline: -18px; }
+  .orbit-game .orbit-status { padding-inline: 12px; }
+  .orbit-game button { font-size: .72rem; padding-inline: 11px; }
+}
+
+@media (max-width: 360px) {
+  .orbit-game { padding: 14px; }
+  .orbit-game .orbit-stage { margin-inline: -14px; }
+  .orbit-game .orbit-destinations button { padding-inline: 10px; font-size: .68rem; }
+  .orbit-game .orbit-controls .orbit-launch { flex-basis: 100%; }
+  .orbit-game .orbit-state-label { font-size: .62rem; }
+  .orbit-game .orbit-power { font-size: .61rem; }
+  .orbit-game .orbit-stage-note { font-size: .59rem; padding-inline: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-game *, .orbit-game *::before, .orbit-game *::after { animation: none !important; transition: none !important; }
+}

@@ -51,9 +51,10 @@ a:focus-visible{outline:3px solid #946136;outline-offset:6px}
 @media(prefers-reduced-motion:reduce){.nav,.project{transition:none}}
 </style>
 <link rel="stylesheet" href="../assets/home-intro.css">
-<script src="../assets/home-intro.js" defer></script>
+<script src="../assets/orbit-game.js" defer></script>
 <noscript><style>.reveal{opacity:1;transform:none}.space-home *{animation:none!important}</style></noscript>
 <link rel="stylesheet" href="../assets/language.css">
+<link rel="stylesheet" href="../assets/orbit-game.css">
 <script src="../assets/language.js" defer></script>
 <link rel="alternate" hreflang="en" href="/index.html">
 <link rel="alternate" hreflang="fr" href="/fr/index.html">
@@ -72,45 +73,35 @@ a:focus-visible{outline:3px solid #946136;outline-offset:6px}
       <ul class="intro-topics" aria-label="Domaines d’intérêt"><li>Électronique</li><li>Systèmes embarqués</li><li>Aéronautique</li></ul>
       <div class="intro-actions"><a class="button" href="#projects">Voir mes projets <span aria-hidden="true">→</span></a><a class="button ghost" href="#contact">Me contacter <span aria-hidden="true">→</span></a></div>
     </div>
-    <div class="space-illustration">
-      <div class="orbital-scene" aria-hidden="true">
-        <svg class="orbital-art" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="planet-colour" cx=".29" cy=".2" r=".86"><stop stop-color="#6895a3"/><stop offset=".32" stop-color="#315e79"/><stop offset=".69" stop-color="#183d59"/><stop offset="1" stop-color="#0d233c"/></radialGradient>
-            <radialGradient id="planet-halo"><stop stop-color="#68a4aa" stop-opacity=".2"/><stop offset="1" stop-color="#68a4aa" stop-opacity="0"/></radialGradient>
-            <linearGradient id="planet-limb" x1="216" y1="198" x2="417" y2="414" gradientUnits="userSpaceOnUse"><stop stop-color="#b9d8dd" stop-opacity=".9"/><stop offset="1" stop-color="#34526b" stop-opacity="0"/></linearGradient>
-            <clipPath id="planet-clip"><circle cx="330" cy="306" r="119"/></clipPath>
-          </defs>
-          <circle cx="330" cy="306" r="220" fill="url(#planet-halo)"/>
-          <circle cx="330" cy="306" r="237" stroke="#7199a6" stroke-opacity=".26" stroke-dasharray="2 9"/>
-          <circle cx="330" cy="306" r="282" stroke="#8ca7ad" stroke-opacity=".18"/>
-          <path d="M77 437L185 169L455 106L594 383" stroke="#75949d" stroke-opacity=".24" stroke-dasharray="4 7"/>
-          <g class="constellation-points" fill="#568088"><circle cx="77" cy="437" r="3"/><circle cx="185" cy="169" r="3"/><circle cx="455" cy="106" r="3"/><circle cx="594" cy="383" r="3"/></g>
-          <ellipse cx="330" cy="306" rx="243" ry="82" transform="rotate(-27 330 306)" stroke="#af7b51" stroke-opacity=".5"/>
-          <ellipse cx="330" cy="306" rx="196" ry="112" transform="rotate(34 330 306)" stroke="#467a85" stroke-opacity=".4"/>
-          <g class="floating-planet">
-            <circle cx="330" cy="306" r="119" fill="url(#planet-colour)"/>
-            <g clip-path="url(#planet-clip)" stroke="#a7c8d0" stroke-opacity=".16">
-              <ellipse cx="310" cy="300" rx="84" ry="126" transform="rotate(-28 310 300)"/>
-              <ellipse cx="328" cy="309" rx="45" ry="129" transform="rotate(-28 328 309)"/>
-              <path d="M202 274C270 222 359 228 427 279M208 322C289 270 371 279 445 331M229 369C306 324 393 331 447 377"/>
-            </g>
-            <circle cx="330" cy="306" r="118.5" stroke="url(#planet-limb)"/>
-            <path d="M238 245C253 214 284 198 312 195" stroke="#cae0e3" stroke-opacity=".38" stroke-width="2" stroke-linecap="round"/>
-          </g>
-          <path d="M113.5 415.5C137.9 447.8 254.6 425.1 372.2 365.2C489.7 305.3 565.3 230 546.5 196.5" stroke="#c79466" stroke-width="2" stroke-linecap="round"/>
-          <g class="orbiting-satellite"><circle cx="567" cy="306" r="13" fill="#f6f3ec"/><circle cx="567" cy="306" r="6" fill="#ad7850"/><circle cx="567" cy="306" r="20" stroke="#ad7850" stroke-opacity=".2"/></g>
-          <g class="orbiting-satellite satellite-inner"><circle cx="330" cy="101" r="7" fill="#3b7e88"/><circle cx="330" cy="101" r="13" stroke="#3b7e88" stroke-opacity=".23"/></g>
-          <g class="space-spark" stroke="#9c704d" stroke-linecap="round"><path d="M110 177V193M102 185H118"/><path d="M506 461V475M499 468H513"/></g>
-          <g class="space-spark spark-late" stroke="#407480" stroke-linecap="round"><path d="M531 157V169M525 163H537"/><path d="M202 497V507M197 502H207"/></g>
-          <g fill="#638590"><circle cx="135" cy="308" r="2"/><circle cx="393" cy="549" r="2"/><circle cx="483" cy="235" r="2"/><circle cx="282" cy="94" r="2"/><circle cx="53" cy="277" r="1.5"/></g>
-          <path d="M230 505H324M277 511H324" stroke="#7599a3" stroke-opacity=".5"/>
-          <path d="M451 84H506M477 90H506" stroke="#7599a3" stroke-opacity=".5"/>
-        </svg>
-        <span class="space-coordinate coordinate-top">Curiosité / Toujours active</span>
-        <span class="space-coordinate coordinate-bottom">Idées → Systèmes opérationnels</span>
-      </div>
-      <button class="motion-toggle" type="button" aria-pressed="false" hidden><span class="motion-icon" aria-hidden="true"></span><span class="motion-label">Suspendre les animations</span></button>
+    <div class="space-illustration orbit-illustration">
+      <section class="orbit-game" data-state="ready" aria-labelledby="orbit-game-title">
+        <header class="orbit-header"><p class="orbit-brand">CORREIA / ORBIT LAB <span aria-hidden="true">✦</span></p><h2 id="orbit-game-title">À toi de jouer.</h2></header>
+        <div class="orbit-destinations" role="group" aria-label="Choisir ta destination">
+          <button type="button" data-planet="earth" aria-pressed="true" disabled><span class="orbit-planet-dot earth" aria-hidden="true"></span>Terre</button>
+          <button type="button" data-planet="mars" aria-pressed="false" disabled><span class="orbit-planet-dot mars" aria-hidden="true"></span>Mars</button>
+          <button type="button" data-planet="saturn" aria-pressed="false" disabled><span class="orbit-planet-dot saturn" aria-hidden="true"></span>Saturne</button>
+        </div>
+        <div class="orbit-stage">
+          <svg class="orbit-system" viewBox="0 0 640 560" fill="none" xmlns="http://www.w3.org/2000/svg" tabindex="0" role="group" aria-label="Système solaire et zone de lancement de la fusée" aria-describedby="orbit-instructions orbit-keyboard">
+            <defs><radialGradient id="orbit-sun-fallback"><stop stop-color="#f8dba2"/><stop offset="1" stop-color="#dca46e"/></radialGradient></defs>
+            <g stroke="#7a9ba5" stroke-opacity=".24"><ellipse cx="290" cy="260" rx="90" ry="57"/><ellipse cx="290" cy="260" rx="150" ry="102"/><ellipse cx="290" cy="260" rx="215" ry="151"/><ellipse cx="290" cy="260" rx="274" ry="205"/></g>
+            <circle cx="290" cy="260" r="47" fill="url(#orbit-sun-fallback)"/><g fill="#946136"><circle cx="280" cy="253" r="3"/><circle cx="300" cy="253" r="3"/></g><path d="M280 268Q290 277 300 268" stroke="#946136" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="220" cy="230" r="10" fill="#9faaa8"/><circle cx="347" cy="332" r="16" fill="#c78d64"/>
+            <circle cx="480" cy="180" r="22" fill="#4d869e"/><path d="M463 174Q477 164 485 174L493 180L480 192L470 182Z" fill="#9fbdb3"/>
+            <circle cx="195" cy="410" r="18" fill="#c48069"/><circle cx="92" cy="182" r="30" fill="#c8ae8f"/><path d="M65 181H119M71 194H113" stroke="#ad896a" stroke-width="5"/>
+            <ellipse cx="470" cy="415" rx="52" ry="13" transform="rotate(-24 470 415)" stroke="#b89773" stroke-width="8"/><circle cx="470" cy="415" r="28" fill="#e0c5a0"/>
+            <circle cx="387" cy="74" r="17" fill="#8db7bb"/><circle cx="582" cy="276" r="17" fill="#5779a4"/>
+            <g transform="translate(480 105) rotate(90)"><path d="M0-20C-12-9-12 7-8 14H8C12 7 12-9 0-20Z" fill="#f9f6ee" stroke="#426578" stroke-width="2"/><circle cy="-3" r="5" fill="#8bb4c4"/><path d="M-9 4L-17 16L-7 12M9 4L17 16L7 12" fill="#be8466" stroke="#426578" stroke-width="2"/></g>
+          </svg>
+        </div>
+        <div class="orbit-readout"><span class="orbit-state-label">Prête au décollage</span><span class="orbit-power">Poussée <output>100 %</output></span></div>
+        <p class="orbit-status" role="status" aria-live="polite" aria-atomic="true"><strong class="orbit-message">Une petite poussée. Une nouvelle orbite.</strong><span class="orbit-detail">Une fusée, trois destinations et une trajectoire à inventer.</span></p>
+        <div class="orbit-controls"><button class="orbit-launch" type="button" disabled>Lancer <span aria-hidden="true">↗</span></button><button class="orbit-reset" type="button" disabled><span aria-hidden="true">↺</span> Recommencer</button><button class="orbit-pause" type="button" aria-pressed="false" hidden>Pause</button></div>
+        <p id="orbit-instructions" class="orbit-instructions">Choisis une planète. Oriente la flèche, puis lance la fusée.</p>
+        <p id="orbit-keyboard" class="orbit-keyboard">Au clavier : ← → direction · ↑ ↓ poussée · Entrée pour lancer.</p>
+        <p class="orbit-note">Un système solaire ludique, aux distances imaginaires.</p>
+        <noscript><p class="orbit-fallback">Active JavaScript pour piloter la fusée. Tous les projets restent disponibles plus bas.</p></noscript>
+      </section>
     </div>
   </div>
   <div class="wrap home-footline"><span>L’électronique au cœur. L’aéronautique en vue.</span><a href="#projects">Défiler pour découvrir <span aria-hidden="true">↓</span></a></div>
