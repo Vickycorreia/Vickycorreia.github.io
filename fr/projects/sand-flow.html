@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3ec">
+  <title>Dynamique des avalanches de sable — Victor Correia</title>
+  <meta name="description" content="Étude expérimentale des avalanches de sable de Victor Correia : seuils dans un tambour tournant, suivi vidéo, frottement, modèle de chocs Tac-Tac et influence de l’épaisseur de la couche.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="stylesheet" href="../../assets/project.css">
+  <link rel="stylesheet" href="../../assets/sand-study.css">
+  <link rel="stylesheet" href="../../assets/sand-science.css">
+  <script src="../../assets/sand-study.js" defer></script>
+  <script src="../../assets/sand-science.js" defer></script>
+
+<link rel="stylesheet" href="../../assets/language.css">
+<script src="../../assets/language.js" defer></script>
+<link rel="alternate" hreflang="en" href="/projects/sand-flow.html">
+<link rel="alternate" hreflang="fr" href="/fr/projects/sand-flow.html">
+</head>
+<body class="sand-page">
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <header class="nav wrap">
+    <a class="brand" href="../index.html">VICTOR <b>CORREIA</b></a>
+    <nav class="nav-links" aria-label="Navigation principale"><a href="../index.html#projects">Projets</a><a href="../index.html#contact">Contact</a></nav>
+  <nav class="language-switch" aria-label="Choisir la langue"><a href="/projects/sand-flow.html" lang="en" hreflang="en" data-language="en" aria-label="English"><span class="language-name">English</span><span class="language-short" aria-hidden="true">EN</span></a><a href="/fr/projects/sand-flow.html" lang="fr" hreflang="fr" data-language="fr" aria-label="Français" aria-current="page"><span class="language-name">Français</span><span class="language-short" aria-hidden="true">FR</span></a></nav></header>
+  <main id="main">
+    <section class="case-intro wrap" aria-labelledby="project-title">
+      <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Retour aux projets</a>
+      <div class="intro-heading">
+        <div><p class="eyebrow">04 / Mécanique granulaire · Étude scientifique</p><h1 id="project-title">Petits grains.<br><span>Grands enjeux.</span></h1></div>
+        <div class="intro-summary"><p>Quand un tas de sable devient-il une avalanche ? Pourquoi peut-il s’écouler à une vitesse presque constante ?</p><p>Cette étude associe expériences, mesures vidéo et modèles physiques, du tambour tournant à une bille sur une rangée de tubes, pour comprendre comment les matériaux granulaires se mettent en mouvement, s’écoulent et se déposent.</p><a class="story-start" href="#rotating-drum">Découvrir les expériences <span aria-hidden="true">↓</span></a></div>
+      </div>
+      <dl class="intro-facts"><div><dt>Sujet</dt><dd>Dynamique des avalanches de sable</dd></div><div><dt>Démarche</dt><dd>Construire · Observer · Modéliser · Comparer</dd></div><div><dt>Outils</dt><dd>Suivi vidéo · Python · NumPy · Matplotlib</dd></div></dl>
+      <div class="study-brief">
+        <div><p class="eyebrow">La question scientifique</p><h2>Solide au repos.<br>En écoulement.</h2></div>
+        <div><p>Le sable est constitué de grains individuels, mais une couche entière peut se comporter comme un solide ou un matériau qui s’écoule. Sa réponse dépend des frottements, des collisions, de la pente, de l’épaisseur et de son état précédent.</p><p>Le projet étudie cette transition à travers quatre expériences liées : les angles caractéristiques dans un tambour, les avalanches sur un plan incliné rugueux alimenté par une trémie, le modèle Tac-Tac de chocs répétés et l’influence de l’épaisseur du sable sur sa stabilité.</p></div>
+      </div>
+      <nav class="case-jump-links" aria-label="Explorer cette étude"><a href="#rotating-drum">Les seuils</a><a href="#granular-flow">L’avalanche</a><a href="#tac-tac">Le modèle Tac-Tac</a><a href="#layer-depth">Épaisseur de couche</a><a href="#sand-science">Explorer l’hystérésis</a></nav>
+      <p class="scroll-hint"><span aria-hidden="true">↓</span> Faites défiler les expériences. Ouvrez « En savoir plus » pour découvrir les méthodes et les modèles physiques.</p>
+    </section>
+
+    <section class="photo-story scene-drum" id="rotating-drum" aria-labelledby="drum-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../../assets/sand-study/rotating-drum.webp" width="1672" height="941" alt="Montage technique d’un tambour transparent contenant du sable, avec des schémas de rotation et des gros plans sur les grains." fetchpriority="high" decoding="async">
+          <figcaption class="photo-label">01 / L’expérience du tambour tournant</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>01 / 04</span><span>Seuils et hystérésis</span></div>
+        <a class="photo-full" href="../../assets/sand-study/rotating-drum.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète du tambour tournant (nouvel onglet)">Image complète</a>
+        <details class="chapter-more" name="chapter-information">
+          <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
+          <div class="more-panel" role="region" aria-labelledby="drum-more-title">
+            <button class="more-close" type="button" aria-label="Fermer les informations sur le tambour tournant" hidden>×</button>
+            <p class="eyebrow">01 / Déclenchement, repos et frottement</p>
+            <h3 id="drum-more-title">Deux angles.<br>Une mémoire.</h3>
+            <dl class="more-facts"><div><dt>Angle de déclenchement</dt><dd>θ<sub>a</sub> = 36,7 ± 0,3° · mesure rapportée</dd></div><div><dt>Angle de repos</dt><dd>θ<sub>r</sub> = 32,1 ± 0,6° · mesure rapportée</dd></div><div><dt>Paramètre du modèle</dt><dd>Coefficient de frottement μ = 0,7</dd></div></dl>
+            <h4>Ce que l’expérience étudie</h4><p>La rotation d’un tambour partiellement rempli augmente la pente de la surface du sable. Une avalanche se déclenche à un angle plus élevé ; après le mouvement des grains, la surface se stabilise à un angle de repos plus faible.</p>
+            <h4>Pourquoi l’état précédent compte</h4><p>Cette différence illustre l’hystérésis. Entre les deux seuils, le repos ou l’écoulement du sable dépend de son état précédent. La mise en mouvement et l’arrêt ne suivent pas le même chemin.</p>
+            <h4>Le modèle de Coulomb</h4><p>La condition de frottement statique s’écrit T ≤ μN, où T est la force tangentielle et N la force normale. À l’angle limite :</p>
+            <p class="panel-equation">θ<sub>c</sub> = arctan(μ) ≈ 35° pour μ = 0,7</p>
+            <p>Il s’agit de la prédiction d’un modèle simplifié, comparée au déclenchement mesuré à 36,7°. L’expérience du tambour met également en évidence un seuil de repos distinct.</p>
+            <p class="source-note">Résultats rapportés et modèle : présentation de l’étude, diapositives 4 à 6. Les valeurs après ± sont reproduites telles qu’elles sont rapportées.</p>
+          </div>
+        </details>
+        <div class="chapter-copy">
+          <p class="eyebrow">01 / Le tambour tournant</p>
+          <h2 id="drum-title"><span class="title-line">Au repos.</span> <span class="title-line title-accent">En mouvement.</span></h2>
+          <p class="chapter-lead">L’avalanche se déclenche à 36,7°. Le sable se stabilise à 32,1°.</p>
+          <p>Deux seuils mesurés révèlent l’hystérésis : le comportement du matériau garde la mémoire d’un mouvement antérieur.</p>
+          <ul class="chapter-tags" aria-label="Thèmes principaux"><li>Tambour tournant</li><li>Frottement</li><li>Hystérésis</li></ul>
+          <a class="chapter-next" href="#granular-flow">Suivre l’avalanche <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="photo-story scene-flow" id="granular-flow" aria-labelledby="flow-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../../assets/sand-study/granular-flow.webp" width="1672" height="941" alt="Montage technique d’une trémie alimentant un canal incliné en sable, avec des gros plans sur l’écoulement et le dépôt de sable." loading="lazy" decoding="async">
+          <figcaption class="photo-label">02 / Trémie et dispositif à plan incliné</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>02 / 04</span><span>Dispositif et suivi vidéo</span></div>
+        <a class="photo-full" href="../../assets/sand-study/granular-flow.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète de l’écoulement granulaire (nouvel onglet)">Image complète</a>
+        <details class="chapter-more" name="chapter-information">
+          <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
+          <div class="more-panel" role="region" aria-labelledby="flow-more-title">
+            <button class="more-close" type="button" aria-label="Fermer les informations sur l’avalanche" hidden>×</button>
+            <p class="eyebrow">02 / Construire, mesurer et questionner</p>
+            <h3 id="flow-more-title">Créer l’écoulement.<br>Suivre le mouvement.</h3>
+            <dl class="more-facts"><div><dt>Dispositif</dt><dd>Plan inclinable à fond rugueux</dd></div><div><dt>Alimentation en sable</dt><dd>Trémie à débit réglable</dd></div><div><dt>Vitesse rapportée</dt><dd>Environ 30 cm/s · 0,30 m/s</dd></div></dl>
+            <h4>Créer une avalanche observable</h4><p>Le projet comprenait la construction d’un plan inclinable et d’une trémie pour réguler l’arrivée de sable. Le fond rugueux permet d’étudier l’écoulement sur une surface granulaire, tandis que le débit réglable aide à examiner l’influence de l’alimentation sur l’avalanche.</p>
+            <h4>De la vidéo au mouvement</h4><p>Un logiciel de pointage suit le mouvement observé d’une image à la suivante. L’évolution de la position en fonction du temps permet d’estimer la vitesse. Dans l’observation rapportée, celle-ci était approximativement constante, à 30 cm/s.</p>
+            <h4>Un modèle qui soulève une autre question</h4><p>Un modèle de bloc glissant avec frottement de Coulomb donne :</p>
+            <p class="panel-equation">dv/dt = g(sin θ − μ cos θ)</p>
+            <p>Pour une pente supérieure au seuil de frottement, ce modèle prédit une accélération. Cela diffère du mouvement presque uniforme observé ici et invite à examiner les pertes d’énergie dues aux chocs répétés.</p>
+            <p class="source-note">Dispositif, observation et modèle : présentation de l’étude, diapositives 7 à 10. La vitesse correspond à l’observation rapportée en laboratoire.</p>
+          </div>
+        </details>
+        <div class="chapter-copy">
+          <p class="eyebrow">02 / L’avalanche en mouvement</p>
+          <h2 id="flow-title"><span class="title-line">Un front mobile.</span> <span class="title-line title-accent">Une vitesse stable.</span></h2>
+          <p class="chapter-lead">Un plan incliné rugueux, une trémie réglable et une vitesse observée d’environ 30 cm/s.</p>
+          <p>Le suivi vidéo relie le mouvement à une question physique : qu’est-ce qui équilibre la gravité lorsque l’écoulement cesse d’accélérer ?</p>
+          <ul class="chapter-tags" aria-label="Thèmes principaux"><li>Conception expérimentale</li><li>Suivi vidéo</li><li>Frottement de Coulomb</li></ul>
+          <a class="chapter-next" href="#tac-tac">Observer un grain isolé <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="photo-story scene-impact" id="tac-tac" aria-labelledby="impact-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../../assets/sand-study/inclined-plane.webp" width="1672" height="941" alt="Montage technique du dispositif Tac-Tac : une bille se déplace sur une rangée de tubes métalliques inclinés, avec des schémas et des gros plans sur les contacts." loading="lazy" decoding="async">
+          <figcaption class="photo-label">03 / Le modèle de chocs Tac-Tac</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>03 / 04</span><span>Modèle à l’échelle du grain</span></div>
+        <a class="photo-full" href="../../assets/sand-study/inclined-plane.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète du Tac-Tac (nouvel onglet)">Image complète</a>
+        <details class="chapter-more" name="chapter-information">
+          <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
+          <div class="more-panel" role="region" aria-labelledby="impact-more-title">
+            <button class="more-close" type="button" aria-label="Fermer les informations sur le Tac-Tac" hidden>×</button>
+            <p class="eyebrow">03 / Chocs et pertes d’énergie</p>
+            <h3 id="impact-more-title">Un seul grain.<br>Des chocs répétés.</h3>
+            <dl class="more-facts"><div><dt>Analogie</dt><dd>Une bille sur une rangée de cylindres</dd></div><div><dt>Vitesse issue du suivi</dt><dd>Environ 0,33 m/s · essai Tac-Tac</dd></div><div><dt>Estimation du modèle</dt><dd>Coefficient de restitution effectif e ≈ 0,46</dd></div></dl>
+            <h4>Isoler un mécanisme</h4><p>Le dispositif Tac-Tac représente un grain et ses contacts avec son environnement. Une bille rencontre successivement les cylindres placés sous elle : elle gagne de l’énergie en descendant et en perd lors des chocs.</p>
+            <h4>La loi de choc simplifiée</h4><p>Le modèle utilise v<sub>après</sub> = e v<sub>avant</sub>. Le coefficient de restitution e exprime la part de vitesse conservée lors d’un choc ; la perte d’énergie cinétique correspondante dépend de 1 − e².</p>
+            <h4>Équilibrer les gains et les pertes</h4><p>À régime établi, l’équilibre entre l’énergie gagnée par gravité et l’énergie dissipée au fil des chocs donne une vitesse limite caractéristique :</p>
+            <p class="panel-equation">v<sub>lim</sub> = √[2gd sin θ / (1 − e²)]</p>
+            <p>Ici, g désigne l’accélération de la pesanteur, θ l’angle de la pente et d l’espacement entre deux contacts successifs avec les supports. La vitesse peut encore varier entre les chocs.</p>
+            <h4>Comparer avec le suivi</h4><p>L’ajustement position–temps rapporté donne environ 0,33 m/s. L’application du modèle fournit e ≈ 0,46 pour cette analogie. D’autres essais examinent la dépendance prédite en √(sin θ). Cette estimation concerne l’expérience Tac-Tac.</p>
+            <p class="source-note">Modèle et comparaison : présentation de l’étude, diapositives 11 à 14 et 21. La valeur de restitution est déduite du modèle.</p>
+          </div>
+        </details>
+        <div class="chapter-copy">
+          <p class="eyebrow">03 / L’expérience Tac-Tac</p>
+          <h2 id="impact-title"><span class="title-line">Petits chocs.</span> <span class="title-line title-accent">Grands effets.</span></h2>
+          <p class="chapter-lead">Une bille, une rangée de tubes et des collisions répétées : une analogie simple pour un grain en mouvement.</p>
+          <p>L’équilibre entre l’énergie gagnée par gravité et les pertes aux chocs propose un mécanisme pour expliquer une vitesse limite caractéristique.</p>
+          <ul class="chapter-tags" aria-label="Thèmes principaux"><li>Restitution</li><li>Bilan d’énergie</li><li>Comparaison au modèle</li></ul>
+          <a class="chapter-next" href="#layer-depth">Modifier l’épaisseur de la couche <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="photo-story scene-depth" id="layer-depth" aria-labelledby="depth-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../../assets/sand-study/granular-dunes.webp" width="1672" height="941" alt="Montage technique d’ondes de surface dans une couche de sable, avec des schémas d’épaisseur et des gros plans sur les grains et le sable en chute." loading="lazy" decoding="async">
+          <figcaption class="photo-label">04 / Couches de sable et ondes de surface</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>04 / 04</span><span>Épaisseur et stabilité</span></div>
+        <a class="photo-full" href="../../assets/sand-study/granular-dunes.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète de la couche de sable (nouvel onglet)">Image complète</a>
+        <details class="chapter-more" name="chapter-information">
+          <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
+          <div class="more-panel" role="region" aria-labelledby="depth-more-title">
+            <button class="more-close" type="button" aria-label="Fermer les informations sur l’épaisseur de couche" hidden>×</button>
+            <p class="eyebrow">04 / Un comportement collectif</p>
+            <h3 id="depth-more-title">Épaisseur de couche.<br>Limites de stabilité.</h3>
+            <dl class="more-facts"><div><dt>Comparaison</dt><dd>Deux écoulements de même largeur, d’épaisseurs différentes</dd></div><div><dt>H<sub>start</sub></dt><dd>Épaisseur seuil pour déclencher l’écoulement</dd></div><div><dt>H<sub>stop</sub></dt><dd>Épaisseur déposée à l’arrêt de l’écoulement</dd></div></dl>
+            <h4>Comparer différentes épaisseurs</h4><p>L’expérience compare deux écoulements de sable de même largeur, mais d’épaisseurs différentes. Lors de ces essais, la couche la plus épaisse était moins stable, montrant que la pente seule ne suffit pas à décrire le comportement.</p>
+            <h4>Déclenchement et arrêt</h4><p>L’étude de H<sub>start</sub> / H<sub>stop</sub> relie l’épaisseur de couche à l’inclinaison au déclenchement et à l’arrêt de l’écoulement. Ces seuils étendent la question de l’hystérésis des angles caractéristiques à l’épaisseur du matériau.</p>
+            <h4>Faire le lien avec les recherches antérieures</h4><p>La présentation compare les tendances avec une figure attribuée à la thèse d’Adrian Daerr. Cette figure sert de référence bibliographique pour interpréter la stabilité des écoulements granulaires.</p>
+            <h4>Les limites expérimentales</h4><p>Il était difficile de reproduire l’alimentation en sable et les conditions initiales. Les ondes de surface perturbaient les mesures, tandis que les forces internes et les vitesses des grains étaient difficiles à mesurer. Un petit dispositif de laboratoire présente aussi des limites pour interpréter les avalanches naturelles.</p>
+            <p class="source-note">Étude de l’épaisseur et limites : présentation de l’étude, diapositives 15 à 18. Les montages fournis illustrent les expériences ; les résultats numériques rapportés proviennent de la présentation.</p>
+          </div>
+        </details>
+        <div class="chapter-copy">
+          <p class="eyebrow">04 / Au-delà d’un grain isolé</p>
+          <h2 id="depth-title"><span class="title-line">Plus d’épaisseur.</span> <span class="title-line title-accent">Moins de stabilité.</span></h2>
+          <p class="chapter-lead">Dans les écoulements comparés, la couche de sable la plus épaisse était moins stable.</p>
+          <p>L’étude de H<sub>start</sub> et H<sub>stop</sub> relie épaisseur, pente et mémoire du mouvement, avec les ondes de surface et la reproductibilité comme difficultés pratiques.</p>
+          <ul class="chapter-tags" aria-label="Thèmes principaux"><li>Épaisseur de couche</li><li>Seuils d’écoulement</li><li>Limites expérimentales</li></ul>
+          <a class="chapter-next" href="#sand-science">Explorer les deux seuils <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+        <section class="sand-science" id="sand-science" aria-labelledby="ss-title">
+      <div class="wrap">
+        <div class="ss-heading"><p class="eyebrow">La physique derrière les observations</p><h2 id="ss-title">Une pente.<br>Deux seuils.</h2><p>L’étude a mis en évidence un écart entre l’angle qui déclenche une avalanche de sable et celui auquel l’écoulement s’arrête. Entre les deux, l’état précédent compte : c’est l’hystérésis.</p></div>
+        <dl class="ss-thresholds"><div><dt>Angle d’avalanche / θ<sub>a</sub></dt><dd>36,7° <small>± 0,3°</small></dd></div><div><dt>Angle de repos / θ<sub>r</sub></dt><dd>32,1° <small>± 0,6°</small></dd></div></dl>
+        <div class="ss-hysteresis-widget" id="ss-hysteresis-widget" data-state="stable">
+          <div class="ss-widget-header"><h3>Explorer l’effet d’hystérésis</h3><span class="ss-teaching-label">Démonstration pédagogique</span></div>
+          <div class="ss-widget-body">
+            <figure class="ss-incline"><svg viewBox="0 0 400 250" role="img" aria-labelledby="ss-incline-title"><title id="ss-incline-title">Schéma d’une surface de sable inclinée illustrant l’angle de la pente</title><path class="ss-incline-base" d="M 45 210 H 370 M 45 210 V 235"/><g id="ss-incline-bed" transform="rotate(-30 45 210)"><path class="ss-incline-bed" d="M 45 210 H 345"/><path class="ss-incline-sand" d="M 68 204 L 82 191 L 109 188 L 143 186 L 176 186 L 211 188 L 251 190 L 283 193 L 319 199 L 330 204 Z"/><circle class="ss-incline-sand" cx="160" cy="178" r="3"/><circle class="ss-incline-sand" cx="212" cy="181" r="3"/><circle class="ss-incline-sand" cx="264" cy="183" r="3"/></g><path class="ss-angle-arc" id="ss-angle-arc" d="M 100 210 A 55 55 0 0 0 92.63 182.50"/><text class="ss-incline-text" x="111" y="194">θ</text></svg><figcaption>Schéma de l’angle de pente ; le mouvement des grains n’est pas simulé.</figcaption></figure>
+            <div>
+              <div class="ss-state" id="sand-hysteresis-status" role="status" aria-live="polite" aria-atomic="true"><span class="ss-state-label">État dans cet exemple</span><strong id="ss-state-label">Stable</strong><p id="ss-state-description">À 30°, la pente est inférieure au seuil de repos. Dans cet exemple, le sable reste stable.</p></div>
+              <div class="ss-controls" id="sand-hysteresis-controls" hidden><div class="ss-slider-heading"><label for="ss-angle">Angle de pente θ</label><output id="ss-angle-output" for="ss-angle" aria-live="off">30,0°</output></div><input class="ss-angle-input" type="range" id="ss-angle" min="28" max="40" step="0.1" value="30" aria-describedby="ss-demo-note"><div class="ss-demo-actions"><button id="ss-avalanche" type="button">Déclencher une avalanche · 38°</button><button id="ss-rest" type="button">Revenir au repos · 30°</button></div></div>
+              <div class="ss-threshold-scale" aria-label="Échelle d’angle de 28 à 40 degrés, avec le seuil de repos à 32,1 et le seuil d’avalanche à 36,7"><div class="ss-scale-labels"><span>28°</span><span>40°</span></div><div class="ss-scale-track" aria-hidden="true"><span class="ss-scale-pointer"></span></div><div class="ss-scale-thresholds" aria-hidden="true"><span>32,1° / repos</span><span>36,7° / déclenchement</span></div><p class="ss-memory-key">Entre les seuils, l’état dépend de son histoire.</p></div>
+            </div>
+          </div>
+          <p class="ss-demo-note" id="ss-demo-note">Cette démonstration utilise les valeurs centrales des angles rapportés : augmentez la pente à 36,7° pour déclencher l’écoulement, puis abaissez-la à 32,1° pour revenir au repos. Elle explique le comportement à deux seuils, sans produire de données expérimentales ni simuler une avalanche réelle.</p>
+        </div>
+        <p class="ss-source">Angles caractéristiques rapportés et hystérésis : présentation de l’étude, diapositives 4 et 6.</p>
+        <div class="ss-methods" id="sand-methods"><h3>Construire. Suivre. Comparer.</h3><div class="ss-method-grid"><article><span class="ss-method-number">01 / EXPÉRIENCE</span><h3>Construire</h3><p>Développer un plan inclinable à fond rugueux et une trémie à débit variable pour étudier le déclenchement et l’écoulement du sable.</p></article><article><span class="ss-method-number">02 / OBSERVATION</span><h3>Suivre</h3><p>Utiliser le pointage vidéo pour obtenir la position au cours du temps, x(t), et examiner le mouvement de l’avalanche.</p></article><article><span class="ss-method-number">03 / INTERPRÉTATION</span><h3>Comparer</h3><p>Comparer les observations au frottement de Coulomb et à un modèle distinct de grain isolé fondé sur les chocs.</p></article></div></div>
+        <details class="ss-more"><summary>En savoir plus · méthodologie et limites</summary><div class="ss-more-body"><div><h4>Des expériences aux rôles différents</h4><p>Le tambour tournant a servi à identifier les angles caractéristiques. Le plan inclinable et la trémie ont permis d’observer les avalanches ; l’expérience Tac-Tac avec une bille a exploré les chocs répétés à l’échelle d’un grain isolé.</p><p>L’avalanche de sable observée se déplaçait à environ 0,30 m/s. L’analyse distincte du Tac-Tac utilisait environ 0,33 m/s ; les deux valeurs correspondent à des expériences différentes.</p></div><div><h4>Ce qui limitait les mesures</h4><ul><li>Reproduire les mêmes conditions d’avalanche et contrôler le débit de sable.</li><li>Les ondes de surface qui perturbaient les mesures.</li><li>L’échelle du laboratoire et la difficulté à mesurer les grandeurs dynamiques.</li></ul><p class="ss-source">Méthodes et observations : diapositives 7 à 13. Limites expérimentales : diapositive 17.</p></div></div></details>
+        <div class="ss-skill-grid" aria-label="Compétences développées au cours de l’étude"><article><h3>Conception expérimentale</h3><p>Transformer une question physique en un dispositif contrôlable, en tenant compte de la surface et de l’alimentation en sable.</p></article><article><h3>Analyse du mouvement</h3><p>Relier les observations vidéo et le suivi des positions à une description quantitative du mouvement.</p></article><article><h3>Évaluation des modèles</h3><p>Comparer les modèles physiques aux observations et reconnaître les limites d’une méthode expérimentale.</p></article></div>
+      </div>
+    </section>
+
+
+    <nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Poursuivre la découverte</p><h2 id="more-projects">Autres projets</h2><div class="project-links">
+      <a href="air-france-can.html"><span class="eyebrow">01 / Industrie · 2026</span><strong>Dispositif de test CAN chez Air France Industries</strong><span class="arrow" aria-hidden="true">→</span></a>
+      <a href="stm32-morse.html"><span class="eyebrow">02 / Systèmes embarqués</span><strong>Communication Morse sur STM32</strong><span class="arrow" aria-hidden="true">→</span></a>
+      <a href="infrared-audio.html"><span class="eyebrow">03 / En cours</span><strong>Transmission audio stéréo par infrarouge</strong><span class="arrow" aria-hidden="true">→</span></a>
+    </div></div></nav>
+    <section class="contact" aria-labelledby="contact-title"><div class="wrap"><div><h2 id="contact-title">Construisons quelque chose d’utile.</h2><p>Je recherche un stage de quatre mois dans l’aérospatial, l’électronique ou les systèmes embarqués, de fin avril à fin août 2027.</p></div><a class="button" href="https://www.linkedin.com/in/victor-correia-14082005vicky/" target="_blank" rel="noopener noreferrer">Me contacter sur LinkedIn</a></div></section>
+  </main>
+  <footer class="foot wrap"><span>© 2026 Victor Correia</span><span>Élève ingénieur à l’ENSEA · France / Portugal</span></footer>
+</body>
+</html>

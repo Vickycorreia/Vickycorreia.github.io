@@ -6,14 +6,37 @@
   const status = document.getElementById('af-frame-status');
   const stages = [...document.querySelectorAll('[data-af-stage]')];
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const isFrench = document.documentElement.lang === 'fr';
+  const copy = isFrench ? {
+    explanations: [
+      'Exemple de requête : identifiant étendu 0x06000021, DLC 0. Cette illustration montre une trame sortante, pas une émission en direct.',
+      'Réception : CAN.read() sert à lire une éventuelle réponse. La réception des réponses attendues du PDU était un point central du diagnostic.',
+      'Décodage : le regroupement étudié sépare les octets en champs. Leur signification diagnostique n’est pas confirmée dans cette illustration.',
+      'Affichage : le menu LCD 20×4 organise les catégories de diagnostic. Cet aperçu ne montre ni mesures ni données réelles de l’équipement.'
+    ],
+    reducedFlow: 'Séquence conceptuelle : envoyer la requête d’exemple, lire une réponse si elle est reçue, décoder les champs étudiés et afficher les informations de diagnostic. La réception était un point central du diagnostic ; il ne s’agit pas de données réelles de l’équipement.',
+    review: 'Revoir les étapes',
+    replay: 'Relancer les étapes',
+    lcdRows: ['Cat. diagnostic', 'Aperçu du menu', 'Sans mesure réelle'],
+    paused: 'Présentation conceptuelle interrompue. La réception était un point central du diagnostic ; la séquence statique ci-dessus décrit le fonctionnement logiciel visé.',
+    staticFlow: 'Séquence conceptuelle : requête, réception si une réponse arrive, décodage puis affichage. Il s’agit d’une illustration, pas de données réelles de l’équipement.'
+  } : {
+    explanations: [
+      'Request example: Extended ID 0x06000021, DLC 0. This illustrates an outbound frame, not a live transmission.',
+      'Receive: CAN.read() is intended to read a reply. Receiving the expected PDU replies was a key focus of investigation.',
+      'Decode: the studied byte layout separates fields. Their diagnostic meanings are not confirmed in this illustration.',
+      'Display: the 20×4 LCD menu organises diagnostic categories. This preview shows no measurements or live device data.'
+    ],
+    reducedFlow: 'Conceptual flow: send the example request, read a reply if received, decode the studied fields, and display diagnostic information. Reception was a key focus of investigation; this is not live device data.',
+    review: 'Review the flow',
+    replay: 'Replay the flow',
+    lcdRows: ['Diagnostic category', 'Menu preview only', 'No live data'],
+    paused: 'Conceptual walkthrough paused. Reception was a key focus of investigation; the static flow above describes the intended software sequence.',
+    staticFlow: 'Conceptual flow: request, receive if a reply arrives, decode, then display. This is an illustration, not live device data.'
+  };
   let timer = null;
   let active = false;
-  const explanations = [
-    'Request example: Extended ID 0x06000021, DLC 0. This illustrates an outbound frame, not a live transmission.',
-    'Receive: CAN.read() is intended to read a reply. Receiving the expected PDU replies was a key focus of investigation.',
-    'Decode: the studied byte layout separates fields. Their diagnostic meanings are not confirmed in this illustration.',
-    'Display: the 20×4 LCD menu organises diagnostic categories. This preview shows no measurements or live device data.'
-  ];
+  const explanations = copy.explanations;
 
   const reset = () => {
     if (timer !== null) window.clearTimeout(timer);
@@ -30,8 +53,8 @@
       if (active) return;
       reset();
       if (motionPreference.matches) {
-        status.textContent = 'Conceptual flow: send the example request, read a reply if received, decode the studied fields, and display diagnostic information. Reception was a key focus of investigation; this is not live device data.';
-        play.textContent = 'Review the flow';
+        status.textContent = copy.reducedFlow;
+        play.textContent = copy.review;
         return;
       }
       active = true;
@@ -47,7 +70,7 @@
         } else {
           timer = window.setTimeout(() => {
             reset();
-            play.textContent = 'Replay the flow';
+            play.textContent = copy.replay;
           }, 1550);
         }
       };
@@ -66,7 +89,7 @@
         });
         const label = category.dataset.afDiagnostic;
         if (!label) return;
-        const rows = [`> ${label}`, 'Diagnostic category', 'Menu preview only', 'No live data'];
+        const rows = [`> ${label}`, ...copy.lcdRows];
         [...lcd.children].forEach((row, index) => { row.textContent = rows[index]; });
       });
     });
@@ -75,7 +98,7 @@
   const stopForMotionChange = event => {
     if (!event.matches || !active) return;
     reset();
-    if (status) status.textContent = 'Conceptual walkthrough paused. Reception was a key focus of investigation; the static flow above describes the intended software sequence.';
+    if (status) status.textContent = copy.paused;
   };
   if (typeof motionPreference.addEventListener === 'function') {
     motionPreference.addEventListener('change', stopForMotionChange);
@@ -83,6 +106,6 @@
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden || !active) return;
     reset();
-    if (status) status.textContent = 'Conceptual flow: request, receive if a reply arrives, decode, then display. This is an illustration, not live device data.';
+    if (status) status.textContent = copy.staticFlow;
   });
 })();

@@ -3,47 +3,211 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071321">
-  <title>Understanding sand flow — Victor Correia</title>
-  <meta name="description" content="An experimental study of granular sand by Victor Correia, connecting measurements with mathematical modelling, analysis and presentation of the findings.">
+  <meta name="theme-color" content="#f6f3ec">
+  <title>Sand avalanche dynamics — Victor Correia</title>
+  <meta name="description" content="Victor Correia’s experimental study of sand avalanches: rotating-drum thresholds, video tracking, friction, the Tac-Tac impact model and the influence of layer thickness.">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../assets/project.css">
+  <link rel="stylesheet" href="../assets/sand-study.css">
+  <link rel="stylesheet" href="../assets/sand-science.css">
+  <script src="../assets/sand-study.js" defer></script>
+  <script src="../assets/sand-science.js" defer></script>
+
+<link rel="stylesheet" href="../assets/language.css">
+<script src="../assets/language.js" defer></script>
+<link rel="alternate" hreflang="en" href="/projects/sand-flow.html">
+<link rel="alternate" hreflang="fr" href="/fr/projects/sand-flow.html">
 </head>
-<body>
+<body class="sand-page">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="nav wrap">
     <a class="brand" href="../index.html">VICTOR <b>CORREIA</b></a>
     <nav class="nav-links" aria-label="Main navigation"><a href="../index.html#projects">Projects</a><a href="../index.html#contact">Contact</a></nav>
-  </header>
+  <nav class="language-switch" aria-label="Choose language"><a href="/projects/sand-flow.html" lang="en" hreflang="en" data-language="en" aria-label="English" aria-current="page"><span class="language-name">English</span><span class="language-short" aria-hidden="true">EN</span></a><a href="/fr/projects/sand-flow.html" lang="fr" hreflang="fr" data-language="fr" aria-label="Français"><span class="language-name">Français</span><span class="language-short" aria-hidden="true">FR</span></a></nav></header>
   <main id="main">
-    <div class="wrap">
+    <section class="case-intro wrap" aria-labelledby="project-title">
       <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Back to all projects</a>
-      <section class="hero" aria-labelledby="project-title">
-        <div>
-          <p class="eyebrow">04 / Scientific study</p>
-          <h1 id="project-title">Understanding<br><span>sand flow.</span></h1>
-          <p class="lead">An experimental study of granular sand, connecting measurements with mathematical modelling and presenting the findings clearly.</p>
-          <ul class="tags" aria-label="Methods"><li>Experimentation</li><li>Mathematical modelling</li><li>Analysis</li></ul>
-        </div>
-        <aside class="overview" aria-label="Study approach">
-          <p class="eyebrow">From observation to understanding</p>
-          <ul class="system-flow">
-            <li><strong>Experimental measurements</strong><small>Studying granular sand</small></li>
-            <li><strong>Mathematical modelling</strong><small>Connecting measurements with a model</small></li>
-            <li><strong>Analysis & presentation</strong><small>Making the findings clear</small></li>
-          </ul>
-          <p class="diagram-note">The three main strands of the experimental study.</p>
-        </aside>
-      </section>
-      <div class="content">
-        <div class="story">
-          <section aria-labelledby="objective"><h2 id="objective"><span class="number" aria-hidden="true">01</span>The objective</h2><p>Study the behaviour of granular sand through experimentation. The project connects physical measurements with mathematical modelling to build an understanding of sand flow.</p></section>
-          <section aria-labelledby="approach"><h2 id="approach"><span class="number" aria-hidden="true">02</span>The approach</h2><p>The study brings together experimentation, modelling and analysis. Measurements provide the connection to the physical behaviour of the sand, while mathematical modelling supports the interpretation of the findings.</p></section>
-          <section aria-labelledby="contribution"><h2 id="contribution"><span class="number" aria-hidden="true">03</span>My contribution</h2><p>My work on this study connects experimental measurements with mathematical modelling and the clear presentation of the findings. It reflects my interest in understanding how a system behaves through observation and analysis.</p></section>
-        </div>
-        <aside class="facts" aria-labelledby="facts-title"><h2 id="facts-title">At a glance</h2><dl><div><dt>Field</dt><dd>Experimental science</dd></div><div><dt>Subject</dt><dd>Granular sand flow</dd></div><div><dt>Methods</dt><dd>Measurements and mathematical modelling</dd></div><div><dt>Project focus</dt><dd>Experimentation, analysis and clear presentation</dd></div></dl></aside>
+      <div class="intro-heading">
+        <div><p class="eyebrow">04 / Granular mechanics · Scientific study</p><h1 id="project-title">Small grains.<br><span>Big questions.</span></h1></div>
+        <div class="intro-summary"><p>When does a pile of sand become an avalanche? Why can it flow at an almost steady speed?</p><p>My study connects experiments, video measurements and physical models—from a rotating drum to a ball travelling over a row of tubes—to explore how granular materials start, move and settle.</p><a class="story-start" href="#rotating-drum">Explore the experiments <span aria-hidden="true">↓</span></a></div>
       </div>
-    </div>
+      <dl class="intro-facts"><div><dt>Subject</dt><dd>Dynamics of sand avalanches</dd></div><div><dt>Approach</dt><dd>Build · Observe · Model · Compare</dd></div><div><dt>Tools</dt><dd>Video tracking · Python · NumPy · Matplotlib</dd></div></dl>
+      <div class="study-brief">
+        <div><p class="eyebrow">The scientific question</p><h2>Solid at rest.<br>Flowing in motion.</h2></div>
+        <div><p>Sand consists of individual grains, yet a whole layer can behave like a solid or a flowing material. Its response depends on friction, collisions, slope, layer depth and its previous state.</p><p>The project investigates that transition through four connected experiments: characteristic angles in a drum, avalanches on a rough inclined plane fed by a hopper, the Tac-Tac model of repeated impacts, and the influence of sand thickness on stability.</p></div>
+      </div>
+      <nav class="case-jump-links" aria-label="Explore this study"><a href="#rotating-drum">The thresholds</a><a href="#granular-flow">The avalanche</a><a href="#tac-tac">The Tac-Tac model</a><a href="#layer-depth">Layer thickness</a><a href="#sand-science">Try the hysteresis demo</a></nav>
+      <p class="scroll-hint"><span aria-hidden="true">↓</span> Scroll through the experiments. Open “More information” for the methods and physics.</p>
+    </section>
+
+    <section class="photo-story scene-drum" id="rotating-drum" aria-labelledby="drum-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../assets/sand-study/rotating-drum.webp" width="1672" height="941" alt="Technical montage of a transparent drum containing sand, with diagrams of rotation and close-ups of the grains." fetchpriority="high" decoding="async">
+          <figcaption class="photo-label">01 / The rotating-drum experiment</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>01 / 04</span><span>Thresholds & hysteresis</span></div>
+        <a class="photo-full" href="../assets/sand-study/rotating-drum.webp" target="_blank" rel="noopener noreferrer" aria-label="View full rotating-drum image (opens in a new tab)">View full image</a>
+        <details class="chapter-more" name="chapter-information">
+          <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
+          <div class="more-panel" role="region" aria-labelledby="drum-more-title">
+            <button class="more-close" type="button" aria-label="Close rotating-drum information" hidden>×</button>
+            <p class="eyebrow">01 / Onset, rest & friction</p>
+            <h3 id="drum-more-title">Two angles.<br>One memory.</h3>
+            <dl class="more-facts"><div><dt>Onset angle</dt><dd>θ<sub>a</sub> = 36.7 ± 0.3° · reported measurement</dd></div><div><dt>Resting angle</dt><dd>θ<sub>r</sub> = 32.1 ± 0.6° · reported measurement</dd></div><div><dt>Model input</dt><dd>Friction coefficient μ = 0.7</dd></div></dl>
+            <h4>What the experiment studies</h4><p>Rotating a partly filled drum raises the slope of the sand surface. An avalanche starts at a higher angle; after the grains move, the surface settles at a lower resting angle.</p>
+            <h4>Why history matters</h4><p>This difference illustrates hysteresis. Between the two thresholds, whether sand rests or flows depends on its previous state. Starting motion and stopping motion follow different paths.</p>
+            <h4>The Coulomb model</h4><p>The static-friction condition is T ≤ μN, where T is the tangential force and N the normal force. At the limiting angle:</p>
+            <p class="panel-equation">θ<sub>c</sub> = arctan(μ) ≈ 35° for μ = 0.7</p>
+            <p>This is a simplified model prediction, compared with the measured onset of 36.7°. The drum experiment also reveals a separate resting threshold.</p>
+            <p class="source-note">Reported results and model: study presentation, slides 4–6. The ± values are reproduced as reported.</p>
+          </div>
+        </details>
+        <div class="chapter-copy">
+          <p class="eyebrow">01 / The rotating drum</p>
+          <h2 id="drum-title"><span class="title-line">Still sand.</span> <span class="title-line title-accent">Sudden motion.</span></h2>
+          <p class="chapter-lead">The avalanche starts at 36.7°. The sand settles at 32.1°.</p>
+          <p>Two measured thresholds reveal hysteresis: a material whose behaviour remembers whether it was already moving.</p>
+          <ul class="chapter-tags" aria-label="Key topics"><li>Rotating drum</li><li>Friction</li><li>Hysteresis</li></ul>
+          <a class="chapter-next" href="#granular-flow">Follow the avalanche <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="photo-story scene-flow" id="granular-flow" aria-labelledby="flow-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../assets/sand-study/granular-flow.webp" width="1672" height="941" alt="Technical montage of a hopper feeding sand onto an inclined channel, with close-ups of the flow and deposited sand." loading="lazy" decoding="async">
+          <figcaption class="photo-label">02 / Hopper and inclined-plane apparatus</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>02 / 04</span><span>Apparatus & video tracking</span></div>
+        <a class="photo-full" href="../assets/sand-study/granular-flow.webp" target="_blank" rel="noopener noreferrer" aria-label="View full granular-flow image (opens in a new tab)">View full image</a>
+        <details class="chapter-more" name="chapter-information">
+          <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
+          <div class="more-panel" role="region" aria-labelledby="flow-more-title">
+            <button class="more-close" type="button" aria-label="Close avalanche information" hidden>×</button>
+            <p class="eyebrow">02 / Build, measure & question</p>
+            <h3 id="flow-more-title">Build the flow.<br>Track the motion.</h3>
+            <dl class="more-facts"><div><dt>Apparatus</dt><dd>Inclinable plane with a rough base</dd></div><div><dt>Sand supply</dt><dd>Adjustable-flow hopper</dd></div><div><dt>Reported speed</dt><dd>Approximately 30 cm/s · 0.30 m/s</dd></div></dl>
+            <h4>Creating an observable avalanche</h4><p>The project included building an inclinable plane and a hopper to regulate the sand supply. The roughened base helps study flow over a granular surface, while the adjustable feed allows investigation of how supply affects the avalanche.</p>
+            <h4>From video to motion</h4><p>Point-tracking software follows the observed motion through successive frames. Position versus time makes it possible to estimate speed. In the reported avalanche observation, that speed was approximately steady at 30 cm/s.</p>
+            <h4>A model that raises another question</h4><p>A sliding-block model with Coulomb friction gives:</p>
+            <p class="panel-equation">dv/dt = g(sin θ − μ cos θ)</p>
+            <p>For a slope above its friction threshold, this model predicts acceleration. That differs from the almost steady motion observed here, motivating a closer look at energy losses through repeated impacts.</p>
+            <p class="source-note">Apparatus, observation and model: study presentation, slides 7–10. Speed refers to the reported laboratory observation.</p>
+          </div>
+        </details>
+        <div class="chapter-copy">
+          <p class="eyebrow">02 / The avalanche in motion</p>
+          <h2 id="flow-title"><span class="title-line">A moving front.</span> <span class="title-line title-accent">A steady speed.</span></h2>
+          <p class="chapter-lead">A rough inclined plane, an adjustable hopper and an observed speed of about 30 cm/s.</p>
+          <p>Video tracking connects the motion to a physical question: what balances gravity when the flow stops accelerating?</p>
+          <ul class="chapter-tags" aria-label="Key topics"><li>Experimental design</li><li>Video tracking</li><li>Coulomb friction</li></ul>
+          <a class="chapter-next" href="#tac-tac">Look at a single grain <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="photo-story scene-impact" id="tac-tac" aria-labelledby="impact-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../assets/sand-study/inclined-plane.webp" width="1672" height="941" alt="Technical montage of the Tac-Tac apparatus: a ball moving over a row of inclined metal tubes, with diagrams and close-ups of the contacts." loading="lazy" decoding="async">
+          <figcaption class="photo-label">03 / The Tac-Tac impact model</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>03 / 04</span><span>Grain-scale model</span></div>
+        <a class="photo-full" href="../assets/sand-study/inclined-plane.webp" target="_blank" rel="noopener noreferrer" aria-label="View full Tac-Tac image (opens in a new tab)">View full image</a>
+        <details class="chapter-more" name="chapter-information">
+          <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
+          <div class="more-panel" role="region" aria-labelledby="impact-more-title">
+            <button class="more-close" type="button" aria-label="Close Tac-Tac information" hidden>×</button>
+            <p class="eyebrow">03 / Impacts & energy losses</p>
+            <h3 id="impact-more-title">One grain.<br>Repeated impacts.</h3>
+            <dl class="more-facts"><div><dt>Analogue</dt><dd>A ball travelling over a row of cylinders</dd></div><div><dt>Tracked speed</dt><dd>Approximately 0.33 m/s · Tac-Tac run</dd></div><div><dt>Model estimate</dt><dd>Effective restitution coefficient e ≈ 0.46</dd></div></dl>
+            <h4>Isolate a mechanism</h4><p>The Tac-Tac apparatus models one grain and its contacts with its surroundings. A ball repeatedly meets the cylinders beneath it, gaining energy as it descends and losing energy at impacts.</p>
+            <h4>The simplified impact law</h4><p>The model uses v<sub>after</sub> = e v<sub>before</sub>. The restitution coefficient e expresses how much speed is retained at a collision; the corresponding kinetic-energy loss depends on 1 − e².</p>
+            <h4>Balance gains and losses</h4><p>A steady-cycle balance between gravitational energy gained and energy dissipated gives a characteristic limiting speed:</p>
+            <p class="panel-equation">v<sub>lim</sub> = √[2gd sin θ / (1 − e²)]</p>
+            <p>Here g is gravitational acceleration, θ the slope angle and d the spacing between successive support contacts. The speed can still vary during each step between impacts.</p>
+            <h4>Compare with tracking</h4><p>The reported position–time fit gives about 0.33 m/s. Applying the model gives e ≈ 0.46 for this analogue. Further tests examine the predicted dependence on √(sin θ). This estimate describes the Tac-Tac experiment.</p>
+            <p class="source-note">Model and comparison: study presentation, slides 11–14 and 21. The restitution value is inferred through the model.</p>
+          </div>
+        </details>
+        <div class="chapter-copy">
+          <p class="eyebrow">03 / The Tac-Tac experiment</p>
+          <h2 id="impact-title"><span class="title-line">Small impacts.</span> <span class="title-line title-accent">Lasting insight.</span></h2>
+          <p class="chapter-lead">One ball, a row of tubes and repeated collisions: a simple analogue for a grain in motion.</p>
+          <p>Balancing gravitational energy with impact losses offers a mechanism for a characteristic limiting speed.</p>
+          <ul class="chapter-tags" aria-label="Key topics"><li>Restitution</li><li>Energy balance</li><li>Model comparison</li></ul>
+          <a class="chapter-next" href="#layer-depth">Change the layer depth <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="photo-story scene-depth" id="layer-depth" aria-labelledby="depth-title">
+      <div class="story-stage">
+        <div class="scene-wash" aria-hidden="true"></div>
+        <figure class="story-figure">
+          <img class="story-photo" src="../assets/sand-study/granular-dunes.webp" width="1672" height="941" alt="Technical montage of surface waves in a sand layer, with diagrams of layer depth and close-ups of grains and falling sand." loading="lazy" decoding="async">
+          <figcaption class="photo-label">04 / Sand layers and surface waves</figcaption>
+        </figure>
+        <div class="chapter-meta" aria-hidden="true"><span>04 / 04</span><span>Thickness & stability</span></div>
+        <a class="photo-full" href="../assets/sand-study/granular-dunes.webp" target="_blank" rel="noopener noreferrer" aria-label="View full sand-layer image (opens in a new tab)">View full image</a>
+        <details class="chapter-more" name="chapter-information">
+          <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
+          <div class="more-panel" role="region" aria-labelledby="depth-more-title">
+            <button class="more-close" type="button" aria-label="Close layer-thickness information" hidden>×</button>
+            <p class="eyebrow">04 / A collective behaviour</p>
+            <h3 id="depth-more-title">Layer depth.<br>Stability limits.</h3>
+            <dl class="more-facts"><div><dt>Comparison</dt><dd>Two same-width flows with different depths</dd></div><div><dt>H<sub>start</sub></dt><dd>Layer-thickness threshold for starting flow</dd></div><div><dt>H<sub>stop</sub></dt><dd>Deposited layer thickness when flow stops</dd></div></dl>
+            <h4>Compare different depths</h4><p>The experiment compares two sand flows of the same width but different thicknesses. In these trials, the thicker layer was less stable, showing that the slope alone does not describe the behaviour.</p>
+            <h4>Starting and stopping</h4><p>The H<sub>start</sub> / H<sub>stop</sub> investigation relates layer thickness to the inclination at flow onset and arrest. These thresholds extend the hysteresis question from characteristic angles to the depth of the material.</p>
+            <h4>Connect with previous research</h4><p>The presentation compares the trends with a figure attributed to Adrian Daerr’s thesis. That figure serves as a literature reference for interpreting granular-flow stability.</p>
+            <h4>The experimental limits</h4><p>Reproducing the sand supply and initial conditions was difficult. Surface waves affected measurements, and internal forces and grain velocities were hard to access. A small laboratory apparatus also has limits when interpreting natural avalanches.</p>
+            <p class="source-note">Thickness study and limitations: study presentation, slides 15–18. The supplied montages illustrate the experiments; reported numerical results come from the presentation.</p>
+          </div>
+        </details>
+        <div class="chapter-copy">
+          <p class="eyebrow">04 / Beyond a single grain</p>
+          <h2 id="depth-title"><span class="title-line">More depth.</span> <span class="title-line title-accent">Less stability.</span></h2>
+          <p class="chapter-lead">In the compared flows, the thicker sand layer was less stable.</p>
+          <p>Exploring H<sub>start</sub> and H<sub>stop</sub> connects depth, slope and the memory of motion—with surface waves and repeatability as practical challenges.</p>
+          <ul class="chapter-tags" aria-label="Key topics"><li>Layer thickness</li><li>Flow thresholds</li><li>Experimental limits</li></ul>
+          <a class="chapter-next" href="#sand-science">Try the two-threshold demo <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="chapter-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+        <section class="sand-science" id="sand-science" aria-labelledby="ss-title">
+      <div class="wrap">
+        <div class="ss-heading"><p class="eyebrow">The science behind the observations</p><h2 id="ss-title">One slope.<br>Two thresholds.</h2><p>The study identified a gap between the angle that triggers a sand avalanche and the angle at which the flow comes to rest. Between them, the previous state matters: this is hysteresis.</p></div>
+        <dl class="ss-thresholds"><div><dt>Avalanche angle / θ<sub>a</sub></dt><dd>36.7° <small>± 0.3°</small></dd></div><div><dt>Repose angle / θ<sub>r</sub></dt><dd>32.1° <small>± 0.6°</small></dd></div></dl>
+        <div class="ss-hysteresis-widget" id="ss-hysteresis-widget" data-state="stable">
+          <div class="ss-widget-header"><h3>Explore the hysteresis effect</h3><span class="ss-teaching-label">Teaching demonstration</span></div>
+          <div class="ss-widget-body">
+            <figure class="ss-incline"><svg viewBox="0 0 400 250" role="img" aria-labelledby="ss-incline-title"><title id="ss-incline-title">A schematic inclined sand surface, illustrating the angle of the slope</title><path class="ss-incline-base" d="M 45 210 H 370 M 45 210 V 235"/><g id="ss-incline-bed" transform="rotate(-30 45 210)"><path class="ss-incline-bed" d="M 45 210 H 345"/><path class="ss-incline-sand" d="M 68 204 L 82 191 L 109 188 L 143 186 L 176 186 L 211 188 L 251 190 L 283 193 L 319 199 L 330 204 Z"/><circle class="ss-incline-sand" cx="160" cy="178" r="3"/><circle class="ss-incline-sand" cx="212" cy="181" r="3"/><circle class="ss-incline-sand" cx="264" cy="183" r="3"/></g><path class="ss-angle-arc" id="ss-angle-arc" d="M 100 210 A 55 55 0 0 0 92.63 182.50"/><text class="ss-incline-text" x="111" y="194">θ</text></svg><figcaption>Schematic angle illustration, not a grain-motion simulation.</figcaption></figure>
+            <div>
+              <div class="ss-state" id="sand-hysteresis-status" role="status" aria-live="polite" aria-atomic="true"><span class="ss-state-label">State in this example</span><strong id="ss-state-label">Stable</strong><p id="ss-state-description">At 30°, the slope is below the repose threshold. In this example, the sand remains stable.</p></div>
+              <div class="ss-controls" id="sand-hysteresis-controls" hidden><div class="ss-slider-heading"><label for="ss-angle">Slope angle θ</label><output id="ss-angle-output" for="ss-angle" aria-live="off">30.0°</output></div><input class="ss-angle-input" type="range" id="ss-angle" min="28" max="40" step="0.1" value="30" aria-describedby="ss-demo-note"><div class="ss-demo-actions"><button id="ss-avalanche" type="button">Trigger an avalanche · 38°</button><button id="ss-rest" type="button">Return to rest · 30°</button></div></div>
+              <div class="ss-threshold-scale" aria-label="Angle scale from 28 to 40 degrees, with the repose threshold at 32.1 and the avalanche threshold at 36.7"><div class="ss-scale-labels"><span>28°</span><span>40°</span></div><div class="ss-scale-track" aria-hidden="true"><span class="ss-scale-pointer"></span></div><div class="ss-scale-thresholds" aria-hidden="true"><span>32.1° / rest</span><span>36.7° / onset</span></div><p class="ss-memory-key">Between the thresholds, the state depends on its history.</p></div>
+            </div>
+          </div>
+          <p class="ss-demo-note" id="ss-demo-note">This demonstration uses the central reported angles: increase the slope to 36.7° to trigger flow, then lower it to 32.1° to return to rest. It explains the two-threshold behaviour; it does not generate experimental data or simulate an actual avalanche.</p>
+        </div>
+        <p class="ss-source">Reported characteristic angles and hysteresis: study presentation, slides 4 and 6.</p>
+        <div class="ss-methods" id="sand-methods"><h3>Build. Track. Compare.</h3><div class="ss-method-grid"><article><span class="ss-method-number">01 / EXPERIMENT</span><h3>Build</h3><p>Develop an inclinable plane with a rough base and a variable-flow hopper to study how the sand starts and flows.</p></article><article><span class="ss-method-number">02 / OBSERVATION</span><h3>Track</h3><p>Use video point tracking to obtain position over time, x(t), and examine the movement of the avalanche.</p></article><article><span class="ss-method-number">03 / INTERPRETATION</span><h3>Compare</h3><p>Compare observations with Coulomb friction and a separate impact-based model of an isolated grain.</p></article></div></div>
+        <details class="ss-more"><summary>More information · methodology & limits</summary><div class="ss-more-body"><div><h4>Different experiments, different roles</h4><p>The rotating drum was used to identify the characteristic angles. The inclinable plane and hopper supported avalanche observations; the Tac-Tac ball experiment explored repeated impacts at the scale of an isolated grain.</p><p>The observed sand avalanche moved at approximately 0.30 m/s. The separate Tac-Tac analysis used approximately 0.33 m/s; the two values describe different experiments.</p></div><div><h4>What limited the measurements</h4><ul><li>Reproducing the same avalanche conditions and controlling sand flow rate.</li><li>Surface waves that affected measurements.</li><li>Laboratory scale and difficulty measuring dynamic quantities.</li></ul><p class="ss-source">Methods and observations: slides 7–13. Experimental limits: slide 17.</p></div></div></details>
+        <div class="ss-skill-grid" aria-label="Skills developed through the study"><article><h3>Experimental design</h3><p>Turning a physical question into a controllable setup, with attention to the surface and sand supply.</p></article><article><h3>Motion analysis</h3><p>Connecting video observations and position tracking to a quantitative description of motion.</p></article><article><h3>Model evaluation</h3><p>Comparing physical models with observations and recognising the limits of an experimental method.</p></article></div>
+      </div>
+    </section>
+
+
     <nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Keep exploring</p><h2 id="more-projects">More projects</h2><div class="project-links">
       <a href="air-france-can.html"><span class="eyebrow">01 / Industry · 2026</span><strong>Air France Industries CAN test device</strong><span class="arrow" aria-hidden="true">→</span></a>
       <a href="stm32-morse.html"><span class="eyebrow">02 / Embedded systems</span><strong>Morse communication on STM32</strong><span class="arrow" aria-hidden="true">→</span></a>

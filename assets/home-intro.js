@@ -5,6 +5,10 @@
   const scene = home.querySelector('.orbital-scene');
   const toggle = home.querySelector('.motion-toggle');
   const label = toggle.querySelector('.motion-label');
+  const french = document.documentElement.lang === 'fr';
+  const motionLabels = french
+    ? { pause: 'Suspendre les animations', resume: 'Reprendre les animations' }
+    : { pause: 'Pause motion', resume: 'Resume motion' };
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const pointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   let paused = false;
@@ -19,6 +23,7 @@
 
   function configure() {
     toggle.hidden = motion.matches;
+    label.textContent = paused ? motionLabels.resume : motionLabels.pause;
     home.classList.toggle('space-paused', paused || motion.matches);
     if (paused || motion.matches) resetDrift();
   }
@@ -26,7 +31,6 @@
   toggle.addEventListener('click', () => {
     paused = !paused;
     toggle.setAttribute('aria-pressed', String(paused));
-    label.textContent = paused ? 'Resume motion' : 'Pause motion';
     configure();
   });
 
