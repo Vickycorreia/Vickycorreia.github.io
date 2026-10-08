@@ -37,6 +37,11 @@
   let timer = null;
   let active = false;
   const explanations = copy.explanations;
+  const frameDemo = play?.closest('.af-can-demo');
+  const inViewport = () => {
+    const bounds = frameDemo?.getBoundingClientRect();
+    return !bounds || (bounds.bottom > 0 && bounds.top < window.innerHeight);
+  };
 
   const reset = () => {
     if (timer !== null) window.clearTimeout(timer);
@@ -49,8 +54,9 @@
 
   if (play && chip && status && stages.length === explanations.length) {
     play.hidden = false;
-    play.addEventListener('click', () => {
+    play.addEventListener('click', event => {
       if (active) return;
+      window.PortfolioAudio?.unlock(event);
       reset();
       if (motionPreference.matches) {
         status.textContent = copy.reducedFlow;
@@ -62,8 +68,16 @@
       chip.classList.add('af-frame-moving');
       let step = 0;
       const advance = () => {
+        if (document.hidden || !inViewport()) {
+          reset();
+          status.textContent = copy.paused;
+          return;
+        }
         stages.forEach((stage, index) => stage.classList.toggle('af-stage-active', index === step));
         status.textContent = explanations[step];
+        // A short data cue marks each conceptual stage; it does not imply
+        // that the expected PDU reply was successfully received.
+        window.PortfolioAudio?.play('frame', { gain: 0.055 });
         step += 1;
         if (step < explanations.length) {
           timer = window.setTimeout(advance, 1550);
@@ -108,4 +122,12 @@
     reset();
     if (status) status.textContent = copy.staticFlow;
   });
+  window.addEventListener('pagehide', reset);
+  if (play && 'IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting || !active) return;
+      reset();
+      if (status) status.textContent = copy.paused;
+    }).observe(frameDemo || play);
+  }
 })();

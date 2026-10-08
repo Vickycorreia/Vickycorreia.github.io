@@ -14,11 +14,12 @@
     let timer = null;
     let playing = false;
 
-    function showStep(index) {
+    function showStep(index, sound = false) {
       stage = index;
       root.dataset.stage = String(index);
       buttons.forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
       descriptions.forEach((description, i) => { description.hidden = i !== index; });
+      if (sound && !document.hidden) window.PortfolioAudio?.play('build', { gain: 0.045 });
     }
 
     function stop() {
@@ -31,19 +32,21 @@
 
     function advance() {
       if (!playing || document.hidden) { stop(); return; }
-      showStep(stage + 1);
+      showStep(stage + 1, true);
       if (stage === buttons.length - 1) { stop(); return; }
       timer = window.setTimeout(advance, 1900);
     }
 
-    buttons.forEach((button, index) => button.addEventListener('click', () => {
+    buttons.forEach((button, index) => button.addEventListener('click', event => {
+      window.PortfolioAudio?.unlock(event);
       stop();
-      showStep(index);
+      showStep(index, true);
     }));
 
-    playButton.addEventListener('click', () => {
+    playButton.addEventListener('click', event => {
+      window.PortfolioAudio?.unlock(event);
       if (playing || reduced.matches) { stop(); return; }
-      showStep(0);
+      showStep(0, true);
       playing = true;
       playButton.setAttribute('aria-pressed', 'true');
       playLabel.textContent = playButton.dataset.labelPause;

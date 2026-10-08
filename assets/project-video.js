@@ -13,6 +13,7 @@
   let explicitPreference = false;
   let activeAuto = null;
   let visibilityFrame = 0;
+  let awaitingInteraction = false;
 
   const entries = videos.map(video => {
     const automatic = video.hasAttribute('data-scroll-play');
@@ -34,9 +35,28 @@
       request: null,
       policyPaused: false,
       expectedPlayEvents: 0,
-      expectedPauseEvents: 0
+      expectedPauseEvents: 0,
+      expectedMuteEvents: 0,
+      lastMuted: video.muted,
+      userMuted: null,
+      soundFallback: false
     };
   });
+
+  const audio = () => window.PortfolioAudio;
+  const setMuted = (entry, muted) => {
+    if (entry.video.muted === muted) return;
+    entry.expectedMuteEvents += 1;
+    entry.lastMuted = muted;
+    entry.video.muted = muted;
+  };
+  const applySound = entry => {
+    const engine = audio();
+    // Preserve native controls when the optional shared audio script is absent.
+    if (!engine) return;
+    const muted = !engine.enabled || !engine.ready || entry.soundFallback || entry.userMuted === true;
+    setMuted(entry, muted);
+  };
 
   const isFullscreen = video => {
     const element = document.fullscreenElement;
@@ -51,9 +71,9 @@
     return width * height / (bounds.width * bounds.height);
   };
   const eligible = entry => autoEnabled && entry.automatic &&
-    !document.hidden && entry.ratio >= minimumVisibility &&
+    !document.hidden && !awaitingInteraction && entry.ratio >= minimumVisibility &&
     !entry.manualPaused && !entry.completed && !entry.video.ended &&
-    !entry.autoplayBlocked && entry.video.muted && entry.owner !== 'manual';
+    !entry.autoplayBlocked && entry.owner !== 'manual';
 
   const pauseByScript = entry => {
     // pause() queues an event only when it changes paused from false to true.
@@ -86,11 +106,11 @@
     for (const hint of hints) {
       hint.textContent = isFrench
         ? (automaticActive
-          ? 'Les vidéos démarrent sans son à leur arrivée à l’écran. Les commandes permettent de mettre en pause et d’activer le son.'
-          : 'Les commandes permettent de lancer la vidéo, de mettre en pause et d’activer le son.')
+          ? 'Les vidéos démarrent à leur arrivée à l’écran. Après une interaction, le bouton Son active leur audio d’origine ; les commandes restent disponibles.'
+          : 'Lancez les vidéos avec leurs commandes. Le bouton Son règle l’audio d’origine ; vous pouvez aussi couper le son de chaque vidéo.')
         : (automaticActive
-          ? 'Videos start without sound when they come into view. Use the controls to pause or turn on the sound.'
-          : 'Use the controls to play, pause or turn on the sound.');
+          ? 'Videos start when they come into view. After an interaction, the Sound button enables their original audio; playback controls remain available.'
+          : 'Play videos using their controls. The Sound button controls their original audio; you can also mute each video individually.');
     }
   };
 
@@ -102,6 +122,7 @@
     entry.policyPaused = false;
     entry.owner = 'auto';
     activeAuto = entry;
+    applySound(entry);
     let result;
     try {
       result = entry.video.play();
@@ -119,12 +140,21 @@
       if (entry.request !== request) return;
       entry.request = null;
       if (!eligible(entry)) pauseByScript(entry);
-    }, () => {
+    }, error => {
       // Autoplay policies and interrupted loads are ordinary outcomes.
       // Native controls remain available; do not retry on every scroll event.
       if (entry.request !== request) return;
       entry.request = null;
       entry.owner = null;
+      // Some browsers still reject sound on scroll. Keep the same original
+      // video available, silently; the next gesture can enable its real audio.
+      if (!entry.video.muted && !entry.soundFallback && error?.name === 'NotAllowedError') {
+        entry.soundFallback = true;
+        setMuted(entry, true);
+        if (activeAuto === entry) activeAuto = null;
+        startAutomatic(entry);
+        return;
+      }
       entry.autoplayBlocked = true;
       if (activeAuto === entry) activeAuto = null;
     });
@@ -133,6 +163,7 @@
   const reconcile = () => {
     for (const entry of entries) {
       entry.ratio = visibleRatio(entry.video);
+      applySound(entry);
       if (document.hidden || entry.ratio === 0) {
         if (!entry.video.paused || entry.request) pauseByScript(entry);
       }
@@ -170,6 +201,10 @@
       entry.owner = 'manual';
       if (activeAuto === entry) activeAuto = null;
       if (activeAuto) pauseByScript(activeAuto);
+      for (const other of entries) {
+        if (other !== entry && !other.video.paused) pauseByScript(other);
+      }
+      applySound(entry);
       entry.ratio = visibleRatio(video);
       if (document.hidden || entry.ratio === 0) pauseByScript(entry);
     });
@@ -201,15 +236,45 @@
       reconcile();
     });
     video.addEventListener('volumechange', () => {
-      // Sound enabled in native controls belongs to a manual session.
-      // Never re-mute it or resume it from a visibility change.
+      if (entry.expectedMuteEvents > 0) {
+        entry.expectedMuteEvents -= 1;
+        return;
+      }
+      // A native mute choice survives global mute/unmute and scroll changes.
+      if (video.muted !== entry.lastMuted) entry.userMuted = video.muted;
+      entry.lastMuted = video.muted;
+      entry.soundFallback = false;
+      if (audio() && !audio().enabled) {
+        setMuted(entry, true);
+        return;
+      }
       if (!video.muted && !video.paused) {
         entry.request = null;
         entry.owner = 'manual';
         if (activeAuto === entry) activeAuto = null;
+        for (const other of entries) {
+          if (other !== entry && !other.video.paused) pauseByScript(other);
+        }
       }
     });
   }
+
+  window.addEventListener('portfolio-audio-change', () => {
+    if (audio()?.ready) {
+      awaitingInteraction = false;
+      for (const entry of entries) entry.soundFallback = false;
+    }
+    for (const entry of entries) applySound(entry);
+    reconcile();
+  });
+  const resumeAfterGesture = event => {
+    if (!event.isTrusted) return;
+    awaitingInteraction = false;
+    for (const entry of entries) entry.soundFallback = false;
+    reconcile();
+  };
+  document.addEventListener('pointerdown', resumeAfterGesture, { passive: true });
+  document.addEventListener('keydown', resumeAfterGesture);
 
   for (const button of toggles) {
     button.addEventListener('click', () => {
@@ -247,9 +312,17 @@
     video.addEventListener('webkitbeginfullscreen', scheduleVisibility);
     video.addEventListener('webkitendfullscreen', scheduleVisibility);
   }
-  document.addEventListener('visibilitychange', reconcile);
-  window.addEventListener('pagehide', () => {
+  const pauseForBackground = () => {
+    awaitingInteraction = true;
     for (const entry of entries) pauseByScript(entry);
+  };
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) pauseForBackground();
+    else reconcile();
+  });
+  window.addEventListener('blur', pauseForBackground);
+  window.addEventListener('pagehide', () => {
+    pauseForBackground();
   });
   window.addEventListener('pageshow', reconcile);
   const onPreferenceChange = event => {

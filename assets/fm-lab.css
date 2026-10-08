@@ -1,0 +1,40 @@
+.fm-lab {
+  margin: 0 0 80px;
+  padding: clamp(24px, 4vw, 48px);
+  background: radial-gradient(ellipse at top right, #d9eaf1, transparent 65%), #f0f5f4;
+  border: 1px solid #b9ced4;
+  border-radius: 22px;
+  color: #172d43;
+}
+.fm-lab h2 { margin: 12px 0 16px; color: #235b83; font-size: clamp(2rem, 4vw, 3.4rem); }
+.fm-lab-intro { max-width: 760px; color: #435d72; line-height: 1.8; }
+.fm-lab .eyebrow { color: #26766d; }
+.fm-lab-controls { display: none; grid-template-columns: 1fr 1fr; gap: 28px; margin: 30px 0; }
+.fm-lab[data-ready] .fm-lab-controls { display: grid; }
+.fm-lab-controls label { display: grid; gap: 12px; font-weight: 650; }
+.fm-lab-controls label span { display: flex; justify-content: space-between; gap: 12px; }
+.fm-lab-controls output { color: #26766d; font-variant-numeric: tabular-nums; }
+.fm-lab input[type="range"] { width: 100%; margin: 0; min-height: 44px; accent-color: #26766d; cursor: pointer; }
+.fm-lab input:focus-visible, .fm-lab button:focus-visible, .fm-lab summary:focus-visible { outline: 3px solid #235b83; outline-offset: 4px; }
+.fm-wave { margin: 0; padding: 24px 0; border-top: 1px solid #bdccd3; }
+.fm-wave figcaption { margin-bottom: 12px; font-size: .86rem; font-weight: 650; color: #435d72; }
+.fm-wave svg { display: block; width: 100%; height: clamp(80px, 12vw, 120px); overflow: hidden; }
+.fm-wave-axis { stroke: #adbec9; stroke-width: 1; }
+.fm-wave path { fill: none; stroke: #26766d; stroke-width: 2.5; stroke-linejoin: round; }
+.fm-wave.fm-wave-carrier path { stroke: #235b83; }
+.fm-lab-readout { display: flex; flex-wrap: wrap; gap: 12px 28px; padding: 18px 0; color: #435d72; font-size: .86rem; }
+.fm-lab-readout output { color: #235b83; font-variant-numeric: tabular-nums; font-weight: 700; }
+.fm-lab-actions { display: none; flex-wrap: wrap; gap: 12px; margin: 18px 0; }
+.fm-lab[data-ready] .fm-lab-actions { display: flex; }
+.fm-lab button { min-height: 46px; padding: 12px 19px; font: inherit; font-size: .92rem; font-weight: 650; border: 1px solid #235b83; border-radius: 999px; color: #235b83; background: #ffffffa6; cursor: pointer; }
+.fm-lab button:first-child { color: white; background: #235b83; }
+.fm-lab-status { min-height: 1.7em; font-size: .88rem; color: #26766d; }
+.fm-lab details { margin-top: 24px; padding-top: 22px; border-top: 1px solid #bdccd3; color: #435d72; line-height: 1.8; }
+.fm-lab summary { cursor: pointer; font-weight: 650; color: #235b83; }
+.fm-lab details p { max-width: 800px; }
+.fm-lab code { overflow-wrap: anywhere; font-size: .92em; color: #235b83; }
+.fm-lab-note { font-size: .85rem; line-height: 1.7; color: #526779; max-width: 800px; }
+@media (max-width: 600px) {
+  .fm-lab { margin-bottom: 50px; padding: 24px 20px; border-radius: 18px; }
+  .fm-lab-controls { grid-template-columns: 1fr; gap: 12px; }
+}

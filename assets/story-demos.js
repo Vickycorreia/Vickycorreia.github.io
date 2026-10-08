@@ -95,6 +95,7 @@
     let playing = false;
     let startTime = 0;
     let referenceAnnounced = false;
+    const soundedImpacts = new Set();
 
     const setStatus = message => {
       if (status.textContent !== message) status.textContent = message;
@@ -108,6 +109,8 @@
       if (ball) setBall(points[0].x, points[0].y);
       for (const impact of impacts) impact.classList.remove('is-active');
       for (const route of routes) {
+        route.started = false;
+        route.arrived = false;
         const origin = route.path.getPointAtLength(0);
         route.pulse.setAttribute('cx', origin.x);
         route.pulse.setAttribute('cy', origin.y);
@@ -165,6 +168,10 @@
       for (const impact of impacts) {
         const time = points[Number(impact.dataset.ttImpact) + 1]?.time;
         impact.classList.toggle('is-active', elapsed >= time && elapsed < time + 450);
+        if (elapsed >= time && !soundedImpacts.has(time)) {
+          soundedImpacts.add(time);
+          window.PortfolioAudio?.play('impact', { gain: 0.045 });
+        }
       }
     };
     const drawReceivePaths = elapsed => {
@@ -176,6 +183,16 @@
         route.pulse.style.opacity = elapsed >= route.delay && progress < 1 ? '1' : '0';
         route.path.classList.toggle('is-active', elapsed >= route.delay);
         route.stage.classList.toggle('is-active', progress === 1);
+        if (elapsed >= route.delay && !route.started) {
+          route.started = true;
+          window.PortfolioAudio?.play('frame', { gain: 0.045 });
+        }
+        if (progress === 1 && !route.arrived) {
+          route.arrived = true;
+          // Both paths are explanatory markers, including the unvalidated
+          // Arduino receive path, so neither receives a success fanfare.
+          window.PortfolioAudio?.play('tick', { gain: 0.045 });
+        }
       }
       if (elapsed >= 2600 && !referenceAnnounced) {
         referenceAnnounced = true;
@@ -195,10 +212,12 @@
       if (elapsed >= duration) finish(false);
       else frame = window.requestAnimationFrame(tick);
     };
-    const play = () => {
+    const play = event => {
+      window.PortfolioAudio?.unlock(event);
       cancelFrame();
       resetDrawing();
       referenceAnnounced = false;
+      soundedImpacts.clear();
       if (document.hidden || !inViewport(demo)) {
         demo.dataset.demoState = 'ready';
         button.disabled = false;

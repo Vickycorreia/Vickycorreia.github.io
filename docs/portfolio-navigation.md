@@ -1,0 +1,7 @@
+# Project discovery and CV
+
+The English and French introductions link directly to the project gallery and to the supplied English CV, `assets/victor-correia-cv-en.pdf`. The download keeps the original PDF bytes and uses the filename `Victor-Correia-CV-EN.pdf`; both labels explicitly identify its language.
+
+`assets/mission-preview.js` supplements the five project planets and their direct links with a Mission Control preview on pointer hover or keyboard focus. Each preview shows the project category, a short factual summary, and an existing project image where available. Infrared remains in progress and has no invented photograph. Morse remains partially validated, and Rafale remains in progress. Clicking keeps the ordinary direct navigation; Escape closes the preview. The preview follows a focused or hovered link when the page scrolls and stays within the viewport.
+
+The infrared pages include `assets/fm-lab.js` and `assets/fm-lab.css`: a constant-amplitude sinusoidal FM model with adjustable relative input frequency and modulation index. A carrier frequency of 16 relative units keeps all illustrated instantaneous frequencies positive across the controls. The plotted equation and its limits are stated beside the model. It does not assert measured hardware results, stereo validation, or PLL operation. Static default curves remain visible without JavaScript.

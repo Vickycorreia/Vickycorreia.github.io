@@ -18,12 +18,13 @@ Dots and dashes share one RF carrier. Duration encodes the symbols, rather than 
 
 The team repository contains authentic transmitter/receiver KiCad files and an early STM32 software structure. Morse, radio, UI and piezo routines are stubs in this snapshot. Its concrete CRC-8 routine uses polynomial 0x07, init 0x00, MSB-first processing and xorout 0x00. It is isolated, without a completed RF protocol. Source links for the calculation are pinned to this commit.
 
-`assets/morse-lab.js` provides educational models, not firmware execution or RF/hardware validation:
+`assets/morse-lab.js` provides three educational workshops, not firmware execution or RF/hardware validation:
 
 - Morse: standard dot/dash 1T/3T, intra-symbol/letter/word gaps 1T/3T/7T, finite user-started playback or manual steps. T = 180 ms is a visual playback choice; the presentation's code excerpt uses a different illustration. Text selection is a convenient visualisation, while the intended hardware interface uses piezo impacts.
+- Manual Morse challenge: draw a short random word from the English/French space/radio vocabulary, then decode the user’s actual short and long pointer or keyboard presses. Standard gaps finish letters and words; explicit dot/dash/finish controls allow slower composition. The target is checked against decoded letters, with honest mismatch feedback and success only on an exact match. Reset retries the same word; the next-word action chooses a different target. An expandable alphabet supports practice.
 - CRC: calculate the actual routine on ASCII bytes, allow a deliberate bit change and compare the recalculated CRC with the original. CRC detects a mismatch; it does not repair data or detect every possible corruption.
 
-Playback starts only on a user action and pauses when offscreen or the document is hidden. Native forms, buttons and progress indicators support keyboards. Without JavaScript, the timing explanation, SOS waveform and CRC example remain readable. Reduced-motion settings retain manual interaction without automatic playback.
+Shared audio accompanies ON pulses and user presses, with silence during gaps and stop on cancellation, blur, hidden/offscreen state or mute. Synthetic cues are educational effects; original video audio is separate. Playback starts only on a user action and pauses when offscreen or the document is hidden. Native forms, buttons and progress indicators support keyboards. Without JavaScript, the timing explanation, SOS waveform and CRC example remain readable. Reduced-motion settings retain manual interaction without automatic playback.
 
 ## Visual sources and resources
 

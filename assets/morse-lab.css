@@ -1,4 +1,4 @@
-/* Two small educational benches: Morse timing and the standalone CRC-8 routine. */
+/* Educational benches: Morse timing, a manual key and the standalone CRC-8 routine. */
 .morse-lab {
   --lab-ink: #18384c;
   --lab-muted: #526d7c;
@@ -132,4 +132,119 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .morse-lab *, .morse-lab *::before, .morse-lab *::after { transition: none !important; animation: none !important; }
+}
+
+.morse-key-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(24px, 5vw, 60px); align-items: start; }
+.morse-key-transmitter, .morse-key-receiver { min-width: 0; }
+.morse-key-challenge { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 15px 30px; padding: clamp(21px, 3vw, 29px); border: 1px solid #adc6cb; border-radius: 10px; background: linear-gradient(120deg, #e4eeebad, #f7faf6bf); }
+.morse-key-challenge > div:first-child > span { display: block; color: var(--lab-muted); font-size: .64rem; font-weight: 750; letter-spacing: .11em; }
+.morse-key-challenge > div:first-child > strong { display: block; margin-top: 10px; color: var(--lab-teal); font: 600 clamp(1.6rem, 4vw, 2.25rem) ui-monospace, monospace; letter-spacing: .09em; }
+.morse-key-challenge-reading { grid-column: 1 / -1; display: flex; align-items: start; gap: 16px; width: 100%; margin-top: -12px; padding-top: 0; }
+.morse-key-challenge-reading > span { flex-shrink: 0; color: var(--lab-teal); font: 600 .8rem/1.8 ui-monospace, monospace; }
+.morse-key-challenge-reading p { margin: 0; color: var(--lab-muted); font-size: .8rem; line-height: 1.8; }
+.morse-lab[data-challenge-complete="true"] .morse-key-challenge { border-color: #7cae9a; background: #dfeee388; }
+.morse-lab[data-challenge-complete="true"] .morse-key-challenge-reading p { color: #246949; }
+.morse-lab[data-challenge-mismatch="true"] .morse-key-challenge-reading p { color: #8a6037; }
+.morse-key-caption, .morse-key-readout > span, .morse-crc-explainer article > span, .morse-crc-frame div > span, .morse-crc-trace div > span { display: block; font-size: .65rem; font-weight: 750; letter-spacing: .11em; color: var(--lab-muted); line-height: 1.7; }
+.morse-lab .morse-key-button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 11px; width: 100%; min-height: 220px; margin-top: 15px; border: 1px solid #9bb8bd; border-radius: 12px; color: #1a5364; background: radial-gradient(ellipse at 50% 0, #f9fcf9, #dfecee); box-shadow: 0 14px 45px #476e7d09; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.morse-key-button svg { width: 60px; height: 60px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.morse-key-button svg path { stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.morse-key-button strong { font-size: clamp(1rem, 2vw, 1.2rem); letter-spacing: -.025em; }
+.morse-key-button > span { font-size: .74rem; color: var(--lab-muted); font-weight: 500; }
+.morse-lab[data-key-on="true"] .morse-key-button { color: #fffdf8; background: #255e70; border-color: #255e70; box-shadow: 0 0 0 4px #91b9c125, 0 18px 45px #285a7414; }
+.morse-lab[data-key-on="true"] .morse-key-button > span { color: #edf4f0; }
+.morse-key-meter { display: flex; flex-wrap: wrap; gap: 8px 15px; align-items: center; margin-top: 18px; color: var(--lab-muted); font-size: .71rem; }
+.morse-key-meter strong { margin-left: auto; min-width: 6ch; font: 600 .9rem ui-monospace, monospace; color: var(--lab-ink); text-align: right; }
+.morse-key-meter > span:last-child { width: 100%; font-size: .68rem; }
+.morse-key-help { margin: 16px 0 0; max-width: 65ch; font-size: .76rem; line-height: 1.8; color: var(--lab-muted); }
+.morse-key-readout { border-top: 1px solid var(--lab-line); padding: 17px 0 23px; }
+.morse-key-readout code { display: block; margin-top: 11px; min-height: 1.7em; font: 600 clamp(1.2rem, 2.5vw, 1.6rem) ui-monospace, monospace; color: var(--lab-blue); line-height: 1.7; overflow-wrap: anywhere; white-space: pre-wrap; }
+.morse-key-message strong { display: block; margin-top: 12px; min-height: 1.5em; font-size: clamp(1.6rem, 3.6vw, 2.4rem); line-height: 1.4; letter-spacing: -.05em; overflow-wrap: anywhere; }
+.morse-key-live { display: flex; gap: 20px; align-items: center; color: var(--lab-muted); font-size: .75rem; }
+.morse-key-live strong { font: 600 1.05rem ui-monospace, monospace; color: var(--lab-teal); }
+.morse-key-status { min-height: 2.8em; margin: 19px 0 12px; font-size: .8rem; color: var(--lab-teal); line-height: 1.7; }
+.morse-key-actions { display: flex; flex-wrap: wrap; gap: 7px; }
+.morse-key-actions button { font-size: .75rem; padding-inline: 12px; }
+.morse-key-alphabet { display: flex; flex-wrap: wrap; gap: 15px 25px; margin-top: 35px; padding-top: 19px; border-top: 1px solid #b4c8cd8c; color: var(--lab-muted); font-size: .82rem; }
+.morse-key-alphabet span { display: flex; gap: 12px; align-items: center; }
+.morse-key-alphabet code { font: 600 1rem ui-monospace, monospace; color: var(--lab-blue); letter-spacing: .05em; }
+.morse-key-guide { margin-top: 24px; border-block: 1px solid var(--lab-line); }
+.morse-key-guide summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 58px; padding-block: 13px; color: var(--lab-teal); font-size: .87rem; font-weight: 650; list-style: none; cursor: pointer; }
+.morse-key-guide summary::-webkit-details-marker { display: none; }
+.morse-key-guide summary:focus-visible { outline: 3px solid #987347; outline-offset: 4px; }
+.morse-key-guide summary > span { font-size: 1.3rem; font-weight: 400; }
+.morse-key-guide[open] summary > span { transform: rotate(45deg); }
+.morse-key-guide > p { color: var(--lab-muted); font-size: .79rem; line-height: 1.9; margin: 7px 0 20px; max-width: 80ch; }
+.morse-key-guide dl { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px 24px; margin: 0; padding-bottom: 25px; }
+.morse-key-guide dl > div { display: flex; gap: 12px; align-items: center; min-width: 0; }
+.morse-key-guide dt { color: var(--lab-muted); font-size: .8rem; }
+.morse-key-guide dd { margin: 0; color: var(--lab-blue); font: 600 .85rem ui-monospace, monospace; letter-spacing: .025em; }
+.morse-crc-explainer { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 38px); margin: 35px 0; }
+.morse-crc-explainer article { border-top: 1px solid var(--lab-line); padding-top: 16px; min-width: 0; }
+.morse-crc-explainer h3 { margin: 12px 0; font-size: 1.1rem; line-height: 1.4; letter-spacing: -.035em; color: var(--lab-teal); }
+.morse-crc-explainer p { margin: 0; font-size: .83rem; line-height: 1.9; color: var(--lab-muted); }
+.morse-crc-explainer code, .morse-crc-code-reading code, .morse-crc-detail p code { color: var(--lab-blue); font: 600 .9em ui-monospace, monospace; }
+.morse-crc-frame { display: flex; gap: clamp(20px, 5vw, 60px); align-items: center; padding: 22px clamp(20px, 3vw, 30px); border: 1px solid #b4c9cc; border-radius: 9px; background: #e7f0ed88; }
+.morse-crc-frame div { min-width: 0; }
+.morse-crc-frame strong { display: block; margin-top: 8px; font: 600 1.3rem ui-monospace, monospace; color: var(--lab-teal); overflow-wrap: anywhere; }
+.morse-crc-frame small { display: block; margin-top: 8px; font-size: .69rem; line-height: 1.7; color: var(--lab-muted); }
+.morse-crc-frame > span { color: #638997; font-size: 1.25rem; }
+.morse-crc-frame-note { margin-top: 12px; font-size: .75rem; }
+.morse-crc-engineering { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .9fr); gap: clamp(22px, 4vw, 48px); margin-top: 40px; align-items: start; }
+.morse-crc-code { min-width: 0; overflow: hidden; background: #203e4d; border: 1px solid #304e5d; border-radius: 10px; box-shadow: 0 12px 40px #2944580c; }
+.morse-crc-code-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 20px; padding: 17px 19px; border-bottom: 1px solid #6887954f; font-size: .63rem; font-weight: 700; letter-spacing: .07em; color: #c8dce0; }
+.morse-crc-code-heading a { color: #e8ece6; letter-spacing: 0; font-weight: 500; text-underline-offset: 4px; }
+.morse-crc-code pre { max-width: 100%; margin: 0; padding: 24px 19px; overflow: auto; color: #eef1e9; background: transparent; font: 400 .75rem/1.85 ui-monospace, SFMono-Regular, Consolas, monospace; text-align: left; }
+.morse-crc-code pre:focus-visible { outline: 3px solid #987347; outline-offset: -3px; }
+.morse-crc-code pre code { display: block; min-width: max-content; font: inherit; color: inherit; white-space: pre; }
+.crc-code-type { color: #91c8d6; }
+.crc-code-keyword { color: #e3c798; }
+.crc-code-number { color: #bddbc6; }
+.morse-crc-code-reading h3 { margin: 0 0 17px; font-size: 1.15rem; line-height: 1.4; letter-spacing: -.04em; color: var(--lab-teal); }
+.morse-crc-code-reading ol { margin: 0; padding-left: 19px; color: var(--lab-muted); font-size: .81rem; line-height: 1.85; }
+.morse-crc-code-reading li { margin-bottom: 12px; padding-left: 5px; }
+.morse-crc-code-reading strong { color: var(--lab-ink); }
+.morse-crc-code-reading > p { margin: 19px 0 0; color: var(--lab-muted); font-size: .78rem; line-height: 1.85; }
+.morse-crc-detail { margin-top: 30px; border-block: 1px solid var(--lab-line); }
+.morse-crc-detail > summary { display: flex; justify-content: space-between; gap: 20px; align-items: center; min-height: 64px; padding-block: 13px; font-size: .94rem; font-weight: 650; color: var(--lab-teal); cursor: pointer; list-style: none; }
+.morse-crc-detail > summary::-webkit-details-marker { display: none; }
+.morse-crc-detail > summary:focus-visible { outline: 3px solid #987347; outline-offset: 4px; }
+.morse-crc-detail > summary span { font-size: 1.4rem; font-weight: 400; }
+.morse-crc-detail[open] > summary span { transform: rotate(45deg); }
+.morse-crc-detail > div { padding-bottom: 24px; }
+.morse-crc-detail > div > p { max-width: 90ch; margin: 0 0 22px; font-size: .83rem; line-height: 1.9; color: var(--lab-muted); }
+.morse-crc-trace { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 22px; padding: 23px; background: #e5eeed94; border: 1px solid #b0c6ca; border-radius: 8px; margin-block: 21px; }
+.morse-crc-trace div { min-width: 0; }
+.morse-crc-trace strong { display: block; margin: 11px 0; color: var(--lab-teal); font: 600 1.4rem ui-monospace, monospace; }
+.morse-crc-trace small { display: block; font-size: .72rem; line-height: 1.8; color: var(--lab-muted); }
+.morse-crc-trace code { color: var(--lab-blue); font: 500 .88rem ui-monospace, monospace; letter-spacing: .05em; }
+.morse-crc-trace > p { grid-column: 1 / -1; margin: 0; font-size: .83rem; color: var(--lab-muted); line-height: 1.8; }
+@media (max-width: 850px) {
+  .morse-crc-engineering { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .morse-key-layout, .morse-crc-explainer { grid-template-columns: 1fr; }
+  .morse-key-layout { gap: 27px; }
+  .morse-key-challenge { position: sticky; top: 14px; z-index: 4; gap: 15px; padding: 19px; background: #eff5f2; box-shadow: 0 8px 28px #34596b0b; }
+  .morse-key-challenge-reading { gap: 13px; }
+  .morse-key-challenge-reading p { font-size: .74rem; }
+  .morse-key-guide dl { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px 12px; }
+  .morse-key-guide dd { font-size: .74rem; }
+  .morse-lab .morse-key-button { min-height: 184px; }
+  .morse-lab .morse-key-button { scroll-margin-block: 130px 30px; }
+  .morse-key-alphabet { gap: 15px 20px; }
+  .morse-key-message strong { font-size: 1.7rem; }
+  .morse-crc-explainer { gap: 24px; margin-block: 26px; }
+  .morse-crc-explainer h3 { font-size: 1.13rem; }
+  .morse-crc-frame { gap: 17px; padding: 18px 15px; }
+  .morse-crc-frame strong { font-size: 1.05rem; }
+  .morse-crc-frame div > span { font-size: .57rem; letter-spacing: .06em; }
+  .morse-crc-frame small { font-size: .63rem; }
+  .morse-crc-code pre { font-size: .68rem; padding: 20px 15px; }
+  .morse-crc-code-heading { padding: 15px; }
+  .morse-crc-detail > summary { font-size: .85rem; }
+  .morse-crc-trace { grid-template-columns: 1fr 1fr; gap: 18px; padding: 18px; }
+  .morse-crc-trace > div:last-of-type { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .morse-crc-trace > div:last-of-type > span { width: 100%; }
+  .morse-crc-trace > div:last-of-type strong { margin: 0; margin-right: auto; font-size: 1.15rem; }
 }

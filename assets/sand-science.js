@@ -32,6 +32,8 @@
   let frame = 0;
   let lastTime = null;
   let visible = !('IntersectionObserver' in window);
+  let soundRequested = false;
+  const flowSoundKey = 'sand-hysteresis-flow';
 
   if (grainLayer) {
     grainLayer.classList.add('ss-grains');
@@ -83,6 +85,17 @@
       frame = 0;
       lastTime = null;
     }
+    if (soundRequested && canAnimate() && window.PortfolioAudio?.enabled && window.PortfolioAudio?.ready) {
+      window.PortfolioAudio?.startLoop(flowSoundKey, 'grain', { gain: 0.06 });
+    } else {
+      window.PortfolioAudio?.stopLoop(flowSoundKey);
+    }
+  }
+
+  function requestSound(event) {
+    if (!event?.isTrusted) return;
+    soundRequested = true;
+    window.PortfolioAudio?.unlock(event);
   }
 
   function showGrains() {
@@ -104,10 +117,17 @@
   }
   document.addEventListener('visibilitychange', syncAnimation);
   motion.addEventListener('change', syncAnimation);
+  window.addEventListener('portfolio-audio-change', syncAnimation);
+  window.addEventListener('pagehide', () => {
+    soundRequested = false;
+    window.PortfolioAudio?.stopLoop(flowSoundKey);
+  });
 
-  const update = () => {
+  const update = event => {
+    requestSound(event);
     const angle = Number(angleInput.value);
     if (!Number.isFinite(angle)) return;
+    const wasFlowing = flowing;
     if (!flowing && angle >= onset) flowing = true;
     else if (flowing && angle <= repose) flowing = false;
 
@@ -139,6 +159,9 @@
       : `${angleText} degrees, ${label.toLowerCase()} in the teaching example`);
     widget.dataset.state = flowing ? 'flowing' : 'stable';
     syncAnimation();
+    if (soundRequested && flowing !== wasFlowing && visible && !document.hidden && !motion.matches) {
+      window.PortfolioAudio?.play(flowing ? 'grain' : 'tick', { gain: 0.045 });
+    }
     widget.style.setProperty('--ss-angle-position', `${((angle - 28) / 12) * 100}%`);
     if (stateLabel.textContent !== label) stateLabel.textContent = label;
     if (stateDescription.textContent !== explanation) stateDescription.textContent = explanation;
@@ -151,8 +174,8 @@
   };
 
   angleInput.addEventListener('input', update);
-  avalancheButton.addEventListener('click', () => { angleInput.value = '38'; update(); showGrains(); });
-  restButton.addEventListener('click', () => { angleInput.value = '30'; update(); showGrains(); });
+  avalancheButton.addEventListener('click', event => { angleInput.value = '38'; update(event); showGrains(); });
+  restButton.addEventListener('click', event => { angleInput.value = '30'; update(event); showGrains(); });
   update();
   controls.hidden = false;
 })();

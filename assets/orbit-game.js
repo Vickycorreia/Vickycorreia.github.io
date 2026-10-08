@@ -22,7 +22,7 @@
       names: { en: 'Sand', fr: 'Sable' },
       hrefs: { en: '/projects/sand-flow.html', fr: '/fr/projects/sand-flow.html' } },
     { id: 'stm32', weight: 3, x: 205, y: 112, surface: 'rock', color: '#7c8b9d',
-      names: { en: 'STM32', fr: 'STM32' },
+      names: { en: 'Morse project', fr: 'Projet Morse' },
       status: { en: 'Partial validation', fr: 'Validation partielle' },
       hrefs: { en: '/projects/stm32-morse.html', fr: '/fr/projects/stm32-morse.html' } },
     { id: 'infrared', weight: 4, x: 149, y: 343, surface: 'bands', color: '#508c85',
@@ -241,7 +241,7 @@
   const arrivalStay = root.querySelector('.arrival-stay');
   const missionNames = { sun: 'SUN', 'air-france': 'AIR FRANCE PDU',
     sand: french ? 'SABLE / AVALANCHES' : 'SAND / AVALANCHES',
-    stm32: french ? 'STM32 / MORSE · VALIDATION PARTIELLE' : 'STM32 / MORSE · PARTIAL VALIDATION',
+    stm32: french ? 'PROJET MORSE · VALIDATION PARTIELLE' : 'MORSE PROJECT · PARTIAL VALIDATION',
     infrared: 'IR / AUDIO', rafale: french ? 'RAFALE / EN COURS' : 'RAFALE / IN PROGRESS' };
   const copy = french ? {
     names: { sun: 'le Soleil', ...Object.fromEntries(PROJECT_DEFS.map(project => [project.id, project.names.fr + (project.status ? ` (${project.status.fr})` : '')])) },
@@ -413,6 +413,17 @@
   const pathData = points => points.map((point, index) => `${index ? 'L' : 'M'}${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(' ');
   const position = () => flight || initialFlight(config, angle, power);
   const running = () => visible && !document.hidden && !userPaused && (state === 'flying' || state === 'orbit');
+  const propulsionKey = 'orbit-propulsion';
+  let propulsionSound = false;
+  const syncOrbitSound = () => {
+    const audio = window.PortfolioAudio;
+    const wanted = running() && state === 'flying' && Boolean(audio?.enabled && audio?.ready);
+    if (wanted === propulsionSound) return;
+    propulsionSound = wanted;
+    if (wanted) audio.startLoop(propulsionKey, 'rocket', { gain: .07 });
+    else audio?.stopLoop(propulsionKey);
+  };
+
 
   const renderTelemetry = () => {
     const reading = flightTelemetry(config, position(), launchDeltaV);
@@ -509,10 +520,12 @@
     renderTelemetry();
   };
   const stopRAF = () => {
+    window.PortfolioAudio?.stopLoop(propulsionKey); propulsionSound = false;
     if (raf !== null) window.cancelAnimationFrame(raf);
     raf = null; lastTime = null; accumulator = 0;
   };
   const schedule = () => {
+    syncOrbitSound();
     root.classList.toggle('orbit-inactive', !visible || document.hidden || userPaused);
     if (!running()) { stopRAF(); return; }
     if (raf === null) raf = window.requestAnimationFrame(tick);
@@ -533,6 +546,7 @@
       }
       if (flight.outcome && flight.outcome !== previousOutcome) {
         state = flight.outcome;
+        window.PortfolioAudio?.play(state === 'orbit' || state === 'landed' ? 'success' : state === 'collision' ? 'impact' : 'escape');
         if (state === 'orbit' || state === 'landed') userPaused = true;
         if (state === 'collision') {
           impact.setAttribute('transform', `translate(${flight.x} ${flight.y})`);
@@ -564,8 +578,10 @@
     groups.forEach((group, name) => group.classList.toggle('is-target', name === config.name));
     syncUI(); renderAim(); schedule();
   };
-  const launchFlight = () => {
+  const launchFlight = event => {
     if (state !== 'aiming') return;
+    window.PortfolioAudio?.unlock(event);
+    window.PortfolioAudio?.play('launch');
     cancelArrival(); automaticOpening = true; cancelDrag(false); flight = initialFlight(config, angle, power);
     launchDeltaV = Math.hypot(flight.vx, flight.vy);
     const stageRect = stage.getBoundingClientRect();
@@ -636,7 +652,7 @@
     if (event.target !== svg) return;
     if (event.key === 'Escape' && drag) { event.preventDefault(); cancelDrag(true); return; }
     if (state !== 'aiming') return;
-    if (event.key === 'Enter') { event.preventDefault(); launchFlight(); return; }
+    if (event.key === 'Enter') { event.preventDefault(); launchFlight(event); return; }
     if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)) return;
     event.preventDefault(); cancelDrag(true); activePreset = null; syncUI();
     if (event.key === 'ArrowLeft') angle -= Math.PI/36;
@@ -646,14 +662,16 @@
     renderAim();
   });
   launch.addEventListener('click', launchFlight);
-  reset.addEventListener('click', () => startAgain());
-  destinations.forEach(button => button.addEventListener('click', () => startAgain(button.dataset.planet)));
+  reset.addEventListener('click', event => { window.PortfolioAudio?.unlock(event); startAgain(); window.PortfolioAudio?.play('tick'); });
+  destinations.forEach(button => button.addEventListener('click', event => { window.PortfolioAudio?.unlock(event); startAgain(button.dataset.planet); window.PortfolioAudio?.play('tick'); }));
   pause.addEventListener('click', () => {
     if (state !== 'flying' && state !== 'orbit') return;
     automaticOpening = false; cancelArrival(); userPaused = !userPaused; syncUI(); schedule();
   });
   arrivalStay?.addEventListener('click', () => { automaticOpening = false; cancelArrival(); syncUI(); });
   arrivalOpen?.addEventListener('click', () => cancelArrival(false));
+  window.addEventListener('portfolio-audio-change', syncOrbitSound);
+  window.addEventListener('pagehide', () => { window.PortfolioAudio?.stopLoop(propulsionKey); propulsionSound = false; });
   document.addEventListener('visibilitychange', () => { if (document.hidden) { cancelDrag(true); cancelArrival(false); } schedule(); });
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
