@@ -116,3 +116,18 @@
   .project-opening-illustration { min-height: 510px; }
   .project-opening-illustration .project-opening-copy h1 { font-size: clamp(2.05rem, 8.9vw, 3.6rem); }
 }
+/* Air France keeps its title and status in the first view on shorter screens. */
+@media (max-width: 700px) and (max-height: 700px) {
+  .air-france-page .project-opening { min-height: clamp(260px, calc(100svh - 240px), 420px); }
+  .air-france-page .project-opening-copy { padding: 18px 20px; }
+  .air-france-page .project-opening-copy h1 { font-size: clamp(2rem, 9.3vw, 3.8rem); }
+}
+@media (min-width: 480px) and (max-height: 520px) {
+  .air-france-page .nav { padding-block: 10px; }
+  .air-france-page .back-link { margin-top: 18px; }
+  .air-france-page .project-opening { min-height: max(160px, calc(100svh - 195px)); margin-top: 16px; }
+  .air-france-page .project-opening-copy { padding: 16px 24px; }
+  .air-france-page .project-opening-copy h1 { margin-block: 8px 12px; font-size: clamp(2rem, 3.8vw, 3rem); }
+  .air-france-page .project-opening-copy h1 br { display: none; }
+  .air-france-page .project-opening-copy h1 span { margin-left: .18em; }
+}
