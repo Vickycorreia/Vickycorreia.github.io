@@ -1,0 +1,127 @@
+/* An illustrative sequence, not a reconstruction of the model's measured plans. */
+.rafale-build {
+  --build-ink: #334b5d;
+  --build-blue: #53788c;
+  --build-copper: #987351;
+  color: var(--build-ink);
+  margin: 70px auto;
+  padding: clamp(24px, 4vw, 46px);
+  border-block: 1px solid #aebfc566;
+  background: radial-gradient(ellipse at 48% 46%, #e0e8eb8c, transparent 68%);
+}
+.rafale-build-header { max-width: 760px; }
+.rafale-build-header .eyebrow { color: var(--build-copper); }
+.rafale-build-header h3 {
+  margin: 0 0 18px;
+  color: var(--build-ink);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.16;
+  letter-spacing: -.045em;
+}
+.rafale-build-header p:not(.eyebrow) {
+  max-width: 66ch;
+  margin: 0;
+  color: #536977;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.rafale-build-figure { position: relative; margin: 20px auto 14px; width: min(720px, 100%); }
+.rafale-build-diagram { display: block; width: 100%; height: auto; overflow: hidden; }
+.rafale-build-diagram .build-part,
+.rafale-build-diagram .build-part-shape,
+.rafale-build-diagram .build-plan,
+.rafale-build-diagram .build-future,
+.rafale-build-diagram .build-seams,
+.rafale-build-diagram .build-grey {
+  transition: transform 1.1s cubic-bezier(.22, .61, .36, 1), opacity .7s ease, fill .8s ease, stroke .8s ease;
+}
+.rafale-build-diagram .build-part-shape { fill: url(#rafale-cardboard-fill); stroke: #8a7158; stroke-width: 1.4; stroke-linejoin: round; }
+.rafale-build-diagram .build-seams { fill: none; stroke: #8a7158; opacity: .6; stroke-width: 1; }
+.rafale-build-diagram .build-plan { opacity: 0; fill: none; stroke: #658c9f; stroke-width: 1; }
+.rafale-build-diagram .build-grey { opacity: 0; fill: url(#rafale-grey-fill); stroke: #728493; stroke-width: 1.4; stroke-linejoin: round; }
+.rafale-build-diagram .build-future { opacity: 0; fill: #a8b7c02b; stroke: #58788a; stroke-width: 1.4; stroke-dasharray: 4 5; }
+.rafale-build[data-stage="0"] .build-part-shape { fill: #e4edf01a; stroke: #60889d; }
+.rafale-build[data-stage="0"] .build-seams { stroke: #60889d; opacity: .4; }
+.rafale-build[data-stage="0"] .build-plan { opacity: .7; }
+.rafale-build[data-stage="1"] .build-left-wing { transform: translate(-65px, 25px); }
+.rafale-build[data-stage="1"] .build-right-wing { transform: translate(65px, 25px); }
+.rafale-build[data-stage="1"] .build-left-canard { transform: translate(-42px, -27px); }
+.rafale-build[data-stage="1"] .build-right-canard { transform: translate(42px, -27px); }
+.rafale-build[data-stage="1"] .build-cockpit { transform: translate(0, -58px); }
+.rafale-build[data-stage="1"] .build-seams { opacity: .2; }
+.rafale-build[data-stage="3"] .build-grey { opacity: 1; }
+.rafale-build[data-stage="3"] .build-future { opacity: .8; }
+.rafale-build[data-stage="3"] .build-seams { stroke: #657b8d; opacity: .3; }
+.rafale-build-figure figcaption { margin: 13px auto 0; max-width: 62ch; color: #60747f; text-align: center; font-size: .78rem; line-height: 1.7; }
+.rafale-build-concept {
+  display: block;
+  width: max-content;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 7px 12px;
+  background: #f9faf8e0;
+  border: 1px dashed #718a98;
+  border-radius: 3px;
+  color: #526c7d;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .035em;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+}
+.rafale-build[data-stage="3"] .rafale-build-concept { opacity: 1; visibility: visible; }
+.rafale-build-controls[hidden], .rafale-build-copy [hidden] { display: none; }
+.rafale-build-controls { margin-top: 28px; }
+.rafale-build-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.rafale-build-steps button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 10px 8px;
+  border: 1px solid #a9bcc5;
+  border-radius: 5px;
+  background: #f7faf87a;
+  color: #4c6574;
+  font: inherit;
+  font-size: .82rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.rafale-build-steps button span { font-size: .64rem; font-weight: 700; letter-spacing: .035em; }
+.rafale-build-steps button:hover { border-color: #587b8e; background: #f4f8f8; }
+.rafale-build-steps button[aria-pressed="true"] { color: #304d61; background: #dfe9ed; border-color: #628293; }
+.rafale-build button:focus-visible { outline: 3px solid #987351; outline-offset: 4px; }
+.rafale-build-play {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin: 15px auto 0;
+  padding: 10px 8px;
+  border: 0;
+  background: transparent;
+  color: #557486;
+  font: inherit;
+  font-size: .78rem;
+  cursor: pointer;
+}
+.rafale-build-play:hover { text-decoration: underline; text-underline-offset: 4px; }
+.rafale-build-play svg { width: 14px; height: 14px; }
+.rafale-build-copy { max-width: 70ch; min-height: 112px; margin: 22px auto 0; }
+.rafale-build-copy p { margin: 0; color: #4e6676; font-size: .95rem; line-height: 1.8; }
+.rafale-build-copy p:not([hidden]) ~ p:not([hidden]) { margin-top: 18px; }
+.rafale-build-copy strong { color: var(--build-ink); }
+@media (max-width: 600px) {
+  .rafale-build { margin-block: 45px; padding-inline: 0; }
+  .rafale-build-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .rafale-build-figure { margin-top: 12px; }
+  .rafale-build-concept { font-size: .61rem; padding: 5px 8px; }
+  .rafale-build-copy { min-height: 172px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rafale-build-diagram * { transition: none !important; }
+  .rafale-build-play { display: none; }
+}

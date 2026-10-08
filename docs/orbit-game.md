@@ -1,6 +1,8 @@
 # Correia / Orbit Lab
 
-The English and French home pages share a transparent orbital scene integrated into the introduction. `assets/orbit-game.js` creates a distant faded Sun and one world for each of the five projects: Air France, sand avalanches, STM32 Morse, infrared audio and the cardboard Rafale. Procedural SVG terrain, atmospheric shading and a slim launch vehicle require no external dependencies. Native SVG project links and HTML shortcuts remain available without JavaScript.
+The English and French home pages share a transparent orbital scene in the full-width `#orbit` section, immediately below the portrait introduction. `assets/orbit-game.js` creates a distant faded Sun and one world for each of the five projects: Air France, sand avalanches, STM32 Morse, infrared audio and the cardboard Rafale. Procedural SVG terrain, atmospheric shading and a slim launch vehicle require no external dependencies. Native SVG project links and HTML shortcuts remain available without JavaScript.
+
+The cardboard Rafale is explicitly labelled **In progress / En cours** in its launch selector, direct links, planet label, mission target and arrival message. A separate short status line keeps the visible planet name compact. Its physics and technical-difficulty weight are unchanged.
 
 ## Weights, size and gravity
 
@@ -26,7 +28,7 @@ Independent checks compare Newton's vector force with a separate analytical calc
 
 ## Mission Control
 
-A small console beside the desktop scene contains Launch/Reset and telemetry. Compact viewports use a floating control strip while the introduction remains in view. Launch frames the scene when needed, and reserved SVG padding keeps the strip clear of planet targets. The star field uses static, irregular SVG points with a few slow, optional pulses; reduced motion disables them.
+A small console beside the desktop scene contains Launch/Reset and telemetry. Compact viewports use a floating control strip while the orbital section remains in view. Launch frames the scene when needed, and reserved SVG padding keeps the strip clear of planet targets. The star field uses static, irregular SVG points with a few slow, optional pulses; reduced motion disables them.
 
 `flightTelemetry` reads the actual position and velocity from the integrator. VEL is `hypot(vx, vy)`; ALT is the rocket centre's distance above the target's surface; X/Y are scene coordinates; Σg is the magnitude of the **combined** acceleration from all six bodies. Δv is the initial launch impulse and remains constant while the rocket coasts. Displayed units are explicitly relative scene units, not real-world spacecraft measurements. Readings update at most ten times per second during flight, without a live region announcing every number.
 

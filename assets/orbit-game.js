@@ -29,6 +29,7 @@
       hrefs: { en: '/projects/infrared-audio.html', fr: '/fr/projects/infrared-audio.html' } },
     { id: 'rafale', weight: 2, x: 557, y: 326, surface: 'rock', color: '#8e88a8',
       names: { en: 'Cardboard Rafale', fr: 'Rafale en carton' },
+      status: { en: 'In progress', fr: 'En cours' },
       hrefs: { en: '/projects/cardboard-rafale.html', fr: '/fr/projects/cardboard-rafale.html' } }
   ].map(project => ({ ...project, bodyId: project.id }));
   const BODIES = [
@@ -239,9 +240,9 @@
   const arrivalStay = root.querySelector('.arrival-stay');
   const missionNames = { sun: 'SUN', 'air-france': 'AIR FRANCE PDU',
     sand: french ? 'SABLE / AVALANCHES' : 'SAND / AVALANCHES', stm32: 'STM32 / MORSE',
-    infrared: 'IR / AUDIO', rafale: french ? 'RAFALE / CARTON' : 'CARDBOARD RAFALE' };
+    infrared: 'IR / AUDIO', rafale: french ? 'RAFALE / EN COURS' : 'RAFALE / IN PROGRESS' };
   const copy = french ? {
-    names: { sun: 'le Soleil', ...Object.fromEntries(PROJECT_DEFS.map(project => [project.id, project.names.fr])) },
+    names: { sun: 'le Soleil', ...Object.fromEntries(PROJECT_DEFS.map(project => [project.id, project.names.fr + (project.status ? ` (${project.status.fr})` : '')])) },
     states: { aiming: 'Prêt', flying: 'En vol', orbit: 'Tour observé', collision: 'Collision', escape: 'Hors zone', landed: 'Projet atteint' },
     ready: name => `Départ depuis ${name}.`,
     aimingDetail: 'Quatre secondes de vol en pointillés. À toi de découvrir la suite.',
@@ -256,7 +257,7 @@
     svgLabel: 'Scène orbitale. Règle la direction et la force du lancement.',
     controlsLabel: (name, power, angle) => `Lancement autour de ${name}. Force ${power} pour cent, direction ${angle} degrés.`
   } : {
-    names: { sun: 'the Sun', ...Object.fromEntries(PROJECT_DEFS.map(project => [project.id, project.names.en])) },
+    names: { sun: 'the Sun', ...Object.fromEntries(PROJECT_DEFS.map(project => [project.id, project.names.en + (project.status ? ` (${project.status.en})` : '')])) },
     states: { aiming: 'Ready', flying: 'Flying', orbit: 'Turn observed', collision: 'Collision', escape: 'Out of area', landed: 'Project reached' },
     ready: name => `Departure from ${name}.`,
     aimingDetail: 'Four seconds of flight in dots. Discover what comes next.',
@@ -378,10 +379,11 @@
   for (const project of PROJECT_DEFS) {
     const body = BODIES.find(item => item.id === project.id);
     const link = append(projectLayer, 'a', { class: 'orbit-project-link', 'data-project': project.id,
-      href: landingURL(body.id, french ? 'fr' : 'en'), 'aria-label': `${french ? 'Découvrir' : 'Explore'} ${project.names[french ? 'fr' : 'en']}` });
-    append(link, 'title', {}, `${project.names[french ? 'fr' : 'en']} · ${french ? 'difficulté relative' : 'relative difficulty'} ${project.weight}/5`);
+      href: landingURL(body.id, french ? 'fr' : 'en'), 'aria-label': `${french ? 'Découvrir' : 'Explore'} ${project.names[french ? 'fr' : 'en']}${project.status ? ` · ${project.status[french ? 'fr' : 'en']}` : ''}` });
+    append(link, 'title', {}, `${project.names[french ? 'fr' : 'en']}${project.status ? ` · ${project.status[french ? 'fr' : 'en']}` : ''} · ${french ? 'difficulté relative' : 'relative difficulty'} ${project.weight}/5`);
     append(link, 'circle', { class: 'orbit-project-hit-area', cx: body.x, cy: body.y, r: body.radius });
-    append(link, 'text', { class: 'orbit-project-label', x: body.x, y: body.y+body.radius+24, 'text-anchor': 'middle', 'font-family': 'inherit', 'font-size': 15 }, project.names[french ? 'fr' : 'en']);
+    append(link, 'text', { class: 'orbit-project-label', x: body.x, y: body.y+body.radius+24, 'text-anchor': 'middle', 'font-family': 'inherit', 'font-size': 15 }, project.id === 'rafale' ? 'Rafale' : project.names[french ? 'fr' : 'en']);
+    if (project.status) append(link, 'text', { class: 'orbit-project-label orbit-project-status', x: body.x, y: body.y+body.radius+44, 'text-anchor': 'middle', 'font-family': 'inherit', 'font-size': 12 }, project.status[french ? 'fr' : 'en']);
   }
 
   let config = configuration('air-france');
