@@ -23,6 +23,7 @@
       hrefs: { en: '/projects/sand-flow.html', fr: '/fr/projects/sand-flow.html' } },
     { id: 'stm32', weight: 3, x: 205, y: 112, surface: 'rock', color: '#7c8b9d',
       names: { en: 'STM32', fr: 'STM32' },
+      status: { en: 'Partial validation', fr: 'Validation partielle' },
       hrefs: { en: '/projects/stm32-morse.html', fr: '/fr/projects/stm32-morse.html' } },
     { id: 'infrared', weight: 4, x: 149, y: 343, surface: 'bands', color: '#508c85',
       names: { en: 'Infrared audio', fr: 'Audio infrarouge' },
@@ -239,7 +240,8 @@
   const arrivalOpen = root.querySelector('.arrival-open');
   const arrivalStay = root.querySelector('.arrival-stay');
   const missionNames = { sun: 'SUN', 'air-france': 'AIR FRANCE PDU',
-    sand: french ? 'SABLE / AVALANCHES' : 'SAND / AVALANCHES', stm32: 'STM32 / MORSE',
+    sand: french ? 'SABLE / AVALANCHES' : 'SAND / AVALANCHES',
+    stm32: french ? 'STM32 / MORSE · VALIDATION PARTIELLE' : 'STM32 / MORSE · PARTIAL VALIDATION',
     infrared: 'IR / AUDIO', rafale: french ? 'RAFALE / EN COURS' : 'RAFALE / IN PROGRESS' };
   const copy = french ? {
     names: { sun: 'le Soleil', ...Object.fromEntries(PROJECT_DEFS.map(project => [project.id, project.names.fr + (project.status ? ` (${project.status.fr})` : '')])) },

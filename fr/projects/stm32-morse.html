@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071321">
-  <title>Communication en morse sur STM32 — Victor Correia</title>
-  <meta name="description" content="Un encodeur et décodeur de messages en morse développé par Victor Correia sur un microcontrôleur STM32, avec un format de message défini et un contrôle d’intégrité CRC-8.">
+  <meta name="theme-color" content="#edf3f2">
+  <title>Émetteur-récepteur Morse · STM32 — Victor Correia</title>
+  <meta name="description" content="Projet collectif Morse à 433,92 MHz : piézos, cartes STM32, traitement logique avec Tristan, CRC-8 et essais. PCB, prototype et limites de validation détaillés.">
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
   <link rel="stylesheet" href="../../assets/project.css">
 
@@ -16,8 +16,13 @@
   <link rel="stylesheet" href="../../assets/project-brief.css">
 <link rel="stylesheet" href="../../assets/space-navigation.css">
 <script src="../../assets/space-navigation.js" defer></script>
+<link rel="stylesheet" href="../../assets/morse-project.css">
+<link rel="stylesheet" href="../../assets/photo-reading.css">
+<script src="../../assets/photo-reading.js" defer></script>
+<link rel="stylesheet" href="../../assets/morse-lab.css">
+<script src="../../assets/morse-lab.js" defer></script>
 </head>
-<body>
+<body class="morse-page">
   <a class="skip-link" href="#main">Aller au contenu</a>
   <header class="nav wrap">
     <a class="brand" href="../index.html">VICTOR <b>CORREIA</b></a>
@@ -25,45 +30,168 @@
   <nav class="language-switch" aria-label="Choisir la langue"><a href="/projects/stm32-morse.html" lang="en" hreflang="en" data-language="en" aria-label="English"><span class="language-name">English</span><span class="language-short" aria-hidden="true">EN</span></a><a href="/fr/projects/stm32-morse.html" lang="fr" hreflang="fr" data-language="fr" aria-label="Français" aria-current="page"><span class="language-name">Français</span><span class="language-short" aria-hidden="true">FR</span></a></nav></header>
 <div class="page-flight-progress" role="progressbar" aria-label="Progression de lecture" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span class="flight-progress-track" aria-hidden="true"></span><span class="flight-progress-fill" aria-hidden="true"></span><span class="flight-progress-ship" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3.3 3.7-4.6 8.1-4.1 13h8.2C16.6 10.1 15.3 5.7 12 2Z"/><circle cx="12" cy="8" r="1.5"/><path d="m8 10-3.7 5.5L8 14m8-4 3.7 5.5L16 14M9 18l3 4 3-4"/></svg></span></div>
 
-  <main id="main">
-    <div class="wrap">
-      <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
-      <section class="hero" aria-labelledby="project-title">
-        <div>
-          <p class="eyebrow">02 / Systèmes embarqués</p>
-          <h1 id="project-title">Communication en morse<br><span>sur STM32.</span></h1>
-          <p class="lead">Un encodeur et décodeur embarqué de messages en morse, associant un format de message défini à un contrôle d’intégrité CRC-8 sur un microcontrôleur STM32.</p>
-          <ul class="tags" aria-label="Technologies"><li>STM32</li><li>C</li><li>Code Morse</li><li>CRC-8</li></ul>
-        </div>
-        <aside class="overview" aria-label="Principes de communication">
-          <p class="eyebrow">Au cœur du projet</p>
-          <ul class="system-flow">
-            <li><strong>Format des messages</strong><small>Une structure définie pour la communication</small></li>
-            <li><strong>Encodage et décodage en morse</strong><small>Implémentés sur un microcontrôleur STM32</small></li>
-            <li><strong>Contrôle d’intégrité CRC-8</strong><small>Vérification de l’intégrité des messages</small></li>
-          </ul>
-          <p class="diagram-note">Les principaux éléments du système de communication embarqué.</p>
-        </aside>
-      </section>
-      <section class="project-brief" aria-labelledby="project-brief-title">
-        <div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div>
-        <dl class="project-brief-grid">
-          <div><dt>Objectif</dt><dd>Encoder et décoder des messages en morse sur un microcontrôleur.</dd></div>
-          <div><dt>Approche</dt><dd>STM32 · C · Format de message défini · CRC-8.</dd></div>
-          <div><dt>Ma contribution</dt><dd>Programmation embarquée · Conversion Morse · Contrôle d’intégrité.</dd></div>
-          <div><dt>Défi principal</dt><dd>Associer la représentation en morse à la vérification des messages.</dd></div>
-        </dl>
-        <a class="project-brief-dive" href="#engineering-details">Explorer la démarche en détail <span aria-hidden="true">↓</span></a>
-      </section>
-      <div class="content" id="engineering-details" tabindex="-1">
-        <div class="story">
-          <section aria-labelledby="objective"><h2 id="objective"><span class="number" aria-hidden="true">01</span>L’objectif</h2><p>Construire un système capable d’encoder et de décoder des messages en morse sur un microcontrôleur STM32. En complément de cette conversion, le projet intègre un format de message défini et une détection des erreurs.</p></section>
-          <section aria-labelledby="approach"><h2 id="approach"><span class="number" aria-hidden="true">02</span>La démarche</h2><p>Le système embarqué est programmé en C sur STM32. L’encodage et le décodage en morse sont associés à un format de message et à un CRC-8 pour réunir la représentation des messages et le contrôle de leur intégrité dans un même système.</p></section>
-          <section aria-labelledby="contribution"><h2 id="contribution"><span class="number" aria-hidden="true">03</span>Ma contribution</h2><p>J’ai développé l’encodeur et le décodeur de messages en morse. Ce projet a réuni la programmation embarquée, un format de communication défini et le contrôle d’intégrité CRC-8.</p></section>
-        </div>
-        <aside class="facts" aria-labelledby="facts-title"><h2 id="facts-title">En bref</h2><dl><div><dt>Domaine</dt><dd>Systèmes embarqués</dd></div><div><dt>Plateforme</dt><dd>Microcontrôleur STM32</dd></div><div><dt>Langage</dt><dd>C</dd></div><div><dt>Axes du projet</dt><dd>Encodage et décodage en morse, contrôle d’intégrité CRC-8</dd></div></dl></aside>
-      </div>
+<main id="main"><section class="case-intro wrap" aria-labelledby="project-title"><a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
+<div class="hero"><div><p class="eyebrow">02 / Systèmes embarqués · Projet collectif · 2026</p><h1 id="project-title">Le Morse.<br><span>Du geste au signal.</span></h1><p class="lead">Un projet collectif où une frappe devient une impulsion, traverse une chaîne radio, puis doit redevenir une lettre. Avec Tristan, je me suis concentré sur le traitement et la logique embarquée.</p><p class="morse-status">Prototype réalisé · Validation partielle</p><ul class="tags" aria-label="Technologies"><li>STM32</li><li>C</li><li>OOK · 433,92 MHz</li><li>CRC-8</li></ul></div>
+<figure class="morse-hero-visual"><img src="../../assets/morse/assembled-boards.jpeg" width="1080" height="1198" alt="Photographie des deux PCB du projet Morse, émetteur et récepteur, posés à côté d’une règle." fetchpriority="high"><figcaption>Les deux PCB fabriqués par le groupe. Photographie de la présentation finale ; plusieurs étapes restent à valider sur la liaison complète.</figcaption></figure></div>
+<section class="project-brief" aria-labelledby="project-brief-title"><div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div><dl class="project-brief-grid">
+<div><dt>Objectif</dt><dd>Saisir du Morse avec deux piézos, transmettre à 433,92 MHz et afficher le message reçu.</dd></div>
+<div><dt>Architecture</dt><dd>Deux cartes STM32 · Radio OOK · OLED I²C · PCB dédiés.</dd></div>
+<div><dt>Mon travail</dt><dd>Traitement et logique embarquée avec Tristan, dans une équipe de six.</dd></div>
+<div><dt>Résultat / défi</dt><dd>Décodage sur prototype et signal piézo mesuré ; liaison RF finale non validée.</dd></div>
+</dl><a class="project-brief-dive" href="#engineering-details">Entrer dans les détails <span aria-hidden="true">↓</span></a></section><p class="intro-note">Ce projet m’a appris à faire le lien entre logiciel, signaux et matériel. Un résultat obtenu sur une carte de développement doit encore être vérifié après intégration sur un PCB : c’est cette progression, avec ses essais et ses difficultés, que cette page raconte.</p><dl class="intro-facts">
+<div><dt>Équipe</dt><dd>Tristan, Ambre, Victor, Ehsann, Antoine et Julaivane.</dd></div>
+<div><dt>Contribution documentée</dt><dd>Traitement / logique, avec Tristan.</dd></div>
+<div><dt>Avancement à la présentation finale</dt><dd>Prototype et premiers essais réalisés ; antennes, calibration et liaison entre PCB à compléter.</dd></div>
+</dl><nav class="case-jump-links" aria-label="Chapitres du projet">
+<a href="#architecture"><svg class="space-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3.3 3.7-4.6 8.1-4.1 13h8.2C16.6 10.1 15.3 5.7 12 2Z"/><circle cx="12" cy="8" r="1.5"/><path d="m8 10-3.7 5.5L8 14m8-4 3.7 5.5L16 14M9 18l3 4 3-4"/></svg>La chaîne</a>
+<a href="#transmitter"><svg class="space-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3.3 3.7-4.6 8.1-4.1 13h8.2C16.6 10.1 15.3 5.7 12 2Z"/><circle cx="12" cy="8" r="1.5"/><path d="m8 10-3.7 5.5L8 14m8-4 3.7 5.5L16 14M9 18l3 4 3-4"/></svg>Émetteur</a>
+<a href="#receiver"><svg class="space-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3.3 3.7-4.6 8.1-4.1 13h8.2C16.6 10.1 15.3 5.7 12 2Z"/><circle cx="12" cy="8" r="1.5"/><path d="m8 10-3.7 5.5L8 14m8-4 3.7 5.5L16 14M9 18l3 4 3-4"/></svg>Récepteur</a>
+<a href="#embedded-logic"><svg class="space-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3.3 3.7-4.6 8.1-4.1 13h8.2C16.6 10.1 15.3 5.7 12 2Z"/><circle cx="12" cy="8" r="1.5"/><path d="m8 10-3.7 5.5L8 14m8-4 3.7 5.5L16 14M9 18l3 4 3-4"/></svg>Le logiciel</a>
+<a href="#bench-tests"><svg class="space-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3.3 3.7-4.6 8.1-4.1 13h8.2C16.6 10.1 15.3 5.7 12 2Z"/><circle cx="12" cy="8" r="1.5"/><path d="m8 10-3.7 5.5L8 14m8-4 3.7 5.5L16 14M9 18l3 4 3-4"/></svg>Les essais</a>
+<a href="#morse-animations"><svg class="space-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3.3 3.7-4.6 8.1-4.1 13h8.2C16.6 10.1 15.3 5.7 12 2Z"/><circle cx="12" cy="8" r="1.5"/><path d="m8 10-3.7 5.5L8 14m8-4 3.7 5.5L16 14M9 18l3 4 3-4"/></svg>Animations</a>
+<a href="#project-resources"><svg class="space-menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3.3 3.7-4.6 8.1-4.1 13h8.2C16.6 10.1 15.3 5.7 12 2Z"/><circle cx="12" cy="8" r="1.5"/><path d="m8 10-3.7 5.5L8 14m8-4 3.7 5.5L16 14M9 18l3 4 3-4"/></svg>Documents</a>
+</nav><p class="scroll-hint"><span aria-hidden="true">↓</span>Les photographies et les vues de conception s’éclaircissent au fil du défilement pour laisser place à la démarche.</p></section><div id="engineering-details" tabindex="-1"></div>
+<section class="photo-story scene-boards" id="architecture" aria-labelledby="architecture-title"><div class="story-stage"><div class="scene-wash" aria-hidden="true"></div><figure class="story-figure">
+<img class="story-photo-backdrop" src="../../assets/morse/assembled-boards.jpeg" width="1080" height="1198" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="story-photo" style="--image-ratio:0.901503" src="../../assets/morse/assembled-boards.jpeg" width="1080" height="1198" alt="Photographie des deux PCB du projet Morse, émetteur et récepteur, posés à côté d’une règle." loading="lazy" decoding="async"><figcaption class="photo-label">01 / DEUX CARTES, UNE CHAÎNE</figcaption></figure></div>
+<div class="story-frame"><div class="chapter-meta" aria-hidden="true"><span>01 / 05</span><span>Validation partielle</span></div><a class="photo-full" href="../../assets/morse/assembled-boards.jpeg" target="_blank" rel="noopener noreferrer">Voir l’image <span aria-hidden="true">↗</span></a>
+<details class="chapter-more" name="chapter-information"><summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary><div class="more-panel" role="region" aria-labelledby="architecture-more-title"><button class="more-close" type="button" aria-label="Fermer les informations" hidden>×</button><p class="eyebrow">01 / DEUX CARTES, UNE CHAÎNE</p><h3 id="architecture-more-title">Du capteur à la lettre</h3><dl class="more-facts">
+<div><dt>Contexte</dt><dd>Projet collectif de 2026, réalisé à six.</dd></div>
+<div><dt>Mon rôle</dt><dd>Traitement et logique embarquée, avec Tristan.</dd></div>
+<div><dt>Sens de la liaison</dt><dd>Émetteur → récepteur ; communication unidirectionnelle.</dd></div>
+</dl>
+<p>Un piézo est associé au point, l’autre au trait. La carte émettrice doit transformer les impacts détectés en impulsions cohérentes. Le récepteur doit ensuite mesurer les périodes actives et les silences pour reconstruire les caractères ; l’OLED I²C est prévu pour les afficher.</p>
+<p>Les points et les traits utilisent la même porteuse à 433,92 MHz. L’information est portée par les durées : en OOK, la porteuse est activée puis coupée. Le projet ne repose donc pas sur une fréquence radio différente pour chaque symbole.</p>
+<p class="source-note">Présentation finale, p. 3–8 et 29 ; rapport, répartition des rôles et conclusion.</p></div></details><div class="chapter-progress" aria-hidden="true"><span></span></div></div><div class="chapter-content"><div class="chapter-copy"><p class="eyebrow">01 / DEUX CARTES, UNE CHAÎNE</p><h2 id="architecture-title"><span class="title-line">Un geste.</span><span class="title-line title-accent">Un message.</span></h2><p class="chapter-lead">Deux piézos, deux cartes STM32 et une liaison radio à 433,92 MHz. L’objectif : transformer des frappes en points et traits, puis retrouver des lettres sur un écran.</p><ul class="chapter-tags">
+<li>Piézos</li>
+<li>STM32</li>
+<li>433,92 MHz</li>
+<li>OOK</li>
+</ul></div><article class="chapter-narrative" aria-labelledby="architecture-narrative-title"><p class="eyebrow">La démarche</p><h3 id="architecture-narrative-title">Relier les blocs, sans perdre le signal</h3><p>Le point de départ est volontairement simple : on frappe l’un des deux capteurs piézo pour saisir un point ou un trait. Derrière ce geste se trouve une chaîne complète, avec une entrée à interpréter, une durée à produire, une porteuse radio à commander et des lettres à reconstruire. Nous avons réparti ces blocs dans une équipe de six. Avec Tristan, j’ai travaillé sur le traitement et la logique embarquée. La première question était de savoir ce que chaque bloc devait recevoir et fournir au suivant. Le prototype a permis de vérifier l’interprétation temporelle du Morse avant l’intégration finale. Les deux PCB photographiés matérialisent cette architecture ; leur fabrication ne signifie toutefois pas que la liaison radio complète ait été validée.</p>
+<a class="chapter-next" href="#transmitter">Continuer le projet <span aria-hidden="true">→</span></a></article></div></section>
+<section class="photo-story scene-emitter" id="transmitter" aria-labelledby="transmitter-title"><div class="story-stage"><div class="scene-wash" aria-hidden="true"></div><figure class="story-figure">
+<img class="story-photo-backdrop" src="../../assets/morse/transmitter-design.png" width="959" height="903" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="story-photo" style="--image-ratio:1.062016" src="../../assets/morse/transmitter-design.png" width="959" height="903" alt="Vue 3D KiCad de la carte émettrice, extraite de la présentation finale ; il s’agit d’une vue de conception." loading="lazy" decoding="async"><figcaption class="photo-label">02 / ÉMETTEUR / VUE DE CONCEPTION</figcaption></figure></div>
+<div class="story-frame"><div class="chapter-meta" aria-hidden="true"><span>02 / 05</span><span>Validation partielle</span></div><a class="photo-full" href="../../assets/morse/transmitter-design.png" target="_blank" rel="noopener noreferrer">Voir l’image <span aria-hidden="true">↗</span></a>
+<details class="chapter-more" name="chapter-information"><summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary><div class="more-panel" role="region" aria-labelledby="transmitter-more-title"><button class="more-close" type="button" aria-label="Fermer les informations" hidden>×</button><p class="eyebrow">02 / ÉMETTEUR / VUE DE CONCEPTION</p><h3 id="transmitter-more-title">Acquisition, alimentation, émission</h3><dl class="more-facts">
+<div><dt>Microcontrôleur</dt><dd>STM32L021K4T6 sur la carte dédiée.</dd></div>
+<div><dt>Alimentation</dt><dd>USB-C 5 V → régulation 3,3 V.</dd></div>
+<div><dt>Module prévu</dt><dd>TX-SAW-MID-3V/CS ; entrées piézo DFR0052.</dd></div>
+</dl>
+<p>Le schéma comprend le microcontrôleur, le régulateur BU33SD5WG-TR, le connecteur SWD et les connexions des capteurs et de l’émetteur. La vue 3D montre la conception mécanique des composants ; la photographie du premier chapitre montre les cartes fabriquées.</p>
+<p>Pour l’intégration, les niveaux d’alimentation et les signaux doivent être vérifiés au bon endroit. La sensibilité aux impacts et le choix des seuils font partie des points à examiner sur une carte réelle. Les documents ne fournissent pas de tension piézo calibrée ni de mesure de portée radio.</p>
+<p><a href="../../assets/morse/transmitter-schematic.svg" target="_blank" rel="noopener noreferrer">Ouvrir le schéma émetteur ↗</a></p>
+<p class="source-note">Présentation finale, p. 14–17 et 30 ; schéma émetteur du dépôt collectif.</p></div></details><div class="chapter-progress" aria-hidden="true"><span></span></div></div><div class="chapter-content"><div class="chapter-copy"><p class="eyebrow">02 / ÉMETTEUR / VUE DE CONCEPTION</p><h2 id="transmitter-title"><span class="title-line">Détecter l’impact.</span><span class="title-line title-accent">Donner le rythme.</span></h2><p class="chapter-lead">La carte rassemble le STM32, l’alimentation et les connexions des piézos et du module radio. Un signal piézo a été mesuré sur ce PCB pendant les essais.</p><ul class="chapter-tags">
+<li>Acquisition</li>
+<li>3,3 V</li>
+<li>SWD</li>
+<li>Conception KiCad</li>
+</ul></div><article class="chapter-narrative" aria-labelledby="transmitter-narrative-title"><p class="eyebrow">La démarche</p><h3 id="transmitter-narrative-title">Une frappe doit devenir un événement clair</h3><p>Un capteur piézo réagit à une vibration : le logiciel doit en tirer un événement exploitable, puis produire un symbole court ou long. L’enjeu est de distinguer une frappe utile d’un signal parasite sans multiplier les déclenchements. Le prototype sert à comprendre cette logique ; les mesures sur la carte émettrice permettent ensuite d’observer ce qui arrive réellement depuis le capteur. Le rapport décrit un signal piézo envoyé et mesuré sur le PCB. C’est une étape concrète pour l’acquisition, mais elle ne suffit pas à démontrer une transmission radio décodée à l’autre bout. Pour avancer simplement, il faut vérifier l’entrée, la durée du symbole et la sortie vers le module radio comme trois éléments distincts.</p>
+<a class="chapter-next" href="#receiver">Continuer le projet <span aria-hidden="true">→</span></a></article></div></section>
+<section class="photo-story scene-receiver" id="receiver" aria-labelledby="receiver-title"><div class="story-stage"><div class="scene-wash" aria-hidden="true"></div><figure class="story-figure">
+<img class="story-photo-backdrop" src="../../assets/morse/receiver-design.png" width="1011" height="966" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="story-photo" style="--image-ratio:1.046584" src="../../assets/morse/receiver-design.png" width="1011" height="966" alt="Vue 3D KiCad de la carte réceptrice, extraite de la présentation finale ; il s’agit d’une vue de conception." loading="lazy" decoding="async"><figcaption class="photo-label">03 / RÉCEPTEUR / VUE DE CONCEPTION</figcaption></figure></div>
+<div class="story-frame"><div class="chapter-meta" aria-hidden="true"><span>03 / 05</span><span>Validation partielle</span></div><a class="photo-full" href="../../assets/morse/receiver-design.png" target="_blank" rel="noopener noreferrer">Voir l’image <span aria-hidden="true">↗</span></a>
+<details class="chapter-more" name="chapter-information"><summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary><div class="more-panel" role="region" aria-labelledby="receiver-more-title"><button class="more-close" type="button" aria-label="Fermer les informations" hidden>×</button><p class="eyebrow">03 / RÉCEPTEUR / VUE DE CONCEPTION</p><h3 id="receiver-more-title">Décoder sans confondre les pauses</h3><dl class="more-facts">
+<div><dt>Module prévu</dt><dd>RFM210LCF, réception ASK/OOK à 433,92 MHz.</dd></div>
+<div><dt>Affichage prévu</dt><dd>OLED 0,96″, liaison I²C SDA / SCL.</dd></div>
+<div><dt>Résultat à distinguer</dt><dd>Décodage sur prototype ; liaison RF finale encore non validée.</dd></div>
+</dl>
+<p>La carte prévoit une entrée DATA_REC depuis le récepteur radio et une connexion I²C vers l’écran. Les durées et les silences sont les grandeurs utiles pour le décodage du Morse ; les animations illustrent ce principe sans reproduire une mesure électrique.</p>
+<p>Une variante de récepteur différente de celle prévue a été livrée. Le rapport décrit un problème de compatibilité d’alimentation, qui a retardé l’intégration. La référence du composant et ses conditions de fonctionnement doivent être comparées au schéma avant le raccordement ; aucune portée fiable n’a été mesurée dans les documents fournis.</p>
+<p><a href="../../assets/morse/receiver-schematic.svg" target="_blank" rel="noopener noreferrer">Ouvrir le schéma récepteur ↗</a></p>
+<p class="source-note">Présentation finale, p. 18–21, 31–32 et 36 ; rapport, réception et essais.</p></div></details><div class="chapter-progress" aria-hidden="true"><span></span></div></div><div class="chapter-content"><div class="chapter-copy"><p class="eyebrow">03 / RÉCEPTEUR / VUE DE CONCEPTION</p><h2 id="receiver-title"><span class="title-line">Mesurer le temps.</span><span class="title-line title-accent">Retrouver les lettres.</span></h2><p class="chapter-lead">La réception ne consiste pas seulement à voir un signal. Il faut distinguer les impulsions, les silences entre symboles et les pauses entre lettres, puis préparer l’affichage sur l’OLED.</p><ul class="chapter-tags">
+<li>Durées</li>
+<li>OOK</li>
+<li>OLED I²C</li>
+<li>Calibration</li>
+</ul></div><article class="chapter-narrative" aria-labelledby="receiver-narrative-title"><p class="eyebrow">La démarche</p><h3 id="receiver-narrative-title">Le silence fait aussi partie du message</h3><p>Une impulsion isolée ne donne pas encore une lettre. Le récepteur doit connaître sa durée, mais aussi savoir quand la séquence est terminée. Un silence court sépare les symboles ; un silence plus long ferme une lettre, puis un mot. La démarche consiste à tester d’abord une séquence connue sur le prototype et à comparer l’interprétation obtenue avec celle attendue. Les documents rapportent un décodage temporel et un affichage OLED fonctionnels sur ce prototype. La migration vers la carte dédiée ajoute cependant les niveaux du module radio, ses parasites éventuels et le réglage des seuils. La réception entre les deux PCB restait à calibrer et à valider à la fin du projet.</p>
+<a class="chapter-next" href="#embedded-logic">Continuer le projet <span aria-hidden="true">→</span></a></article></div></section>
+<section class="photo-story scene-layout" id="embedded-logic" aria-labelledby="embedded-logic-title"><div class="story-stage"><div class="scene-wash" aria-hidden="true"></div><figure class="story-figure">
+<img class="story-photo-backdrop" src="../../assets/morse/transmitter-routing.svg" width="1164" height="1000" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="story-photo" style="--image-ratio:1.164000" src="../../assets/morse/transmitter-routing.svg" width="1164" height="1000" alt="Export vectoriel KiCad du routage face avant de la carte émettrice, provenant du dépôt collectif." loading="lazy" decoding="async"><figcaption class="photo-label">04 / LOGIQUE EMBARQUÉE / PCB DU GROUPE</figcaption></figure></div>
+<div class="story-frame"><div class="chapter-meta" aria-hidden="true"><span>04 / 05</span><span>Validation partielle</span></div><a class="photo-full" href="../../assets/morse/transmitter-routing.svg" target="_blank" rel="noopener noreferrer">Voir l’image <span aria-hidden="true">↗</span></a>
+<details class="chapter-more" name="chapter-information"><summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary><div class="more-panel" role="region" aria-labelledby="embedded-logic-more-title"><button class="more-close" type="button" aria-label="Fermer les informations" hidden>×</button><p class="eyebrow">04 / LOGIQUE EMBARQUÉE / PCB DU GROUPE</p><h3 id="embedded-logic-more-title">Détecter une erreur, sans promettre une correction</h3><dl class="more-facts">
+<div><dt>Développement</dt><dd>C embarqué, STM32CubeIDE / CubeMX.</dd></div>
+<div><dt>CRC du dépôt</dt><dd>8 bits · polynôme 0x07 · initialisation 0x00.</dd></div>
+<div><dt>Exemple vérifiable</dt><dd>CRC-8 de « SOS » = 0xBF.</dd></div>
+</dl>
+<p>Le CRC parcourt les octets du message à l’aide de XOR et de décalages. Le récepteur peut recalculer la valeur et la comparer à celle transmise. Une différence indique une incohérence ; une égalité ne garantit pas la détection de toutes les altérations possibles. Le CRC ne restaure pas les données corrompues.</p>
+<p>La présentation illustre des durées de Morse ; le dépôt public fournit une routine CRC isolée. Les exemples de structure de trame dans les notes ne prouvent pas leur intégration finale. L’animation ci-dessous reprend le calcul réel du CRC, tandis que l’animation Morse montre la convention temporelle standard.</p>
+<p><a href="https://github.com/TristanIV/Projet-E-R-morse/blob/e243f510e56dc69b55a9085496bcf8fddeb46ba1/Morse_Projet_PCB/App/Src/crc8.c#L3-L14" target="_blank" rel="noopener noreferrer">Lire la routine CRC-8 ↗</a></p>
+<p class="source-note">Présentation finale, p. 24–27 ; rapport, répartition des rôles ; dépôt public, snapshot e243f51.</p></div></details><div class="chapter-progress" aria-hidden="true"><span></span></div></div><div class="chapter-content"><div class="chapter-copy"><p class="eyebrow">04 / LOGIQUE EMBARQUÉE / PCB DU GROUPE</p><h2 id="embedded-logic-title"><span class="title-line">Structurer le signal.</span><span class="title-line title-accent">Vérifier le message.</span></h2><p class="chapter-lead">Mon travail porte sur le traitement et la logique avec Tristan. Le CRC-8 ajoute une vérification d’intégrité : il peut détecter une altération, pas réparer le message.</p><ul class="chapter-tags">
+<li>C embarqué</li>
+<li>Morse</li>
+<li>CRC-8</li>
+<li>Traitement logique</li>
+</ul></div><article class="chapter-narrative" aria-labelledby="embedded-logic-narrative-title"><p class="eyebrow">La démarche</p><h3 id="embedded-logic-narrative-title">Du prototype au code disponible</h3><p>Le logiciel doit garder une règle de temps cohérente pour encoder et interpréter le Morse. Avec Tristan, j’ai travaillé sur ce bloc de traitement et de logique, en parallèle de la réalisation des autres éléments par le groupe. Le prototype permet de vérifier le principe avant de réunir tous les composants. Le CRC apporte une autre question : le contenu reçu est-il compatible avec la valeur de contrôle envoyée ? La routine CRC-8 du dépôt est concrète et peut être expliquée avec un exemple simple. Le dépôt public conserve cependant une structure logicielle préliminaire : les fonctions radio, Morse et interface y sont encore des squelettes. Il documente la conception et le CRC, sans constituer une démonstration de liaison finale protégée par CRC.</p>
+<a class="chapter-next" href="#bench-tests">Continuer le projet <span aria-hidden="true">→</span></a></article></div></section>
+<div id="morse-animations"><section class="morse-lab" id="morse-signal-lab" data-morse-signal data-lang="fr" aria-labelledby="morse-signal-lab-title">
+  <div class="morse-lab-inner">
+    <header class="morse-lab-header"><p class="eyebrow">Atelier interactif 01 · Temps du Morse</p><h2 id="morse-signal-lab-title">Un message. Un rythme d’impulsions.</h2><p>Choisissez un petit message et suivez ses impulsions courtes et longues. L’illustration du récepteur s’appuie sur leur durée pour reconstituer les lettres, puis le message.</p></header>
+    <div data-morse-controls hidden>
+      <form class="morse-lab-form" data-morse-form><label><span>Votre message · A–Z, 0–9, espaces</span><input data-morse-input value="SOS" maxlength="12" pattern="[A-Za-z0-9 ]+" required autocomplete="off" spellcheck="false" aria-label="Votre message · A–Z, 0–9, espaces"></label><button type="submit">Valider</button><div class="morse-lab-presets"><button type="button" data-morse-preset="SOS" aria-pressed="true">SOS</button><button type="button" data-morse-preset="VIC" aria-pressed="false">VIC</button><button type="button" data-morse-preset="CAN" aria-pressed="false">CAN</button></div></form>
     </div>
+    <div class="morse-signal-bench">
+      <div class="morse-signal-chain"><div class="morse-signal-node"><span>Émetteur</span><strong data-morse-message>SOS</strong><small>Texte → Morse</small></div><div class="morse-carrier"><span>433,92 MHz · OOK</span><div class="morse-carrier-line" aria-hidden="true"></div><strong data-morse-gate>OFF</strong></div><div class="morse-signal-node"><span>Récepteur</span><strong data-morse-decoded>—</strong><small>Durées → lettres</small></div></div>
+      <div class="morse-wave-heading"><span>Enveloppe du signal</span><span><span data-morse-total>27T</span> · Temps relatif</span></div>
+      <svg class="morse-wave" viewBox="0 0 900 145" role="img" aria-labelledby="morse-wave-title morse-wave-desc"><title id="morse-wave-title">Illustration du signal Morse ON/OFF</title><desc id="morse-wave-desc">Chaque intervalle haut représente un point ou un trait. La courbe reste basse pendant les silences. Un curseur suit le message après un clic sur Lire.</desc><path class="morse-wave-grid" d="M30 42H870M30 110H870M30 22V120M198 22V120M366 22V120M534 22V120M702 22V120M870 22V120"/><text x="0" y="46">ON</text><text x="0" y="114">OFF</text><path class="morse-wave-path" data-morse-wave d="M30 110 L30.00 42 L61.11 42 L61.11 110 L92.22 110 L92.22 42 L123.33 42 L123.33 110 L154.44 110 L154.44 42 L185.56 42 L185.56 110 L278.89 110 L278.89 42 L372.22 42 L372.22 110 L403.33 110 L403.33 42 L496.67 42 L496.67 110 L527.78 110 L527.78 42 L621.11 42 L621.11 110 L714.44 110 L714.44 42 L745.56 42 L745.56 110 L776.67 110 L776.67 42 L807.78 42 L807.78 110 L838.89 110 L838.89 42 L870.00 42 L870 110"/><line class="morse-wave-cursor" data-morse-cursor x1="30" x2="30" y1="25" y2="124"/><text x="30" y="140">0</text><text x="810" y="140">t →</text></svg>
+      <div class="morse-wave-footer"><span>Lettre actuelle <strong data-morse-letter>—</strong></span><span data-morse-phase aria-label="Impulsion ou silence actuel">En attente</span></div>
+      <div data-morse-playback hidden><progress class="morse-playback-progress" data-morse-progress max="100" value="0" aria-label="Progression de la lecture du message">0%</progress><div class="morse-playback"><button type="button" data-morse-play aria-pressed="false">Lire le message</button><button type="button" data-morse-step>Pas à pas</button><button type="button" data-morse-reset>Recommencer</button><span class="morse-playback-status" data-morse-status>Prêt à transmettre</span></div></div>
+      <div class="morse-encoded"><span>Message encodé</span><code data-morse-encoded>... --- ...</code></div>
+    </div>
+    <dl class="morse-timing-key"><div><dt>Point / trait</dt><dd>1T pour un point, 3T pour un trait.</dd></div><div><dt>Symbole / lettre</dt><dd>1T entre les symboles, 3T entre les lettres.</dd></div><div><dt>Entre les mots</dt><dd>7T de silence séparent deux mots.</dd></div></dl>
+    <p class="morse-lab-note">La saisie de texte facilite cette illustration ; l’entrée matérielle prévue utilise deux capteurs piézoélectriques pour les points et les traits. Ici, T = 180 ms pour rendre la lecture lisible. La courbe représente une enveloppe ON/OFF, pas les oscillations de la radio. Ce modèle pédagogique est indépendant des cartes et ne démontre pas une liaison RF fonctionnelle.</p><p class="morse-lab-nojs">Lisez l’exemple sans animation : SOS s’écrit ··· ——— ···. Les impulsions courtes et longues portent les symboles ; les silences plus longs séparent les lettres et les mots.</p>
+    <p class="morse-lab-sr" data-morse-announcement aria-live="polite" aria-atomic="true"></p>
+  </div>
+</section>
+<section class="morse-lab" id="morse-crc-lab" data-morse-crc data-lang="fr" aria-labelledby="morse-crc-lab-title">
+  <div class="morse-lab-inner">
+    <header class="morse-lab-header"><p class="eyebrow">Atelier interactif 02 · CRC-8</p><h2 id="morse-crc-lab-title">Un bit change. Le CRC aussi.</h2><p>Un petit contrôle peut révéler un message altéré. Inversez un bit dans un octet ASCII, puis comparez le CRC de référence à celui recalculé sur les données reçues.</p></header>
+    <div data-crc-controls hidden>
+      <form class="morse-lab-form" data-crc-form><label><span>Message de référence · 12 caractères maximum</span><input data-crc-input value="SOS" maxlength="12" pattern="[A-Za-z0-9 ]+" required autocomplete="off" spellcheck="false" aria-label="Message de référence · 12 caractères maximum"></label><button type="submit">Valider</button></form>
+      <div class="morse-crc-layout"><div class="morse-crc-bytes"><label><span>Choisir un octet ASCII</span><select data-crc-byte aria-label="Choisir un octet ASCII"></select></label><div class="morse-crc-bits" data-crc-bits role="group" aria-label="Bits de l’octet reçu sélectionné ; cliquez sur un bit pour l’inverser"></div><div class="morse-crc-byte-readout"><div>Octet original<strong data-crc-original-byte>0x53</strong></div><div>Octet reçu<strong data-crc-received-byte>0x53</strong></div></div><p class="morse-crc-data-state"><span data-crc-text>SOS</span> · <span data-crc-changes>Données originales</span></p><button type="button" data-crc-reset>Restaurer les données</button></div><div class="morse-crc-result"><dl class="morse-crc-registers"><div><dt>CRC de référence</dt><dd data-crc-reference>0xBF</dd></div><div><dt>CRC recalculé</dt><dd data-crc-computed>0xBF</dd></div></dl><p class="morse-crc-state" data-crc-state>CRC identiques</p><p data-crc-note>Les données de référence et les données reçues donnent le même CRC. Ce contrôle est illustratif, pas un essai matériel.</p></div></div>
+    </div>
+    <p class="morse-crc-equation">CRC-8 · poly 0x07 · init 0x00 · MSB-first · xorout 0x00</p>
+    <p class="morse-lab-note">Cette visualisation reprend la vraie routine CRC indépendante du dépôt de l’équipe : polynôme 0x07, valeur initiale 0x00, bits de poids fort en premier, sans XOR final. Le code public ne l’intègre pas à un protocole radio complet. <a href="https://github.com/TristanIV/Projet-E-R-morse/blob/e243f510e56dc69b55a9085496bcf8fddeb46ba1/Morse_Projet_PCB/App/Src/crc8.c#L3-L14" target="_blank" rel="noopener noreferrer">Voir la routine CRC ↗</a></p><p class="morse-lab-nojs">Pour le message ASCII SOS non modifié, le CRC vaut 0xBF. Une modification des données peut donner une autre valeur : la comparaison détecte alors cette erreur, sans la corriger.</p>
+    <p class="morse-lab-sr" data-crc-announcement aria-live="polite" aria-atomic="true"></p>
+  </div>
+</section>
+</div>
+<section class="photo-story scene-bench" id="bench-tests" aria-labelledby="bench-tests-title"><div class="story-stage"><div class="scene-wash" aria-hidden="true"></div><figure class="story-figure">
+<img class="story-photo-backdrop" src="../../assets/morse/piezo-bench.jpeg" width="848" height="478" alt="" aria-hidden="true" loading="lazy" decoding="async"><img class="story-photo" style="--image-ratio:1.774059" src="../../assets/morse/piezo-bench.jpeg" width="848" height="478" alt="Photographie du banc d’essai : ordinateur, carte, câbles et oscilloscope pendant les essais du signal piézo." loading="lazy" decoding="async"><figcaption class="photo-label">05 / ESSAIS / PHOTOGRAPHIE DU PROJET</figcaption></figure></div>
+<div class="story-frame"><div class="chapter-meta" aria-hidden="true"><span>05 / 05</span><span>Validation partielle</span></div><a class="photo-full" href="../../assets/morse/piezo-bench.jpeg" target="_blank" rel="noopener noreferrer">Voir l’image <span aria-hidden="true">↗</span></a>
+<details class="chapter-more" name="chapter-information"><summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary><div class="more-panel" role="region" aria-labelledby="bench-tests-more-title"><button class="more-close" type="button" aria-label="Fermer les informations" hidden>×</button><p class="eyebrow">05 / ESSAIS / PHOTOGRAPHIE DU PROJET</p><h3 id="bench-tests-more-title">Les obstacles deviennent une méthode</h3><dl class="more-facts">
+<div><dt>Essais rapportés</dt><dd>Interprétation du Morse sur prototype ; acquisition piézo sur le PCB émetteur.</dd></div>
+<div><dt>Difficultés</dt><dd>Courts-circuits d’assemblage, livraisons tardives, variante de récepteur différente.</dd></div>
+<div><dt>À compléter</dt><dd>Antennes, calibration de réception et essais réels de portée.</dd></div>
+</dl>
+<p>Les documents attribuent les courts-circuits de la carte émettrice à un excès de pâte à braser. L’inspection visuelle et les contrôles de continuité sont une démarche pertinente pour diagnostiquer ce type de problème ; les sources ne détaillent pas une réparation complète qu’on pourrait présenter comme achevée.</p>
+<p>La migration du prototype vers les PCB demande aussi de revérifier l’alimentation, les niveaux reçus et les durées. Bruit et dérive d’horloge sont des risques à examiner, pas des causes mesurées dans ce projet. Aucun débit d’erreurs, courant consommé ou chiffre de portée validé n’est disponible.</p>
+<p class="source-note">Présentation finale, p. 29–32 et 36 ; rapport, essais et conclusion.</p></div></details><div class="chapter-progress" aria-hidden="true"><span></span></div></div><div class="chapter-content"><div class="chapter-copy"><p class="eyebrow">05 / ESSAIS / PHOTOGRAPHIE DU PROJET</p><h2 id="bench-tests-title"><span class="title-line">Observer d’abord.</span><span class="title-line title-accent">Intégrer ensuite.</span></h2><p class="chapter-lead">Le prototype a permis de valider des étapes du décodage ; le PCB émetteur a permis de mesurer le signal piézo. Les difficultés d’assemblage et de livraison ont limité la validation radio finale.</p><ul class="chapter-tags">
+<li>Oscilloscope</li>
+<li>Intégration</li>
+<li>Diagnostic</li>
+<li>Validation partielle</li>
+</ul></div><article class="chapter-narrative" aria-labelledby="bench-tests-narrative-title"><p class="eyebrow">La démarche</p><h3 id="bench-tests-narrative-title">Comprendre où la chaîne s’arrête</h3><p>Quand un ensemble ne fonctionne pas encore, il est plus utile de localiser le bloc en cause que de modifier tout le système à la fois. Ici, le décodage temporel a pu être testé sur une carte de développement, et un signal piézo a été mesuré sur la carte émettrice. L’intégration matérielle a pris plus de temps que prévu : un excès de pâte à braser a provoqué des courts-circuits après refusion, et des livraisons tardives ont réduit le temps disponible. Ces problèmes ont conduit à revoir le planning. La suite logique consiste à contrôler l’assemblage, terminer les antennes, régler la réception puis essayer un message connu de bout en bout. Le bilan reste précis : plusieurs blocs ont été démontrés, la liaison complète entre les PCB ne l’a pas encore été.</p>
+<a class="chapter-next" href="#project-results">Continuer le projet <span aria-hidden="true">→</span></a></article></div></section>
+<section class="morse-outcome" id="project-results" aria-labelledby="results-title"><div class="wrap"><p class="eyebrow">Bilan / ce que les essais permettent d’affirmer</p><h2 id="results-title">Des blocs démontrés.<br>Une intégration à terminer.</h2><p class="outcome-intro">Le rapport final distingue le prototype des cartes dédiées. La validation de la chaîne entière reste l’étape à franchir : les résultats locaux sont utiles, mais ne remplacent pas un message réellement reçu et affiché entre les deux PCB.</p><div class="morse-outcome-grid">
+<div><h3>Ce qui a été démontré</h3><ul>
+<li>Distinction et interprétation temporelle des points et traits sur une carte STM32 de développement.</li>
+<li>Affichage OLED / I²C rapporté comme stable sur le prototype.</li>
+<li>Signal piézo envoyé et mesuré sur le PCB émetteur ; deux cartes conçues et fabriquées par le groupe.</li>
+</ul></div>
+<div><h3>Ce qui reste à valider</h3><ul>
+<li>Terminer l’intégration des antennes et vérifier la compatibilité du récepteur.</li>
+<li>Calibrer les durées et les silences en réception sur le matériel final.</li>
+<li>Transmettre un message connu entre les PCB, vérifier son affichage et mesurer les limites de portée.</li>
+</ul></div>
+</div></div></section><section class="morse-resources" id="project-resources" aria-labelledby="resources-title"><div class="wrap"><p class="eyebrow">Documentation / sources du projet</p><h2 id="resources-title">Voir les cartes.<br>Lire le code.</h2><p class="resource-intro">La présentation finale décrit les essais et le bilan. Le dépôt collectif donne accès aux fichiers KiCad et à une version préliminaire du logiciel, dont la routine CRC-8. Les fonctions Morse et radio de ce snapshot sont encore des squelettes : les deux sources se complètent.</p><div class="morse-resource-grid">
+<a href="../../assets/morse/final-presentation.pdf" target="_blank" rel="noopener noreferrer"><strong>Présentation finale <span aria-hidden="true">↗</span></strong><span>PDF · 39 pages · 21 Mo · architecture, vues des cartes, essais et bilan.</span></a>
+<a href="https://github.com/TristanIV/Projet-E-R-morse" target="_blank" rel="noopener noreferrer"><strong>Dépôt collectif GitHub <span aria-hidden="true">↗</span></strong><span>Projets KiCad émetteur / récepteur, structure STM32 et routine CRC-8.</span></a>
+<a href="../../assets/morse/transmitter-schematic.svg" target="_blank" rel="noopener noreferrer"><strong>Schéma émetteur <span aria-hidden="true">↗</span></strong><span>SVG vectoriel issu des fichiers KiCad du groupe.</span></a>
+<a href="../../assets/morse/receiver-schematic.svg" target="_blank" rel="noopener noreferrer"><strong>Schéma récepteur <span aria-hidden="true">↗</span></strong><span>SVG vectoriel issu des fichiers KiCad du groupe.</span></a>
+</div><div class="morse-cad-links">
+<a href="../../assets/morse/transmitter-routing.svg" target="_blank" rel="noopener noreferrer">Routage émetteur ↗</a>
+<a href="../../assets/morse/receiver-routing.svg" target="_blank" rel="noopener noreferrer">Routage récepteur ↗</a>
+<a href="https://github.com/TristanIV/Projet-E-R-morse/blob/e243f510e56dc69b55a9085496bcf8fddeb46ba1/Morse_Projet_PCB/App/Src/crc8.c#L3-L14" target="_blank" rel="noopener noreferrer">Code CRC-8 ↗</a>
+</div><p class="source-note">Vues 3D et photographies extraites de la présentation fournie. Schémas et routages exportés des fichiers KiCad du dépôt collectif au commit e243f51, sous licence MIT. Ces exports correspondent à ce snapshot de conception ; ils ne certifient pas une validation matérielle. <a href="../../assets/morse/SOURCE-LICENSE.txt" target="_blank" rel="noopener noreferrer">Licence des sources KiCad</a>.</p></div></section>
     <nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Poursuivre la découverte</p><h2 id="more-projects">Autres projets</h2><div class="project-links">
       <a href="air-france-can.html"><span class="eyebrow">01 / Industrie · 2026</span><strong>Dispositif de test CAN chez Air France Industries</strong><span class="arrow" aria-hidden="true">→</span></a>
       <a href="infrared-audio.html"><span class="eyebrow">03 / En cours</span><strong>Transmission audio stéréo par infrarouge</strong><span class="arrow" aria-hidden="true">→</span></a>
