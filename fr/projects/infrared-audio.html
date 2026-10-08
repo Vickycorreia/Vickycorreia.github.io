@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="../../assets/site-audio.css">
 <link rel="stylesheet" href="../../assets/fm-lab.css">
 <script src="../../assets/fm-lab.js" defer></script>
+<link rel="stylesheet" href="../../assets/project-opening.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -32,14 +33,27 @@
   <main id="main">
     <div class="wrap">
       <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
-      <section class="hero" aria-labelledby="project-title">
-        <div>
-          <p class="eyebrow">03 / Électronique · En cours</p>
-          <h1 id="project-title">Transmission audio stéréo<br><span>par infrarouge.</span></h1>
-          <p class="lead">Un projet en cours consacré à la transmission audio stéréo par infrarouge, des circuits émetteur et récepteur à la modulation FM et à la restitution du signal.</p>
-          <ul class="tags" aria-label="Technologies"><li>Infrarouge</li><li>FM / PLL</li><li>Circuits analogiques</li><li>Traitement du signal</li></ul>
-        </div>
-        <aside class="overview" aria-label="Chaîne de transmission audio envisagée">
+<div class="project-opening project-opening-illustration">
+  <figure class="project-opening-figure" aria-describedby="project-opening-caption">
+    <img class="project-opening-backdrop" src="../../assets/infrared-principle.svg" width="1600" height="900" alt="" aria-hidden="true" decoding="async">
+    <img class="project-opening-image" src="../../assets/infrared-principle.svg" width="1600" height="900" alt="Illustration du principe de communication infrarouge : signal audio, émetteur, liaison optique et récepteur." fetchpriority="high" decoding="async">
+  </figure>
+  <div class="project-opening-copy"><p class="eyebrow">03 / Électronique · En cours</p><h1 id="project-title">Transmission audio stéréo<br><span>par infrarouge.</span></h1><p class="project-opening-status">En cours · Illustration du principe</p></div>
+  <a class="project-opening-source" href="../../assets/infrared-principle.svg" target="_blank" rel="noopener noreferrer">Voir le schéma de principe<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
+</div>
+<p class="project-opening-caption" id="project-opening-caption">Illustration originale du principe — ce visuel ne représente ni une photographie du prototype ni un résultat mesuré.</p>
+<section class="project-brief" aria-labelledby="project-brief-title">
+        <div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div>
+        <dl class="project-brief-grid">
+<div><dt>Objectif</dt><dd>Étudier la transmission d’un signal audio stéréo par une liaison infrarouge.</dd></div>
+<div><dt>Technologies</dt><dd>Circuits analogiques · Infrarouge · Modulation FM · PLL · Traitement du signal.</dd></div>
+<div><dt>Contribution personnelle</dt><dd>Travail sur les circuits émetteur et récepteur, la modulation et la restitution du signal.</dd></div>
+<div><dt>Résultat</dt><dd>Projet en cours. Transmission et restitution audio complètes restent à valider.</dd></div>
+</dl>
+        <a class="project-brief-dive" href="#engineering-details">Explorer la démarche en détail <span aria-hidden="true">↓</span></a>
+      </section>
+<p class="opening-context-note">Un projet en cours consacré à la transmission audio stéréo par infrarouge, des circuits émetteur et récepteur à la modulation FM et à la restitution du signal.</p>
+<details class="project-context opening-system-context"><summary>Chaîne de transmission en développement<span aria-hidden="true">+</span></summary><aside class="overview" aria-label="Chaîne de transmission audio envisagée">
           <p class="eyebrow">Système en développement</p>
           <ul class="system-flow">
             <li><strong>Circuits émetteurs</strong><small>Audio stéréo et modulation FM</small></li>
@@ -47,18 +61,8 @@
             <li><strong>Circuits récepteurs</strong><small>Restitution du signal</small></li>
           </ul>
           <p class="diagram-note">Une vue simplifiée de la chaîne de transmission étudiée.</p>
-        </aside>
-      </section>
-      <section class="project-brief" aria-labelledby="project-brief-title">
-        <div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div>
-        <dl class="project-brief-grid">
-          <div><dt>Objectif</dt><dd>Transmettre un signal audio stéréo par une liaison infrarouge.</dd></div>
-          <div><dt>Approche</dt><dd>Émetteur et récepteur analogiques · FM / PLL.</dd></div>
-          <div><dt>Ma contribution</dt><dd>Circuits émetteur et récepteur · Modulation · Restitution du signal.</dd></div>
-          <div><dt>Défi principal</dt><dd>Restituer le signal audio ; le projet est toujours en cours.</dd></div>
-        </dl>
-        <a class="project-brief-dive" href="#engineering-details">Explorer la démarche en détail <span aria-hidden="true">↓</span></a>
-      </section>
+        </aside></details>
+
       <div class="content" id="engineering-details" tabindex="-1">
         <div class="story">
           <section aria-labelledby="objective"><h2 id="objective"><span class="number" aria-hidden="true">01</span>L’objectif</h2><p>Étudier la transmission audio stéréo par une liaison infrarouge. Le projet associe les circuits analogiques nécessaires à l’émission du signal et à sa restitution côté récepteur.</p></section>

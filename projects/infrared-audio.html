@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="../assets/site-audio.css">
 <link rel="stylesheet" href="../assets/fm-lab.css">
 <script src="../assets/fm-lab.js" defer></script>
+<link rel="stylesheet" href="../assets/project-opening.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,14 +33,27 @@
   <main id="main">
     <div class="wrap">
       <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Back to all projects</a>
-      <section class="hero" aria-labelledby="project-title">
-        <div>
-          <p class="eyebrow">03 / Electronics · In progress</p>
-          <h1 id="project-title">Infrared stereo<br><span>audio transmission.</span></h1>
-          <p class="lead">An ongoing project exploring how to send stereo audio over infrared, from the transmitter and receiver circuits to FM modulation and signal recovery.</p>
-          <ul class="tags" aria-label="Technologies"><li>Infrared</li><li>FM / PLL</li><li>Analog circuits</li><li>Signal processing</li></ul>
-        </div>
-        <aside class="overview" aria-label="Proposed audio transmission path">
+<div class="project-opening project-opening-illustration">
+  <figure class="project-opening-figure" aria-describedby="project-opening-caption">
+    <img class="project-opening-backdrop" src="../assets/infrared-principle.svg" width="1600" height="900" alt="" aria-hidden="true" decoding="async">
+    <img class="project-opening-image" src="../assets/infrared-principle.svg" width="1600" height="900" alt="Illustration of an infrared communication principle: an audio waveform, a transmitter, an optical link and a receiver." fetchpriority="high" decoding="async">
+  </figure>
+  <div class="project-opening-copy"><p class="eyebrow">03 / Electronics · In progress</p><h1 id="project-title">Infrared stereo<br><span>audio transmission.</span></h1><p class="project-opening-status">In progress · Principle illustration</p></div>
+  <a class="project-opening-source" href="../assets/infrared-principle.svg" target="_blank" rel="noopener noreferrer">View principle illustration<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
+</div>
+<p class="project-opening-caption" id="project-opening-caption">Original principle illustration — not a prototype photograph or a measured result.</p>
+<section class="project-brief" aria-labelledby="project-brief-title">
+        <div class="project-brief-heading"><p class="eyebrow">The essentials</p><h2 id="project-brief-title">The project in 30 seconds</h2></div>
+        <dl class="project-brief-grid">
+<div><dt>Objective</dt><dd>Explore stereo audio transmission over an infrared link.</dd></div>
+<div><dt>Technologies</dt><dd>Analog circuits · Infrared · FM modulation · PLL · Signal processing.</dd></div>
+<div><dt>Personal contribution</dt><dd>Work on the transmitter and receiver circuits, modulation and signal recovery.</dd></div>
+<div><dt>Result</dt><dd>Project in progress. Complete audio transmission and recovery are still to be validated.</dd></div>
+</dl>
+        <a class="project-brief-dive" href="#engineering-details">Dive into the engineering <span aria-hidden="true">↓</span></a>
+      </section>
+<p class="opening-context-note">An ongoing project exploring how to send stereo audio over infrared, from the transmitter and receiver circuits to FM modulation and signal recovery.</p>
+<details class="project-context opening-system-context"><summary>Transmission path under development<span aria-hidden="true">+</span></summary><aside class="overview" aria-label="Proposed audio transmission path">
           <p class="eyebrow">System under development</p>
           <ul class="system-flow">
             <li><strong>Transmitter circuits</strong><small>Stereo audio and FM modulation</small></li>
@@ -47,18 +61,8 @@
             <li><strong>Receiver circuits</strong><small>Signal recovery</small></li>
           </ul>
           <p class="diagram-note">A simplified view of the transmission path being explored.</p>
-        </aside>
-      </section>
-      <section class="project-brief" aria-labelledby="project-brief-title">
-        <div class="project-brief-heading"><p class="eyebrow">The essentials</p><h2 id="project-brief-title">The project in 30 seconds</h2></div>
-        <dl class="project-brief-grid">
-          <div><dt>Problem</dt><dd>Carry stereo audio over an infrared link.</dd></div>
-          <div><dt>Solution</dt><dd>Analog transmitter and receiver · FM / PLL.</dd></div>
-          <div><dt>My work</dt><dd>Transmitter and receiver circuits · Modulation · Signal recovery.</dd></div>
-          <div><dt>Main challenge</dt><dd>Recover the audio signal; development is still in progress.</dd></div>
-        </dl>
-        <a class="project-brief-dive" href="#engineering-details">Dive into the engineering <span aria-hidden="true">↓</span></a>
-      </section>
+        </aside></details>
+
       <div class="content" id="engineering-details" tabindex="-1">
         <div class="story">
           <section aria-labelledby="objective"><h2 id="objective"><span class="number" aria-hidden="true">01</span>The objective</h2><p>Explore stereo audio transmission over an infrared link. The project brings together the analog circuits needed to transmit the signal and recover it at the receiver.</p></section>

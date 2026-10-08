@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="../../assets/space-navigation.css">
 <script src="../../assets/space-navigation.js" defer></script>
 <link rel="stylesheet" href="../../assets/site-audio.css">
+<link rel="stylesheet" href="../../assets/project-opening.css">
 </head>
 <body class="air-france-page">
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -37,20 +38,27 @@
   <main id="main">
     <section class="case-intro wrap" aria-labelledby="project-title">
       <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Retour à tous les projets</a>
-      <div class="intro-heading">
-        <div><p class="eyebrow">Stage en systèmes embarqués / Été 2026</p><h1 id="project-title">Air France.<br><span>Industries.</span></h1></div>
-        <div class="intro-summary"><p>Développement d’un outil compact de diagnostic par CAN pour une unité de distribution électrique aéronautique (PDU).</p></div>
-      </div>
-      <section class="project-brief" aria-labelledby="project-brief-title">
+<div class="project-opening">
+  <figure class="project-opening-figure" aria-describedby="project-opening-caption">
+    <img class="project-opening-backdrop" src="../../assets/air-france/workbench-public.webp" width="1672" height="941" alt="" aria-hidden="true" decoding="async">
+    <img class="project-opening-image" src="../../assets/air-france/workbench-public.webp" width="1672" height="941" alt="Montage technique d’un boîtier de diagnostic ouvert, de relais et du câblage sur le banc de travail Air France." fetchpriority="high" decoding="async">
+  </figure>
+  <div class="project-opening-copy"><p class="eyebrow">Stage en systèmes embarqués / Été 2026</p><h1 id="project-title">Air France.<br><span>Industries.</span></h1><p class="project-opening-status">Stage · CAN TX observé / RX non validé</p></div>
+  <a class="project-opening-source" href="../../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer">Voir l’image entière<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
+</div>
+<p class="project-opening-caption" id="project-opening-caption">Le banc de travail — étude du câblage et des équipements de test existants.</p>
+<section class="project-brief" aria-labelledby="project-brief-title">
         <div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div>
         <dl class="project-brief-grid">
-          <div><dt>Objectif</dt><dd>Tester certaines fonctions du PDU sans ordinateur.</dd></div>
-          <div><dt>Approche</dt><dd>Prototype UNO R4 · CAN · LCD 20×4.</dd></div>
-          <div><dt>Ma contribution</dt><dd>Électronique · C/C++ embarqué · CAN · Débogage.</dd></div>
-          <div><dt>Défi principal</dt><dd>Émission CAN observée ; réception encore non validée.</dd></div>
-        </dl>
+<div><dt>Objectif</dt><dd>Tester certaines fonctions d’un PDU aéronautique sans ordinateur.</dd></div>
+<div><dt>Technologies</dt><dd>UNO R4 · SN65HVD230 · CAN · LCD 20×4 · C/C++ embarqué.</dd></div>
+<div><dt>Contribution personnelle</dt><dd>Analyse du système, électronique, programmation embarquée et débogage CAN.</dd></div>
+<div><dt>Résultat</dt><dd>Émission CAN observée ; réception et test autonome complet encore à valider.</dd></div>
+</dl>
         <a class="project-brief-dive" href="#workbench">Explorer la démarche en détail <span aria-hidden="true">↓</span></a>
       </section>
+<p class="opening-context-note">Développement d’un outil compact de diagnostic par CAN pour une unité de distribution électrique aéronautique (PDU).</p>
+
       <details class="project-context">
         <summary>Contexte du stage et mission<span aria-hidden="true">+</span></summary>
         <div class="project-context-copy">

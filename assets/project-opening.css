@@ -1,0 +1,118 @@
+/* Shared first reading: the real work, then four factual answers. */
+.project-opening {
+  --opening-accent: var(--case-blue, #22638b);
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  min-height: clamp(440px, 62svh, 620px);
+  margin-top: 28px;
+  overflow: hidden;
+  background: #e9f0f2;
+  border: 1px solid #c1d1d7;
+  border-radius: 4px;
+}
+.project-opening-figure { position: absolute; inset: 0; margin: 0; z-index: -2; }
+.project-opening-image, .project-opening-backdrop {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.project-opening-backdrop {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  filter: blur(22px);
+  transform: scale(1.06);
+  opacity: .3;
+  z-index: -1;
+}
+.project-opening::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(0deg, #f8f6f1 2%, #f8f6f1eb 17%, #f8f6f15c 46%, transparent 72%);
+}
+.project-opening-copy { padding: 36px 42px 30px; min-width: 0; }
+.project-opening-copy .eyebrow { color: #32566c; max-width: 55ch; }
+.project-opening-copy h1 {
+  margin: 12px 0 16px;
+  max-width: 850px;
+  color: #17364e;
+  font-size: clamp(2.75rem, 5.5vw, 5.1rem);
+  line-height: 1.03;
+  letter-spacing: -.065em;
+  text-wrap: balance;
+}
+.project-opening-copy h1 span { color: var(--opening-accent); }
+.project-opening-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 100%;
+  margin: 0;
+  padding: 8px 12px;
+  color: #244c60;
+  background: #fffef6e8;
+  border: 1px solid #aabfc6;
+  border-radius: 20px;
+  font-size: .76rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+.project-opening-status::before { content: ""; flex-shrink: 0; width: 6px; height: 6px; background: var(--opening-accent); border-radius: 50%; }
+.project-opening-source {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 9px 14px;
+  border: 1px solid #aabfc6;
+  border-radius: 24px;
+  background: #fffef6eb;
+  color: #234b62;
+  font-size: .74rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+.project-opening-source:hover { background: #fff; border-color: var(--opening-accent); }
+.project-opening-source svg { display: block; flex-shrink: 0; width: 13px; height: 13px; }
+.project-opening-caption { margin: 10px 0 0; color: #536c78; font-size: .77rem; line-height: 1.6; }
+.project-opening + .project-opening-caption + .project-brief {
+  margin-top: 23px;
+  padding-block: 27px 20px;
+}
+.project-opening ~ .project-brief .project-brief-grid > div {
+  padding-left: 16px;
+  border-left: 2px solid #afc7d0;
+}
+.project-opening ~ .project-brief .project-brief-grid > div:last-child { border-left-color: var(--opening-accent, var(--case-blue, #22638b)); }
+.opening-context-note { margin: 0 0 26px; max-width: 85ch; color: #486170; font-size: 1.03rem; line-height: 1.8; }
+.project-opening-portrait .project-opening-image { width: 68%; margin-left: auto; object-position: 75% 45%; }
+.project-opening-portrait::before { background: linear-gradient(90deg, #f8f6f1 0%, #f8f6f1e6 23%, #f8f6f14a 50%, transparent 73%), linear-gradient(0deg, #f8f6f1 2%, #f8f6f1b3 17%, transparent 58%); }
+.project-opening-portrait .project-opening-copy h1 { max-width: 610px; }
+.project-opening-illustration { --opening-accent: #007477; }
+.project-opening-illustration .project-opening-image { object-position: center 22%; }
+.project-opening-illustration .project-opening-copy h1 { max-width: 950px; font-size: clamp(2.5rem, 4.8vw, 4.5rem); }
+.opening-system-context { margin-bottom: 30px; }
+.opening-system-context .overview { margin: 8px 0 26px; max-width: 750px; }
+@media (max-width: 700px) {
+  .project-opening { min-height: 480px; margin-top: 22px; }
+  .project-opening-image { height: 65%; object-position: center 25%; }
+  .project-opening::before { background: linear-gradient(0deg, #f8f6f1 0%, #f8f6f1f0 28%, #f8f6f14a 57%, transparent 78%); }
+  .project-opening-copy { padding: 22px 20px; }
+  .project-opening-copy h1 { font-size: clamp(2.35rem, 10.3vw, 3.8rem); margin-block: 12px; }
+  .project-opening-copy .eyebrow { font-size: .64rem; letter-spacing: .1em; }
+  .project-opening-source { top: 12px; right: 12px; font-size: .69rem; padding-inline: 12px; }
+  .project-opening-status { font-size: .7rem; }
+  .project-opening-portrait .project-opening-image { width: 100%; margin: 0; height: 66%; object-position: 75% 40%; }
+  .project-opening-portrait::before { background: linear-gradient(0deg, #f8f6f1 0%, #f8f6f1f0 28%, #f8f6f166 53%, transparent 75%); }
+  .project-opening-illustration { min-height: 510px; }
+  .project-opening-illustration .project-opening-copy h1 { font-size: clamp(2.05rem, 8.9vw, 3.6rem); }
+}

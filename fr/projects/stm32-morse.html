@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="../../assets/morse-lab.css">
 <script src="../../assets/morse-lab.js" defer></script>
 <link rel="stylesheet" href="../../assets/site-audio.css">
+<link rel="stylesheet" href="../../assets/project-opening.css">
 </head>
 <body class="morse-page">
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -33,14 +34,23 @@
 <div class="page-flight-progress" role="progressbar" aria-label="Progression de lecture" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span class="flight-progress-track" aria-hidden="true"></span><span class="flight-progress-fill" aria-hidden="true"></span><span class="flight-progress-ship" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3.3 3.7-4.6 8.1-4.1 13h8.2C16.6 10.1 15.3 5.7 12 2Z"/><circle cx="12" cy="8" r="1.5"/><path d="m8 10-3.7 5.5L8 14m8-4 3.7 5.5L16 14M9 18l3 4 3-4"/></svg></span></div>
 
 <main id="main"><section class="case-intro wrap" aria-labelledby="project-title"><a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
-<div class="hero"><div><p class="eyebrow">02 / Systèmes embarqués · Projet collectif · 2026</p><h1 id="project-title">Le Morse.<br><span>Du geste au signal.</span></h1><p class="lead">Un projet collectif où une frappe devient une impulsion, traverse une chaîne radio, puis doit redevenir une lettre. Avec Tristan, je me suis concentré sur le traitement et la logique embarquée.</p><p class="morse-status">Prototype réalisé · Validation partielle</p><ul class="tags" aria-label="Technologies"><li>STM32</li><li>C</li><li>OOK · 433,92 MHz</li><li>CRC-8</li></ul></div>
-<figure class="morse-hero-visual"><img src="../../assets/morse/assembled-boards.jpeg" width="1080" height="1198" alt="Photographie des deux PCB du projet Morse, émetteur et récepteur, posés à côté d’une règle." fetchpriority="high"><figcaption>Les deux PCB fabriqués par le groupe. Photographie de la présentation finale ; plusieurs étapes restent à valider sur la liaison complète.</figcaption></figure></div>
+<div class="project-opening project-opening-portrait">
+  <figure class="project-opening-figure" aria-describedby="project-opening-caption">
+    <img class="project-opening-backdrop" src="../../assets/morse/assembled-boards.jpeg" width="1080" height="1198" alt="" aria-hidden="true" decoding="async">
+    <img class="project-opening-image" src="../../assets/morse/assembled-boards.jpeg" width="1080" height="1198" alt="PCB réels de l’émetteur et du récepteur Morse fabriqués par l’équipe, à côté d’une règle." fetchpriority="high" decoding="async">
+  </figure>
+  <div class="project-opening-copy"><p class="eyebrow">02 / Systèmes embarqués · Projet collectif · 2026</p><h1 id="project-title">Le Morse.<br><span>Du geste au signal.</span></h1><p class="project-opening-status">Prototype réalisé · Validation partielle</p></div>
+  <a class="project-opening-source" href="../../assets/morse/assembled-boards.jpeg" target="_blank" rel="noopener noreferrer">Voir l’image entière<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
+</div>
+<p class="project-opening-caption" id="project-opening-caption">Les cartes fabriquées par l’équipe, photographiées pour la présentation finale. La liaison RF finale n’est pas validée.</p>
 <section class="project-brief" aria-labelledby="project-brief-title"><div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div><dl class="project-brief-grid">
-<div><dt>Objectif</dt><dd>Saisir du Morse avec deux piézos, transmettre à 433,92 MHz et afficher le message reçu.</dd></div>
-<div><dt>Architecture</dt><dd>Deux cartes STM32 · Radio OOK · OLED I²C · PCB dédiés.</dd></div>
-<div><dt>Mon travail</dt><dd>Traitement et logique embarquée avec Tristan, dans une équipe de six.</dd></div>
-<div><dt>Résultat / défi</dt><dd>Décodage sur prototype et signal piézo mesuré ; liaison RF finale non validée.</dd></div>
-</dl><a class="project-brief-dive" href="#engineering-details">Entrer dans les détails <span aria-hidden="true">↓</span></a></section><p class="intro-note">Ce projet m’a appris à faire le lien entre logiciel, signaux et matériel. Un résultat obtenu sur une carte de développement doit encore être vérifié après intégration sur un PCB : c’est cette progression, avec ses essais et ses difficultés, que cette page raconte.</p><dl class="intro-facts">
+<div><dt>Objectif</dt><dd>Saisir du Morse avec deux piézos, le transmettre par radio et afficher le message reçu.</dd></div>
+<div><dt>Technologies</dt><dd>STM32 · C embarqué · OOK à 433,92 MHz · OLED I²C · CRC-8 · PCB dédiés.</dd></div>
+<div><dt>Contribution personnelle</dt><dd>Traitement et logique embarquée avec Tristan, dans une équipe de six.</dd></div>
+<div><dt>Résultat</dt><dd>Décodage et OLED sur prototype ; signal piézo mesuré sur le PCB TX. Liaison RF finale entre PCB non validée.</dd></div>
+</dl><a class="project-brief-dive" href="#engineering-details">Entrer dans les détails <span aria-hidden="true">↓</span></a></section>
+<p class="opening-context-note">Un projet collectif où une frappe devient une impulsion, traverse une chaîne radio, puis doit redevenir une lettre. Avec Tristan, je me suis concentré sur le traitement et la logique embarquée.</p>
+<p class="intro-note">Ce projet m’a appris à faire le lien entre logiciel, signaux et matériel. Un résultat obtenu sur une carte de développement doit encore être vérifié après intégration sur un PCB : c’est cette progression, avec ses essais et ses difficultés, que cette page raconte.</p><dl class="intro-facts">
 <div><dt>Équipe</dt><dd>Tristan, Ambre, Victor, Ehsann, Antoine et Julaivane.</dd></div>
 <div><dt>Contribution documentée</dt><dd>Traitement / logique, avec Tristan.</dd></div>
 <div><dt>Avancement à la présentation finale</dt><dd>Prototype et premiers essais réalisés ; antennes, calibration et liaison entre PCB à compléter.</dd></div>

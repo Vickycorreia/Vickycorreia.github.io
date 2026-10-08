@@ -227,6 +227,8 @@
   const launch = root.querySelector('.orbit-launch');
   const reset = root.querySelector('.orbit-reset');
   const pause = root.querySelector('.orbit-pause');
+  const cameraToggle = root.querySelector('.orbit-camera');
+  const expandToggle = root.querySelector('.orbit-expand');
   const message = root.querySelector('.orbit-message');
   const detail = root.querySelector('.orbit-detail');
   const powerOutput = root.querySelector('.orbit-power output');
@@ -315,6 +317,14 @@
   const texture = append(defs, 'filter', { id: 'orbit-terrain', x: '0%', y: '0%', width: '100%', height: '100%' });
   append(texture, 'feTurbulence', { type: 'fractalNoise', baseFrequency: '.095', numOctaves: 3, seed: 8 });
   append(texture, 'feColorMatrix', { type: 'saturate', values: 0 });
+  // A static depth field adds atmosphere without consuming animation frames.
+  const stars = append(svg, 'g', { class: 'orbit-depth-field', 'aria-hidden': 'true', 'pointer-events': 'none' });
+  let starSeed = 79;
+  const starRandom = () => { starSeed = (starSeed * 16807) % 2147483647; return (starSeed - 1) / 2147483646; };
+  for (let index = 0; index < 145; index += 1) append(stars, 'circle', {
+    cx: (starRandom() * 640).toFixed(2), cy: (starRandom() * 560).toFixed(2),
+    r: (.22 + starRandom() * .5).toFixed(2), fill: '#f5fbff', opacity: (.2 + starRandom() * .5).toFixed(2)
+  });
   const space = append(svg, 'g', { class: 'orbit-space', 'aria-hidden': 'true' });
   const groups = new Map();
   for (const body of BODIES) {
@@ -364,13 +374,18 @@
   const aimHandle = append(flightLayer, 'circle', { class: 'orbit-aim-handle', r: 5, fill: '#fffdf6', stroke: '#9a6846', 'stroke-width': 2, 'aria-hidden': 'true' });
   const rocket = append(flightLayer, 'g', { class: 'orbit-rocket', 'aria-hidden': 'true' });
   const hitArea = append(rocket, 'circle', { class: 'orbit-rocket-hit-area', r: 40, fill: 'transparent', 'pointer-events': 'all' });
-  const flame = append(rocket, 'path', { class: 'orbit-rocket-flame', d: 'M-2.4 16Q0 31 2.4 16Z', fill: '#cba572' });
-  append(rocket, 'path', { d: 'M-3.8 8L-7.5 17-3.8 15M3.8 8L7.5 17 3.8 15', fill: '#557282' });
-  append(rocket, 'path', { d: 'M0-23C-2-20-4-15-4-9L-4 14 4 14 4-9C4-15 2-20 0-23Z', fill: '#f3f6f4', stroke: '#355569', 'stroke-width': .8 });
-  append(rocket, 'path', { d: 'M0-23C2-20 4-15 4-9L4 14 1.3 14 1.3-17Z', fill: '#93a9b4', opacity: .55 });
-  append(rocket, 'path', { d: 'M-3.7-12H3.7M-4 7H4', stroke: '#4c6b80', 'stroke-width': 1.5 });
-  append(rocket, 'path', { d: 'M-2.8 14H2.8L2.2 17H-2.2Z', fill: '#25465d' });
-  append(rocket, 'rect', { x: -1.1, y: -7, width: 2.2, height: 4.5, rx: .6, fill: '#55798d' });
+  const vehicle = append(rocket, 'g', { class: 'orbit-rocket-vehicle', transform: 'scale(1.15)' });
+  const metal = append(defs, 'linearGradient', { id: 'orbit-rocket-metal', x1: '0%', x2: '100%', y1: '0%', y2: '0%' });
+  [['0%','#758d9d'],['23%','#e8eff3'],['44%','#fff'],['65%','#cbd8df'],['100%','#466075']].forEach(([offset,color]) => append(metal, 'stop', { offset, 'stop-color': color }));
+  const flame = append(vehicle, 'g', { class: 'orbit-rocket-flame' });
+  append(flame, 'path', { d: 'M-3 17Q0 38 3 17Z', fill: '#659fc9', opacity: .45 });
+  append(flame, 'path', { d: 'M-1.6 17Q0 30 1.6 17Z', fill: '#e8f5ff', opacity: .9 });
+  append(vehicle, 'path', { d: 'M-4 6L-8.5 17-4 15M4 6L8.5 17 4 15', fill: '#526779', stroke: '#becdd6', 'stroke-width': .45 });
+  append(vehicle, 'path', { d: 'M0-25C-2.2-22-4.5-17-4.5-10V14H4.5V-10C4.5-17 2.2-22 0-25Z', fill: 'url(#orbit-rocket-metal)', stroke: '#516b7d', 'stroke-width': .55 });
+  append(vehicle, 'path', { d: 'M-4.1-12H4.1M-4.5 8H4.5M-4.5 12H4.5', stroke: '#4b6170', 'stroke-width': .7 });
+  append(vehicle, 'path', { d: 'M-3.2 14H3.2L2.6 18H-2.6Z', fill: '#1c394f', stroke: '#9ab3c2', 'stroke-width': .5 });
+  append(vehicle, 'rect', { x: -1.25, y: -7.5, width: 2.5, height: 5, rx: .65, fill: '#193e56', stroke: '#8bb3c4', 'stroke-width': .45 });
+  append(vehicle, 'path', { d: 'M-2.8-5V5M2.8-5V5', stroke: '#6d8797', 'stroke-width': .3, opacity: .6 });
   const impact = append(flightLayer, 'g', { class: 'orbit-impact-mark', visibility: 'hidden', 'aria-hidden': 'true' });
   append(impact, 'circle', { r: 13, fill: '#f8e5d9', stroke: '#b76b50', 'stroke-width': 1.5 });
   append(impact, 'path', { d: 'M-5-5 L5 5 M5-5 L-5 5', fill: 'none', stroke: '#b76b50', 'stroke-width': 2 });
@@ -404,6 +419,8 @@
   let trailSteps = 0;
   let launchDeltaV = 0;
   let lastTelemetryAt = 0;
+  let cameraMode = 'overview';
+  let cameraView = { x: 0, y: 0, width: 640, height: 560 };
   let arrivalTimer = null;
   let automaticOpening = false;
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -412,12 +429,30 @@
   let visible = firstRect.bottom > 0 && firstRect.top < window.innerHeight;
   const pathData = points => points.map((point, index) => `${index ? 'L' : 'M'}${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(' ');
   const position = () => flight || initialFlight(config, angle, power);
+  const renderCamera = (instant = false) => {
+    const point = position();
+    const focusBody = config.bodies.find(body => body.id === (point.hitBody || point.orbitBody)) || config.body;
+    const width = cameraMode === 'close' ? 340 : 640;
+    const height = width * 560 / 640;
+    const desired = cameraMode === 'close' ? {
+      x: clamp(focusBody.x * .4 + point.x * .6 - width / 2, 0, 640 - width),
+      y: clamp(focusBody.y * .4 + point.y * .6 - height / 2, 0, 560 - height), width, height
+    } : { x: 0, y: 0, width, height };
+    for (const key of Object.keys(cameraView)) cameraView[key] += (desired[key] - cameraView[key]) * (instant || motion.matches ? 1 : .13);
+    svg.setAttribute('viewBox', `${cameraView.x.toFixed(2)} ${cameraView.y.toFixed(2)} ${cameraView.width.toFixed(2)} ${cameraView.height.toFixed(2)}`);
+    root.dataset.camera = cameraMode;
+    if (cameraToggle) {
+      cameraToggle.disabled = false;
+      cameraToggle.setAttribute('aria-pressed', String(cameraMode === 'close'));
+      cameraToggle.textContent = cameraMode === 'close' ? (french ? 'Vue d’ensemble' : 'System view') : (french ? 'Vue rapprochée' : 'Close view');
+    }
+  };
   const running = () => visible && !document.hidden && !userPaused && (state === 'flying' || state === 'orbit');
   const propulsionKey = 'orbit-propulsion';
   let propulsionSound = false;
   const syncOrbitSound = () => {
     const audio = window.PortfolioAudio;
-    const wanted = running() && state === 'flying' && Boolean(audio?.enabled && audio?.ready);
+    const wanted = running() && state === 'flying' && flight?.time < .45 && Boolean(audio?.enabled && audio?.ready);
     if (wanted === propulsionSound) return;
     propulsionSound = wanted;
     if (wanted) audio.startLoop(propulsionKey, 'rocket', { gain: .07 });
@@ -466,10 +501,11 @@
   };
 
   const renderRocket = () => {
+    renderCamera(state === 'aiming' || userPaused);
     const point = position();
     const heading = flight ? Math.atan2(flight.vy, flight.vx) : angle;
     rocket.setAttribute('transform', `translate(${point.x.toFixed(2)} ${point.y.toFixed(2)}) rotate(${heading * 180 / Math.PI + 90})`);
-    flame.setAttribute('visibility', state === 'flying' || state === 'orbit' ? 'visible' : 'hidden');
+    flame.setAttribute('visibility', state === 'flying' && flight?.time < .45 ? 'visible' : 'hidden');
     const outside = point.x < 16 || point.x > 624 || point.y < 16 || point.y > 544;
     offscreen.setAttribute('visibility', outside && (state === 'flying' || state === 'escape' || state === 'orbit') ? 'visible' : 'hidden');
     if (outside) {
@@ -526,6 +562,7 @@
   };
   const schedule = () => {
     syncOrbitSound();
+    root.dataset.stageVisible = String(visible && !document.hidden);
     root.classList.toggle('orbit-inactive', !visible || document.hidden || userPaused);
     if (!running()) { stopRAF(); return; }
     if (raf === null) raf = window.requestAnimationFrame(tick);
@@ -573,6 +610,7 @@
     config = configuration(name || config.name);
     angle = config.preset.angle; power = config.preset.power; activePreset = config.name;
     state = 'aiming'; flight = null; userPaused = false; trail = []; trailSteps = 0;
+    cameraMode = 'overview';
     trailPath.setAttribute('d', ''); impact.setAttribute('visibility', 'hidden'); offscreen.setAttribute('visibility', 'hidden');
     targetHalo.setAttribute('cx', config.body.x); targetHalo.setAttribute('cy', config.body.y); targetHalo.setAttribute('r', config.body.radius+10);
     groups.forEach((group, name) => group.classList.toggle('is-target', name === config.name));
@@ -586,11 +624,12 @@
     launchDeltaV = Math.hypot(flight.vx, flight.vy);
     const stageRect = stage.getBoundingClientRect();
     const navBottom = document.querySelector('header.nav')?.getBoundingClientRect().bottom || 0;
-    if (stageRect.top < navBottom+12 || stageRect.bottom > window.innerHeight-70) {
+    if (!document.fullscreenElement && (stageRect.top < navBottom+12 || stageRect.bottom > window.innerHeight-70)) {
       const top = Math.max(navBottom+18, (window.innerHeight-stageRect.height)/2);
       window.scrollTo({ top: window.scrollY+stageRect.top-top, behavior: motion.matches ? 'auto' : 'smooth' });
     }
     state = 'flying'; userPaused = false;
+    cameraMode = 'close';
     trail = [{ x: flight.x, y: flight.y }]; trailSteps = 0; accumulator = 0; lastTime = null;
     syncUI(); renderRocket(); schedule();
   };
@@ -662,6 +701,14 @@
     renderAim();
   });
   launch.addEventListener('click', launchFlight);
+  cameraToggle?.addEventListener('click', () => {
+    cameraMode = cameraMode === 'overview' ? 'close' : 'overview';
+    renderCamera(true); sizeHitArea();
+  });
+  svg.querySelectorAll('.orbit-project-link').forEach(link => link.addEventListener('focus', () => {
+    if (!link.matches(':focus-visible')) return;
+    cameraMode = 'overview'; renderCamera(true); sizeHitArea();
+  }));
   reset.addEventListener('click', event => { window.PortfolioAudio?.unlock(event); startAgain(); window.PortfolioAudio?.play('tick'); });
   destinations.forEach(button => button.addEventListener('click', event => { window.PortfolioAudio?.unlock(event); startAgain(button.dataset.planet); window.PortfolioAudio?.play('tick'); }));
   pause.addEventListener('click', () => {
@@ -701,6 +748,34 @@
   if ('ResizeObserver' in window) new ResizeObserver(sizeHitArea).observe(svg);
   else window.addEventListener('resize', sizeHitArea, { passive: true });
   const home = root.closest('#orbit') || root.closest('#home');
+  if (home && expandToggle && home.requestFullscreen && document.fullscreenEnabled) {
+    let fullscreenReturn = null;
+    expandToggle.hidden = false;
+    expandToggle.addEventListener('click', async () => {
+      try {
+        if (document.fullscreenElement === home) await document.exitFullscreen();
+        else {
+          fullscreenReturn = { left: window.scrollX, top: window.scrollY };
+          await home.requestFullscreen();
+        }
+      } catch {
+        if (detail) detail.textContent = french ? 'Le plein écran est indisponible dans ce navigateur.' : 'Full screen is unavailable in this browser.';
+      }
+    });
+    document.addEventListener('fullscreenchange', () => {
+      const expanded = document.fullscreenElement === home;
+      expandToggle.setAttribute('aria-pressed', String(expanded));
+      expandToggle.textContent = expanded ? (french ? 'Quitter le plein écran' : 'Exit full screen') : (french ? 'Plein écran' : 'Full screen');
+      cancelDrag(true); sizeHitArea();
+      if (!expanded && fullscreenReturn) {
+        const restore = fullscreenReturn; fullscreenReturn = null;
+        window.requestAnimationFrame(() => window.scrollTo({ ...restore, behavior: 'instant' }));
+      }
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && document.fullscreenElement === home) document.exitFullscreen().catch(() => {});
+    });
+  }
   if (home) {
     const syncHome = () => {
       const rect = home.getBoundingClientRect();
