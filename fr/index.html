@@ -24,7 +24,7 @@ a:focus-visible{outline:3px solid #946136;outline-offset:6px}
 .button.ghost{color:#fff;border-color:#e0bd83}
 .button.ghost:hover{background:#ffffff18}
 .projects{gap:18px;background:transparent}
-.project{border:1px solid #c5d6dd;background:#e7f0f4;transition:background .25s,border-color .25s}
+.project{border:1px solid #c5d6dd;background:#e7f0f4;transition:background .25s,border-color .25s,transform .25s ease,box-shadow .25s ease}
 .project:nth-child(2){background:#eaf0e9;border-color:#c6d6c3}
 .project:nth-child(3){background:#f3e9e3;border-color:#dfcabe}
 .project:nth-child(4){background:#f1eddf;border-color:#d9d0b8}
@@ -36,6 +36,8 @@ a:focus-visible{outline:3px solid #946136;outline-offset:6px}
 .index,.project-link{color:#805331}
 .tags span{color:#37566d;background:#ffffff5c;border-color:#7f99a6}
 .project-link{border-top-color:#8ca4af}
+.project-link span{display:inline-block;transition:transform .25s ease}
+@media(hover:hover) and (pointer:fine){.project:hover{transform:translateY(-3px);box-shadow:0 10px 24px #315e7018,0 0 0 1px #537c9a20}.project:hover .project-link span{transform:translateX(3px)}}
 .films{background:#dfeef4}
 .film{color:#172d43;border-color:#adc4ce;background:radial-gradient(ellipse at top right,#f5fafc,#c7e0e9)}
 .film:nth-child(2){border-color:#c6cabb;background:radial-gradient(ellipse at top right,#f8faf2,#dce4ce)}
@@ -49,7 +51,7 @@ a:focus-visible{outline:3px solid #946136;outline-offset:6px}
 .contact .button:hover{background:#23465f}
 .foot{color:#526779}
 @media(max-width:760px){.hero:after{background:linear-gradient(90deg,#0b233ce0,#0b233c87),linear-gradient(0deg,#0c2338,transparent 24%)}.feature:after{background:linear-gradient(90deg,#e7f1f6e8,#e7f1f6be),linear-gradient(0deg,#dfeef4,transparent 25%)}}
-@media(prefers-reduced-motion:reduce){.nav,.project{transition:none}}
+@media(prefers-reduced-motion:reduce){.nav,.project,.project-link span{transition:none}.project:hover{transform:none;box-shadow:none}.project:hover .project-link span{transform:none}}
 .project:nth-child(5){background:#e8edee;border-color:#b8cace}.project:nth-child(5):hover,.project:nth-child(5):focus-visible{background:#d9e5e8;border-color:#668592}
 .contact-methods{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:24px}
 .contact-methods a{display:inline-flex;align-items:center;gap:9px;min-height:44px;max-width:100%;font-weight:700;text-underline-offset:4px}
