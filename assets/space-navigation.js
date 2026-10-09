@@ -3,6 +3,22 @@
   const progress = document.querySelector('.page-flight-progress');
   if (!progress) return;
   const header = document.querySelector('header.nav');
+  const backToTop = document.querySelector('.back-to-top');
+  const spotlightMedia = matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.projects .project').forEach(card => {
+    card.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse' || !spotlightMedia.matches) return;
+      const box = card.getBoundingClientRect();
+      card.style.setProperty('--spotlight-x', `${event.clientX - box.left}px`);
+      card.style.setProperty('--spotlight-y', `${event.clientY - box.top}px`);
+    }, { passive: true });
+  });
+  backToTop?.addEventListener('click', () => {
+    if (reducedMotion.matches) scrollTo(0, 0);
+    else scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('header.nav .brand')?.focus({ preventScroll: true });
+  });
   const homeLinks = [...document.querySelectorAll('header.nav .links a[href^="#"]')];
   const homeSections = homeLinks.map(link => document.getElementById(link.hash.slice(1)));
   let frame = 0;
@@ -16,6 +32,7 @@
   function render() {
     frame = 0;
     if (document.hidden) return;
+    if (backToTop) backToTop.hidden = scrollY <= 500;
     if (geometryDirty) {
       maximum = Math.max(0, document.documentElement.scrollHeight - innerHeight);
       positions = homeSections.map(section => section ? section.getBoundingClientRect().top + scrollY - innerHeight * .3 : Infinity);

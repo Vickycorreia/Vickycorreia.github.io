@@ -1,2 +1,16 @@
 .project-update { margin-top: 17px; padding-top: 13px; border-top: 1px solid #9cb6c449; color: #315e70; font-size: .83rem; line-height: 1.6; }
 .project-update span { display: block; color: #637886; font-weight: 650; font-size: .65rem; text-transform: uppercase; letter-spacing: .09em; margin-bottom: 4px; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .projects .project { position: relative; isolation: isolate; }
+  .projects .project::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(circle 240px at var(--spotlight-x, 50%) var(--spotlight-y, 50%), #73b7df26, transparent 75%); opacity: 0; transition: opacity .25s ease; }
+  .projects .project > * { position: relative; z-index: 1; }
+  .projects .project:hover::before { opacity: 1; }
+}
+.back-to-top { position: fixed; z-index: 22; right: max(18px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); display: inline-flex; align-items: center; gap: 9px; min-height: 44px; max-width: calc(100vw - 24px); padding: 10px 15px; border: 1px solid #547e94; border-radius: 999px; background: #0c2338; color: #f8fbfd; box-shadow: 0 7px 22px #183b5429; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; animation: back-to-top-in .25s ease both; transition: background .25s ease, transform .25s ease; }
+.back-to-top[hidden] { display: none; }
+.back-to-top svg { width: 17px; height: 17px; flex: none; }
+.back-to-top:hover { background: #21475e; transform: translateY(-2px); }
+.back-to-top:focus-visible { outline: 3px solid #5b92ab; outline-offset: 3px; }
+@keyframes back-to-top-in { from { opacity: 0; translate: 0 6px; } to { opacity: 1; translate: 0 0; } }
+@media (max-width: 600px) { .back-to-top { right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); padding: 9px 12px; font-size: .78rem; } }
+@media (prefers-reduced-motion: reduce) { .back-to-top { animation: none; transition: none; } .back-to-top:hover { transform: none; } }
