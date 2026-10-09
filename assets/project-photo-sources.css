@@ -1,0 +1,11 @@
+.project-image-source { margin: 9px 0 24px; max-width: 88ch; color: #526a78; font-size: .8rem; line-height: 1.7; }
+.project-image-source a, .project-photo-source a { color: #22638b; font-weight: 650; text-underline-offset: 4px; }
+.project-image-source a { display: inline-block; min-height: 44px; padding-block: 9px; }
+.project-photo-source { margin-top: 26px; padding-top: 21px; border-top: 1px solid #c3d4dc; }
+.project-photo-source h4 { margin-top: 0; }
+.project-photo-source ul { list-style: none; margin: 12px 0 0; padding: 0; }
+.project-photo-source a { display: inline-flex; gap: 10px; align-items: center; min-height: 44px; padding-block: 8px; font-size: .88rem; line-height: 1.6; }
+.project-photo-source a:focus-visible { outline: 3px solid var(--scene-accent, #22638b); outline-offset: 3px; }
+.project-photo-source p { overflow-wrap: anywhere; }
+.project-photo-source svg, .project-image-source svg, .photo-full svg { width: 14px; height: 14px; flex: 0 0 14px; vertical-align: -2px; }
+.project-anchor { display: block; height: 0; scroll-margin-top: 100px; }

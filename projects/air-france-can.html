@@ -26,6 +26,10 @@
 <script src="../assets/space-navigation.js" defer></script>
 <link rel="stylesheet" href="../assets/site-audio.css">
 <link rel="stylesheet" href="../assets/project-opening.css?v=air-entry-2">
+<link rel="stylesheet" href="../assets/project-reading-nav.css">
+<link rel="stylesheet" href="../assets/project-photo-sources.css">
+<link rel="stylesheet" href="../assets/project-evidence.css">
+<script src="../assets/project-reading-nav.js" defer></script>
 </head>
 <body class="air-france-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -44,7 +48,7 @@
     <img class="project-opening-image" src="../assets/air-france/workbench-public.webp" width="1672" height="941" alt="Technical montage of opened diagnostic equipment, relays and wiring on the Air France workbench." fetchpriority="high" decoding="async">
   </figure>
   <div class="project-opening-copy"><p class="eyebrow">Embedded Systems Internship / Summer 2026</p><h1 id="project-title">Air France.<br><span>Industries.</span></h1><p class="project-opening-status">Internship · CAN TX observed / RX not validated</p></div>
-  <a class="project-opening-source" href="../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer">View full image<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
+  <a class="project-opening-source" href="../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer" title="Presentation image" aria-label="Presentation image">View image<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
 </div>
 <p class="project-opening-caption" id="project-opening-caption">The workbench — studying wiring and existing test equipment.</p>
 <section class="project-brief" aria-labelledby="project-brief-title">
@@ -57,6 +61,22 @@
 </dl>
         <a class="project-brief-dive" href="#workbench">Dive into the engineering <span aria-hidden="true">↓</span></a>
       </section>
+<details class="pe-contribution" id="project-contribution">
+  <summary><span class="pe-kicker">My contribution</span><strong>Electronics, embedded C/C++ and CAN diagnosis.</strong><span class="pe-expand" aria-hidden="true">+</span></summary>
+  <div class="pe-contribution-body"><p>During my month in the EL52 team at Orly, supervised by Mathéo Lopes Boto, I worked on a compact diagnostic prototype for the existing PDU.</p><ul><li>I studied the equipment and its connections, including an approximately 114 Ω measurement between CANH and CANL.</li><li>I developed the test-frame transmission and LCD diagnostic-menu software around the UNO R4.</li><li>I investigated the reception path through CAN configuration, wiring, ground references and comparison with PCAN.</li></ul><a class="pe-link" href="#can-debugging">See my diagnostic approach <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></div>
+</details>
+<details class="project-reading-nav" data-project-reading-nav open>
+  <summary><svg class="reading-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 7 7 7-3 3-7-7zM7 10 3 6l3-3 4 4m4 10 4 4 3-3-4-4M6 15l3 3m-3 1 2-2M15 5a4 4 0 0 1 4 4"/></svg><span class="reading-nav-summary-copy"><span>Contents</span><span class="reading-nav-position" id="project-reading-position" data-reading-nav-position>01 · Objective</span></span></summary>
+  <nav aria-label="Project reading path"><ol class="reading-nav-links">
+<li><a href="#project-brief-title"><span class="reading-nav-number" aria-hidden="true">01</span><span data-reading-nav-label>Objective</span></a></li>
+<li><a href="#workbench-title"><span class="reading-nav-number" aria-hidden="true">02</span><span data-reading-nav-label>Setup</span></a></li>
+<li><a href="#can-debugging"><span class="reading-nav-number" aria-hidden="true">03</span><span data-reading-nav-label>Tests</span></a></li>
+<li><a href="#project-evidence"><span class="reading-nav-number" aria-hidden="true">04</span><span data-reading-nav-label>Results</span></a></li>
+<li><a href="#project-next"><span class="reading-nav-number" aria-hidden="true">05</span><span data-reading-nav-label>Takeaways</span></a></li>
+  </ol></nav>
+</details>
+
+
 <p class="opening-context-note">Development of a compact CAN-based diagnostic tool for an aircraft Power Distribution Unit.</p>
 
       <details class="project-context">
@@ -85,7 +105,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>01 / 04</span><span>Hands-on electronics</span></div>
-        <a class="photo-full" href="../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full workbench montage (opens in a new tab)">View full image</a>
+        <a class="photo-full" href="../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full workbench montage (opens in a new tab)" title="Presentation image" aria-label="Presentation image">Image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
           <div class="more-panel" role="region" aria-labelledby="workbench-more-title">
@@ -96,7 +116,7 @@
             <h4>What I analysed</h4><p>I studied the equipment and existing test setup, identified the electrical connections and examined the physical CAN interface before developing the compact prototype.</p>
             <h4>Electrical measurements</h4><p>I measured approximately 114 Ω between CANH and CANL. This was an observation during the investigation, alongside checks of wiring and electrical references.</p>
             <h4>Ground reference</h4><p>I checked the connection between the PDU case ground and the prototype GND while diagnosing communication. The system connections included terminals labelled +28 V and −28 V.</p>
-          </div>
+          <div class="project-photo-source"><h4>Image and source</h4><p>Public presentation montage of the project.</p><ul><li><a href="../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer">Presentation image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -139,7 +159,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>02 / 04</span><span>Aircraft equipment</span></div>
-        <a class="photo-full" href="../assets/air-france/pdu-test-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full PDU montage (opens in a new tab)">View full image</a>
+        <a class="photo-full" href="../assets/air-france/pdu-test-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full PDU montage (opens in a new tab)" title="Presentation image" aria-label="Presentation image">Image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
           <div class="more-panel" role="region" aria-labelledby="pdu-more-title">
@@ -150,7 +170,7 @@
             <h4>What I developed</h4><p>I built the prototype architecture and worked on embedded C/C++: CAN initialization, a test-frame function, response reading and interpretation, and navigation through an LCD diagnostic menu.</p>
             <h4>A test request</h4><p>The test-frame function sends extended identifier <code>0x06000021</code> with <code>DLC = 0</code>. I worked with D4 for CAN TX, D5 for CAN RX, and the transceiver’s 3.3 V, GND, CANH and CANL connections.</p>
             <h4>The diagnostic menu</h4><p>I developed a diagnostic menu, with planned categories for identification, PCB status, faults, address pins, functional status and I1 / I2 / I3 information. The target was direct consultation of useful diagnostic information without a computer.</p>
-          </div>
+          <div class="project-photo-source"><h4>Image and source</h4><p>Public presentation montage of the project.</p><ul><li><a href="../assets/air-france/pdu-test-public.webp" target="_blank" rel="noopener noreferrer">Presentation image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -193,7 +213,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>03 / 04</span><span>Industrial systems</span></div>
-        <a class="photo-full" href="../assets/air-france/electrical-cabinet-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full electrical cabinet montage (opens in a new tab)">View full image</a>
+        <a class="photo-full" href="../assets/air-france/electrical-cabinet-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full electrical cabinet montage (opens in a new tab)" title="Presentation image" aria-label="Presentation image">Image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
           <div class="more-panel" role="region" aria-labelledby="cabinet-more-title">
@@ -204,7 +224,7 @@
             <h4>Compare before concluding</h4><p>I compared the prototype with a PCAN interface. The PDU was communicating through the reference tool, helping focus the investigation on the prototype’s receive path and interface to the bus.</p>
             <h4>What I checked</h4><p>Bitrate, extended identifiers, CANH/CANL, TX/RX, transceiver supply and logic compatibility, shared ground, case ground, bus termination and the behaviour of <code>CAN.read()</code>.</p>
             <h4>Engineering work in context</h4><p>The investigation combined electrical measurements, protocol analysis and embedded debugging. The cabinet image shows the industrial environment around this PDU project.</p>
-          </div>
+          <div class="project-photo-source"><h4>Image and source</h4><p>Public presentation montage of the project.</p><ul><li><a href="../assets/air-france/electrical-cabinet-public.webp" target="_blank" rel="noopener noreferrer">Presentation image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -280,7 +300,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>04 / 04</span><span>Aerospace context</span></div>
-        <a class="photo-full" href="../assets/air-france/engine-workshop-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full aircraft engine montage (opens in a new tab)">View full image</a>
+        <a class="photo-full" href="../assets/air-france/engine-workshop-public.webp" target="_blank" rel="noopener noreferrer" aria-label="View full aircraft engine montage (opens in a new tab)" title="Presentation image" aria-label="Presentation image">Image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
           <div class="more-panel" role="region" aria-labelledby="engine-more-title">
@@ -291,7 +311,7 @@
             <h4>From studies to real equipment</h4><p>This internship brought electronics, embedded programming, digital communication and diagnostic work into an aeronautical maintenance environment.</p>
             <h4>Skills I put into practice</h4><p>C/C++, CAN frames, 29-bit identifiers, I²C, LCD menu design, wiring, electrical measurements and troubleshooting through comparison with PCAN.</p>
             <h4>The wider workshop</h4><p>The engine montage illustrates the environment around the PDU project. This experience strengthened my interest in embedded systems for aeronautics and space.</p>
-          </div>
+          <div class="project-photo-source"><h4>Image and source</h4><p>Public presentation montage of the project.</p><ul><li><a href="../assets/air-france/engine-workshop-public.webp" target="_blank" rel="noopener noreferrer">Presentation image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -384,15 +404,16 @@
       </div>
     </section>
 
-    <section class="case-summary wrap" id="project-summary" aria-labelledby="summary-title">
-      <p class="eyebrow">The project at a glance</p><h2 id="summary-title">Embedded electronics.<br>With a purpose.</h2>
-      <div class="summary-grid">
-        <article><h3>The objective</h3><p>A compact, standalone CAN diagnostic prototype for selected checks on an aircraft Power Distribution Unit.</p></article>
-        <article><h3>My contribution</h3><p>System analysis, electrical measurements, prototype architecture, embedded test-frame software, LCD menu development and CAN receive-path investigation.</p></article>
-        <article><h3>The experience</h3><p>One month in Orly with EL52 and Mathéo Lopes Boto, applying electronics and embedded systems to a real aeronautical maintenance problem.</p></article>
-      </div>
-      <a class="story-start" href="#workbench">Back to the photographs <span aria-hidden="true">↑</span></a>
-    </section>
+    <div class="wrap" id="project-summary"><span class="project-anchor" id="summary-title" aria-hidden="true"></span><section class="project-evidence" id="project-evidence" aria-labelledby="project-evidence-title" style="--pe-accent:#246a79">
+ <p class="pe-kicker">Results / evidence</p><h2 id="project-evidence-title">TX observed. RX still to validate.</h2><p class="pe-lead">The reference interface showed that the PDU communicated. The prototype showed transmit activity, but did not read the expected replies correctly. Those are separate observations.</p>
+ <div class="pe-compare"><div class="pe-state"><span class="pe-state-mark" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="m3 7 2.5 2.5L11 4"/></svg></span><span class="pe-state-label">Prototype / TX</span><strong>Activity observed</strong><p>CAN initialisation and transmit activity were observed.</p></div><div class="pe-state"><span class="pe-state-mark" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="m3 7 2.5 2.5L11 4"/></svg></span><span class="pe-state-label">Reference / PCAN</span><strong>PDU communicating</strong><p>PCAN provided a reference for the equipment’s communication.</p></div><div class="pe-state pe-state--pending"><span class="pe-state-mark" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="2.5"/></svg></span><span class="pe-state-label">Prototype / RX</span><strong>Replies not read correctly</strong><p>Reception and complete autonomous diagnosis remained unvalidated.</p></div></div>
+ <p class="pe-source">Summary of the internship observations; no packet-success rate or completed end-to-end test is claimed.</p>
+ <a class="pe-link" href="#can-debugging">Read the comparison and electrical checks <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
+</section>
+<section class="pe-followup" id="project-next" aria-labelledby="project-next-title">
+ <p class="pe-kicker">Project status</p><h2 id="project-next-title">What the internship established.</h2>
+ <dl class="pe-followup-grid"><div><dt>Status</dt><dd>Internship completed; prototype partly validated.</dd></div><div><dt>Established work</dt><dd>Equipment study, compact architecture, test transmission, LCD menu and CAN diagnosis.</dd></div><div><dt>Remaining validation</dt><dd>Read and interpret a PDU reply on the prototype before claiming a complete autonomous test.</dd></div></dl><a class="pe-link" href="#engineering-skills">Read the engineering takeaways <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
+</section></div>
     <nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Keep exploring</p><h2 id="more-projects">More projects</h2><div class="project-links">
       <a href="stm32-morse.html"><span class="eyebrow">02 / Embedded systems · Partial validation</span><strong>Morse transmitter and receiver</strong><span class="arrow" aria-hidden="true">→</span></a>
       <a href="infrared-audio.html"><span class="eyebrow">03 / In progress</span><strong>Infrared stereo audio transmission</strong><span class="arrow" aria-hidden="true">→</span></a>

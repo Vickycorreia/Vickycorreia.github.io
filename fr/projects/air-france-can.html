@@ -26,6 +26,10 @@
 <script src="../../assets/space-navigation.js" defer></script>
 <link rel="stylesheet" href="../../assets/site-audio.css">
 <link rel="stylesheet" href="../../assets/project-opening.css?v=air-entry-2">
+<link rel="stylesheet" href="../../assets/project-reading-nav.css">
+<link rel="stylesheet" href="../../assets/project-photo-sources.css">
+<link rel="stylesheet" href="../../assets/project-evidence.css">
+<script src="../../assets/project-reading-nav.js" defer></script>
 </head>
 <body class="air-france-page">
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -44,7 +48,7 @@
     <img class="project-opening-image" src="../../assets/air-france/workbench-public.webp" width="1672" height="941" alt="Montage technique d’un boîtier de diagnostic ouvert, de relais et du câblage sur le banc de travail Air France." fetchpriority="high" decoding="async">
   </figure>
   <div class="project-opening-copy"><p class="eyebrow">Stage en systèmes embarqués / Été 2026</p><h1 id="project-title">Air France.<br><span>Industries.</span></h1><p class="project-opening-status">Stage · CAN TX observé / RX non validé</p></div>
-  <a class="project-opening-source" href="../../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer">Voir l’image entière<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
+  <a class="project-opening-source" href="../../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer" title="Image de présentation" aria-label="Image de présentation">Voir le visuel<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
 </div>
 <p class="project-opening-caption" id="project-opening-caption">Le banc de travail — étude du câblage et des équipements de test existants.</p>
 <section class="project-brief" aria-labelledby="project-brief-title">
@@ -57,6 +61,22 @@
 </dl>
         <a class="project-brief-dive" href="#workbench">Explorer la démarche en détail <span aria-hidden="true">↓</span></a>
       </section>
+<details class="pe-contribution" id="project-contribution">
+  <summary><span class="pe-kicker">Ma contribution</span><strong>Électronique, C/C++ embarqué et diagnostic CAN.</strong><span class="pe-expand" aria-hidden="true">+</span></summary>
+  <div class="pe-contribution-body"><p>Pendant mon mois au sein de l’équipe EL52 à Orly, avec Mathéo Lopes Boto comme tuteur, j’ai travaillé sur un prototype compact de diagnostic du PDU existant.</p><ul><li>J’ai étudié l’équipement et ses connexions, avec notamment une mesure d’environ 114 Ω entre CANH et CANL.</li><li>J’ai développé l’envoi de la trame de test et le logiciel du menu de diagnostic LCD autour de l’UNO R4.</li><li>J’ai analysé la réception : configuration CAN, câblage, références de masse et comparaison avec PCAN.</li></ul><a class="pe-link" href="#can-debugging">Voir ma démarche de diagnostic <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></div>
+</details>
+<details class="project-reading-nav" data-project-reading-nav open>
+  <summary><svg class="reading-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 7 7 7-3 3-7-7zM7 10 3 6l3-3 4 4m4 10 4 4 3-3-4-4M6 15l3 3m-3 1 2-2M15 5a4 4 0 0 1 4 4"/></svg><span class="reading-nav-summary-copy"><span>Sommaire</span><span class="reading-nav-position" id="project-reading-position" data-reading-nav-position>01 · Objectif</span></span></summary>
+  <nav aria-label="Parcours de lecture du projet"><ol class="reading-nav-links">
+<li><a href="#project-brief-title"><span class="reading-nav-number" aria-hidden="true">01</span><span data-reading-nav-label>Objectif</span></a></li>
+<li><a href="#workbench-title"><span class="reading-nav-number" aria-hidden="true">02</span><span data-reading-nav-label>Montage</span></a></li>
+<li><a href="#can-debugging"><span class="reading-nav-number" aria-hidden="true">03</span><span data-reading-nav-label>Essais</span></a></li>
+<li><a href="#project-evidence"><span class="reading-nav-number" aria-hidden="true">04</span><span data-reading-nav-label>Résultats</span></a></li>
+<li><a href="#project-next"><span class="reading-nav-number" aria-hidden="true">05</span><span data-reading-nav-label>Bilan</span></a></li>
+  </ol></nav>
+</details>
+
+
 <p class="opening-context-note">Développement d’un outil compact de diagnostic par CAN pour une unité de distribution électrique aéronautique (PDU).</p>
 
       <details class="project-context">
@@ -85,7 +105,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>01 / 04</span><span>L’électronique en pratique</span></div>
-        <a class="photo-full" href="../../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir le montage du banc de travail en entier (s’ouvre dans un nouvel onglet)">Image complète</a>
+        <a class="photo-full" href="../../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir le montage du banc de travail en entier (s’ouvre dans un nouvel onglet)" title="Image de présentation" aria-label="Image de présentation">Image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
           <div class="more-panel" role="region" aria-labelledby="workbench-more-title">
@@ -96,7 +116,7 @@
             <h4>Ce que j’ai analysé</h4><p>J’ai étudié l’équipement et le banc existant, identifié les connexions électriques et examiné l’interface physique CAN avant de développer le prototype compact.</p>
             <h4>Mesures électriques</h4><p>J’ai mesuré environ 114 Ω entre CANH et CANL. Cette observation faisait partie du diagnostic, avec les vérifications du câblage et des références électriques.</p>
             <h4>Référence de masse</h4><p>J’ai vérifié la liaison entre la masse du boîtier du PDU et la masse GND du prototype pendant le diagnostic de la communication. Les connexions du système comprenaient des bornes repérées +28 V et −28 V.</p>
-          </div>
+          <div class="project-photo-source"><h4>Le visuel et sa source</h4><p>Montage de présentation public du projet.</p><ul><li><a href="../../assets/air-france/workbench-public.webp" target="_blank" rel="noopener noreferrer">Image de présentation <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -139,7 +159,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>02 / 04</span><span>Équipement aéronautique</span></div>
-        <a class="photo-full" href="../../assets/air-france/pdu-test-public.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir le montage du PDU en entier (s’ouvre dans un nouvel onglet)">Image complète</a>
+        <a class="photo-full" href="../../assets/air-france/pdu-test-public.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir le montage du PDU en entier (s’ouvre dans un nouvel onglet)" title="Image de présentation" aria-label="Image de présentation">Image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
           <div class="more-panel" role="region" aria-labelledby="pdu-more-title">
@@ -150,7 +170,7 @@
             <h4>Ce que j’ai développé</h4><p>J’ai construit l’architecture du prototype et travaillé sur le logiciel embarqué en C/C++ : initialisation du CAN, fonction d’envoi d’une trame de test, lecture et interprétation des réponses, et navigation dans un menu de diagnostic LCD.</p>
             <h4>Une requête de test</h4><p>La fonction de test envoie l’identifiant étendu <code>0x06000021</code> avec <code>DLC = 0</code>. J’ai travaillé avec D4 pour CAN TX, D5 pour CAN RX et les connexions 3,3 V, GND, CANH et CANL du transceiver.</p>
             <h4>Le menu de diagnostic</h4><p>J’ai développé un menu de diagnostic, avec des catégories prévues pour l’identification, l’état des cartes électroniques, les défauts, les broches d’adresse, l’état fonctionnel et les informations I1 / I2 / I3. L’objectif était de consulter directement les informations utiles sans ordinateur.</p>
-          </div>
+          <div class="project-photo-source"><h4>Le visuel et sa source</h4><p>Montage de présentation public du projet.</p><ul><li><a href="../../assets/air-france/pdu-test-public.webp" target="_blank" rel="noopener noreferrer">Image de présentation <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -193,7 +213,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>03 / 04</span><span>Systèmes industriels</span></div>
-        <a class="photo-full" href="../../assets/air-france/electrical-cabinet-public.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir le montage de l’armoire électrique en entier (s’ouvre dans un nouvel onglet)">Image complète</a>
+        <a class="photo-full" href="../../assets/air-france/electrical-cabinet-public.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir le montage de l’armoire électrique en entier (s’ouvre dans un nouvel onglet)" title="Image de présentation" aria-label="Image de présentation">Image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
           <div class="more-panel" role="region" aria-labelledby="cabinet-more-title">
@@ -204,7 +224,7 @@
             <h4>Comparer avant de conclure</h4><p>J’ai comparé le prototype avec une interface PCAN. Le PDU communiquait via l’outil de référence, ce qui a permis d’orienter le diagnostic vers la chaîne de réception du prototype et son interface avec le bus.</p>
             <h4>Ce que j’ai vérifié</h4><p>Débit, identifiants étendus, CANH/CANL, TX/RX, alimentation du transceiver et compatibilité logique, masse commune, masse du boîtier, terminaison du bus et comportement de <code>CAN.read()</code>.</p>
             <h4>L’ingénierie dans son contexte</h4><p>Le diagnostic associait mesures électriques, analyse du protocole et débogage embarqué. L’image de l’armoire montre l’environnement industriel dans lequel s’inscrivait ce projet PDU.</p>
-          </div>
+          <div class="project-photo-source"><h4>Le visuel et sa source</h4><p>Montage de présentation public du projet.</p><ul><li><a href="../../assets/air-france/electrical-cabinet-public.webp" target="_blank" rel="noopener noreferrer">Image de présentation <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -280,7 +300,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>04 / 04</span><span>Contexte aéronautique</span></div>
-        <a class="photo-full" href="../../assets/air-france/engine-workshop-public.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir le montage du moteur aéronautique en entier (s’ouvre dans un nouvel onglet)">Image complète</a>
+        <a class="photo-full" href="../../assets/air-france/engine-workshop-public.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir le montage du moteur aéronautique en entier (s’ouvre dans un nouvel onglet)" title="Image de présentation" aria-label="Image de présentation">Image <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
           <div class="more-panel" role="region" aria-labelledby="engine-more-title">
@@ -291,7 +311,7 @@
             <h4>Des études aux équipements réels</h4><p>Ce stage m’a permis de pratiquer l’électronique, la programmation embarquée, la communication numérique et le diagnostic dans un environnement de maintenance aéronautique.</p>
             <h4>Les compétences mises en pratique</h4><p>C/C++, trames CAN, identifiants sur 29 bits, I²C, conception d’un menu LCD, câblage, mesures électriques et diagnostic par comparaison avec PCAN.</p>
             <h4>L’atelier dans son ensemble</h4><p>Le montage du moteur illustre l’environnement du projet PDU. Cette expérience a renforcé mon intérêt pour les systèmes embarqués appliqués à l’aéronautique et au spatial.</p>
-          </div>
+          <div class="project-photo-source"><h4>Le visuel et sa source</h4><p>Montage de présentation public du projet.</p><ul><li><a href="../../assets/air-france/engine-workshop-public.webp" target="_blank" rel="noopener noreferrer">Image de présentation <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -384,15 +404,16 @@
       </div>
     </section>
 
-    <section class="case-summary wrap" id="project-summary" aria-labelledby="summary-title">
-      <p class="eyebrow">Le projet en quelques mots</p><h2 id="summary-title">L’électronique embarquée.<br>Pour un besoin concret.</h2>
-      <div class="summary-grid">
-        <article><h3>L’objectif</h3><p>Un prototype compact et autonome de diagnostic CAN pour certaines vérifications sur une unité de distribution électrique aéronautique.</p></article>
-        <article><h3>Ma contribution</h3><p>Analyse du système, mesures électriques, architecture du prototype, logiciel embarqué d’envoi de trames de test, développement du menu LCD et analyse de la chaîne de réception CAN.</p></article>
-        <article><h3>L’expérience</h3><p>Un mois à Orly avec EL52 et Mathéo Lopes Boto pour appliquer l’électronique et les systèmes embarqués à un problème réel de maintenance aéronautique.</p></article>
-      </div>
-      <a class="story-start" href="#workbench">Retour aux photographies <span aria-hidden="true">↑</span></a>
-    </section>
+    <div class="wrap" id="project-summary"><span class="project-anchor" id="summary-title" aria-hidden="true"></span><section class="project-evidence" id="project-evidence" aria-labelledby="project-evidence-title" style="--pe-accent:#246a79">
+ <p class="pe-kicker">Résultats / observations</p><h2 id="project-evidence-title">TX observé. RX à valider.</h2><p class="pe-lead">L’interface de référence montrait que le PDU communiquait. Le prototype présentait une activité d’émission, mais ne lisait pas correctement les réponses attendues. Ce sont deux observations distinctes.</p>
+ <div class="pe-compare"><div class="pe-state"><span class="pe-state-mark" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="m3 7 2.5 2.5L11 4"/></svg></span><span class="pe-state-label">Prototype / TX</span><strong>Activité observée</strong><p>L’initialisation CAN et une activité d’émission ont été observées.</p></div><div class="pe-state"><span class="pe-state-mark" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="m3 7 2.5 2.5L11 4"/></svg></span><span class="pe-state-label">Référence / PCAN</span><strong>PDU communiquant</strong><p>PCAN apportait une référence sur la communication de l’équipement.</p></div><div class="pe-state pe-state--pending"><span class="pe-state-mark" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="2.5"/></svg></span><span class="pe-state-label">Prototype / RX</span><strong>Réponses non lues correctement</strong><p>La réception et le diagnostic autonome complet restaient non validés.</p></div></div>
+ <p class="pe-source">Synthèse des observations du stage ; aucun taux de réussite ni essai complet de bout en bout n’est annoncé.</p>
+ <a class="pe-link" href="#can-debugging">Lire la comparaison et les vérifications électriques <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
+</section>
+<section class="pe-followup" id="project-next" aria-labelledby="project-next-title">
+ <p class="pe-kicker">État du projet</p><h2 id="project-next-title">Ce que le stage a établi.</h2>
+ <dl class="pe-followup-grid"><div><dt>État</dt><dd>Stage réalisé ; prototype partiellement validé.</dd></div><div><dt>Travail établi</dt><dd>Étude de l’équipement, architecture compacte, émission de test, menu LCD et diagnostic CAN.</dd></div><div><dt>Validation restante</dt><dd>Lire et interpréter une réponse du PDU sur le prototype avant de conclure à un test autonome complet.</dd></div></dl><a class="pe-link" href="#engineering-skills">Voir les enseignements techniques du stage <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
+</section></div>
     <nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Poursuivre la découverte</p><h2 id="more-projects">Autres projets</h2><div class="project-links">
       <a href="stm32-morse.html"><span class="eyebrow">02 / Systèmes embarqués · Validation partielle</span><strong>Émetteur-récepteur Morse</strong><span class="arrow" aria-hidden="true">→</span></a>
       <a href="infrared-audio.html"><span class="eyebrow">03 / En cours</span><strong>Transmission audio stéréo par infrarouge</strong><span class="arrow" aria-hidden="true">→</span></a>

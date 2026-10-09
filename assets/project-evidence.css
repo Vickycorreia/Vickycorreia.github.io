@@ -1,0 +1,140 @@
+/* Compact project evidence. Static visuals remain usable without JavaScript. */
+.pe-contribution {
+  margin: 1.35rem 0 1.9rem;
+  color: #19394c;
+  border: 1px solid rgba(44, 98, 125, .18);
+  border-radius: 18px;
+  background: linear-gradient(125deg, rgba(242, 250, 251, .95), rgba(255, 253, 249, .93));
+}
+.pe-contribution > summary {
+  min-height: 72px;
+  padding: 1.1rem 1.35rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .3rem 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+.pe-contribution > summary::-webkit-details-marker { display: none; }
+.pe-contribution > summary .pe-kicker { grid-column: 1; }
+.pe-contribution > summary strong { grid-column: 1; font-size: clamp(1rem, 1.8vw, 1.15rem); line-height: 1.5; }
+.pe-contribution > summary .pe-expand {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(39, 103, 122, .25);
+  border-radius: 50%;
+  color: #246a79;
+  font-size: 1.6rem;
+  font-weight: 400;
+  transition: transform .18s ease;
+}
+.pe-contribution[open] .pe-expand { transform: rotate(45deg); }
+.pe-contribution-body { padding: 0 1.35rem 1.35rem; }
+.pe-contribution-body p { margin: 0 0 .85rem; max-width: 78ch; line-height: 1.75; }
+.pe-contribution-body ul { margin: .75rem 0 1rem; padding-left: 1.25rem; }
+.pe-contribution-body li { padding-left: .15rem; margin: .5rem 0; line-height: 1.6; }
+.project-evidence,
+.pe-followup { scroll-margin-top: 100px; }
+.project-evidence {
+  --pe-accent: #246a79;
+  margin: 3rem 0;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  border: 1px solid rgba(44, 98, 125, .16);
+  border-radius: 24px;
+  color: #19394c;
+  background: linear-gradient(135deg, rgba(239, 248, 251, .96), rgba(255, 253, 248, .95));
+  box-shadow: 0 12px 45px rgba(44, 80, 98, .045);
+}
+.pe-kicker {
+  margin: 0;
+  color: #4c6c7d;
+  font-size: .72rem;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.project-evidence h2,
+.pe-followup h2 {
+  margin: .55rem 0 .85rem;
+  color: var(--pe-accent, #246a79);
+  font-size: clamp(1.65rem, 3.2vw, 2.5rem);
+  line-height: 1.17;
+  letter-spacing: -.035em;
+}
+.pe-lead { margin: 0 0 1.4rem; max-width: 78ch; line-height: 1.75; }
+.pe-compare {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .85rem;
+  margin: 1.35rem 0;
+}
+.pe-compare--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pe-state {
+  min-width: 0;
+  padding: 1.15rem;
+  border: 1px solid rgba(44, 98, 125, .15);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .76);
+}
+.pe-state-label { display: block; color: #4e6a7b; font-size: .72rem; font-weight: 650; letter-spacing: .075em; text-transform: uppercase; }
+.pe-state strong { display: block; margin: .6rem 0 .55rem; color: #256772; font-size: clamp(1rem, 1.75vw, 1.25rem); line-height: 1.35; }
+.pe-state p { margin: 0; color: #415b6c; font-size: .92rem; line-height: 1.6; }
+.pe-state--pending { border-style: dashed; }
+.pe-state--pending strong { color: #8b592f; }
+.pe-state-mark { display: inline-flex; align-items: center; justify-content: center; width: 27px; height: 27px; margin-bottom: .65rem; border: 1px solid currentColor; border-radius: 50%; color: #327582; font-size: .8rem; }
+.pe-state--pending .pe-state-mark { color: #966438; }
+.pe-state-mark svg { width: 14px; height: 14px; }
+.pe-figure { margin: 1.25rem 0 0; }
+.pe-figure svg { display: block; width: 100%; max-width: 760px; height: auto; margin-inline: auto; color: #274a5e; font-family: inherit; overflow: visible; }
+.pe-figure text { fill: #3c5b6c; }
+.pe-figure figcaption,
+.pe-source { margin: .75rem 0 0; color: #4d6879; font-size: .84rem; line-height: 1.7; }
+.pe-chart-axis { fill: none; stroke: #92adbb; stroke-width: 1; }
+.pe-chart-grid { fill: none; stroke: #d4e3e9; stroke-width: 1; }
+.pe-chart-rest { fill: #39828c; stroke: #39828c; }
+.pe-chart-onset { fill: #a16735; stroke: #a16735; }
+.pe-chart-error { fill: none; stroke-width: 3; }
+.pe-result-values { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin: 1.1rem 0 0; }
+.pe-result-values > div { min-width: 0; }
+.pe-result-values dt { color: #4e6a7b; font-size: .78rem; line-height: 1.5; }
+.pe-result-values dd { margin: .2rem 0 0; color: #275a71; font-size: clamp(1.15rem, 2.5vw, 1.45rem); font-weight: 650; }
+.pe-wave-legend { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; margin: .85rem 0 0; color: #415b6c; font-size: .86rem; }
+.pe-wave-legend span { display: inline-flex; align-items: center; gap: .45rem; }
+.pe-wave-legend i { width: 16px; height: 3px; background: var(--pe-wave-color); border-radius: 2px; }
+.pe-link { display: inline-block; min-height: 44px; padding: .65rem 0; color: #236c80; font-size: .9rem; font-weight: 650; line-height: 1.6; text-underline-offset: .22em; }
+.pe-link svg { width: 13px; height: 13px; margin-left: .25rem; vertical-align: -.1em; }
+.pe-followup {
+  --pe-accent: #246a79;
+  margin: 2rem 0 3rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border-top: 1px solid rgba(44, 98, 125, .2);
+  border-bottom: 1px solid rgba(44, 98, 125, .2);
+  color: #19394c;
+  background: linear-gradient(90deg, rgba(236, 247, 250, .6), rgba(255, 252, 247, .42));
+}
+.pe-followup-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; margin: 1.35rem 0 0; }
+.pe-followup-grid > div { min-width: 0; }
+.pe-followup-grid dt { margin-bottom: .5rem; color: #4e6a7b; font-size: .75rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; }
+.pe-followup-grid dd { margin: 0; font-size: .97rem; line-height: 1.7; }
+.pe-contribution summary:focus-visible,
+.pe-link:focus-visible { outline: 3px solid #378599; outline-offset: 4px; border-radius: 8px; }
+@media (max-width: 680px) {
+  .project-evidence { margin: 2rem 0; border-radius: 18px; }
+  .pe-compare,
+  .pe-compare--two,
+  .pe-followup-grid { grid-template-columns: 1fr; }
+  .pe-state { padding: 1rem; }
+  .pe-state strong { margin-top: .45rem; }
+  .pe-followup-grid { gap: 1rem; }
+  .pe-contribution > summary { padding: 1rem; column-gap: .75rem; }
+  .pe-contribution-body { padding: 0 1rem 1rem; }
+  .pe-figure { margin-top: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pe-contribution > summary .pe-expand { transition: none; }
+}

@@ -29,6 +29,10 @@
 <script src="../../assets/space-navigation.js" defer></script>
 <link rel="stylesheet" href="../../assets/site-audio.css">
 <link rel="stylesheet" href="../../assets/project-opening.css">
+<link rel="stylesheet" href="../../assets/project-reading-nav.css">
+<link rel="stylesheet" href="../../assets/project-photo-sources.css">
+<link rel="stylesheet" href="../../assets/project-evidence.css">
+<script src="../../assets/project-reading-nav.js" defer></script>
 </head>
 <body class="sand-page">
   <a class="skip-link" href="#main">Aller au contenu</a>
@@ -47,9 +51,11 @@
     <img class="project-opening-image" src="../../assets/sand-study/rotating-drum.webp" width="1672" height="941" alt="Montage de l’expérience du tambour tournant rempli de sable, avec vues rapprochées et schémas." fetchpriority="high" decoding="async">
   </figure>
   <div class="project-opening-copy"><p class="eyebrow">04 / Mécanique granulaire · Étude scientifique</p><h1 id="project-title">Petits grains.<br><span>Grands enjeux.</span></h1><p class="project-opening-status">Étude expérimentale · Mesures et modélisation physique</p></div>
-  <a class="project-opening-source" href="../../assets/sand-study/rotating-drum.webp" target="_blank" rel="noopener noreferrer">Voir l’image entière<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
+  <a class="project-opening-source" href="../../assets/sand-study/rotating-drum.webp" target="_blank" rel="noopener noreferrer" title="Montage de présentation" aria-label="Montage de présentation">Voir le visuel<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
 </div>
 <p class="project-opening-caption" id="project-opening-caption">Le tambour tournant — l’un des montages expérimentaux de l’étude.</p>
+<p class="project-image-source"><a href="../../assets/project-originals/sand/drum-experiment.jpeg" target="_blank" rel="noopener noreferrer">Voir la photo réelle de l’expérience, sans retouche <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></p>
+
 <section class="project-brief" aria-labelledby="project-brief-title">
         <div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div>
         <dl class="project-brief-grid">
@@ -60,6 +66,22 @@
 </dl>
         <a class="project-brief-dive" href="#rotating-drum">Explorer la démarche en détail <span aria-hidden="true">↓</span></a>
       </section>
+<details class="pe-contribution" id="project-contribution">
+  <summary><span class="pe-kicker">Ma contribution</span><strong>Expériences, suivi vidéo et modélisation physique.</strong><span class="pe-expand" aria-hidden="true">+</span></summary>
+  <div class="pe-contribution-body"><p>J’ai participé à l’étude expérimentale, en reliant les observations et les mesures vidéo à des modèles physiques simples du mouvement granulaire.</p><ul><li>Travailler sur des dispositifs simples : tambour, plan incliné rugueux, trémie à débit variable et expérience distincte de bille Tac-Tac.</li><li>Suivre le mouvement en vidéo et analyser la position au cours du temps avec Python, NumPy et Matplotlib.</li><li>Comparer les mesures au frottement de Coulomb et à un modèle de chocs, en conservant les incertitudes et les différences entre expériences.</li></ul><a class="pe-link" href="#sand-methods">Voir la démarche, de l’expérience au modèle <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></div>
+</details>
+<details class="project-reading-nav" data-project-reading-nav open>
+  <summary><svg class="reading-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 7 7 7-3 3-7-7zM7 10 3 6l3-3 4 4m4 10 4 4 3-3-4-4M6 15l3 3m-3 1 2-2M15 5a4 4 0 0 1 4 4"/></svg><span class="reading-nav-summary-copy"><span>Sommaire</span><span class="reading-nav-position" id="project-reading-position" data-reading-nav-position>01 · Objectif</span></span></summary>
+  <nav aria-label="Parcours de lecture du projet"><ol class="reading-nav-links">
+<li><a href="#project-brief-title"><span class="reading-nav-number" aria-hidden="true">01</span><span data-reading-nav-label>Objectif</span></a></li>
+<li><a href="#drum-title"><span class="reading-nav-number" aria-hidden="true">02</span><span data-reading-nav-label>Montage</span></a></li>
+<li><a href="#impact-title"><span class="reading-nav-number" aria-hidden="true">03</span><span data-reading-nav-label>Essais</span></a></li>
+<li><a href="#project-evidence"><span class="reading-nav-number" aria-hidden="true">04</span><span data-reading-nav-label>Résultats</span></a></li>
+<li><a href="#project-next"><span class="reading-nav-number" aria-hidden="true">05</span><span data-reading-nav-label>Bilan</span></a></li>
+  </ol></nav>
+</details>
+
+
 <p class="opening-context-note">Quand un tas de sable devient-il une avalanche ? Pourquoi peut-il s’écouler à une vitesse presque constante ?</p>
 
       <details class="project-context">
@@ -88,7 +110,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>01 / 04</span><span>Seuils et hystérésis</span></div>
-        <a class="photo-full" href="../../assets/sand-study/rotating-drum.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète du tambour tournant (nouvel onglet)">Image complète</a>
+        <a class="photo-full" href="../../assets/project-originals/sand/drum-experiment.jpeg" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète du tambour tournant (nouvel onglet)" title="Photo de l’expérience" aria-label="Photo de l’expérience">Photo <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
           <div class="more-panel" role="region" aria-labelledby="drum-more-title">
@@ -102,7 +124,7 @@
             <p class="panel-equation">θ<sub>c</sub> = arctan(μ) ≈ 35° pour μ = 0,7</p>
             <p>Il s’agit de la prédiction d’un modèle simplifié, comparée au déclenchement mesuré à 36,7°. L’expérience du tambour met également en évidence un seuil de repos distinct.</p>
             <p class="source-note">Résultats rapportés et modèle : présentation de l’étude, diapositives 4 à 6. Les valeurs après ± sont reproduites telles qu’elles sont rapportées.</p>
-          </div>
+          <div class="project-photo-source"><h4>Le visuel et sa source</h4><p>Photographie sans retouche extraite du compte rendu, p. 4. Le visuel de la page est un montage illustratif.</p><ul><li><a href="../../assets/sand-study/rotating-drum.webp" target="_blank" rel="noopener noreferrer">Montage de présentation <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li><li><a href="../../assets/project-originals/sand/drum-experiment.jpeg" target="_blank" rel="noopener noreferrer">Photo de l’expérience · p. 4 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -158,7 +180,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>02 / 04</span><span>Dispositif et suivi vidéo</span></div>
-        <a class="photo-full" href="../../assets/sand-study/granular-flow.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète de l’écoulement granulaire (nouvel onglet)">Image complète</a>
+        <a class="photo-full" href="../../assets/project-originals/sand/hopper-flow-experiment.jpeg" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète de l’écoulement granulaire (nouvel onglet)" title="Photo de l’expérience" aria-label="Photo de l’expérience">Photo <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
           <div class="more-panel" role="region" aria-labelledby="flow-more-title">
@@ -172,7 +194,7 @@
             <p class="panel-equation">dv/dt = g(sin θ − μ cos θ)</p>
             <p>Pour une pente supérieure au seuil de frottement, ce modèle prédit une accélération. Cela diffère du mouvement presque uniforme observé ici et invite à examiner les pertes d’énergie dues aux chocs répétés.</p>
             <p class="source-note">Dispositif, observation et modèle : présentation de l’étude, diapositives 7 à 10. La vitesse correspond à l’observation rapportée en laboratoire.</p>
-          </div>
+          <div class="project-photo-source"><h4>Le visuel et sa source</h4><p>Photographie sans retouche extraite du compte rendu, p. 9. Le visuel de la page est un montage illustratif.</p><ul><li><a href="../../assets/sand-study/granular-flow.webp" target="_blank" rel="noopener noreferrer">Montage de présentation <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li><li><a href="../../assets/project-originals/sand/hopper-flow-experiment.jpeg" target="_blank" rel="noopener noreferrer">Photo de l’expérience · p. 9 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -228,7 +250,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>03 / 04</span><span>Modèle à l’échelle du grain</span></div>
-        <a class="photo-full" href="../../assets/sand-study/inclined-plane.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète du Tac-Tac (nouvel onglet)">Image complète</a>
+        <a class="photo-full" href="../../assets/project-originals/sand/tac-tac-experiment.jpeg" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète du Tac-Tac (nouvel onglet)" title="Photo de l’expérience" aria-label="Photo de l’expérience">Photo <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
           <div class="more-panel" role="region" aria-labelledby="impact-more-title">
@@ -243,7 +265,7 @@
             <p>Ici, g désigne l’accélération de la pesanteur, θ l’angle de la pente et d l’espacement entre deux contacts successifs avec les supports. La vitesse peut encore varier entre les chocs.</p>
             <h4>Comparer avec le suivi</h4><p>L’ajustement position–temps rapporté donne environ 0,33 m/s. L’application du modèle fournit e ≈ 0,46 pour cette analogie. D’autres essais examinent la dépendance prédite en √(sin θ). Cette estimation concerne l’expérience Tac-Tac.</p>
             <p class="source-note">Modèle et comparaison : présentation de l’étude, diapositives 11 à 14 et 21. La valeur de restitution est déduite du modèle.</p>
-          </div>
+          <div class="project-photo-source"><h4>Le visuel et sa source</h4><p>Photographie sans retouche extraite du compte rendu, p. 11. Le visuel de la page est un montage illustratif.</p><ul><li><a href="../../assets/sand-study/inclined-plane.webp" target="_blank" rel="noopener noreferrer">Montage de présentation <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li><li><a href="../../assets/project-originals/sand/tac-tac-experiment.jpeg" target="_blank" rel="noopener noreferrer">Photo de l’expérience · p. 11 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -362,7 +384,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>04 / 04</span><span>Épaisseur et stabilité</span></div>
-        <a class="photo-full" href="../../assets/sand-study/granular-dunes.webp" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète de la couche de sable (nouvel onglet)">Image complète</a>
+        <a class="photo-full" href="../../assets/project-originals/sand/layer-experiment.jpeg" target="_blank" rel="noopener noreferrer" aria-label="Voir l’image complète de la couche de sable (nouvel onglet)" title="Photo de l’expérience" aria-label="Photo de l’expérience">Photo <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>En savoir plus</span></summary>
           <div class="more-panel" role="region" aria-labelledby="depth-more-title">
@@ -375,7 +397,7 @@
             <h4>Faire le lien avec les recherches antérieures</h4><p>La présentation compare les tendances avec une figure attribuée à la thèse d’Adrian Daerr. Cette figure sert de référence bibliographique pour interpréter la stabilité des écoulements granulaires.</p>
             <h4>Les limites expérimentales</h4><p>Il était difficile de reproduire l’alimentation en sable et les conditions initiales. Les ondes de surface perturbaient les mesures, tandis que les forces internes et les vitesses des grains étaient difficiles à mesurer. Un petit dispositif de laboratoire présente aussi des limites pour interpréter les avalanches naturelles.</p>
             <p class="source-note">Étude de l’épaisseur et limites : présentation de l’étude, diapositives 15 à 18. Les montages fournis illustrent les expériences ; les résultats numériques rapportés proviennent de la présentation.</p>
-          </div>
+          <div class="project-photo-source"><h4>Le visuel et sa source</h4><p>Photographie sans retouche extraite du compte rendu, p. 15. Le visuel de la page est un montage illustratif.</p><ul><li><a href="../../assets/sand-study/granular-dunes.webp" target="_blank" rel="noopener noreferrer">Montage de présentation <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li><li><a href="../../assets/project-originals/sand/layer-experiment.jpeg" target="_blank" rel="noopener noreferrer">Photo de l’expérience · p. 15 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -440,7 +462,28 @@
       </div>
     </section>
 
-    <nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Poursuivre la découverte</p><h2 id="more-projects">Autres projets</h2><div class="project-links">
+    <div class="wrap"><section class="project-evidence" id="project-evidence" aria-labelledby="project-evidence-title" style="--pe-accent:#246a79">
+ <p class="pe-kicker">Résultats / observations</p><h2 id="project-evidence-title">Le départ et l’arrêt suivent deux chemins.</h2><p class="pe-lead">Les mesures dans le tambour font apparaître deux angles caractéristiques. Le seuil supérieur déclenche l’avalanche ; le seuil inférieur décrit la surface une fois revenue au repos.</p>
+ <figure class="pe-figure">
+ <svg viewBox="0 0 520 205" role="img" aria-labelledby="pe-sand-chart-title pe-sand-chart-desc">
+  <title id="pe-sand-chart-title">Tambour de sable : angles de départ et de repos, avec incertitudes rapportées</title><desc id="pe-sand-chart-desc">L’angle de repos est de 32,1 ± 0,6 degrés. L’angle de déclenchement de l’avalanche est de 36,7 ± 0,3 degrés. Les deux points partagent un axe d’angle allant de 30 à 38 degrés. Les barres horizontales représentent les incertitudes rapportées dans l’étude.</desc>
+  <path class="pe-chart-grid" d="M126 35V142"/><text x="126" y="166" text-anchor="middle" font-size="18">30°</text><path class="pe-chart-grid" d="M215 35V142"/><text x="215" y="166" text-anchor="middle" font-size="18">32°</text><path class="pe-chart-grid" d="M304 35V142"/><text x="304" y="166" text-anchor="middle" font-size="18">34°</text><path class="pe-chart-grid" d="M393 35V142"/><text x="393" y="166" text-anchor="middle" font-size="18">36°</text><path class="pe-chart-grid" d="M482 35V142"/><text x="482" y="166" text-anchor="middle" font-size="18">38°</text><path class="pe-chart-axis" d="M126 142H482"/>
+  <text x="8" y="75" font-size="20">Repos</text><text x="8" y="123" font-size="20">Départ</text>
+  <path class="pe-chart-rest pe-chart-error" d="M192.75 69H246.15M192.75 59V79M246.15 59V79"/><circle class="pe-chart-rest" cx="219.45" cy="69" r="6"/>
+  <path class="pe-chart-onset pe-chart-error" d="M410.8 117H437.5M410.8 107V127M437.5 107V127"/><circle class="pe-chart-onset" cx="424.15" cy="117" r="6"/>
+  <text x="304" y="197" text-anchor="middle" font-size="18">Angle de surface θ (°)</text>
+ </svg>
+ <dl class="pe-result-values"><div><dt>Repos / θᵣ</dt><dd>32,1 ± 0,6°</dd></div><div><dt>Départ / θₐ</dt><dd>36,7 ± 0,3°</dd></div></dl>
+ <figcaption>Mesures dans le tambour · présentation de l’étude, diapositives 4–6. Les barres conservent les incertitudes annoncées, sans les transformer en intervalles de confiance.</figcaption>
+</figure>
+ <p class="pe-source">L’avalanche de sable observée à environ 0,30 m/s et l’analyse distincte du Tac-Tac à 0,33 m/s correspondent à deux expériences. L’estimation e ≈ 0,46 issue du modèle concerne l’analogie Tac-Tac.</p>
+ <a class="pe-link" href="#drum-title">Voir l’expérience du tambour <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
+</section>
+<section class="pe-followup" id="project-next" aria-labelledby="project-next-title">
+ <p class="pe-kicker">État du projet</p><h2 id="project-next-title">Ce que l’étude montre.</h2>
+ <dl class="pe-followup-grid"><div><dt>État</dt><dd>Étude présentée, avec mesures rapportées et comparaisons aux modèles.</dd></div><div><dt>Résultat central</dt><dd>Les seuils de départ et de repos diffèrent : entre eux, l’état précédent compte.</dd></div><div><dt>Limite à retenir</dt><dd>Garder les incertitudes visibles et distinguer les résultats du tambour, de l’écoulement et des chocs de la bille.</dd></div></dl><a class="pe-link" href="#sand-methods">Lire la méthode et ses limites <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
+</section></div>
+<nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Poursuivre la découverte</p><h2 id="more-projects">Autres projets</h2><div class="project-links">
       <a href="air-france-can.html"><span class="eyebrow">01 / Industrie · 2026</span><strong>Dispositif de test CAN chez Air France Industries</strong><span class="arrow" aria-hidden="true">→</span></a>
       <a href="stm32-morse.html"><span class="eyebrow">02 / Systèmes embarqués · Validation partielle</span><strong>Émetteur-récepteur Morse</strong><span class="arrow" aria-hidden="true">→</span></a>
       <a href="infrared-audio.html"><span class="eyebrow">03 / En cours</span><strong>Transmission audio stéréo par infrarouge</strong><span class="arrow" aria-hidden="true">→</span></a>

@@ -29,6 +29,10 @@
 <script src="../assets/space-navigation.js" defer></script>
 <link rel="stylesheet" href="../assets/site-audio.css">
 <link rel="stylesheet" href="../assets/project-opening.css">
+<link rel="stylesheet" href="../assets/project-reading-nav.css">
+<link rel="stylesheet" href="../assets/project-photo-sources.css">
+<link rel="stylesheet" href="../assets/project-evidence.css">
+<script src="../assets/project-reading-nav.js" defer></script>
 </head>
 <body class="sand-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -47,9 +51,11 @@
     <img class="project-opening-image" src="../assets/sand-study/rotating-drum.webp" width="1672" height="941" alt="Technical montage of the rotating sand drum experiment, with close-ups and diagrams." fetchpriority="high" decoding="async">
   </figure>
   <div class="project-opening-copy"><p class="eyebrow">04 / Granular mechanics · Scientific study</p><h1 id="project-title">Small grains.<br><span>Big questions.</span></h1><p class="project-opening-status">Experimental study · Measurements and physical modelling</p></div>
-  <a class="project-opening-source" href="../assets/sand-study/rotating-drum.webp" target="_blank" rel="noopener noreferrer">View full image<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
+  <a class="project-opening-source" href="../assets/sand-study/rotating-drum.webp" target="_blank" rel="noopener noreferrer" title="Presentation montage" aria-label="Presentation montage">View image<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
 </div>
 <p class="project-opening-caption" id="project-opening-caption">The rotating drum — one of the study’s experimental setups.</p>
+<p class="project-image-source"><a href="../assets/project-originals/sand/drum-experiment.jpeg" target="_blank" rel="noopener noreferrer">View the actual experiment photo, without retouching <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></p>
+
 <section class="project-brief" aria-labelledby="project-brief-title">
         <div class="project-brief-heading"><p class="eyebrow">The essentials</p><h2 id="project-brief-title">The project in 30 seconds</h2></div>
         <dl class="project-brief-grid">
@@ -60,6 +66,22 @@
 </dl>
         <a class="project-brief-dive" href="#rotating-drum">Dive into the engineering <span aria-hidden="true">↓</span></a>
       </section>
+<details class="pe-contribution" id="project-contribution">
+  <summary><span class="pe-kicker">My contribution</span><strong>Experiment, video tracking and physical modelling.</strong><span class="pe-expand" aria-hidden="true">+</span></summary>
+  <div class="pe-contribution-body"><p>I took part in the experimental study, using observations and video measurements to compare granular motion with simple physical models.</p><ul><li>Work on simple setups: rotating drum, rough inclined plane, variable-feed hopper and the separate Tac-Tac ball analogue.</li><li>Track motion in video and analyse position over time with Python, NumPy and Matplotlib.</li><li>Compare the measurements with Coulomb friction and an impact model, retaining uncertainties and distinguishing the experiments.</li></ul><a class="pe-link" href="#sand-methods">See the experiment-to-model method <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></div>
+</details>
+<details class="project-reading-nav" data-project-reading-nav open>
+  <summary><svg class="reading-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 7 7 7-3 3-7-7zM7 10 3 6l3-3 4 4m4 10 4 4 3-3-4-4M6 15l3 3m-3 1 2-2M15 5a4 4 0 0 1 4 4"/></svg><span class="reading-nav-summary-copy"><span>Contents</span><span class="reading-nav-position" id="project-reading-position" data-reading-nav-position>01 · Objective</span></span></summary>
+  <nav aria-label="Project reading path"><ol class="reading-nav-links">
+<li><a href="#project-brief-title"><span class="reading-nav-number" aria-hidden="true">01</span><span data-reading-nav-label>Objective</span></a></li>
+<li><a href="#drum-title"><span class="reading-nav-number" aria-hidden="true">02</span><span data-reading-nav-label>Setup</span></a></li>
+<li><a href="#impact-title"><span class="reading-nav-number" aria-hidden="true">03</span><span data-reading-nav-label>Tests</span></a></li>
+<li><a href="#project-evidence"><span class="reading-nav-number" aria-hidden="true">04</span><span data-reading-nav-label>Results</span></a></li>
+<li><a href="#project-next"><span class="reading-nav-number" aria-hidden="true">05</span><span data-reading-nav-label>Takeaways</span></a></li>
+  </ol></nav>
+</details>
+
+
 <p class="opening-context-note">When does a pile of sand become an avalanche? Why can it flow at an almost steady speed?</p>
 
       <details class="project-context">
@@ -88,7 +110,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>01 / 04</span><span>Thresholds & hysteresis</span></div>
-        <a class="photo-full" href="../assets/sand-study/rotating-drum.webp" target="_blank" rel="noopener noreferrer" aria-label="View full rotating-drum image (opens in a new tab)">View full image</a>
+        <a class="photo-full" href="../assets/project-originals/sand/drum-experiment.jpeg" target="_blank" rel="noopener noreferrer" aria-label="View full rotating-drum image (opens in a new tab)" title="Experiment photo" aria-label="Experiment photo">Photo <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
           <div class="more-panel" role="region" aria-labelledby="drum-more-title">
@@ -102,7 +124,7 @@
             <p class="panel-equation">θ<sub>c</sub> = arctan(μ) ≈ 35° for μ = 0.7</p>
             <p>This is a simplified model prediction, compared with the measured onset of 36.7°. The drum experiment also reveals a separate resting threshold.</p>
             <p class="source-note">Reported results and model: study presentation, slides 4–6. The ± values are reproduced as reported.</p>
-          </div>
+          <div class="project-photo-source"><h4>Image and source</h4><p>Unretouched photograph extracted from the project report, p. 4. The page visual is an illustrative montage.</p><ul><li><a href="../assets/sand-study/rotating-drum.webp" target="_blank" rel="noopener noreferrer">Presentation montage <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li><li><a href="../assets/project-originals/sand/drum-experiment.jpeg" target="_blank" rel="noopener noreferrer">Experiment photo · p. 4 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -158,7 +180,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>02 / 04</span><span>Apparatus & video tracking</span></div>
-        <a class="photo-full" href="../assets/sand-study/granular-flow.webp" target="_blank" rel="noopener noreferrer" aria-label="View full granular-flow image (opens in a new tab)">View full image</a>
+        <a class="photo-full" href="../assets/project-originals/sand/hopper-flow-experiment.jpeg" target="_blank" rel="noopener noreferrer" aria-label="View full granular-flow image (opens in a new tab)" title="Experiment photo" aria-label="Experiment photo">Photo <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
           <div class="more-panel" role="region" aria-labelledby="flow-more-title">
@@ -172,7 +194,7 @@
             <p class="panel-equation">dv/dt = g(sin θ − μ cos θ)</p>
             <p>For a slope above its friction threshold, this model predicts acceleration. That differs from the almost steady motion observed here, motivating a closer look at energy losses through repeated impacts.</p>
             <p class="source-note">Apparatus, observation and model: study presentation, slides 7–10. Speed refers to the reported laboratory observation.</p>
-          </div>
+          <div class="project-photo-source"><h4>Image and source</h4><p>Unretouched photograph extracted from the project report, p. 9. The page visual is an illustrative montage.</p><ul><li><a href="../assets/sand-study/granular-flow.webp" target="_blank" rel="noopener noreferrer">Presentation montage <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li><li><a href="../assets/project-originals/sand/hopper-flow-experiment.jpeg" target="_blank" rel="noopener noreferrer">Experiment photo · p. 9 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -228,7 +250,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>03 / 04</span><span>Grain-scale model</span></div>
-        <a class="photo-full" href="../assets/sand-study/inclined-plane.webp" target="_blank" rel="noopener noreferrer" aria-label="View full Tac-Tac image (opens in a new tab)">View full image</a>
+        <a class="photo-full" href="../assets/project-originals/sand/tac-tac-experiment.jpeg" target="_blank" rel="noopener noreferrer" aria-label="View full Tac-Tac image (opens in a new tab)" title="Experiment photo" aria-label="Experiment photo">Photo <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
           <div class="more-panel" role="region" aria-labelledby="impact-more-title">
@@ -243,7 +265,7 @@
             <p>Here g is gravitational acceleration, θ the slope angle and d the spacing between successive support contacts. The speed can still vary during each step between impacts.</p>
             <h4>Compare with tracking</h4><p>The reported position–time fit gives about 0.33 m/s. Applying the model gives e ≈ 0.46 for this analogue. Further tests examine the predicted dependence on √(sin θ). This estimate describes the Tac-Tac experiment.</p>
             <p class="source-note">Model and comparison: study presentation, slides 11–14 and 21. The restitution value is inferred through the model.</p>
-          </div>
+          <div class="project-photo-source"><h4>Image and source</h4><p>Unretouched photograph extracted from the project report, p. 11. The page visual is an illustrative montage.</p><ul><li><a href="../assets/sand-study/inclined-plane.webp" target="_blank" rel="noopener noreferrer">Presentation montage <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li><li><a href="../assets/project-originals/sand/tac-tac-experiment.jpeg" target="_blank" rel="noopener noreferrer">Experiment photo · p. 11 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -362,7 +384,7 @@
       </div>
       <div class="story-frame">
         <div class="chapter-meta" aria-hidden="true"><span>04 / 04</span><span>Thickness & stability</span></div>
-        <a class="photo-full" href="../assets/sand-study/granular-dunes.webp" target="_blank" rel="noopener noreferrer" aria-label="View full sand-layer image (opens in a new tab)">View full image</a>
+        <a class="photo-full" href="../assets/project-originals/sand/layer-experiment.jpeg" target="_blank" rel="noopener noreferrer" aria-label="View full sand-layer image (opens in a new tab)" title="Experiment photo" aria-label="Experiment photo">Photo <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
         <details class="chapter-more" name="chapter-information">
           <summary><span class="more-icon" aria-hidden="true">+</span><span>More information</span></summary>
           <div class="more-panel" role="region" aria-labelledby="depth-more-title">
@@ -375,7 +397,7 @@
             <h4>Connect with previous research</h4><p>The presentation compares the trends with a figure attributed to Adrian Daerr’s thesis. That figure serves as a literature reference for interpreting granular-flow stability.</p>
             <h4>The experimental limits</h4><p>Reproducing the sand supply and initial conditions was difficult. Surface waves affected measurements, and internal forces and grain velocities were hard to access. A small laboratory apparatus also has limits when interpreting natural avalanches.</p>
             <p class="source-note">Thickness study and limitations: study presentation, slides 15–18. The supplied montages illustrate the experiments; reported numerical results come from the presentation.</p>
-          </div>
+          <div class="project-photo-source"><h4>Image and source</h4><p>Unretouched photograph extracted from the project report, p. 15. The page visual is an illustrative montage.</p><ul><li><a href="../assets/sand-study/granular-dunes.webp" target="_blank" rel="noopener noreferrer">Presentation montage <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li><li><a href="../assets/project-originals/sand/layer-experiment.jpeg" target="_blank" rel="noopener noreferrer">Experiment photo · p. 15 <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a></li></ul></div></div>
         </details>
         <div class="chapter-progress" aria-hidden="true"><span></span></div>
       </div>
@@ -440,7 +462,28 @@
       </div>
     </section>
 
-    <nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Keep exploring</p><h2 id="more-projects">More projects</h2><div class="project-links">
+    <div class="wrap"><section class="project-evidence" id="project-evidence" aria-labelledby="project-evidence-title" style="--pe-accent:#246a79">
+ <p class="pe-kicker">Results / evidence</p><h2 id="project-evidence-title">Starting and stopping follow different paths.</h2><p class="pe-lead">The drum measurements identify two characteristic angles. The higher threshold starts the avalanche; the lower one describes the surface after it comes to rest.</p>
+ <figure class="pe-figure">
+ <svg viewBox="0 0 520 205" role="img" aria-labelledby="pe-sand-chart-title pe-sand-chart-desc">
+  <title id="pe-sand-chart-title">Sand drum: onset and resting angles, with reported uncertainties</title><desc id="pe-sand-chart-desc">The resting angle is 32.1 ± 0.6 degrees. The avalanche onset angle is 36.7 ± 0.3 degrees. Both points share an angle axis from 30 to 38 degrees. Horizontal bars show the uncertainties reported in the study.</desc>
+  <path class="pe-chart-grid" d="M126 35V142"/><text x="126" y="166" text-anchor="middle" font-size="18">30°</text><path class="pe-chart-grid" d="M215 35V142"/><text x="215" y="166" text-anchor="middle" font-size="18">32°</text><path class="pe-chart-grid" d="M304 35V142"/><text x="304" y="166" text-anchor="middle" font-size="18">34°</text><path class="pe-chart-grid" d="M393 35V142"/><text x="393" y="166" text-anchor="middle" font-size="18">36°</text><path class="pe-chart-grid" d="M482 35V142"/><text x="482" y="166" text-anchor="middle" font-size="18">38°</text><path class="pe-chart-axis" d="M126 142H482"/>
+  <text x="8" y="75" font-size="20">Rest</text><text x="8" y="123" font-size="20">Onset</text>
+  <path class="pe-chart-rest pe-chart-error" d="M192.75 69H246.15M192.75 59V79M246.15 59V79"/><circle class="pe-chart-rest" cx="219.45" cy="69" r="6"/>
+  <path class="pe-chart-onset pe-chart-error" d="M410.8 117H437.5M410.8 107V127M437.5 107V127"/><circle class="pe-chart-onset" cx="424.15" cy="117" r="6"/>
+  <text x="304" y="197" text-anchor="middle" font-size="18">Surface angle θ (°)</text>
+ </svg>
+ <dl class="pe-result-values"><div><dt>Rest / θᵣ</dt><dd>32.1 ± 0.6°</dd></div><div><dt>Onset / θₐ</dt><dd>36.7 ± 0.3°</dd></div></dl>
+ <figcaption>Rotating-drum measurements · study presentation, slides 4–6. The bars retain the stated uncertainties; they are not reinterpreted as confidence intervals.</figcaption>
+</figure>
+ <p class="pe-source">The approximately 0.30 m/s sand-avalanche observation and the separate 0.33 m/s Tac-Tac analysis describe different experiments. The model-inferred e ≈ 0.46 belongs to the Tac-Tac analogue.</p>
+ <a class="pe-link" href="#drum-title">See the drum experiment <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
+</section>
+<section class="pe-followup" id="project-next" aria-labelledby="project-next-title">
+ <p class="pe-kicker">Project status</p><h2 id="project-next-title">What the study shows.</h2>
+ <dl class="pe-followup-grid"><div><dt>Status</dt><dd>Study presented, with reported measurements and model comparisons.</dd></div><div><dt>Main finding</dt><dd>The onset and resting thresholds differ: the previous state matters between them.</dd></div><div><dt>Reading the limits</dt><dd>Keep the uncertainties visible and separate drum, sand-flow and ball-impact results.</dd></div></dl><a class="pe-link" href="#sand-methods">Read the methodology and limits <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 11 11 3M3 3h8v8"/></svg></a>
+</section></div>
+<nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Keep exploring</p><h2 id="more-projects">More projects</h2><div class="project-links">
       <a href="air-france-can.html"><span class="eyebrow">01 / Industry · 2026</span><strong>Air France Industries CAN test device</strong><span class="arrow" aria-hidden="true">→</span></a>
       <a href="stm32-morse.html"><span class="eyebrow">02 / Embedded systems · Partial validation</span><strong>Morse transmitter and receiver</strong><span class="arrow" aria-hidden="true">→</span></a>
       <a href="infrared-audio.html"><span class="eyebrow">03 / In progress</span><strong>Infrared stereo audio transmission</strong><span class="arrow" aria-hidden="true">→</span></a>

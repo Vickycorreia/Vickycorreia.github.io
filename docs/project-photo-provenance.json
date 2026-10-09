@@ -1,0 +1,628 @@
+{
+  "generated_at": "2026-10-09",
+  "entries": [
+    {
+      "page": "sand-flow",
+      "pages": [
+        "projects/sand-flow.html",
+        "fr/projects/sand-flow.html"
+      ],
+      "presentation": "assets/sand-study/rotating-drum.webp",
+      "original": "assets/project-originals/sand/drum-experiment.jpeg",
+      "relation": "related_experiment_photo_from_report",
+      "source": {
+        "document": "Mécanique des matériaux granulaires _ Dynamique des avalanches de sable (2).pdf",
+        "page": 4,
+        "xref": 64,
+        "kind": "embedded_photograph"
+      },
+      "description": "Photograph of the actual sand-filled drum from the project report.",
+      "label_en": "Experiment photo",
+      "label_fr": "Photo de l’expérience",
+      "note_en": "Unretouched photograph extracted from the project report, p. 4. The page visual is an illustrative montage.",
+      "note_fr": "Photographie sans retouche extraite du compte rendu, p. 4. Le visuel de la page est un montage illustratif.",
+      "sha256": "35346839adc93b412601e1bff893b3e7428a0ef7e014663bd0ff6888a6eefc67",
+      "bytes": 60357,
+      "dimensions": [
+        782,
+        782
+      ],
+      "montage_source": {
+        "archive": "sable.zip",
+        "entry": "sable/Infographie scientifique du tambour granulaire.png",
+        "rgb_pixels_identical": true,
+        "sha256": "b330ceb215baf354e01e5bf6c4e202c7d3ccd150ccb80976ee345bb46ee2746a"
+      }
+    },
+    {
+      "page": "sand-flow",
+      "pages": [
+        "projects/sand-flow.html",
+        "fr/projects/sand-flow.html"
+      ],
+      "presentation": "assets/sand-study/granular-flow.webp",
+      "original": "assets/project-originals/sand/hopper-flow-experiment.jpeg",
+      "relation": "related_experiment_photo_from_report",
+      "source": {
+        "document": "Mécanique des matériaux granulaires _ Dynamique des avalanches de sable (2).pdf",
+        "page": 9,
+        "xref": 178,
+        "kind": "embedded_photograph"
+      },
+      "description": "Photograph of the actual sand stream from the hopper from the project report.",
+      "label_en": "Experiment photo",
+      "label_fr": "Photo de l’expérience",
+      "note_en": "Unretouched photograph extracted from the project report, p. 9. The page visual is an illustrative montage.",
+      "note_fr": "Photographie sans retouche extraite du compte rendu, p. 9. Le visuel de la page est un montage illustratif.",
+      "sha256": "f32a96bd660aead2fda846c99d5322383a44df5fc90836d13a4f4634f585b6bf",
+      "bytes": 102100,
+      "dimensions": [
+        1200,
+        1600
+      ],
+      "montage_source": {
+        "archive": "sable.zip",
+        "entry": "sable/Infographie scientifique sur l’écoulement granulaire.png",
+        "rgb_pixels_identical": true,
+        "sha256": "005dd5dc23ed82228a11c8cbdc287d379872ff802cd2cdd0eeb2ee508d7e6454"
+      }
+    },
+    {
+      "page": "sand-flow",
+      "pages": [
+        "projects/sand-flow.html",
+        "fr/projects/sand-flow.html"
+      ],
+      "presentation": "assets/sand-study/inclined-plane.webp",
+      "original": "assets/project-originals/sand/tac-tac-experiment.jpeg",
+      "relation": "related_experiment_photo_from_report",
+      "source": {
+        "document": "Mécanique des matériaux granulaires _ Dynamique des avalanches de sable (2).pdf",
+        "page": 11,
+        "xref": 217,
+        "kind": "embedded_photograph"
+      },
+      "description": "Photograph of the actual assembled PVC Tac-Tac apparatus from the project report.",
+      "label_en": "Experiment photo",
+      "label_fr": "Photo de l’expérience",
+      "note_en": "Unretouched photograph extracted from the project report, p. 11. The page visual is an illustrative montage.",
+      "note_fr": "Photographie sans retouche extraite du compte rendu, p. 11. Le visuel de la page est un montage illustratif.",
+      "sha256": "cbff6891789ce11514664a747a1332499335776f2490f2d57e4b5468a3b3a02d",
+      "bytes": 164218,
+      "dimensions": [
+        1200,
+        1600
+      ],
+      "montage_source": {
+        "archive": "sable.zip",
+        "entry": "sable/Expérience Tac-Tac sur plan incliné.png",
+        "rgb_pixels_identical": true,
+        "sha256": "1736ececcc32c51ca29891cc4ccd96d2f27afa4545bf9e6550535088ec1f6f6a"
+      }
+    },
+    {
+      "page": "sand-flow",
+      "pages": [
+        "projects/sand-flow.html",
+        "fr/projects/sand-flow.html"
+      ],
+      "presentation": "assets/sand-study/granular-dunes.webp",
+      "original": "assets/project-originals/sand/layer-experiment.jpeg",
+      "relation": "related_experiment_photo_from_report",
+      "source": {
+        "document": "Mécanique des matériaux granulaires _ Dynamique des avalanches de sable (2).pdf",
+        "page": 15,
+        "xref": 290,
+        "kind": "embedded_photograph"
+      },
+      "description": "Photograph of the actual sand-layer apparatus from the project report.",
+      "label_en": "Experiment photo",
+      "label_fr": "Photo de l’expérience",
+      "note_en": "Unretouched photograph extracted from the project report, p. 15. The page visual is an illustrative montage.",
+      "note_fr": "Photographie sans retouche extraite du compte rendu, p. 15. Le visuel de la page est un montage illustratif.",
+      "sha256": "158941774939f5dddc2e92ba4eac530d8a99045f53285ae68464dde3f74f435d",
+      "bytes": 93755,
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "montage_source": {
+        "archive": "sable.zip",
+        "entry": "sable/Infographie scientifique des dunes granulaires.png",
+        "rgb_pixels_identical": true,
+        "sha256": "a6a1e2f3c4c15c571e9fe5be6fdc5a530eec87db739ff77f51381bae1702f42e"
+      }
+    },
+    {
+      "page": "cardboard-rafale",
+      "pages": [
+        "projects/cardboard-rafale.html",
+        "fr/projects/cardboard-rafale.html"
+      ],
+      "presentation": "assets/rafale/annotated-views.jpeg",
+      "original": "assets/rafale/annotated-views.jpeg",
+      "relation": "exact_supplied_image_bytes",
+      "source": {
+        "archive": "Rafale.zip",
+        "entry": "Rafale/WhatsApp Image 2026-10-08 at 00.46.23.jpeg",
+        "kind": "supplied_image"
+      },
+      "label_en": "Supplied photo",
+      "label_fr": "Photo fournie",
+      "note_en": "Supplied file preserved unchanged; page rotation and fading are applied only by CSS.",
+      "note_fr": "Fichier fourni conservé sans modification ; rotation et fondu sont appliqués uniquement dans la page.",
+      "sha256": "ff55bf7f266319fcc36581aebaf5215ffe80d4c8624830f9d1332cca26dad41a",
+      "bytes": 350273,
+      "dimensions": [
+        1536,
+        2048
+      ]
+    },
+    {
+      "page": "cardboard-rafale",
+      "pages": [
+        "projects/cardboard-rafale.html",
+        "fr/projects/cardboard-rafale.html"
+      ],
+      "presentation": "assets/rafale/current-rear.png",
+      "original": "assets/rafale/current-rear.png",
+      "relation": "exact_supplied_image_bytes",
+      "source": {
+        "archive": "Rafale.zip",
+        "entry": "Rafale/Maquette de chasseur en carton sur tissu bleu.png",
+        "kind": "supplied_image"
+      },
+      "label_en": "Supplied image",
+      "label_fr": "Image fournie",
+      "note_en": "Supplied file preserved unchanged; page rotation and fading are applied only by CSS.",
+      "note_fr": "Fichier fourni conservé sans modification ; rotation et fondu sont appliqués uniquement dans la page.",
+      "sha256": "c73bb9210804c2262d78ceee13d2bca957ebf8c5b75ef5c310944979fe3e9a78",
+      "bytes": 2300086,
+      "dimensions": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "page": "cardboard-rafale",
+      "pages": [
+        "projects/cardboard-rafale.html",
+        "fr/projects/cardboard-rafale.html"
+      ],
+      "presentation": "assets/rafale/current-side.png",
+      "original": "assets/rafale/current-side.png",
+      "relation": "exact_supplied_image_bytes",
+      "source": {
+        "archive": "Rafale.zip",
+        "entry": "Rafale/Maquette d’avion de chasse en carton.png",
+        "kind": "supplied_image"
+      },
+      "label_en": "Supplied image",
+      "label_fr": "Image fournie",
+      "note_en": "Supplied file preserved unchanged; page rotation and fading are applied only by CSS.",
+      "note_fr": "Fichier fourni conservé sans modification ; rotation et fondu sont appliqués uniquement dans la page.",
+      "sha256": "66283c6da3239d797fec0b598ae99908a9bd1cb2560ff187d83d8fc8abb6f8c1",
+      "bytes": 2351141,
+      "dimensions": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "page": "cardboard-rafale",
+      "pages": [
+        "projects/cardboard-rafale.html",
+        "fr/projects/cardboard-rafale.html"
+      ],
+      "presentation": "assets/rafale/current-three-quarter.png",
+      "original": "assets/rafale/current-three-quarter.png",
+      "relation": "exact_supplied_image_bytes",
+      "source": {
+        "archive": "Rafale.zip",
+        "entry": "Rafale/Maquette d’avion de chasse en carton (1).png",
+        "kind": "supplied_image"
+      },
+      "label_en": "Supplied image",
+      "label_fr": "Image fournie",
+      "note_en": "Supplied file preserved unchanged; page rotation and fading are applied only by CSS.",
+      "note_fr": "Fichier fourni conservé sans modification ; rotation et fondu sont appliqués uniquement dans la page.",
+      "sha256": "b1cc353e1f85841b613beaa2ff9c3caccac7e0fc4b0d7119e0b0e66cfe5d6a4a",
+      "bytes": 2247785,
+      "dimensions": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "page": "cardboard-rafale",
+      "pages": [
+        "projects/cardboard-rafale.html",
+        "fr/projects/cardboard-rafale.html"
+      ],
+      "presentation": "assets/rafale/current-top.png",
+      "original": "assets/rafale/current-top.png",
+      "relation": "exact_supplied_image_bytes",
+      "source": {
+        "archive": "Rafale.zip",
+        "entry": "Rafale/Maquette d’avion en carton sur tissu bleu.png",
+        "kind": "supplied_image"
+      },
+      "label_en": "Supplied image",
+      "label_fr": "Image fournie",
+      "note_en": "Supplied file preserved unchanged; page rotation and fading are applied only by CSS.",
+      "note_fr": "Fichier fourni conservé sans modification ; rotation et fondu sont appliqués uniquement dans la page.",
+      "sha256": "1def0cc3106b132f9ec3af5acc5d598698001154b7dda9e99375d69a2fd943e8",
+      "bytes": 2634274,
+      "dimensions": [
+        1086,
+        1448
+      ]
+    },
+    {
+      "page": "cardboard-rafale",
+      "pages": [
+        "projects/cardboard-rafale.html",
+        "fr/projects/cardboard-rafale.html"
+      ],
+      "presentation": "assets/rafale/future-concept.png",
+      "original": null,
+      "relation": "generated_future_concept",
+      "source": {
+        "kind": "generated_concept"
+      },
+      "label_en": "Concept preview",
+      "label_fr": "Aperçu conceptuel"
+    },
+    {
+      "page": "cardboard-rafale",
+      "pages": [
+        "projects/cardboard-rafale.html",
+        "fr/projects/cardboard-rafale.html"
+      ],
+      "presentation": "assets/rafale/working-plans.jpeg",
+      "original": "assets/rafale/working-plans.jpeg",
+      "relation": "exact_supplied_image_bytes",
+      "source": {
+        "archive": "Rafale.zip",
+        "entry": "Rafale/WhatsApp Image 2026-10-08 at 00.46.23 (1).jpeg",
+        "kind": "supplied_image"
+      },
+      "label_en": "Supplied photo",
+      "label_fr": "Photo fournie",
+      "note_en": "Supplied file preserved unchanged; page rotation and fading are applied only by CSS.",
+      "note_fr": "Fichier fourni conservé sans modification ; rotation et fondu sont appliqués uniquement dans la page.",
+      "sha256": "d20126868c648e12315c96e160535986f425f4cabb11b680eba454ecce037778",
+      "bytes": 323496,
+      "dimensions": [
+        1536,
+        2048
+      ]
+    },
+    {
+      "page": "stm32-morse",
+      "pages": [
+        "projects/stm32-morse.html",
+        "fr/projects/stm32-morse.html"
+      ],
+      "presentation": "assets/morse/assembled-boards.jpeg",
+      "original": "assets/morse/assembled-boards.jpeg",
+      "relation": "exact_embedded_document_image_bytes",
+      "source": {
+        "document": "Blue Minimalist Project Presentation.pdf",
+        "page": 29,
+        "xref": 808,
+        "kind": "embedded_photograph"
+      },
+      "label_en": "Original photo",
+      "label_fr": "Photo originale",
+      "note_en": "Image extracted without editing from the final presentation, p. 29.",
+      "note_fr": "Image extraite sans retouche de la présentation finale, p. 29.",
+      "sha256": "978a391e6c0ac43515a4197d97fc656711e67f5ab3cd22ebaa338165f7e47137",
+      "bytes": 487315,
+      "dimensions": [
+        1080,
+        1198
+      ]
+    },
+    {
+      "page": "stm32-morse",
+      "pages": [
+        "projects/stm32-morse.html",
+        "fr/projects/stm32-morse.html"
+      ],
+      "presentation": "assets/morse/piezo-bench.jpeg",
+      "original": "assets/morse/piezo-bench.jpeg",
+      "relation": "exact_embedded_document_image_bytes",
+      "source": {
+        "document": "Blue Minimalist Project Presentation.pdf",
+        "page": 30,
+        "xref": 210,
+        "kind": "embedded_photograph"
+      },
+      "label_en": "Original photo",
+      "label_fr": "Photo originale",
+      "note_en": "Image extracted without editing from the final presentation, p. 30.",
+      "note_fr": "Image extraite sans retouche de la présentation finale, p. 30.",
+      "sha256": "f5e6deee19ae120c1e27b0c1d86e4a415e59de7b619cdd67a24f428f5c2aecd7",
+      "bytes": 30867,
+      "dimensions": [
+        848,
+        478
+      ]
+    },
+    {
+      "page": "stm32-morse",
+      "pages": [
+        "projects/stm32-morse.html",
+        "fr/projects/stm32-morse.html"
+      ],
+      "presentation": "assets/morse/transmitter-design.png",
+      "original": "assets/morse/transmitter-design.png",
+      "relation": "exact_embedded_document_image_bytes",
+      "source": {
+        "document": "Blue Minimalist Project Presentation.pdf",
+        "page": 17,
+        "xref": 136,
+        "kind": "embedded_design_rendering"
+      },
+      "label_en": "Source design image",
+      "label_fr": "Vue de conception source",
+      "note_en": "Image extracted without editing from the final presentation, p. 17. Design rendering, not a completed-board photograph.",
+      "note_fr": "Image extraite sans retouche de la présentation finale, p. 17. Vue de conception, pas une photographie de carte réalisée.",
+      "sha256": "267a401697186756eb0d70df7c3e041dd0346b600bca409903581b567a7fd08e",
+      "bytes": 304339,
+      "dimensions": [
+        959,
+        903
+      ]
+    },
+    {
+      "page": "stm32-morse",
+      "pages": [
+        "projects/stm32-morse.html",
+        "fr/projects/stm32-morse.html"
+      ],
+      "presentation": "assets/morse/receiver-design.png",
+      "original": "assets/morse/receiver-design.png",
+      "relation": "exact_embedded_document_image_bytes",
+      "source": {
+        "document": "Blue Minimalist Project Presentation.pdf",
+        "page": 21,
+        "xref": 154,
+        "kind": "embedded_design_rendering"
+      },
+      "label_en": "Source design image",
+      "label_fr": "Vue de conception source",
+      "note_en": "Image extracted without editing from the final presentation, p. 21. Design rendering, not a completed-board photograph.",
+      "note_fr": "Image extraite sans retouche de la présentation finale, p. 21. Vue de conception, pas une photographie de carte réalisée.",
+      "sha256": "e98eecff5d891848ecaa10e6e1ad05b61927517216679a5353d6e4e68659ecd2",
+      "bytes": 306499,
+      "dimensions": [
+        1011,
+        966
+      ]
+    },
+    {
+      "page": "stm32-morse",
+      "pages": [
+        "projects/stm32-morse.html",
+        "fr/projects/stm32-morse.html"
+      ],
+      "presentation": "assets/morse/transmitter-routing.svg",
+      "original": "assets/morse/transmitter-routing.svg",
+      "relation": "public_cad_source_export",
+      "source": {
+        "kind": "cad_export",
+        "repository": "https://github.com/TristanIV/Projet-E-R-morse",
+        "commit": "e243f510e56dc69b55a9085496bcf8fddeb46ba1"
+      },
+      "label_en": "Routing source",
+      "label_fr": "Routage source",
+      "sha256": "a60e0fc3684f6508ee4f5756eae9397ab1605a4e600c15f64f437e310665be74",
+      "bytes": 126917
+    },
+    {
+      "page": "stm32-morse",
+      "pages": [
+        "projects/stm32-morse.html",
+        "fr/projects/stm32-morse.html"
+      ],
+      "presentation": "assets/morse/receiver-routing.svg",
+      "original": "assets/morse/receiver-routing.svg",
+      "relation": "public_cad_source_export",
+      "source": {
+        "kind": "cad_export",
+        "repository": "https://github.com/TristanIV/Projet-E-R-morse",
+        "commit": "e243f510e56dc69b55a9085496bcf8fddeb46ba1"
+      },
+      "label_en": "Routing source",
+      "label_fr": "Routage source",
+      "sha256": "85ab1152f07ccde74df98ea51b4f0e406783bce105a04b97e7d4e8e22433f853",
+      "bytes": 124205
+    },
+    {
+      "page": "air-france-can",
+      "pages": [
+        "projects/air-france-can.html",
+        "fr/projects/air-france-can.html"
+      ],
+      "presentation": "assets/air-france/electrical-cabinet-public.webp",
+      "original": null,
+      "relation": "sanitized_presentation_montage",
+      "source": {
+        "kind": "public_presentation_version",
+        "original_available": false,
+        "reason": "Raw inline camera files are unavailable. Archived montages contain internal monitor content deliberately removed from the public versions; do not restore them."
+      },
+      "label_en": "Presentation image",
+      "label_fr": "Image de présentation",
+      "note_en": "Public presentation montage. Unretouched source photos are not available in this gallery.",
+      "note_fr": "Montage de présentation public. Les photos sources sans retouche ne sont pas disponibles dans cette galerie."
+    },
+    {
+      "page": "air-france-can",
+      "pages": [
+        "projects/air-france-can.html",
+        "fr/projects/air-france-can.html"
+      ],
+      "presentation": "assets/air-france/engine-workshop-public.webp",
+      "original": null,
+      "relation": "sanitized_presentation_montage",
+      "source": {
+        "kind": "public_presentation_version",
+        "original_available": false,
+        "reason": "Raw inline camera files are unavailable. Archived montages contain internal monitor content deliberately removed from the public versions; do not restore them."
+      },
+      "label_en": "Presentation image",
+      "label_fr": "Image de présentation",
+      "note_en": "Public presentation montage. Unretouched source photos are not available in this gallery.",
+      "note_fr": "Montage de présentation public. Les photos sources sans retouche ne sont pas disponibles dans cette galerie."
+    },
+    {
+      "page": "air-france-can",
+      "pages": [
+        "projects/air-france-can.html",
+        "fr/projects/air-france-can.html"
+      ],
+      "presentation": "assets/air-france/pdu-test-public.webp",
+      "original": null,
+      "relation": "sanitized_presentation_montage",
+      "source": {
+        "kind": "public_presentation_version",
+        "original_available": false,
+        "reason": "Raw inline camera files are unavailable. Archived montages contain internal monitor content deliberately removed from the public versions; do not restore them."
+      },
+      "label_en": "Presentation image",
+      "label_fr": "Image de présentation",
+      "note_en": "Public presentation montage. Unretouched source photos are not available in this gallery.",
+      "note_fr": "Montage de présentation public. Les photos sources sans retouche ne sont pas disponibles dans cette galerie."
+    },
+    {
+      "page": "air-france-can",
+      "pages": [
+        "projects/air-france-can.html",
+        "fr/projects/air-france-can.html"
+      ],
+      "presentation": "assets/air-france/workbench-public.webp",
+      "original": null,
+      "relation": "sanitized_presentation_montage",
+      "source": {
+        "kind": "public_presentation_version",
+        "original_available": false,
+        "reason": "Raw inline camera files are unavailable. Archived montages contain internal monitor content deliberately removed from the public versions; do not restore them."
+      },
+      "label_en": "Presentation image",
+      "label_fr": "Image de présentation",
+      "note_en": "Public presentation montage. Unretouched source photos are not available in this gallery.",
+      "note_fr": "Montage de présentation public. Les photos sources sans retouche ne sont pas disponibles dans cette galerie."
+    },
+    {
+      "page": "infrared-audio",
+      "pages": [
+        "projects/infrared-audio.html",
+        "fr/projects/infrared-audio.html"
+      ],
+      "presentation": "assets/infrared-audio/architecture.webp",
+      "original": null,
+      "relation": "ai_retouched_presentation_photo",
+      "source": {
+        "kind": "presentation_version",
+        "original_available": false,
+        "reason": "User inline photos are not available as downloadable source bytes. Generated image files are retouched versions, never raw originals."
+      },
+      "label_en": "Presentation image",
+      "label_fr": "Image de présentation",
+      "note_en": "Reoriented and AI-retouched presentation version. The unretouched source file is not yet available here.",
+      "note_fr": "Version de présentation réorientée et retouchée avec l’IA. Le fichier source sans retouche n’est pas encore disponible ici."
+    },
+    {
+      "page": "infrared-audio",
+      "pages": [
+        "projects/infrared-audio.html",
+        "fr/projects/infrared-audio.html"
+      ],
+      "presentation": "assets/infrared-audio/bench.webp",
+      "original": null,
+      "relation": "ai_retouched_presentation_photo",
+      "source": {
+        "kind": "presentation_version",
+        "original_available": false,
+        "reason": "User inline photos are not available as downloadable source bytes. Generated image files are retouched versions, never raw originals."
+      },
+      "label_en": "Presentation image",
+      "label_fr": "Image de présentation",
+      "note_en": "Reoriented and AI-retouched presentation version. The unretouched source file is not yet available here.",
+      "note_fr": "Version de présentation réorientée et retouchée avec l’IA. Le fichier source sans retouche n’est pas encore disponible ici."
+    },
+    {
+      "page": "infrared-audio",
+      "pages": [
+        "projects/infrared-audio.html",
+        "fr/projects/infrared-audio.html"
+      ],
+      "presentation": "assets/infrared-audio/emitter.webp",
+      "original": null,
+      "relation": "ai_retouched_presentation_photo",
+      "source": {
+        "kind": "presentation_version",
+        "original_available": false,
+        "reason": "User inline photos are not available as downloadable source bytes. Generated image files are retouched versions, never raw originals."
+      },
+      "label_en": "Presentation image",
+      "label_fr": "Image de présentation",
+      "note_en": "Reoriented and AI-retouched presentation version. The unretouched source file is not yet available here.",
+      "note_fr": "Version de présentation réorientée et retouchée avec l’IA. Le fichier source sans retouche n’est pas encore disponible ici."
+    },
+    {
+      "page": "infrared-audio",
+      "pages": [
+        "projects/infrared-audio.html",
+        "fr/projects/infrared-audio.html"
+      ],
+      "presentation": "assets/infrared-audio/optical-link.webp",
+      "original": null,
+      "relation": "ai_retouched_presentation_photo",
+      "source": {
+        "kind": "presentation_version",
+        "original_available": false,
+        "reason": "User inline photos are not available as downloadable source bytes. Generated image files are retouched versions, never raw originals."
+      },
+      "label_en": "Presentation image",
+      "label_fr": "Image de présentation",
+      "note_en": "Reoriented and AI-retouched presentation version. The unretouched source file is not yet available here.",
+      "note_fr": "Version de présentation réorientée et retouchée avec l’IA. Le fichier source sans retouche n’est pas encore disponible ici."
+    },
+    {
+      "page": "infrared-audio",
+      "pages": [
+        "projects/infrared-audio.html",
+        "fr/projects/infrared-audio.html"
+      ],
+      "presentation": "assets/infrared-audio/receiver.webp",
+      "original": null,
+      "relation": "ai_retouched_presentation_photo",
+      "source": {
+        "kind": "presentation_version",
+        "original_available": false,
+        "reason": "User inline photos are not available as downloadable source bytes. Generated image files are retouched versions, never raw originals."
+      },
+      "label_en": "Presentation image",
+      "label_fr": "Image de présentation",
+      "note_en": "Reoriented and AI-retouched presentation version. The unretouched source file is not yet available here.",
+      "note_fr": "Version de présentation réorientée et retouchée avec l’IA. Le fichier source sans retouche n’est pas encore disponible ici."
+    }
+  ],
+  "new_assets": [
+    "assets/project-originals/sand/drum-experiment.jpeg",
+    "assets/project-originals/sand/hopper-flow-experiment.jpeg",
+    "assets/project-originals/sand/layer-experiment.jpeg",
+    "assets/project-originals/sand/tac-tac-experiment.jpeg"
+  ],
+  "notes": [
+    "No original photograph was regenerated, rotated, cropped, filtered or re-encoded.",
+    "Sand links lead to related real experiment photographs extracted unchanged from the final report, not alleged raw versions of the illustrative montages.",
+    "Rafale and Morse already preserve the supplied/extracted source image bytes; reuse those paths rather than duplicating assets.",
+    "Air public sanitization is retained; its archived source montages are not published.",
+    "Infrared original bytes remain unavailable; existing AI-retouched files must not be labeled original photographs."
+  ]
+}
