@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071321">
-  <title>Transmission audio stéréo par infrarouge — Victor Correia</title>
+  <title>Enceinte infrarouge — Victor Correia</title>
   <meta name="description" content="Un projet d’électronique en cours sur la transmission audio stéréo par infrarouge : circuits émetteur et récepteur, modulation FM et restitution du signal.">
   <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
   <link rel="stylesheet" href="../../assets/project.css">
@@ -20,9 +20,16 @@
 <link rel="stylesheet" href="../../assets/site-audio.css">
 <link rel="stylesheet" href="../../assets/fm-lab.css">
 <script src="../../assets/fm-lab.js" defer></script>
+<link rel="stylesheet" href="../../assets/air-france.css">
 <link rel="stylesheet" href="../../assets/project-opening.css">
+<link rel="stylesheet" href="../../assets/photo-reading.css">
+<link rel="stylesheet" href="../../assets/infrared-link.css">
+<link rel="stylesheet" href="../../assets/infrared-audio.css">
+
+<script src="../../assets/photo-reading.js" defer></script>
+<script src="../../assets/infrared-link.js" defer></script>
 </head>
-<body>
+<body class="infrared-page">
   <a class="skip-link" href="#main">Aller au contenu</a>
   <header class="nav wrap">
     <a class="brand" href="../index.html">VICTOR <b>CORREIA</b></a>
@@ -30,48 +37,210 @@
   <nav class="language-switch" aria-label="Choisir la langue"><a href="/projects/infrared-audio.html" lang="en" hreflang="en" data-language="en" aria-label="English"><span class="language-name">English</span><span class="language-short" aria-hidden="true">EN</span></a><a href="/fr/projects/infrared-audio.html" lang="fr" hreflang="fr" data-language="fr" aria-label="Français" aria-current="page"><span class="language-name">Français</span><span class="language-short" aria-hidden="true">FR</span></a></nav></header>
 <div class="page-flight-progress" role="progressbar" aria-label="Progression de lecture" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" hidden><span class="flight-progress-track" aria-hidden="true"></span><span class="flight-progress-fill" aria-hidden="true"></span><span class="flight-progress-ship" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2c-3.3 3.7-4.6 8.1-4.1 13h8.2C16.6 10.1 15.3 5.7 12 2Z"/><circle cx="12" cy="8" r="1.5"/><path d="m8 10-3.7 5.5L8 14m8-4 3.7 5.5L16 14M9 18l3 4 3-4"/></svg></span></div>
 
-  <main id="main">
-    <div class="wrap">
-      <a class="back-link" href="../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
-<div class="project-opening project-opening-illustration">
-  <figure class="project-opening-figure" aria-describedby="project-opening-caption">
-    <img class="project-opening-backdrop" src="../../assets/infrared-principle.svg" width="1600" height="900" alt="" aria-hidden="true" decoding="async">
-    <img class="project-opening-image" src="../../assets/infrared-principle.svg" width="1600" height="900" alt="Illustration du principe de communication infrarouge : signal audio, émetteur, liaison optique et récepteur." fetchpriority="high" decoding="async">
-  </figure>
-  <div class="project-opening-copy"><p class="eyebrow">03 / Électronique · En cours</p><h1 id="project-title">Transmission audio stéréo<br><span>par infrarouge.</span></h1><p class="project-opening-status">En cours · Illustration du principe</p></div>
-  <a class="project-opening-source" href="../../assets/infrared-principle.svg" target="_blank" rel="noopener noreferrer">Voir le schéma de principe<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
-</div>
-<p class="project-opening-caption" id="project-opening-caption">Illustration originale du principe — ce visuel ne représente ni une photographie du prototype ni un résultat mesuré.</p>
-<section class="project-brief" aria-labelledby="project-brief-title">
-        <div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div>
-        <dl class="project-brief-grid">
-<div><dt>Objectif</dt><dd>Étudier la transmission d’un signal audio stéréo par une liaison infrarouge.</dd></div>
-<div><dt>Technologies</dt><dd>Circuits analogiques · Infrarouge · Modulation FM · PLL · Traitement du signal.</dd></div>
-<div><dt>Contribution personnelle</dt><dd>Travail sur les circuits émetteur et récepteur, la modulation et la restitution du signal.</dd></div>
-<div><dt>Résultat</dt><dd>Projet en cours. Transmission et restitution audio complètes restent à valider.</dd></div>
-</dl>
-        <a class="project-brief-dive" href="#engineering-details">Explorer la démarche en détail <span aria-hidden="true">↓</span></a>
-      </section>
-<p class="opening-context-note">Un projet en cours consacré à la transmission audio stéréo par infrarouge, des circuits émetteur et récepteur à la modulation FM et à la restitution du signal.</p>
-<details class="project-context opening-system-context"><summary>Chaîne de transmission en développement<span aria-hidden="true">+</span></summary><aside class="overview" aria-label="Chaîne de transmission audio envisagée">
-          <p class="eyebrow">Système en développement</p>
-          <ul class="system-flow">
-            <li><strong>Circuits émetteurs</strong><small>Audio stéréo et modulation FM</small></li>
-            <li><strong>Transmission infrarouge</strong><small>La liaison de communication optique</small></li>
-            <li><strong>Circuits récepteurs</strong><small>Restitution du signal</small></li>
-          </ul>
-          <p class="diagram-note">Une vue simplifiée de la chaîne de transmission étudiée.</p>
-        </aside></details>
 
-      <div class="content" id="engineering-details" tabindex="-1">
-        <div class="story">
-          <section aria-labelledby="objective"><h2 id="objective"><span class="number" aria-hidden="true">01</span>L’objectif</h2><p>Étudier la transmission audio stéréo par une liaison infrarouge. Le projet associe les circuits analogiques nécessaires à l’émission du signal et à sa restitution côté récepteur.</p></section>
-          <section aria-labelledby="approach"><h2 id="approach"><span class="number" aria-hidden="true">02</span>La démarche</h2><p>Notre travail porte actuellement sur les circuits émetteur et récepteur, la modulation FM et la restitution du signal. La communication infrarouge, l’électronique analogique et les techniques FM / PLL constituent les principaux domaines techniques du projet.</p></section>
-          <section aria-labelledby="contribution"><h2 id="contribution"><span class="number" aria-hidden="true">03</span>Ma contribution</h2><p>Je travaille sur les circuits émetteur et récepteur, la modulation FM et la restitution du signal. Ces travaux se poursuivent dans le cadre de notre projet d’électronique.</p></section>
-        </div>
-        <aside class="facts" aria-labelledby="facts-title"><h2 id="facts-title">En bref</h2><dl><div><dt>Avancement</dt><dd><span class="status">En cours</span></dd></div><div><dt>Domaine</dt><dd>Électronique analogique et traitement du signal</dd></div><div><dt>Communication</dt><dd>Audio stéréo par infrarouge</dd></div><div><dt>Axes du projet</dt><dd>Émetteur, récepteur, modulation et restitution du signal</dd></div></dl></aside>
+  <main id="main">
+    <div class="wrap case-intro">
+      <a class="back-link" href="../../index.html#projects"><span aria-hidden="true">←</span> Tous les projets</a>
+      <div class="project-opening">
+        <figure class="project-opening-figure" aria-describedby="project-opening-caption">
+          <img class="project-opening-backdrop" src="../../assets/infrared-audio/bench.webp" width="1448" height="1086" alt="" aria-hidden="true" decoding="async">
+          <img class="project-opening-image" src="../../assets/infrared-audio/bench.webp" width="1448" height="1086" alt="Banc de laboratoire avec oscilloscope montrant une trace carrée jaune et des impulsions roses." fetchpriority="high" decoding="async">
+        </figure>
+        <div class="project-opening-copy"><p class="eyebrow">03 / ENSEA · Deuxième année · Projet d’équipe</p><h1 id="project-title">Enceinte infrarouge.<br><span>Le son, sans câble.</span></h1><p class="project-opening-status">En cours · Essais des blocs optiques</p></div>
+        <a class="project-opening-source" href="../../assets/infrared-audio/bench.webp" target="_blank" rel="noopener noreferrer">Ouvrir la photo<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M7 9l6-6"/></svg></a>
       </div>
-      <section class="fm-lab" data-fm-lab aria-labelledby="fm-lab-title">
+      <p class="project-opening-caption" id="project-opening-caption">Photos fournies, réorientées et retouchées pour la présentation. Les valeurs et conclusions sont issues du compte rendu des essais.</p>
+      <section class="project-brief" aria-labelledby="project-brief-title">
+        <div class="project-brief-heading"><p class="eyebrow">L’essentiel</p><h2 id="project-brief-title">Le projet en 30 secondes</h2></div>
+        <dl class="project-brief-grid"><div><dt>Objectif</dt><dd>Transmettre deux voies audio par infrarouge, puis les restituer sur deux haut-parleurs. Portée finale visée : environ 10 m.</dd></div><div><dt>Technologies</dt><dd>Électronique analogique · LED IR · transistor · TL081 · FM / VCO / PLL étudiés · PSpice.</dd></div><div><dt>Contribution personnelle</dt><dd>Participation à l’étude et aux essais des blocs analogiques au sein d’une équipe de deuxième année à l’ENSEA.</dd></div><div><dt>Résultat actuel</dt><dd>Premiers essais émission/réception observés à 10 kHz. Réponse reçue déformée : la chaîne audio stéréo complète reste à valider.</dd></div></dl>
+        <a class="project-brief-dive" href="#engineering-details">Explorer la démarche <span aria-hidden="true">↓</span></a>
+      </section>
+      <p class="opening-context-note">Un projet d’équipe de deuxième année à l’ENSEA, dans un cadre prévu d’environ 90 heures. Nous avançons bloc par bloc : comprendre le circuit, réaliser un essai simple, observer la réponse, puis décider de la prochaine mesure.</p>
+      <details class="project-context ir-context"><summary>Le contexte et la chaîne envisagée<span aria-hidden="true">+</span></summary>
+        <div class="ir-context-grid">
+          <section aria-labelledby="objective"><h2 id="objective">L’objectif</h2><p>Transmettre deux voies audio par infrarouge, puis les restituer sur deux haut-parleurs. Portée finale visée : environ 10 m.</p></section>
+          <section aria-labelledby="approach"><h2 id="approach">La démarche</h2><p>Nous avons étudié les VCO XR2206 et HC4046, les amplificateurs TL081/TL082 et commencé une représentation sous PSpice. Le premier montage d’émission et les essais de détection constituent le travail actuel ; la FM audio, la PLL et l’intégration stéréo sont les étapes suivantes.</p></section>
+          <section aria-labelledby="contribution"><h2 id="contribution">Mon rôle</h2><p>Je participe à l’étude et aux essais des blocs analogiques au sein de l’équipe. Le matériel présenté est constitué de cartes pédagogiques de l’ENSEA, utilisées pour explorer le fonctionnement avant l’intégration du système.</p></section>
+        </div>
+        <ol class="ir-signal-path"><li><span>01</span>Audio / adaptation</li><li><span>02</span>VCO / modulation FM</li><li><span>03</span>Transistor / LED IR</li><li><span>04</span>Capteur / courant–tension</li><li><span>05</span>PLL / restitution audio</li><li><span>06</span>Amplification / haut-parleur</li></ol>
+        <p class="ir-fineprint">Architecture visée pour une voie. La seconde voie utilisera une porteuse distincte ; la chaîne complète n’est pas encore validée.</p>
+      </details>
+      <aside class="ir-milestones" aria-labelledby="facts-title"><h2 id="facts-title">Où en est le projet ?</h2><dl><div><dt>Observé</dt><dd>10 kHz · test élémentaire</dd></div><div><dt>Envisagé</dt><dd>45 kHz · porteuse à étudier</dd></div><div><dt>Visé</dt><dd>≈ 10 m · portée finale</dd></div></dl></aside>
+      <nav class="case-jump-links" aria-label="Explorer la démarche"><a href="#ir-architecture">01 / Du son à la lumière.</a><a href="#ir-emitter">02 / Piloter la lumière.</a><a href="#ir-receiver">03 / Rendre le signal visible.</a><a href="#ir-optical-link">04 / Relier les deux blocs.</a><a href="#ir-oscilloscope">05 / Comprendre la déformation.</a></nav>
+    </div>
+    <div id="engineering-details" class="ir-stories" tabindex="-1">
+
+      <section class="photo-story ir-photo-story" id="ir-architecture" style="--scene-accent:#22638b" aria-labelledby="ir-architecture-title">
+        <div class="story-stage">
+          <figure class="story-figure">
+            <img class="ir-photo-backdrop" src="../../assets/infrared-audio/architecture.webp" width="1449" height="1086" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="story-photo" src="../../assets/infrared-audio/architecture.webp" width="1449" height="1086" alt="Architecture de travail au tableau : source audio, émission infrarouge, réception et démodulation." loading="lazy" decoding="async">
+            <figcaption class="photo-label">Photos fournies, réorientées et retouchées pour la présentation. Les valeurs et conclusions sont issues du compte rendu des essais.</figcaption>
+          </figure>
+          <div class="scene-wash" aria-hidden="true"></div>
+        </div>
+        <div class="story-frame">
+          <div class="chapter-meta"><span>Étape 01 / 05</span><span>En cours · ENSEA</span></div>
+          <a class="photo-full" href="../../assets/infrared-audio/architecture.webp" target="_blank" rel="noopener noreferrer">Ouvrir la photo <span aria-hidden="true">↗</span></a>
+          <details class="chapter-more"><summary><span class="more-icon" aria-hidden="true">+</span>More information</summary>
+            <div class="more-panel"><button class="more-close" type="button" aria-label="Fermer les informations" hidden>×</button><p class="eyebrow">Notes d’ingénierie / 01</p><h3>Du son à la lumière.</h3><h4>Cadre du projet</h4><p>Projet d’équipe de deuxième année à l’ENSEA, prévu dans un cadre d’environ 90 heures. L’objectif final comprend deux haut-parleurs et un réglage de volume par télécommande IR.</p><h4>Commande du VCO</h4><p>v_commande(t) = V_offset + v_audio(t), puis f_i(t) ≈ f_c + K_VCO × v_audio(t). L’amplitude et l’offset doivent être compatibles avec le composant retenu ; ces valeurs restent à préciser.</p><h4>Phase et fréquence</h4><p>φ(t) = φ(0) + 2π∫f_i(τ)dτ. Une fréquence qui varie implique une phase obtenue par intégration.</p><h4>Études et choix en cours</h4><p>XR2206 et HC4046 étudiés pour la génération et la démodulation ; choix final, adaptation audio, deuxième porteuse et intégration de la chaîne encore en cours.</p></div>
+          </details>
+          <div class="chapter-progress" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-copy"><p class="eyebrow">Étape 01 / En cours</p><h2 id="ir-architecture-title"><span class="title-line">Du son</span><span class="title-line title-accent">à la lumière.</span></h2><p class="chapter-lead">Avant de câbler, nous avons découpé la liaison en fonctions simples. Le tableau pose le chemin d’une voie audio, de la source au haut-parleur.</p></div>
+          <div class="chapter-narrative"><p class="eyebrow">Manipulation · Questionnement · Suite des essais</p><h3>Du son à la lumière.</h3><p class="narrative-question">Comment passer de l’audio à un signal optique, puis revenir au son ?</p><p>Le projet vise une transmission stéréo : la voie gauche et la voie droite doivent chacune suivre une chaîne d’émission et de réception, avec deux porteuses différentes. Pour commencer, nous travaillons sur une seule voie. Une tension audio doit commander la fréquence d’un VCO ; ce signal pilote ensuite une LED infrarouge. Côté réception, le courant du capteur doit être converti en tension et traité avant une démodulation par PLL, puis une amplification audio.</p><p>La difficulté consiste à relier des blocs qui ne travaillent pas avec les mêmes grandeurs : tension audio, fréquence, courant dans la LED, puis très faible courant reçu. Notre démarche est de vérifier chaque interface avant d’assembler l’ensemble. Le schéma du tableau est une architecture de travail ; il ne signifie pas que la restitution audio, la stéréo ou la télécommande de volume fonctionnent déjà.</p></div>
+        </div>
+      </section>
+
+      <section class="photo-story ir-photo-story" id="ir-emitter" style="--scene-accent:#a05231" aria-labelledby="ir-emitter-title">
+        <div class="story-stage">
+          <figure class="story-figure">
+            <img class="ir-photo-backdrop" src="../../assets/infrared-audio/emitter.webp" width="1448" height="1086" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="story-photo" src="../../assets/infrared-audio/emitter.webp" width="1448" height="1086" alt="Carte pédagogique TRANSISTOR ENSEA avec câbles de test, transistor et LED." loading="lazy" decoding="async">
+            <figcaption class="photo-label">Photos fournies, réorientées et retouchées pour la présentation. Les valeurs et conclusions sont issues du compte rendu des essais.</figcaption>
+          </figure>
+          <div class="scene-wash" aria-hidden="true"></div>
+        </div>
+        <div class="story-frame">
+          <div class="chapter-meta"><span>Étape 02 / 05</span><span>En cours · ENSEA</span></div>
+          <a class="photo-full" href="../../assets/infrared-audio/emitter.webp" target="_blank" rel="noopener noreferrer">Ouvrir la photo <span aria-hidden="true">↗</span></a>
+          <details class="chapter-more"><summary><span class="more-icon" aria-hidden="true">+</span>More information</summary>
+            <div class="more-panel"><button class="more-close" type="button" aria-label="Fermer les informations" hidden>×</button><p class="eyebrow">Notes d’ingénierie / 02</p><h3>Piloter la lumière.</h3><h4>Carte utilisée</h4><p>Carte pédagogique « TRANSISTOR ENSEA », avec repères de base, collecteur et émetteur. Aucun PCB personnalisé n’est revendiqué ici.</p><h4>Limitation du courant</h4><p>Première approximation : R_LED ≈ (V_alim − V_F)/I_LED. Avec un transistor saturé, tenir aussi compte de V_CE,sat : R_LED ≈ (V_alim − V_F − V_CE,sat)/I_LED.</p><h4>Ce qui reste à mesurer</h4><p>Référence et brochage des composants, valeur des résistances, courant LED réel et forme du signal de commande. Environ 10 mA est un objectif initial, pas une mesure.</p><h4>Identification sur la photo</h4><p>Le rôle exact des deux LED n’est pas confirmé par la seule photographie. Un voyant rouge allumé ne prouve pas à lui seul la qualité de l’émission infrarouge.</p></div>
+          </details>
+          <div class="chapter-progress" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-copy"><p class="eyebrow">Étape 02 / En cours</p><h2 id="ir-emitter-title"><span class="title-line">Une commande.</span><span class="title-line title-accent">De la lumière.</span></h2><p class="chapter-lead">Une carte pédagogique à transistor permet de commander la LED sans demander tout son courant au générateur.</p></div>
+          <div class="chapter-narrative"><p class="eyebrow">Manipulation · Questionnement · Suite des essais</p><h3>Piloter la lumière.</h3><p class="narrative-question">Le transistor commande-t-il la LED avec un courant adapté ?</p><p>Pour ce premier essai, un signal carré remplace la future source modulée en fréquence. Il est appliqué à l’étage à transistor, qui sert à commander l’allumage et l’extinction rapides de la LED. Cette expérience est volontairement simple : avant de transmettre de la musique, il faut vérifier que le signal électrique commande correctement l’émission et que le courant reste adapté au composant.</p><p>Les calculs de résistance dépendent de la tension d’alimentation, de la chute de tension dans la LED et du courant choisi. Nous avons retenu environ 10 mA comme premier objectif prudent, mais le courant réellement obtenu doit encore être mesuré. La LED rouge visible joue probablement un rôle de témoin ; la référence de la LED transparente et celle du transistor doivent être relevées pour confirmer leurs fonctions et affiner le dimensionnement.</p></div>
+        </div>
+      </section>
+
+      <section class="photo-story ir-photo-story" id="ir-receiver" style="--scene-accent:#007477" aria-labelledby="ir-receiver-title">
+        <div class="story-stage">
+          <figure class="story-figure">
+            <img class="ir-photo-backdrop" src="../../assets/infrared-audio/receiver.webp" width="1448" height="1086" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="story-photo" src="../../assets/infrared-audio/receiver.webp" width="1448" height="1086" alt="Carte pédagogique ENSEA à amplificateur opérationnel TL081 et connexions de mesure." loading="lazy" decoding="async">
+            <figcaption class="photo-label">Photos fournies, réorientées et retouchées pour la présentation. Les valeurs et conclusions sont issues du compte rendu des essais.</figcaption>
+          </figure>
+          <div class="scene-wash" aria-hidden="true"></div>
+        </div>
+        <div class="story-frame">
+          <div class="chapter-meta"><span>Étape 03 / 05</span><span>En cours · ENSEA</span></div>
+          <a class="photo-full" href="../../assets/infrared-audio/receiver.webp" target="_blank" rel="noopener noreferrer">Ouvrir la photo <span aria-hidden="true">↗</span></a>
+          <details class="chapter-more"><summary><span class="more-icon" aria-hidden="true">+</span>More information</summary>
+            <div class="more-panel"><button class="more-close" type="button" aria-label="Fermer les informations" hidden>×</button><p class="eyebrow">Notes d’ingénierie / 03</p><h3>Rendre le signal visible.</h3><h4>TL081 et TL082</h4><p>Le TL081 contient un amplificateur opérationnel ; le TL082 en contient deux. Tous deux ont été étudiés ; le montage photographié utilise le TL081.</p><h4>Conversion courant–tension</h4><p>Pour un montage transimpédance idéal : v_sortie ≈ −R_rétroaction × i_photo. Cette relation explique un principe envisagé, pas une topologie établie par la photo.</p><h4>Réglage visible</h4><p>Le potentiomètre peut agir sur le gain ou sur une tension de réglage. Sa fonction et la valeur du gain restent à vérifier avec le schéma.</p><h4>Vérification simple</h4><p>Mesurer les tensions d’alimentation, repérer les entrées et la sortie, puis relever l’amplitude reçue à différentes fréquences. La PLL et la restitution audio constituent des étapes ultérieures.</p></div>
+          </details>
+          <div class="chapter-progress" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-copy"><p class="eyebrow">Étape 03 / En cours</p><h2 id="ir-receiver-title"><span class="title-line">Un faible courant.</span><span class="title-line title-accent">Un signal à lire.</span></h2><p class="chapter-lead">Le signal reçu est faible. Le montage à TL081 permet d’en étudier l’amplification avant d’envisager la démodulation audio.</p></div>
+          <div class="chapter-narrative"><p class="eyebrow">Manipulation · Questionnement · Suite des essais</p><h3>Rendre le signal visible.</h3><p class="narrative-question">Comment obtenir un signal lisible sans saturer l’amplificateur ?</p><p>Le capteur transforme la lumière reçue en courant électrique. Ce courant doit être converti en une tension exploitable, puis amplifié. Nous utilisons une carte pédagogique autour d’un TL081 pour observer ce signal à l’oscilloscope. Des résistances, des condensateurs et un réglage ajustable permettent d’explorer le comportement de l’étage ; leurs fonctions précises doivent être confirmées à partir du schéma réel.</p><p>Amplifier davantage ne suffit pas toujours : un réglage excessif peut saturer la sortie, et un réseau RC mal adapté peut ne laisser apparaître que les variations rapides du signal. Nous devons donc relever le câblage, vérifier l’alimentation et l’offset, puis comparer l’entrée et la sortie à fréquence et amplitude fixées. La photo ne permet pas d’affirmer que la carte réalise déjà l’amplificateur transimpédance prévu pour la chaîne finale.</p></div>
+        </div>
+      </section>
+
+      <section class="photo-story ir-photo-story" id="ir-optical-link" style="--scene-accent:#67429a" aria-labelledby="ir-optical-link-title">
+        <div class="story-stage">
+          <figure class="story-figure">
+            <img class="ir-photo-backdrop" src="../../assets/infrared-audio/optical-link.webp" width="1448" height="1086" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="story-photo" src="../../assets/infrared-audio/optical-link.webp" width="1448" height="1086" alt="Cartes à transistor et à TL081 réunies sur la table pour les premiers essais." loading="lazy" decoding="async">
+            <figcaption class="photo-label">Photos fournies, réorientées et retouchées pour la présentation. Les valeurs et conclusions sont issues du compte rendu des essais.</figcaption>
+          </figure>
+          <div class="scene-wash" aria-hidden="true"></div>
+        </div>
+        <div class="story-frame">
+          <div class="chapter-meta"><span>Étape 04 / 05</span><span>En cours · ENSEA</span></div>
+          <a class="photo-full" href="../../assets/infrared-audio/optical-link.webp" target="_blank" rel="noopener noreferrer">Ouvrir la photo <span aria-hidden="true">↗</span></a>
+          <details class="chapter-more"><summary><span class="more-icon" aria-hidden="true">+</span>More information</summary>
+            <div class="more-panel"><button class="more-close" type="button" aria-label="Fermer les informations" hidden>×</button><p class="eyebrow">Notes d’ingénierie / 04</p><h3>Relier les deux blocs.</h3><h4>Portée visée</h4><p>Environ 10 mètres est un objectif du cahier des charges, pas la portée obtenue par ce montage photographié.</p><h4>Une variable à la fois</h4><p>Conserver fréquence et réglages du générateur, alimentations et gain ; relever ensuite l’amplitude en fonction de la distance ou de l’orientation. Mesurer aussi l’effet du blocage du trajet lumineux.</p><h4>Limite actuelle</h4><p>Le banc sert à étudier les fonctions élémentaires d’émission, de détection et d’amplification. Il ne démontre ni démodulation FM, ni audio restitué, ni séparation stéréo.</p><h4>Étape suivante</h4><p>Relever les références des éléments optiques et le schéma des cartes pour relier les observations aux composants réellement utilisés.</p></div>
+          </details>
+          <div class="chapter-progress" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-copy"><p class="eyebrow">Étape 04 / En cours</p><h2 id="ir-optical-link-title"><span class="title-line">Deux cartes.</span><span class="title-line title-accent">Un premier lien.</span></h2><p class="chapter-lead">Les cartes d’émission et de réception sont réunies sur le banc pour un premier test de la liaison. Il ne s’agit pas encore de la chaîne audio complète.</p></div>
+          <div class="chapter-narrative"><p class="eyebrow">Manipulation · Questionnement · Suite des essais</p><h3>Relier les deux blocs.</h3><p class="narrative-question">La réponse dépend-elle bien du trajet lumineux ?</p><p>Ce montage réunit l’étage à transistor et le récepteur à TL081. Le générateur fournit un signal de test et les instruments permettent de suivre ce qui est envoyé puis ce qui est observé côté réception. L’objectif est d’isoler une question concrète : pouvons-nous commander l’émission et retrouver une réponse électrique après détection et amplification ?</p><p>Pour interpréter cette réponse, nous devons maîtriser la position du capteur, la distance, la lumière ambiante et les points de mesure. Un essai utile consiste à garder les réglages fixes, puis à modifier un seul paramètre à la fois : orientation, distance ou interruption du trajet lumineux. Ce protocole aidera aussi à distinguer la réponse optique d’un éventuel couplage électrique. Ces contrôles sont proposés pour la suite ; aucune portée finale n’est encore mesurée.</p></div>
+        </div>
+      </section>
+
+      <section class="photo-story ir-photo-story" id="ir-oscilloscope" style="--scene-accent:#007477" aria-labelledby="ir-oscilloscope-title">
+        <div class="story-stage">
+          <figure class="story-figure">
+            <img class="ir-photo-backdrop" src="../../assets/infrared-audio/bench.webp" width="1448" height="1086" alt="" aria-hidden="true" loading="lazy" decoding="async">
+            <img class="story-photo" src="../../assets/infrared-audio/bench.webp" width="1448" height="1086" alt="Banc de laboratoire avec oscilloscope montrant une trace carrée jaune et des impulsions roses." loading="lazy" decoding="async">
+            <figcaption class="photo-label">Photos fournies, réorientées et retouchées pour la présentation. Les valeurs et conclusions sont issues du compte rendu des essais.</figcaption>
+          </figure>
+          <div class="scene-wash" aria-hidden="true"></div>
+        </div>
+        <div class="story-frame">
+          <div class="chapter-meta"><span>Étape 05 / 05</span><span>En cours · ENSEA</span></div>
+          <a class="photo-full" href="../../assets/infrared-audio/bench.webp" target="_blank" rel="noopener noreferrer">Ouvrir la photo <span aria-hidden="true">↗</span></a>
+          <details class="chapter-more"><summary><span class="more-icon" aria-hidden="true">+</span>More information</summary>
+            <div class="more-panel"><button class="more-close" type="button" aria-label="Fermer les informations" hidden>×</button><p class="eyebrow">Notes d’ingénierie / 05</p><h3>Comprendre la déformation.</h3><h4>Test photographié</h4><p>10 kHz correspond à une période de 100 µs. La trace jaune est vraisemblablement la commande ; le point exact de la trace rose doit être identifié.</p><h4>Porteuse envisagée</h4><p>45 kHz correspond à une période calculée d’environ 22,2 µs. Cette fréquence n’est pas encore validée pour la chaîne FM stéréo.</p><h4>Règle de Carson</h4><p>B ≈ 2(Δf + f_audio,max). La bande audio et la déviation doivent être choisies avant de valider les porteuses et leur séparation.</p><h4>Deux voies sans chevauchement</h4><p>Un premier critère est |f_c,2 − f_c,1| &gt; (B₁ + B₂)/2, avec une marge supplémentaire adaptée aux filtres. La seconde porteuse reste à définir.</p><h4>Hypothèses à tester</h4><p>Les causes possibles de déformation ne sont pas des diagnostics établis. Mesurer au bon point, vérifier gain et offset, puis relever la réponse en fréquence permet de les départager.</p></div>
+          </details>
+          <div class="chapter-progress" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="chapter-content">
+          <div class="chapter-copy"><p class="eyebrow">Étape 05 / En cours</p><h2 id="ir-oscilloscope-title"><span class="title-line">10 kHz.</span><span class="title-line title-accent">Des questions.</span></h2><p class="chapter-lead">À 10 kHz, le signal reçu apparaît sous forme d’impulsions arrondies. Cette observation devient le point de départ du diagnostic.</p></div>
+          <div class="chapter-narrative"><p class="eyebrow">Manipulation · Questionnement · Suite des essais</p><h3>Comprendre la déformation.</h3><p class="narrative-question">Pourquoi le signal reçu ressemble-t-il à une impulsion ?</p><p>L’oscilloscope montre simultanément une trace jaune carrée et une trace rose impulsionnelle, associée à la chaîne de réception. Le compte rendu situe cet essai à 10 kHz : c’est la fréquence du test intermédiaire, à distinguer de la porteuse de 45 kHz envisagée. Le signal reçu ne reproduit donc pas fidèlement la forme envoyée. Cette différence est un résultat utile, mais elle ne constitue pas encore une transmission audio validée.</p><p>Plusieurs causes restent possibles : couplage capacitif, constante de temps RC, bande passante limitée, saturation, réglage du gain ou point de mesure. Nous ne choisissons pas une explication à partir de la seule photo. La prochaine étape est de relever le schéma et le point exact de la trace rose, puis de mesurer progressivement à 10, 20, 30 et 45 kHz. Comparer amplitude et forme du signal aidera à identifier ce que l’étage conserve ou atténue avant d’ajouter la FM.</p></div>
+        </div>
+      </section>
+
+    </div>
+    <div class="wrap ir-labs">
+      <section class="infrared-link" data-infrared-link aria-labelledby="infrared-link-heading">
+  <p class="eyebrow">LIAISON OPTIQUE / NOTES DE BANC</p>
+  <h2 id="infrared-link-heading">Un signal, porté par la lumière.</h2>
+  <p class="infrared-link-intro">Avant de transmettre de la musique, l’équipe vérifie une liaison plus simple : une commande carrée pilote un transistor, le trajet optique transporte les variations et le récepteur les détecte. Essayez d’interrompre le trajet.</p>
+  <div class="infrared-link-actions">
+    <button type="button" data-link-run aria-pressed="false" disabled>Suivre les impulsions</button>
+    <button type="button" data-link-obstacle aria-pressed="false" disabled>Placer un obstacle</button>
+    <button type="button" data-link-reset disabled>Réinitialiser</button>
+  </div>
+  <p class="infrared-link-status" data-link-status role="status">Trajet dégagé. Lancez la séquence ou placez un obstacle.</p>
+  <figure class="infrared-link-diagram">
+    <svg viewBox="0 0 960 280" role="img" aria-labelledby="infrared-link-diagram-title">
+      <title id="infrared-link-diagram-title">Schéma pédagogique d’un émetteur optique commandé par transistor et d’un capteur suivi d’un étage à amplificateur opérationnel</title>
+      <g class="link-guides" aria-hidden="true"><path d="M24 40H936M24 240H936M270 30V250M690 30V250" fill="none"/></g>
+      <rect class="link-panel" x="32" y="64" width="226" height="160" rx="12"/>
+      <rect class="link-panel" x="702" y="64" width="226" height="160" rx="12"/>
+      <g class="link-circuit" aria-hidden="true">
+        <path d="M58 178V147H78V116H100V147H120V116H141V147H155"/>
+        <circle cx="184" cy="147" r="24"/>
+        <path d="M155 147H172M172 133V160M172 140L192 126V111M172 154L192 168V188M184 164L192 168L192 159M192 111H232V133"/>
+        <path d="M220 136L232 157L244 136ZM220 159H244M232 159V190H192"/>
+        <path d="M710 147H746M734 135L746 156L758 135ZM734 158H758M746 158V185H788M769 142L778 132M771 132H778V139M746 113V125"/>
+        <path d="M788 118L845 147L788 176ZM845 147H902M764 113H869V147M778 106V120M784 106V120"/>
+        <path d="M814 139H823M818 135V143M814 156H823"/>
+      </g>
+      <circle class="link-source-light" cx="267" cy="147" r="22" aria-hidden="true"/>
+      <circle class="link-source" cx="267" cy="147" r="8"/>
+      <path class="link-optical-axis" d="M278 147H475" fill="none"/>
+      <path class="link-optical-axis link-downstream" d="M489 147H682" fill="none"/>
+      <circle class="link-detector-light" cx="690" cy="147" r="22" aria-hidden="true"/>
+      <circle class="link-detector" cx="690" cy="147" r="8"/>
+      <g aria-hidden="true">
+        <circle class="link-packet" data-link-packet cx="280" cy="147" r="5"/>
+        <circle class="link-packet" data-link-packet cx="280" cy="147" r="5"/>
+        <circle class="link-packet" data-link-packet cx="280" cy="147" r="5"/>
+        <circle class="link-packet" data-link-packet cx="280" cy="147" r="5"/>
+      </g>
+      <rect class="link-obstacle" x="476" y="99" width="12" height="96" rx="3" aria-hidden="true"/>
+    </svg>
+    <figcaption>Le rayon cuivré rend le trajet visible ici. La lumière infrarouge réelle est invisible à l’œil humain.</figcaption>
+  </figure>
+  <div class="infrared-link-stations">
+    <div><span>01</span><h3>Commuter le courant</h3><p>Le transistor commande le courant de la LED. Une résistance en série limite son intensité.</p></div>
+    <div><span>02</span><h3>Traverser le trajet optique</h3><p>Un trajet dégagé et bien aligné facilite la réception directe. Placez un obstacle opaque pour l’interrompre.</p></div>
+    <div><span>03</span><h3>Détecter et amplifier</h3><p>Le composant photosensible alimente l’étage de réception à TL081. Le circuit exact et sa réponse déformée restent à étudier.</p></div>
+  </div>
+  <div class="infrared-link-waveforms">
+    <figure><figcaption>Commande carrée illustrative</figcaption><svg viewBox="0 0 360 82" role="img" aria-label="Commande carrée illustrative"><line x1="0" x2="360" y1="62" y2="62"/><path d="M0 62H24V20H58V62H108V20H142V62H192V20H226V62H276V20H310V62H360"/></svg></figure>
+    <figure class="link-received"><figcaption>Impulsions reçues illustratives</figcaption><svg viewBox="0 0 360 82" role="img" aria-label="Impulsions reçues illustratives"><line x1="0" x2="360" y1="62" y2="62"/><path data-link-received d="M0 62H26Q31 62 33 40Q40 -3 47 40Q49 62 54 62H110Q115 62 117 40Q124 -3 131 40Q133 62 138 62H194Q199 62 201 40Q208 -3 215 40Q217 62 222 62H278Q283 62 285 40Q292 -3 299 40Q301 62 306 62H360"/></svg></figure>
+  </div>
+  <p class="infrared-link-note">Illustration pédagogique ralentie, à niveaux relatifs et bruitages d’interface facultatifs. Elle ne reproduit ni la mesure à l’oscilloscope ni le délai réel de propagation. Le test photographié est à 10 kHz ; la porteuse envisagée de 45 kHz, l’audio FM, la stéréo et la portée de 10 m restent à valider.</p>
+  <noscript><p>Le schéma et les exemples de signaux restent disponibles. Les commandes interactives nécessitent JavaScript.</p></noscript>
+</section>
+            <section class="fm-lab" data-fm-lab aria-labelledby="fm-lab-title">
         <p class="eyebrow">Signal lab / Modèle pédagogique</p>
         <h2 id="fm-lab-title">Voir la fréquence changer.</h2>
         <p class="fm-lab-intro">En FM, le signal à transmettre fait varier la fréquence d’une porteuse. Son amplitude reste constante. Déplacez les deux curseurs : les oscillations se resserrent et s’écartent, tandis que la courbe verte représente le signal de départ.</p>
@@ -87,6 +256,9 @@
         <details><summary>+ Plus d’informations / Comprendre la FM</summary><p>Une onde porteuse oscille à une fréquence moyenne fᶜ. Le signal utile déplace sa fréquence instantanée autour de cette moyenne : les passages rapides correspondent à une fréquence plus élevée, les passages espacés à une fréquence plus faible. Ici, l’amplitude de la porteuse reste égale à 1 ; le curseur β règle l’indice de modulation, et non cette amplitude.</p><p>Pour un signal sinusoïdal : <code>s(t) = sin(2π fᶜ t + β sin(2π fᵐ t))</code>.</p><p>Les fréquences sont exprimées en unités relatives. La porteuse vaut 16 ; l’écart maximal vaut β × fᵐ. Les huit notes du bouton « Écouter » sont une illustration audible de la variation de fréquence.</p></details>
         <p class="fm-lab-note">Cette démonstration explique le principe de la FM. Elle ne reproduit pas les composants, les fréquences réelles, la liaison stéréo ou la PLL du montage. Le projet infrarouge reste en cours ; aucun résultat expérimental supplémentaire n’est déduit de ces courbes.</p>
         <noscript><p class="fm-lab-note">Avec JavaScript désactivé, les courbes montrent un signal sinusoïdal et sa porteuse FM avec β = 2.</p></noscript>
+      </section>
+      <section class="ir-roadmap" aria-labelledby="ir-next-title"><p class="eyebrow">Les prochaines étapes / En cours</p><h2 id="ir-next-title">Construire la suite, une mesure à la fois.</h2><p class="ir-roadmap-lead">Le lien optique élémentaire est le point de départ. L’objectif reste une enceinte stéréo ; voici les étapes à réaliser et à vérifier avant de parler d’un système terminé.</p><ol><li><span aria-hidden="true">01</span><p>Relever le schéma et les références réelles des composants.</p></li><li><span aria-hidden="true">02</span><p>Mesurer courant LED, gain, offset et réponse reçue à 10 → 20 → 30 → 45 kHz.</p></li><li><span aria-hidden="true">03</span><p>Tester l’influence de la distance, de l’orientation et du blocage du trajet lumineux.</p></li><li><span aria-hidden="true">04</span><p>Fixer bande audio, déviation et deux porteuses avec la règle de Carson.</p></li><li><span aria-hidden="true">05</span><p>Intégrer le VCO puis la PLL, récupérer une voie audio et étendre à la stéréo.</p></li><li><span aria-hidden="true">06</span><p>Valider amplification haut-parleurs, télécommande de volume et portée finale.</p></li></ol>
+        <details class="project-context ir-design-notes"><summary>Ce qui reste à dimensionner<span aria-hidden="true">+</span></summary><h3>Choisir les porteuses avec la bande audio.</h3><p>45 kHz est une fréquence envisagée. Pour la valider, nous devons fixer la bande audio et la déviation de fréquence. La règle de Carson donne une estimation de la bande occupée : B ≈ 2(Δf + f_audio,max). Les deux voies devront disposer de bandes séparées et de filtres adaptés.</p><figure><img src="../../assets/infrared-principle.svg" width="1600" height="900" loading="lazy" alt="Choisir les porteuses avec la bande audio."><figcaption>Le schéma ci-dessous est une illustration de principe, distincte des photographies du montage et des résultats des essais.</figcaption></figure></details>
       </section>
     </div>
     <nav class="project-nav" aria-labelledby="more-projects"><div class="wrap"><p class="eyebrow">Poursuivre la découverte</p><h2 id="more-projects">Autres projets</h2><div class="project-links">

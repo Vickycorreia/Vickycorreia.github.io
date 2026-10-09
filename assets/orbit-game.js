@@ -26,7 +26,8 @@
       status: { en: 'Partial validation', fr: 'Validation partielle' },
       hrefs: { en: '/projects/stm32-morse.html', fr: '/fr/projects/stm32-morse.html' } },
     { id: 'infrared', weight: 4, x: 149, y: 343, surface: 'bands', color: '#508c85',
-      names: { en: 'Infrared audio', fr: 'Audio infrarouge' },
+      names: { en: 'IR audio', fr: 'Audio IR' },
+      status: { en: 'In progress', fr: 'En cours' },
       hrefs: { en: '/projects/infrared-audio.html', fr: '/fr/projects/infrared-audio.html' } },
     { id: 'rafale', weight: 2, x: 557, y: 326, surface: 'rock', color: '#8e88a8',
       names: { en: 'Cardboard Rafale', fr: 'Rafale en carton' },
@@ -244,7 +245,7 @@
   const missionNames = { sun: 'SUN', 'air-france': 'AIR FRANCE PDU',
     sand: french ? 'SABLE / AVALANCHES' : 'SAND / AVALANCHES',
     stm32: french ? 'PROJET MORSE · VALIDATION PARTIELLE' : 'MORSE PROJECT · PARTIAL VALIDATION',
-    infrared: 'IR / AUDIO', rafale: french ? 'RAFALE / EN COURS' : 'RAFALE / IN PROGRESS' };
+    infrared: french ? 'AUDIO IR · EN COURS' : 'IR AUDIO · IN PROGRESS', rafale: french ? 'RAFALE / EN COURS' : 'RAFALE / IN PROGRESS' };
   const copy = french ? {
     names: { sun: 'le Soleil', ...Object.fromEntries(PROJECT_DEFS.map(project => [project.id, project.names.fr + (project.status ? ` (${project.status.fr})` : '')])) },
     states: { aiming: 'Prêt', flying: 'En vol', orbit: 'Tour observé', collision: 'Collision', escape: 'Hors zone', landed: 'Projet atteint' },

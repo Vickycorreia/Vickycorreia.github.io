@@ -1,0 +1,61 @@
+.infrared-link {
+  --link-ink: #214b52;
+  --link-teal: #216e6c;
+  --link-copper: #a05b3d;
+  margin: 0 0 80px;
+  padding: clamp(24px, 4vw, 48px);
+  color: var(--link-ink);
+  border: 1px solid #bccfca;
+  border-radius: 22px;
+  background: radial-gradient(ellipse at 12% 0%, #e5efea, transparent 65%), #f7f6ef;
+}
+.infrared-link .eyebrow { color: var(--link-copper); }
+.infrared-link h2 { margin: 12px 0 18px; font-size: clamp(2rem, 4vw, 3.4rem); color: var(--link-teal); line-height: 1.08; }
+.infrared-link-intro { max-width: 780px; line-height: 1.8; color: #536966; }
+.infrared-link-diagram { margin: 26px 0 0; }
+.infrared-link-diagram > svg { width: 100%; height: auto; display: block; overflow: hidden; }
+.infrared-link-diagram figcaption { max-width: 780px; font-size: .85rem; line-height: 1.7; color: #596d67; }
+.infrared-link svg .link-panel { fill: #ffffffa6; stroke: #b5c9c2; stroke-width: 1.6; }
+.infrared-link svg .link-circuit { stroke: var(--link-ink); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.infrared-link svg .link-guides { stroke: #dae4dd; stroke-width: 1; }
+.infrared-link svg .link-optical-axis { stroke: #b38165; stroke-width: 2; stroke-dasharray: 3 9; opacity: .5; }
+.infrared-link svg .link-source { fill: #dfb493; stroke: var(--link-copper); stroke-width: 2; }
+.infrared-link svg .link-detector { fill: #b6d7ca; stroke: var(--link-teal); stroke-width: 2; }
+.infrared-link svg .link-packet { fill: var(--link-copper); opacity: 0; }
+.infrared-link svg .link-obstacle { fill: #e5d8c9; stroke: #a27658; stroke-width: 1.5; opacity: 0; }
+.infrared-link[data-blocked="true"] svg .link-obstacle { opacity: 1; }
+.infrared-link[data-blocked="true"] svg .link-downstream { opacity: .16; }
+.infrared-link svg .link-source-light, .infrared-link svg .link-detector-light { opacity: 0; }
+.infrared-link svg .link-source-light { fill: #cba484; }
+.infrared-link svg .link-detector-light { fill: #7bb7a5; }
+.infrared-link-stations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin: 4px 0 26px; }
+.infrared-link-stations > div { border-top: 1px solid #c5d2c8; padding-top: 15px; }
+.infrared-link-stations span { font-variant-numeric: tabular-nums; color: var(--link-copper); font-size: .76rem; letter-spacing: .1em; }
+.infrared-link-stations h3 { font-size: 1.06rem; margin: 8px 0; color: var(--link-ink); }
+.infrared-link-stations p { font-size: .88rem; line-height: 1.7; color: #596d67; margin: 0; }
+.infrared-link-waveforms { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; padding: 24px 0; border-top: 1px solid #c5d2c8; border-bottom: 1px solid #c5d2c8; }
+.infrared-link-waveforms figure { margin: 0; }
+.infrared-link-waveforms figcaption { font-weight: 650; color: #536966; font-size: .86rem; line-height: 1.6; margin-bottom: 12px; }
+.infrared-link-waveforms svg { display: block; width: 100%; height: 82px; }
+.infrared-link-waveforms path { fill: none; stroke: var(--link-copper); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.infrared-link-waveforms .link-received path { stroke: var(--link-teal); }
+.infrared-link-waveforms line { stroke: #bbcfc5; stroke-width: 1; }
+.infrared-link-actions { display: none; flex-wrap: wrap; gap: 12px; margin: 22px 0 18px; }
+.infrared-link[data-ready] .infrared-link-actions { display: flex; }
+.infrared-link button { min-height: 46px; padding: 12px 19px; font: inherit; font-weight: 650; font-size: .92rem; line-height: 1.3; border-radius: 999px; border: 1px solid var(--link-teal); color: var(--link-teal); background: #ffffffb0; cursor: pointer; }
+.infrared-link button:first-child { background: var(--link-teal); color: white; }
+.infrared-link button[aria-pressed="true"][data-link-obstacle] { background: #eee0d0; color: #82492f; border-color: #b38165; }
+.infrared-link button:focus-visible { outline: 3px solid var(--link-copper); outline-offset: 4px; }
+.infrared-link button:disabled { cursor: default; opacity: .5; }
+.infrared-link-status { min-height: 3.2em; line-height: 1.6; font-size: .9rem; color: var(--link-teal); margin: 12px 0; }
+.infrared-link-note, .infrared-link noscript p { font-size: .85rem; line-height: 1.8; color: #596d67; max-width: 820px; }
+@media (max-width: 600px) {
+  .infrared-link { margin-bottom: 50px; padding: 24px 20px; border-radius: 18px; }
+  .infrared-link-stations { grid-template-columns: 1fr; gap: 16px; }
+  .infrared-link-stations > div { display: grid; grid-template-columns: 24px 1fr; gap: 2px 12px; }
+  .infrared-link-stations span { padding-top: 9px; grid-row: span 2; }
+  .infrared-link-stations h3 { margin: 5px 0; }
+  .infrared-link-waveforms { grid-template-columns: 1fr; gap: 20px; }
+  .infrared-link-actions { gap: 10px; }
+  .infrared-link button { flex: 1 1 180px; }
+}
