@@ -223,15 +223,8 @@
       <g class="link-guides" aria-hidden="true"><path d="M24 40H936M24 240H936M270 30V250M690 30V250" fill="none"/></g>
       <rect class="link-panel" x="32" y="64" width="226" height="160" rx="12"/>
       <rect class="link-panel" x="702" y="64" width="226" height="160" rx="12"/>
-      <g class="link-circuit" aria-hidden="true">
-        <path d="M58 178V147H78V116H100V147H120V116H141V147H155"/>
-        <circle cx="184" cy="147" r="24"/>
-        <path d="M155 147H172M172 133V160M172 140L192 126V111M172 154L192 168V188M184 164L192 168L192 159M192 111H232V133"/>
-        <path d="M220 136L232 157L244 136ZM220 159H244M232 159V190H192"/>
-        <path d="M710 147H746M734 135L746 156L758 135ZM734 158H758M746 158V185H788M769 142L778 132M771 132H778V139M746 113V125"/>
-        <path d="M788 118L845 147L788 176ZM845 147H902M764 113H869V147M778 106V120M784 106V120"/>
-        <path d="M814 139H823M818 135V143M814 156H823"/>
-      </g>
+      <image href="../assets/infrared-emitter-circuit.svg" x="32" y="64" width="226" height="160" aria-hidden="true"/>
+      <image href="../assets/infrared-receiver-circuit.svg" x="702" y="64" width="226" height="160" aria-hidden="true"/>
       <circle class="link-source-light" cx="267" cy="147" r="22" aria-hidden="true"/>
       <circle class="link-source" cx="267" cy="147" r="8"/>
       <path class="link-optical-axis" d="M278 147H475" fill="none"/>
@@ -246,7 +239,7 @@
       </g>
       <rect class="link-obstacle" x="476" y="99" width="12" height="96" rx="3" aria-hidden="true"/>
     </svg>
-    <figcaption>The copper-coloured ray makes the path visible here. Actual infrared light is invisible to the human eye.</figcaption>
+    <figcaption>The copper-coloured ray makes the path visible here. Actual infrared light is invisible to the human eye. Functional diagrams of the intended architecture; FM and PLL operation remain to be validated. View larger circuits: <a href="../assets/infrared-emitter-circuit.svg" target="_blank" rel="noopener noreferrer">transmitter</a> · <a href="../assets/infrared-receiver-circuit.svg" target="_blank" rel="noopener noreferrer">receiver</a>.</figcaption>
   </figure>
   <div class="infrared-link-stations">
     <div><span>01</span><h3>Switch the current</h3><p>The transistor controls the LED drive. A series resistor limits its current.</p></div>

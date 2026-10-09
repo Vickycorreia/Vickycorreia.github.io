@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 226 160" role="img" aria-labelledby="title desc">
+<title id="title">Émetteur infrarouge — schéma fonctionnel</title>
+<desc id="desc">La source audio pilote un modulateur FM. Sa sortie traverse une résistance de base et commande un transistor NPN. Le courant de la LED infrarouge passe par une résistance de limitation, la LED et le transistor avant de rejoindre la masse.</desc>
+<g fill="none" stroke="#214b52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M53 32h13m67 0h9v73h4m27 0h7"/>
+  <rect x="66" y="17" width="67" height="30" rx="5"/>
+  <path d="M146 105h4l4-5 5 10 5-10 5 10 4-5"/>
+  <circle cx="194" cy="105" r="20"/>
+  <path d="M180 96v18m0-14 16-9 12-8m-28 27 16 9 12 9v11"/>
+  <path d="m191 116 7 5-2-7"/>
+  <path d="M208 20v12m0 17v12m0 16v6"/>
+  <rect x="203" y="32" width="10" height="17"/>
+  <path d="m199 61h18l-9 16zM199 77h18"/>
+  <path d="m216 62 8-8m-6 15 7-7m-4-9h4v4m-3 4h4v4" stroke="#a05b3d"/>
+  <path d="M208 139h0m-10 1h20m-16 4h12m-9 4h6"/>
+</g>
+<g fill="#214b52" font-family="system-ui, sans-serif" font-size="10" font-weight="600">
+  <text x="8" y="35">AUDIO</text><text x="76" y="36">VCO / FM</text>
+  <text x="149" y="94">R<tspan font-size="7" baseline-shift="sub">B</tspan></text>
+  <text x="187" y="13">+V</text><text x="170" y="45">R<tspan font-size="7" baseline-shift="sub">LED</tspan></text>
+  <text x="163" y="74">LED IR</text><text x="185" y="108">NPN</text>
+</g>
+</svg>

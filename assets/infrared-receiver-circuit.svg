@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 226 160" role="img" aria-labelledby="title desc">
+<title id="title">Récepteur infrarouge — schéma fonctionnel</title>
+<desc id="desc">Une photodiode en mode photovoltaïque alimente l'entrée inverseuse d'un amplificateur transimpédance avec résistance de contre-réaction. Le signal traverse ensuite les blocs de démodulation FM par PLL, filtrage passe-bas et amplification audio jusqu'au haut-parleur.</desc>
+<g fill="none" stroke="#214b52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 70h13m15 0h15v-12h20M12 70v20m-8 0h16m-12 4h8m-5 4h2"/>
+  <path d="m25 62 13 8-13 8zM40 60v20"/>
+  <path d="m8 37 12 13m-3-1 3 1-1-4m1-16 12 13m-3-1 3 1-1-4" stroke="#216e6c"/>
+  <path d="M75 43v54l40-27zM61 83h14m-14 0v10m-8 0h16m-12 4h8"/>
+  <path d="M55 58h7V19h14m22 0h22v51h15v32H28v21h13"/>
+  <rect x="76" y="14" width="22" height="10"/>
+  <path d="M77 58h5m-5 25h5M115 70h5"/>
+  <rect x="41" y="111" width="37" height="25" rx="4"/>
+  <rect x="83" y="111" width="32" height="25" rx="4"/>
+  <rect x="120" y="111" width="37" height="25" rx="4"/>
+  <path d="M78 123h5m32 0h5m37 0h11"/>
+  <rect x="168" y="117" width="8" height="12"/>
+  <path d="m176 117 12-9v30l-12-9"/>
+</g>
+<g fill="#214b52" font-family="system-ui, sans-serif" font-size="9" font-weight="600">
+  <text x="44" y="45">PD</text><text x="74" y="10">R<tspan font-size="7" baseline-shift="sub">F</tspan></text>
+  <text x="84" y="73">TIA</text><text x="48" y="58">−</text><text x="66" y="82">+</text>
+  <text x="46" y="127">PLL / FM</text><text x="89" y="127">LPF</text><text x="125" y="127">AUDIO</text>
+  <text x="169" y="150">HP</text>
+</g>
+</svg>
